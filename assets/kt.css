@@ -566,3 +566,153 @@ html.cur-on, html.cur-on a, html.cur-on button, html.cur-on .lnk { cursor: none;
   .cur { display: none; }
   html.cur-on, html.cur-on a, html.cur-on button, html.cur-on .lnk { cursor: auto; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   FLAGGSCHIFF: KI-AUTOMATISIERUNG & KI-MANAGEMENT
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Flip-Wort: Anzeigetafel-Zitat, zeigt die Bandbreite der Automation.
+   6 Woerter, jedes per negativem Delay auf einen eigenen Ausschnitt
+   desselben Zyklus gesetzt — eine einzige Keyframe-Form reicht. ------- */
+.flip { display: inline-block; position: relative; height: 1.3em; min-width: 11ch;
+  overflow: hidden; vertical-align: bottom; perspective: 240px; color: var(--acc); }
+.flip b {
+  position: absolute; left: 0; top: 0; font-weight: inherit; white-space: nowrap;
+  opacity: 0; transform: translateY(60%) rotateX(45deg); transform-origin: 50% 0%;
+  animation: kf-flip 9s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * -1.5s);
+}
+@keyframes kf-flip {
+  0%          { opacity: 0; transform: translateY(60%) rotateX(45deg); }
+  4%, 14%     { opacity: 1; transform: translateY(0) rotateX(0deg); }
+  19%, 100%   { opacity: 0; transform: translateY(-60%) rotateX(-45deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flip b { animation: none !important; opacity: 0 !important; transform: none !important; }
+  .flip b:first-child { opacity: 1 !important; position: static !important; }
+}
+
+/* ── Pipeline: fuenf Stationen, Partikel laufen auf den Verbindungen.
+   container-type + cqw statt left/width: die Bewegung bleibt reiner
+   transform, unabhaengig von der tatsaechlichen Spaltenbreite. -------- */
+.pipe { display: flex; align-items: flex-start; }
+.pipe-node { flex: 0 0 auto; width: clamp(78px, 15vw, 128px); text-align: center; }
+.pipe-node i {
+  display: block; width: 13px; height: 13px; margin: 0 auto 16px; border-radius: 50%;
+  background: var(--ink); border: 2px solid var(--acc); position: relative; z-index: 1;
+}
+.pipe-node b { display: block; font-size: .82rem; font-weight: 600; margin-bottom: 5px; }
+.pipe-node span { display: block; font-size: .72rem; line-height: 1.4; color: var(--paper-mute); }
+.pipe-track {
+  flex: 1 1 auto; position: relative; height: 2px; margin-top: 20px; min-width: 18px;
+  background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 13px);
+  container-type: inline-size;
+}
+.pipe-particle {
+  position: absolute; top: 50%; left: 0; width: 6px; height: 6px; margin-top: -3px;
+  border-radius: 50%; background: var(--acc); box-shadow: 0 0 9px 1px var(--acc-dim);
+  opacity: 0; animation: kf-pipe-flow 2.6s linear infinite;
+  animation-delay: calc(var(--i, 0) * -.5s);
+}
+@keyframes kf-pipe-flow {
+  0%   { transform: translateX(0) scale(.4); opacity: 0; }
+  12%  { opacity: 1; transform: translateX(14cqw) scale(1); }
+  88%  { opacity: 1; }
+  100% { transform: translateX(100cqw) scale(.4); opacity: 0; }
+}
+@supports not (container-type: inline-size) { .pipe-particle { display: none; } }
+@media (prefers-reduced-motion: reduce) { .pipe-particle { animation: none !important; opacity: .6 !important; } }
+@media (max-width: 760px) {
+  .pipe { flex-direction: column; align-items: stretch; gap: 18px; }
+  .pipe-node { width: auto; text-align: left; display: flex; align-items: flex-start; gap: 14px; }
+  .pipe-node i { margin: 3px 0 0; flex-shrink: 0; }
+  .pipe-track { width: 2px; height: 22px; min-width: 0; margin: 0 0 0 6px;
+    background: repeating-linear-gradient(180deg, var(--line) 0 6px, transparent 6px 13px); }
+  .pipe-particle { top: 0; left: 50%; margin: 0 0 0 -3px; }
+  @keyframes kf-pipe-flow-v { 0% { transform: translateY(0) scale(.4); opacity: 0; }
+    12% { opacity: 1; transform: translateY(14cqh) scale(1); } 88% { opacity: 1; }
+    100% { transform: translateY(100cqh) scale(.4); opacity: 0; } }
+  .pipe-particle { animation-name: kf-pipe-flow-v; }
+}
+
+/* ── Horizontales Regal: native Scroll-Snap, kein JavaScript. ────────── */
+.shelf {
+  display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x proximity;
+  padding: 6px 4px 20px; margin: 0 -4px; scrollbar-width: thin; scrollbar-color: var(--line) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+.shelf-card {
+  scroll-snap-align: start; flex: 0 0 auto; width: clamp(220px, 27vw, 290px);
+  background: var(--ink-2); border: 1px solid var(--line); padding: 22px 22px 24px;
+}
+.shelf-card b { display: block; font-family: var(--mono); font-size: .72rem; color: var(--acc); margin-bottom: 14px; }
+.shelf-card h4 { font-family: var(--display); font-weight: 500; font-size: 1.1rem; margin: 0 0 9px; }
+.shelf-card p { margin: 0; font-size: .87rem; line-height: 1.6; color: var(--paper-dim); }
+.shelf::-webkit-scrollbar { height: 5px; }
+.shelf::-webkit-scrollbar-thumb { background: var(--line); }
+.shelf::-webkit-scrollbar-track { background: transparent; }
+
+/* ── Vorher / Nachher: reine Radio-Umschaltung, kein JavaScript. ──────── */
+.vgl-in { position: absolute; opacity: 0; pointer-events: none; }
+.vgl-tabs { display: inline-flex; border: 1px solid var(--line); margin-bottom: 28px; }
+.vgl-tabs label {
+  padding: 11px 20px; font-size: .84rem; font-weight: 600; cursor: pointer; color: var(--paper-mute);
+  transition: color var(--t-ui) var(--ease-out), background-color var(--t-ui) var(--ease-out);
+}
+.vgl-in:checked + .vgl-tabs label[for="vgl-mit"],
+#vgl-ohne:checked ~ .vgl-tabs label[for="vgl-ohne"] { color: var(--ink); background: var(--acc); }
+#vgl-mit:checked ~ .vgl-tabs label[for="vgl-mit"] { color: var(--ink); background: var(--acc); }
+.vgl-panel { display: grid; grid-template-columns: 1fr; }
+/* Zielt auf jedes direkte Kind, nicht nur auf div — die Panels sind
+   <ul>-Listen, ein auf div beschraenkter Selektor haette sie nie
+   getroffen und beide waeren dauerhaft sichtbar geblieben. */
+.vgl-panel > * { grid-area: 1 / 1; opacity: 0; visibility: hidden; transform: translate3d(0,8px,0);
+  transition: opacity var(--t-panel) var(--ease-out), transform var(--t-panel) var(--ease-out),
+              visibility 0s linear var(--t-panel); }
+#vgl-ohne:checked ~ .vgl-panel > .vgl-ohne-el,
+#vgl-mit:checked ~ .vgl-panel > .vgl-mit-el { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.vgl-panel li { padding: 14px 0 14px 28px; position: relative; font-size: .93rem; color: var(--paper-dim);
+  border-bottom: 1px solid var(--line-soft); }
+.vgl-panel li::before { content: ''; position: absolute; left: 0; top: 19px; width: 9px; height: 9px; border-radius: 50%; }
+.vgl-ohne-el li::before { background: rgba(237,238,240,.22); }
+.vgl-mit-el li::before { background: var(--acc); box-shadow: 0 0 7px 0 var(--acc-dim); }
+@media (prefers-reduced-motion: reduce) {
+  .vgl-panel > div { transition: opacity 160ms linear !important; transform: none !important; }
+}
+
+/* ── Dashboard-Mockup: laufende Betreuung, ausdruecklich als Beispiel
+   markiert. Balken fuellt beim Reinscrollen, dieselbe Technik wie die
+   Ziffernrollen (statisch ohne Scroll-Driven-Unterstuetzung). ---------- */
+.dash { background: var(--ink-2); border: 1px solid var(--line); padding: clamp(24px,3vw,38px); }
+.dash-top { display: flex; align-items: center; gap: 10px; margin-bottom: 26px; padding-bottom: 20px; border-bottom: 1px solid var(--line-soft); }
+.dash-metrics { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+.dash-metrics b { display: block; font-size: clamp(1.5rem,2.4vw,2.1rem); color: var(--acc); margin-bottom: 6px; }
+.dash-metrics span { display: block; font-size: .78rem; color: var(--paper-mute); }
+.dash-bar { height: 3px; background: var(--line-soft); margin-top: 22px; position: relative; overflow: hidden; }
+.dash-bar i { position: absolute; inset: 0; background: var(--acc); transform-origin: 0 50%; transform: scaleX(0); }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .dash-bar i { animation: kf-dashbar linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
+  }
+}
+@supports not (animation-timeline: view()) { .dash-bar i { transform: scaleX(.82); } }
+@keyframes kf-dashbar { to { transform: scaleX(.82); } }
+@media (prefers-reduced-motion: reduce) { .dash-bar i { animation: none !important; transform: scaleX(.82) !important; } }
+@media (max-width: 620px) { .dash-metrics { grid-template-columns: 1fr 1fr; } }
+
+/* ── FAQ: natives <details>, kein JavaScript. ─────────────────────────── */
+.faq-list { border-top: 1px solid var(--line-soft); }
+.faq-item { border-bottom: 1px solid var(--line-soft); }
+.faq-item summary {
+  list-style: none; cursor: pointer; padding: 22px 0; display: flex; justify-content: space-between;
+  align-items: center; gap: 24px; font-size: 1.04rem; color: var(--paper); font-family: var(--display);
+  transition: color var(--t-ui) var(--ease-out);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: var(--acc); }
+.faq-plus { flex-shrink: 0; width: 17px; height: 17px; position: relative; }
+.faq-plus::before, .faq-plus::after { content: ''; position: absolute; top: 50%; left: 50%; background: var(--acc); }
+.faq-plus::before { width: 17px; height: 1px; transform: translate(-50%,-50%); }
+.faq-plus::after  { width: 1px; height: 17px; transform: translate(-50%,-50%); transition: transform var(--t-panel) var(--ease-out); }
+.faq-item[open] .faq-plus::after { transform: translate(-50%,-50%) rotate(90deg); }
+.faq-item p { margin: 0 0 26px; font-size: .94rem; line-height: 1.75; color: var(--paper-dim); max-width: 70ch; }

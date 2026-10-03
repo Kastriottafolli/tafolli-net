@@ -174,6 +174,91 @@ def seite(L):
   </div>
 </section>'''
 
+    # ── Flaggschiff: KI-Automatisierung & KI-Management ────────────────
+    flip_hoch = "".join(f'<b style="--i:{i}">{w}</b>' for i, w in enumerate(L['ki_flip_woerter']))
+
+    pipe = ""
+    for i, (titel, text) in enumerate(L['ki_pipeline']):
+        pipe += f'<div class="pipe-node rise" style="--i:{i}"><i></i><b>{titel}</b><span>{text}</span></div>'
+        if i < len(L['ki_pipeline']) - 1:
+            pipe += f'<div class="pipe-track"><span class="pipe-particle" style="--i:{i}"></span></div>'
+
+    shelf = "".join(
+        f'<div class="shelf-card pop" style="--i:{i}"><b>{nr}</b><h4>{titel}</h4><p>{text}</p></div>'
+        for i, (nr, titel, text) in enumerate(L['ki_showcase']))
+
+    vgl_ohne = "".join(f'<li>{p}</li>' for p in L['ki_vgl_ohne_punkte'])
+    vgl_mit = "".join(f'<li>{p}</li>' for p in L['ki_vgl_mit_punkte'])
+
+    dash_metrics = "".join(
+        f'<div><b>{odometer(wert)}{suf}</b><span>{label}</span></div>'
+        for label, wert, suf in L['ki_dash'])
+
+    ki = f'''
+<section class="pad">
+  <div class="shell">
+    {kicker('02', L['ki_tag'])}
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe(L['ki_h2'])}</h2>
+    <p class="lede rise" style="--i:1;margin-bottom:14px">{L['ki_lede']}</p>
+    <p class="mono rise" style="--i:2;font-size:.82rem;color:var(--paper-mute);margin-bottom:clamp(48px,5.5vw,80px)">
+      {L['ki_flip_label']} <span class="flip">{flip_hoch}</span>
+    </p>
+
+    <div class="pipe rise" style="--i:3;margin-bottom:clamp(56px,6vw,92px)">{pipe}</div>
+
+    <div class="g2 pop-wrap" style="margin-bottom:clamp(56px,6vw,92px)">
+      <div class="card pop ticks" style="--i:0">
+        <p class="tag" style="color:var(--acc);margin-bottom:16px">{L['ki_a_tag']}</p>
+        <h3 class="d3" style="margin-bottom:15px">{L['ki_a_h3']}</h3>
+        <p style="color:var(--paper-dim);font-size:.96rem">{L['ki_a_text']}</p>
+      </div>
+      <div class="card pop ticks" style="--i:1">
+        <p class="tag" style="color:var(--acc);margin-bottom:16px">{L['ki_b_tag']}</p>
+        <h3 class="d3" style="margin-bottom:15px">{L['ki_b_h3']}</h3>
+        <p style="color:var(--paper-dim);font-size:.96rem">{L['ki_b_text']}</p>
+      </div>
+    </div>
+
+    <p class="tag rise" style="margin-bottom:18px">{L['ki_showcase_tag']}</p>
+    <div class="shelf">{shelf}</div>
+
+    <div class="split rise" style="margin-top:clamp(56px,6vw,92px);align-items:start;gap:clamp(32px,4.5vw,76px)">
+      <div>
+        <p class="tag" style="margin-bottom:16px">{L['ki_vgl_tag']}</p>
+        <h3 class="d3" style="margin-bottom:26px;max-width:16ch">{L['ki_vgl_h3']}</h3>
+        <input type="radio" name="vgl" id="vgl-ohne" class="vgl-in" checked>
+        <input type="radio" name="vgl" id="vgl-mit" class="vgl-in">
+        <div class="vgl-tabs">
+          <label for="vgl-ohne">{L['ki_vgl_ohne']}</label>
+          <label for="vgl-mit">{L['ki_vgl_mit']}</label>
+        </div>
+        <div class="vgl-panel">
+          <ul class="vgl-ohne-el" style="list-style:none;margin:0;padding:0">{vgl_ohne}</ul>
+          <ul class="vgl-mit-el" style="list-style:none;margin:0;padding:0">{vgl_mit}</ul>
+        </div>
+      </div>
+
+      <div class="dash pop ticks">
+        <p class="tag" style="color:var(--acc);margin-bottom:8px">{L['ki_dash_tag']}</p>
+        <h3 class="d3" style="font-size:1.25rem;margin-bottom:8px">{L['ki_dash_h3']}</h3>
+        <p style="color:var(--paper-dim);font-size:.86rem;margin-bottom:22px">{L['ki_dash_text']}</p>
+        <div class="dash-top">
+          <span class="dot pulse"></span>
+          <span class="mono" style="font-size:.82rem">{L['ki_dash_status']}</span>
+        </div>
+        <div class="dash-metrics">{dash_metrics}</div>
+        <div class="dash-bar"><i></i></div>
+        <p class="mono" style="font-size:.72rem;color:var(--paper-mute);margin:14px 0 0">{L['ki_dash_letzte']}</p>
+      </div>
+    </div>
+
+    <div class="rise" style="margin-top:clamp(48px,5vw,76px);display:flex;flex-wrap:wrap;gap:13px">
+      <a href="{a('kontakt.html')}" class="btn btn-1">{L['ki_cta']}</a>
+      <a href="{a('teamo-ki.html')}" class="btn btn-2 lnk">{L['ki_cta_teamo']} <span class="arrow">&rarr;</span></a>
+    </div>
+  </div>
+</section>'''
+
     # ── Leistungsfelder als echter Sticky-Stack ───────────────────────
     karten = ""
     for i, (nr, label, titel, text, punkte, href, cta) in enumerate(L['felder']):
@@ -201,7 +286,7 @@ def seite(L):
     felder = f'''
 <section id="felder" class="pad" style="scroll-margin-top:96px;background:var(--ink-2)">
   <div class="shell">
-    {kicker('02', L['felder_tag'])}
+    {kicker('03', L['felder_tag'])}
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 26px">{wipe(L['felder_h2'])}</h2>
     <p class="lede rise" style="--i:1;margin-bottom:clamp(44px,5vw,72px)">{L['felder_text']}</p>
     <div class="stack" style="perspective:1600px">{karten}</div>
@@ -221,7 +306,7 @@ def seite(L):
   <div class="shell">
     <div class="split" style="align-items:start">
       <div>
-        {kicker('03', L['rech_tag'])}
+        {kicker('04', L['rech_tag'])}
         <h2 class="d2 wipe recede-exit" style="margin:20px 0 26px">{wipe(L['rech_h2'])}</h2>
         <p class="lede rise" style="--i:1;margin-bottom:34px">{L['rech_text']}</p>
         <a href="{a('rechner.html')}" class="btn btn-1 rise" style="--i:2">{L['rech_cta']}</a>
@@ -251,7 +336,7 @@ def seite(L):
     ablauf = f'''
 <section id="ablauf" class="pad" style="scroll-margin-top:96px;background:var(--ink-2)">
   <div class="shell">
-    {kicker('04', L['abl_tag'])}
+    {kicker('05', L['abl_tag'])}
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 26px">{wipe(L['abl_h2'])}</h2>
     <p class="lede rise" style="--i:1;margin-bottom:clamp(44px,5vw,72px)">{L['abl_text']}</p>
     <div class="thread">{schritte}</div>
@@ -271,7 +356,7 @@ def seite(L):
     wissen = f'''
 <section id="wissen" class="pad" style="scroll-margin-top:96px">
   <div class="shell">
-    {kicker('05', L['wis_tag'])}
+    {kicker('06', L['wis_tag'])}
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 clamp(44px,5vw,72px)">{wipe(L['wis_h2'])}</h2>
     <div class="g3 pop-wrap">{artikel}</div>
     <figure class="rise" style="margin:clamp(52px,6vw,88px) 0 0;padding-top:clamp(36px,4vw,56px);border-top:1px solid var(--line)">
@@ -279,6 +364,22 @@ def seite(L):
         <span style="color:var(--acc)">&ldquo;</span>{L['zitat']}</blockquote>
       <figcaption class="tag">{L['zitat_quelle']}</figcaption>
     </figure>
+  </div>
+</section>'''
+
+    # ── FAQ ──────────────────────────────────────────────────────────
+    faq_items = "".join(
+        f'''<details class="faq-item">
+          <summary>{frage}<span class="faq-plus"></span></summary>
+          <p>{antwort}</p>
+        </details>''' for frage, antwort in L['faq'])
+
+    faq = f'''
+<section class="pad" style="background:var(--ink-2)">
+  <div class="shell">
+    {kicker('07', L['faq_tag'])}
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 clamp(44px,5vw,64px)">{wipe(L['faq_h2'])}</h2>
+    <div class="faq-list rise" style="max-width:860px">{faq_items}</div>
   </div>
 </section>'''
 
@@ -386,7 +487,7 @@ def seite(L):
   <div class="sheet" id="sheet">{blatt}</div>
 </header>
 
-<main id="inhalt">{hero}{kennzahlen}{marquee}{pos}{felder}{rechner}{ablauf}{wissen}{schluss}</main>
+<main id="inhalt">{hero}{kennzahlen}{marquee}{pos}{ki}{felder}{rechner}{ablauf}{wissen}{faq}{schluss}</main>
 {fuss}
 <script src="{a('assets/kt.js')}?v={VER}" defer></script>
 </body>
