@@ -3,9 +3,21 @@
 Persönliche Webseite von Kastriot Tafolli. F&B Manager in der 5-Sterne-Hotellerie,
 Softwareingenieur mit Schwerpunkt Künstliche Intelligenz, Inhaber von TB Solutions.
 
-Sechzehn Seiten in reinem HTML, CSS und JavaScript. Kein Framework, keine
-Abhängigkeiten, kein Bauschritt, keine Anfrage an fremde Server. Die Dateien
-können so wie sie sind auf jeden Webserver gelegt werden.
+Reines HTML, CSS und JavaScript. Kein Framework, keine Abhängigkeiten zur
+Laufzeit, keine Anfrage an fremde Server. Die Dateien können so wie sie sind
+auf jeden Webserver gelegt werden.
+
+Die Startseite gibt es auf Deutsch, Englisch und Albanisch. Damit drei
+Sprachen nicht dreimal von Hand gepflegt werden, wird sie erzeugt:
+
+    python3 _build/bau.py
+
+Der Inhalt steht in `_build/inhalt_de.py`, `_build/inhalt_en.py` und
+`_build/inhalt_sq.py`; Deutsch ist die Quelle, die anderen beiden sind
+Übersetzungen. Erzeugt werden `index.html`, `en/index.html` und
+`sq/index.html`. Nach jeder Änderung an `assets/kt.css` oder `assets/kt.js`
+muss der Lauf wiederholt werden, weil die Versionsmarke der Dateien in den
+Seiten steht. Die übrigen Seiten sind weiterhin von Hand gepflegt.
 
 ## Inhalt
 

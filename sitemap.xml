@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tafolli.net/</loc>
-    <lastmod>2026-09-21</lastmod>
-    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tafolli.net/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tafolli.net/en/"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://tafolli.net/sq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tafolli.net/"/>
+  </url>
+  <url>
+    <loc>https://tafolli.net/en/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tafolli.net/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tafolli.net/en/"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://tafolli.net/sq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tafolli.net/"/>
+  </url>
+  <url>
+    <loc>https://tafolli.net/sq/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tafolli.net/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tafolli.net/en/"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://tafolli.net/sq/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tafolli.net/"/>
   </url>
   <url>
     <loc>https://tafolli.net/leistungen.html</loc>
