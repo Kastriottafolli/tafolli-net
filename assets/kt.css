@@ -1,0 +1,718 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   tafolli.net — Design-System v2
+   Monochrom + ein Akzent. Tiefe durch echte 3D-Perspektive.
+   Bewegung laeuft ueber CSS Scroll-Driven Animations, also ausserhalb
+   des Hauptthreads. Kein Scroll-Listener, nirgends.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Farbe: ein Akzent, auf der ganzen Seite derselbe. */
+  --ink:        #08090B;   /* Grund */
+  --ink-2:      #0E1013;   /* erhoehte Flaeche */
+  --ink-3:      #15181C;   /* Rahmen-Fuellung */
+  --paper:      #EDEEF0;   /* Text */
+  --paper-dim:  #9BA1A8;   /* Nebentext */
+  --paper-mute: #656C74;   /* Beschriftung */
+  --line:       rgba(237,238,240,.12);
+  --line-soft:  rgba(237,238,240,.06);
+  --acc:        #00E08C;   /* Signalgruen, der einzige Akzent */
+  --acc-dim:    rgba(0,224,140,.14);
+
+  /* Bewegung */
+  --ease-out:    cubic-bezier(.16, 1, .3, 1);
+  --ease-in-out: cubic-bezier(.77, 0, .175, 1);
+  --t-press: 120ms;
+  --t-ui:    200ms;
+  --t-panel: 420ms;
+
+  /* Schrift */
+  --display: 'Space Grotesk', system-ui, sans-serif;
+  --text:    'IBM Plex Sans', system-ui, sans-serif;
+  --mono:    'JetBrains Mono', ui-monospace, monospace;
+
+  --shell: min(1340px, 100% - clamp(32px, 8vw, 128px));
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--text);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+}
+
+a { color: inherit; text-decoration: none; }
+p  { text-wrap: pretty; margin: 0; }
+h1, h2, h3, h4 { margin: 0; font-weight: 500; }
+img, svg, canvas { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+:focus-visible { outline: 2px solid var(--acc); outline-offset: 3px; border-radius: 2px; }
+
+.shell { width: var(--shell); margin-inline: auto; }
+
+/* ── Typografie ───────────────────────────────────────────────────────
+   Tracking ist groessenabhaengig: grosse Schrift braucht negatives,
+   kleine positives. Ein fester Wert waere irgendwo falsch. ---------- */
+.d1, .d2, .d3 { font-family: var(--display); font-weight: 500; }
+/* Obergrenze mit Reserve: die breiteste Zeile der drei Sprachen
+   ("Fuenf Sterne") muss in die Heldenspalte passen, sonst bricht sie
+   um und zerreisst die Maske, hinter der sie hervorlaeuft. */
+  .d1 { font-size: clamp(2.9rem, 7.9vw, 7.5rem); line-height: .94; letter-spacing: -.042em; }
+.d2 { font-size: clamp(2.3rem, 5.4vw, 4.6rem); line-height: 1.0;  letter-spacing: -.035em; }
+.d3 { font-size: clamp(1.4rem, 2.3vw, 2.1rem); line-height: 1.15; letter-spacing: -.022em; }
+.lede { font-size: clamp(1.02rem, 1.35vw, 1.22rem); line-height: 1.7; color: var(--paper-dim); max-width: 62ch; }
+
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.tag {
+  font-family: var(--mono); font-size: .69rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--paper-mute);
+}
+.tag .n { color: var(--acc); }
+
+/* ── Perspektiv-Raster: der Boden, der nach hinten laeuft ─────────────
+   Ein echtes 3D-Plane, keine Hintergrundgrafik. Traegt die Tiefe des
+   Hero, ohne ein einziges Bild zu laden. ---------------------------- */
+.floor { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; perspective: 420px; }
+.floor::before {
+  content: ''; position: absolute; left: -60%; right: -60%; bottom: -34%; height: 150%;
+  transform: rotateX(78deg);
+  transform-origin: 50% 100%;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 68px 68px;
+  -webkit-mask-image: linear-gradient(to top, #000 4%, transparent 62%);
+          mask-image: linear-gradient(to top, #000 4%, transparent 62%);
+}
+.glow {
+  position: absolute; border-radius: 999px; filter: blur(130px);
+  pointer-events: none; z-index: 0; opacity: .5;
+}
+
+/* ── Knoepfe ──────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: .6em;
+  padding: 1.05em 1.9em; font-size: .94rem; font-weight: 600;
+  border: 1px solid transparent; white-space: nowrap;
+  transition: transform var(--t-ui) var(--ease-out),
+              background-color var(--t-ui) var(--ease-out),
+              border-color var(--t-ui) var(--ease-out),
+              color var(--t-ui) var(--ease-out);
+}
+.btn-1 { background: var(--acc); color: #04150E; }
+.btn-2 { border-color: var(--line); color: var(--paper); }
+@media (hover: hover) and (pointer: fine) {
+  .btn-1:hover { transform: translateY(-2px); background: #27EEA2; }
+  .btn-2:hover { transform: translateY(-2px); border-color: var(--acc); color: var(--acc); }
+}
+/* Rueckmeldung sitzt auf dem Druck, nicht auf dem Loslassen. */
+.btn:active { transform: translateY(0) scale(.975); transition-duration: var(--t-press); }
+
+.arrow { display: inline-block; transition: transform var(--t-ui) var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .lnk:hover .arrow { transform: translateX(5px); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   BEWEGUNG
+   Zwei Pfade mit identischem Endzustand:
+   1. Scroll-Driven Animations, wo der Browser sie kann. Laufen im
+      Compositor, nicht im Hauptthread, und folgen dem Finger exakt.
+   2. Sonst setzt ein IntersectionObserver die Klasse .is-in.
+   Kein Scroll-Listener in beiden Faellen.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Aufsteigen ─────────────────────────────────────────────────── */
+.rise {
+  opacity: 0; transform: translate3d(0, 30px, 0);
+  transition: opacity var(--t-panel) var(--ease-out),
+              transform var(--t-panel) var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+.rise.is-in { opacity: 1; transform: none; }
+
+/* ── 2. Herausklappen: der Effekt, der beim Scrollen nach vorn kippt ──
+   Grund: die Karte kommt aus der Tiefe auf den Leser zu und markiert
+   damit den Beginn eines neuen Abschnitts. --------------------------- */
+.pop-wrap { perspective: 1400px; perspective-origin: 50% 0%; }
+.pop {
+  opacity: 0;
+  transform: translate3d(0, 60px, -220px) rotateX(26deg);
+  transform-origin: 50% 0%;
+  transition: opacity 620ms var(--ease-out), transform 620ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 80ms);
+  will-change: transform;
+}
+.pop.is-in { opacity: 1; transform: none; }
+
+/* ── 3. Maskenlauf fuer Ueberschriften ─────────────────────────────── */
+.wipe > span { display: block; overflow: hidden; }
+.wipe > span > span {
+  display: block;
+  transform: translate3d(0, 108%, 0);
+  transition: transform 760ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 85ms);
+}
+.wipe.is-in > span > span { transform: none; }
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .rise {
+      opacity: 1; transform: none; transition: none;
+      animation: kf-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 2% entry 100%;
+    }
+    .pop {
+      opacity: 1; transform: none; transition: none;
+      animation: kf-pop linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+    .wipe > span > span {
+      transform: none; transition: none;
+      animation: kf-wipe linear both;
+      animation-timeline: view();
+      animation-range: entry 4% entry 100%;
+    }
+  }
+}
+@keyframes kf-rise { from { opacity: 0; transform: translate3d(0,30px,0); } }
+@keyframes kf-pop  { from { opacity: 0; transform: translate3d(0,60px,-220px) rotateX(26deg); } }
+@keyframes kf-wipe { from { transform: translate3d(0,108%,0); } }
+
+/* ── 4. Sticky-Stack: die Leistungsfelder ──────────────────────────────
+   Ein echter Stapel. Jede Karte bleibt oben kleben, die naechste
+   schiebt sich darueber, die darunter tritt zurueck. Kein Nacheinander-
+   Einblenden, das waere nur eine Liste mit Verzoegerung. ------------- */
+.stack { --top: 104px; }
+/* Grundzustand ist eine schlichte Liste. Erst wo der Browser Scroll-
+   Driven Animations kann, wird daraus ein Stapel. */
+.stack-item { padding-bottom: 24px; }
+
+@supports (animation-timeline: view()) {
+  /* Der Stapel braucht Platz: genug Hoehe fuers Kleben und genug
+     Breite, damit die Karte nicht hoeher wird als das Sichtfeld.
+     Darunter bleibt es eine schlichte Liste. */
+  @media (prefers-reduced-motion: no-preference) and (min-height: 700px) and (min-width: 1041px) {
+    /* Der Wrapper traegt die Zeitachse und die Scrollstrecke, der Pin
+       klebt. Beides am selben Knoten geht nicht: ein geklebtes Element
+       bewegt sich nicht relativ zum Sichtfeld, also stuende die
+       Zeitachse still und es passierte gar nichts. */
+    .stack-item {
+      min-height: 86vh; padding-bottom: 0;
+      view-timeline-name: --si; view-timeline-axis: block;
+    }
+    .stack-pin { position: sticky; top: var(--top); }
+    .stack-pin > .card {
+      animation: kf-recede linear both;
+      animation-timeline: --si;
+      animation-range: exit 0% exit 100%;
+      transform-origin: 50% 0%;
+      will-change: transform;
+    }
+    /* Die letzte Karte tritt nicht zurueck: sie wird von nichts
+       ueberdeckt, also gaebe es keinen Grund dafuer. */
+    .stack-item:last-child { min-height: 0; }
+    .stack-item:last-child .card { animation: none; }
+  }
+}
+@keyframes kf-recede {
+  to { transform: translate3d(0,0,-130px) scale(.93); opacity: .34; filter: blur(2px); }
+}
+
+/* ── 5. Fortschrittsfaden am Ablauf ────────────────────────────────── */
+.thread { position: relative; }
+.thread::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
+  background: var(--line);
+}
+.thread::after {
+  content: ''; position: absolute; left: 0; top: 0; width: 1px; height: 100%;
+  background: var(--acc); transform-origin: 50% 0%; transform: scaleY(0);
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .thread::after {
+      animation: kf-thread linear both;
+      animation-timeline: view();
+      animation-range: cover 12% cover 88%;
+    }
+  }
+}
+@keyframes kf-thread { to { transform: scaleY(1); } }
+
+/* ── 6. Bewegungsreduzierung ──────────────────────────────────────────
+   Nicht alles aus: Deckkraft bleibt, weil sie erklaert. Nur Orts- und
+   Tiefenwechsel fallen weg. ----------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .rise, .pop { opacity: 1 !important; transform: none !important;
+                transition: opacity 160ms linear !important; animation: none !important; }
+  .wipe > span > span { transform: none !important; transition: none !important; animation: none !important; }
+  .stack-pin > .card { animation: none !important; transform: none !important;
+                       opacity: 1 !important; filter: none !important; }
+  .stack-pin { position: static; }
+  .thread::after { animation: none !important; transform: scaleY(1); }
+  .marq-track { animation: none !important; }
+  .blink, .pulse { animation: none !important; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   BAUSTEINE
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Kopfzeile: schwebende Schicht, Inhalt laeuft darunter durch ───── */
+.bar {
+  position: sticky; top: 0; z-index: 70;
+  background: rgba(8,9,11,.72);
+  backdrop-filter: blur(22px) saturate(160%);
+  border-bottom: 1px solid var(--line-soft);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .bar { background: var(--ink); backdrop-filter: none; }
+}
+.bar-in { display: flex; align-items: center; justify-content: space-between; gap: 22px; padding: 16px 0; }
+.nav { display: flex; align-items: center; gap: clamp(16px, 1.9vw, 30px); }
+.nav a { position: relative; font-size: .875rem; color: var(--paper-dim); transition: color var(--t-ui) var(--ease-out); }
+.nav a::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -7px; height: 1px; background: var(--acc);
+  transform: scaleX(0); transform-origin: 0 50%; transition: transform var(--t-ui) var(--ease-out);
+}
+.nav a:hover, .nav a[aria-current] { color: var(--paper); }
+.nav a:hover::after, .nav a[aria-current]::after { transform: scaleX(1); }
+
+/* ── Sprachumschalter ─────────────────────────────────────────────── */
+.lang { display: flex; align-items: center; border: 1px solid var(--line); }
+.lang a {
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; padding: 7px 9px;
+  color: var(--paper-mute); transition: color var(--t-ui) var(--ease-out), background-color var(--t-ui) var(--ease-out);
+}
+.lang a + a { border-left: 1px solid var(--line); }
+.lang a:hover { color: var(--paper); }
+.lang a[aria-current] { color: #04150E; background: var(--acc); }
+
+/* ── Menue auf schmalen Schirmen ──────────────────────────────────── */
+.burger { display: none; flex-direction: column; gap: 5px; width: 40px; height: 36px;
+          padding: 0 8px; justify-content: center; border: 1px solid var(--line); }
+.burger span { height: 1px; background: var(--paper);
+  transition: transform var(--t-ui) var(--ease-out), opacity var(--t-ui) var(--ease-out); }
+.burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+.sheet {
+  position: absolute; top: 100%; left: 0; right: 0; background: var(--ink);
+  border-bottom: 1px solid var(--line); padding: 6px clamp(16px,4vw,64px) 22px;
+  opacity: 0; transform: translateY(-10px); visibility: hidden; pointer-events: none;
+  transition: opacity var(--t-ui) var(--ease-out), transform var(--t-ui) var(--ease-out),
+              visibility 0s linear var(--t-ui);
+}
+.sheet[data-open] { opacity: 1; transform: none; visibility: visible; pointer-events: auto; transition-delay: 0s; }
+.sheet a { display: block; padding: 14px 0; font-size: 1rem; color: var(--paper-dim); border-bottom: 1px solid var(--line-soft); }
+.sheet a:last-child { border-bottom: 0; }
+
+/* ── Flaechen ─────────────────────────────────────────────────────── */
+.card {
+  background: var(--ink-2); border: 1px solid var(--line);
+  padding: clamp(24px, 3vw, 46px);
+  transition: border-color var(--t-panel) var(--ease-out), background-color var(--t-panel) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  a.card:hover { border-color: rgba(0,224,140,.4); background: var(--ink-3); }
+}
+/* Registermarken an den Ecken, der technische Zeichnungs-Rest aus v1. */
+.ticks { position: relative; }
+.ticks::before, .ticks::after { content: ''; position: absolute; width: 10px; height: 10px; pointer-events: none; }
+.ticks::before { top: -1px; left: -1px; border-top: 1px solid var(--acc); border-left: 1px solid var(--acc); }
+.ticks::after { bottom: -1px; right: -1px; border-bottom: 1px solid var(--acc); border-right: 1px solid var(--acc); }
+
+.rule { border-top: 1px solid var(--line); }
+.chip {
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .04em;
+  border: 1px solid var(--line); padding: 6px 11px; color: var(--paper-dim); white-space: nowrap;
+}
+
+/* ── Terminal ─────────────────────────────────────────────────────── */
+.term { font-family: var(--mono); font-size: .8rem; line-height: 1.95; }
+.term .c { color: var(--acc); }
+.cursor { display: inline-block; width: 7px; height: 14px; background: var(--acc); vertical-align: -2px; }
+.blink { animation: kf-blink 1.1s steps(2, start) infinite; }
+@keyframes kf-blink { to { visibility: hidden; } }
+.dot { width: 7px; height: 7px; border-radius: 999px; background: var(--acc); flex-shrink: 0; }
+.pulse { animation: kf-pulse 2.6s ease-out infinite; }
+@keyframes kf-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(0,224,140,.55); }
+  70%  { box-shadow: 0 0 0 10px rgba(0,224,140,0); }
+  100% { box-shadow: 0 0 0 0 rgba(0,224,140,0); }
+}
+
+/* ── Laufband. Genau eines auf der Seite. ─────────────────────────── */
+.marq { display: flex; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+.marq-track { display: flex; align-items: center; gap: 56px; flex-shrink: 0; min-width: 100%;
+              animation: kf-marq 54s linear infinite; }
+.marq:hover .marq-track { animation-play-state: paused; }
+@keyframes kf-marq { to { transform: translate3d(-100%,0,0); } }
+
+/* ── Raster ───────────────────────────────────────────────────────── */
+.g2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(18px, 2.4vw, 34px); }
+.g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.2vw, 30px); }
+.g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 1.8vw, 26px); }
+.split { display: grid; grid-template-columns: 1.06fr .94fr; gap: clamp(32px, 5vw, 88px); align-items: center; }
+.foot-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+             gap: clamp(26px, 4vw, 54px); margin-bottom: 52px; }
+
+section { position: relative; }
+/* Der Schein-Kreis liegt bewusst ausserhalb des Rahmens und muss
+   beschnitten werden, sonst erzeugt er seitliches Scrollen. */
+.hero { overflow: hidden; }
+.pad { padding-block: clamp(72px, 10vw, 168px); }
+
+@media (max-width: 1040px) {
+  .nav { display: none; }
+  .burger { display: flex; }
+  .split, .g3 { grid-template-columns: 1fr; }
+  .g4 { grid-template-columns: repeat(2, 1fr); }
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+  .stack { --top: 86px; }
+}
+@media (max-width: 620px) {
+  .g2, .g4, .foot-grid { grid-template-columns: 1fr; }
+  .d1 { letter-spacing: -.035em; }
+}
+
+/* ── Kopfzeile auf schmalen Schirmen ───────────────────────────────────
+   Logo, Sprachwahl, Knopf und Burger passen nebeneinander nicht in ein
+   Telefon. Der Knopf weicht: Kontakt steht ohnehin im Menue. ---------- */
+@media (max-width: 700px) {
+  .bar-in .btn-1 { display: none; }
+  .bar-in > a svg { width: auto; height: 24px; }
+  .lang a { padding: 6px 7px; font-size: .64rem; }
+  .bar-in { gap: 12px; }
+}
+@media (max-width: 380px) {
+  .bar-in > a svg { height: 21px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CRAFT-SCHICHT
+   Ein Signature-Move statt vieler halber: ein eigener Zeiger, ein
+   Lichteinstieg, ein reagierendes 3D-Objekt im Hero, rollende Ziffern,
+   Kornstruktur. Alles gated hinter pointer:fine und reduced-motion.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Filmkorn: macht Flaechen aus einer Farbe lebendig ──────────────── */
+.grain {
+  position: fixed; inset: -10%; z-index: 1000; pointer-events: none;
+  opacity: .045; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@media (prefers-reduced-transparency: reduce) { .grain { display: none; } }
+
+/* ── Eigener Zeiger: Punkt folgt sofort, Ring hinkt leicht hinterher ──
+   Nur auf echten Zeigegeraeten; JS setzt .cur-on erst, wenn die Schleife
+   wirklich laeuft, damit ein JS-Fehler nie einen unsichtbaren Zeiger
+   hinterlaesst. ------------------------------------------------------- */
+html.cur-on, html.cur-on a, html.cur-on button, html.cur-on .lnk { cursor: none; }
+.cur { position: fixed; top: 0; left: 0; z-index: 1002; pointer-events: none; border-radius: 999px; will-change: transform; }
+.cur-dot { width: 6px; height: 6px; background: var(--acc); }
+.cur-ring { width: 34px; height: 34px; border: 1px solid var(--paper);
+  /* JS schreibt transform jede Bildwiederholung neu (Position + Skalierung
+     zusammen) — eine CSS-Regel auf derselben Eigenschaft wuerde nie
+     ankommen. Nur die Randfarbe bleibt hier, die setzt JS nicht. */
+  transition: border-color var(--t-ui) var(--ease-out); }
+.cur-ring[data-big] { border-color: var(--acc); }
+
+/* ── Lichteinstieg: ein Fahnenwisch in der Akzentfarbe, einmal pro
+   Sitzung. Reiner CSS-Ablauf mit Auto-Ausblendung — faellt JavaScript
+   aus, verschwindet die Flaeche trotzdem nach 1.3s. ------------------- */
+.intro {
+  position: fixed; inset: 0; z-index: 1001; display: flex; align-items: center; justify-content: center;
+  animation: kf-intro-aus .01s linear 1.2s forwards;
+}
+.intro-seen .intro { display: none; }
+.intro-veil { position: absolute; inset: 0; background: var(--acc);
+  transform: scaleY(0); transform-origin: 0 100%;
+  animation: kf-intro-veil 1.2s var(--ease-in-out) both; }
+.intro-mark { position: relative; z-index: 1; width: 56px; height: 56px; color: var(--ink);
+  animation: kf-intro-mark .6s var(--ease-out) .18s both; }
+@keyframes kf-intro-veil {
+  0%    { transform: scaleY(0);   transform-origin: 0 100%; }
+  26%   { transform: scaleY(1);   transform-origin: 0 100%; }
+  26.1% { transform: scaleY(1);   transform-origin: 0 0%; }
+  68%   { transform: scaleY(1);   transform-origin: 0 0%; }
+  100%  { transform: scaleY(0);   transform-origin: 0 0%; }
+}
+@keyframes kf-intro-mark { from { opacity: 0; transform: scale(.5) rotate(-18deg); } }
+@keyframes kf-intro-aus  { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+@media (prefers-reduced-motion: reduce) { .intro { display: none; } }
+
+/* ── Leitring im Hero: dreht sich im eigenen Sichtfenster ────────────
+   HUD-Motiv, passt zum Terminal- und Registermarken-Vokabular, das die
+   Seite schon traegt. ------------------------------------------------- */
+.orbit { position: absolute; top: 6%; right: 4%; width: clamp(200px, 24vw, 400px); aspect-ratio: 1;
+  pointer-events: none; z-index: 0; opacity: .6; }
+.orbit::before, .orbit::after { content: ''; position: absolute; inset: 0; border-radius: 50%; }
+.orbit::before { border: 1px solid var(--line); }
+.orbit::after  { border: 1px solid transparent; border-top-color: var(--acc); border-right-color: var(--acc); }
+.orbit i { position: absolute; top: 50%; left: 50%; width: 6px; height: 6px; margin: -3px;
+  border-radius: 999px; background: var(--acc); transform: translateX(calc(clamp(200px,24vw,400px) / -2)); }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .orbit::after, .orbit i {
+      animation: kf-spin linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}
+@keyframes kf-spin { to { transform: rotate(360deg); } }
+.orbit i { animation-name: kf-orbit-dot; }
+@keyframes kf-orbit-dot { to { transform: translateX(calc(clamp(200px,24vw,400px) / -2)) rotate(360deg); } }
+
+/* ── Tiefen-Austritt: Ueberschriften treten beim Hinausscrollen
+   zurueck, statt einfach mit der Seite zu verschwinden. -------------- */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .recede-exit {
+      animation: kf-recede-exit linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}
+@keyframes kf-recede-exit { to { transform: translate3d(0,-34px,-70px) scale(.96); filter: blur(1px); opacity: .82; } }
+
+/* ── 3D-Variante der Masken-Ueberschrift, nur fuer den Hero ──────────
+   Buchstabenzeilen kippen zusaetzlich aus der Tiefe, statt nur zu
+   schieben — der grosse Auftritt, den sonst keine Zeile bekommt. ----- */
+.wipe-3d > span { perspective: 640px; }
+.wipe-3d > span > span {
+  display: block; transform: translate3d(0,108%,-40px) rotateX(-55deg); transform-origin: 50% 100%;
+  transition: transform 760ms var(--ease-out); transition-delay: calc(var(--i, 0) * 85ms);
+}
+.wipe-3d.is-in > span > span { transform: none; }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .wipe-3d > span > span {
+      transform: none; transition: none;
+      animation: kf-wipe-3d linear both;
+      animation-timeline: view();
+      animation-range: entry 4% entry 100%;
+    }
+  }
+}
+@keyframes kf-wipe-3d { from { transform: translate3d(0,108%,-40px) rotateX(-55deg); } }
+
+/* ── Cursor-Neigung am Terminal: das eine Objekt, das wirklich
+   antwortet, statt nur beim Scrollen zu reagieren. -------------------- */
+.tilt { transition: transform var(--t-panel) var(--ease-out); transform-style: preserve-3d; will-change: transform; }
+
+/* ── Rollende Ziffern bei den Kennzahlen ──────────────────────────────
+   Werte stehen zur Bauzeit fest, darum reicht reines CSS: ohne
+   Scroll-Driven-Unterstuetzung steht die Ziffer einfach sofort richtig,
+   kein JavaScript noetig. ---------------------------------------------- */
+.odo { display: inline-flex; }
+.odo-col { display: inline-block; height: 1em; overflow: hidden; vertical-align: top; line-height: 1; }
+.odo-strip { display: flex; flex-direction: column; }
+.odo-strip span { height: 1em; display: block; }
+@supports not (animation-timeline: view()) {
+  .odo-strip { transform: translateY(calc(var(--t) * -1em)); }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* "entry" bis "entry" statt "entry" bis "cover": beide Enden
+       normieren sich auf dieselbe Strecke (die Hoehe des Elements
+       selbst). Bei einer 22px hohen Ziffernspalte liegen "entry" und
+       "cover" so weit auseinander, dass die Animation nie bei 100%
+       ankommt — gemessen: haengen bei rund 85% fest, falsche Ziffer. */
+      .odo-strip {
+      animation: kf-odo linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+  }
+}
+@keyframes kf-odo { to { transform: translateY(calc(var(--t) * -1em)); } }
+
+/* ── Regal-Wippen im Laufband: ambientes Leben fuer die Referenzliste,
+   nicht nur Dekoration — sie markiert eine laufende Praxis. ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .marq-track > span:nth-child(odd)  { animation: kf-shelf 3.4s ease-in-out infinite; }
+  .marq-track > span:nth-child(even) { animation: kf-shelf 3.4s ease-in-out infinite reverse; animation-delay: -1.7s; }
+}
+@keyframes kf-shelf { 0%, 100% { transform: translateY(0) rotateZ(0); } 50% { transform: translateY(-3px) rotateZ(-1.1deg); } }
+
+/* ── Bewegungsreduzierung: die neue Schicht faellt mit ab ────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .orbit::after, .orbit i { animation: none !important; }
+  .recede-exit { animation: none !important; transform: none !important; filter: none !important; opacity: 1 !important; }
+  .wipe-3d > span > span { animation: none !important; transition: none !important; transform: none !important; }
+  .odo-strip { animation: none !important; transform: translateY(calc(var(--t) * -1em)) !important; }
+  .marq-track > span { animation: none !important; }
+  .tilt { transform: none !important; }
+}
+@media (hover: none), (pointer: coarse) {
+  .cur { display: none; }
+  html.cur-on, html.cur-on a, html.cur-on button, html.cur-on .lnk { cursor: auto; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   FLAGGSCHIFF: KI-AUTOMATISIERUNG & KI-MANAGEMENT
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Flip-Wort: Anzeigetafel-Zitat, zeigt die Bandbreite der Automation.
+   6 Woerter, jedes per negativem Delay auf einen eigenen Ausschnitt
+   desselben Zyklus gesetzt — eine einzige Keyframe-Form reicht. ------- */
+.flip { display: inline-block; position: relative; height: 1.3em; min-width: 11ch;
+  overflow: hidden; vertical-align: bottom; perspective: 240px; color: var(--acc); }
+.flip b {
+  position: absolute; left: 0; top: 0; font-weight: inherit; white-space: nowrap;
+  opacity: 0; transform: translateY(60%) rotateX(45deg); transform-origin: 50% 0%;
+  animation: kf-flip 9s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * -1.5s);
+}
+@keyframes kf-flip {
+  0%          { opacity: 0; transform: translateY(60%) rotateX(45deg); }
+  4%, 14%     { opacity: 1; transform: translateY(0) rotateX(0deg); }
+  19%, 100%   { opacity: 0; transform: translateY(-60%) rotateX(-45deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flip b { animation: none !important; opacity: 0 !important; transform: none !important; }
+  .flip b:first-child { opacity: 1 !important; position: static !important; }
+}
+
+/* ── Pipeline: fuenf Stationen, Partikel laufen auf den Verbindungen.
+   container-type + cqw statt left/width: die Bewegung bleibt reiner
+   transform, unabhaengig von der tatsaechlichen Spaltenbreite. -------- */
+.pipe { display: flex; align-items: flex-start; }
+.pipe-node { flex: 0 0 auto; width: clamp(78px, 15vw, 128px); text-align: center; }
+.pipe-node i {
+  display: block; width: 13px; height: 13px; margin: 0 auto 16px; border-radius: 50%;
+  background: var(--ink); border: 2px solid var(--acc); position: relative; z-index: 1;
+}
+.pipe-node b { display: block; font-size: .82rem; font-weight: 600; margin-bottom: 5px; }
+.pipe-node span { display: block; font-size: .72rem; line-height: 1.4; color: var(--paper-mute); }
+.pipe-track {
+  flex: 1 1 auto; position: relative; height: 2px; margin-top: 20px; min-width: 18px;
+  background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 13px);
+  container-type: inline-size;
+}
+.pipe-particle {
+  position: absolute; top: 50%; left: 0; width: 6px; height: 6px; margin-top: -3px;
+  border-radius: 50%; background: var(--acc); box-shadow: 0 0 9px 1px var(--acc-dim);
+  opacity: 0; animation: kf-pipe-flow 2.6s linear infinite;
+  animation-delay: calc(var(--i, 0) * -.5s);
+}
+@keyframes kf-pipe-flow {
+  0%   { transform: translateX(0) scale(.4); opacity: 0; }
+  12%  { opacity: 1; transform: translateX(14cqw) scale(1); }
+  88%  { opacity: 1; }
+  100% { transform: translateX(100cqw) scale(.4); opacity: 0; }
+}
+@supports not (container-type: inline-size) { .pipe-particle { display: none; } }
+@media (prefers-reduced-motion: reduce) { .pipe-particle { animation: none !important; opacity: .6 !important; } }
+@media (max-width: 760px) {
+  .pipe { flex-direction: column; align-items: stretch; gap: 18px; }
+  .pipe-node { width: auto; text-align: left; display: flex; align-items: flex-start; gap: 14px; }
+  .pipe-node i { margin: 3px 0 0; flex-shrink: 0; }
+  .pipe-track { width: 2px; height: 22px; min-width: 0; margin: 0 0 0 6px;
+    background: repeating-linear-gradient(180deg, var(--line) 0 6px, transparent 6px 13px); }
+  .pipe-particle { top: 0; left: 50%; margin: 0 0 0 -3px; }
+  @keyframes kf-pipe-flow-v { 0% { transform: translateY(0) scale(.4); opacity: 0; }
+    12% { opacity: 1; transform: translateY(14cqh) scale(1); } 88% { opacity: 1; }
+    100% { transform: translateY(100cqh) scale(.4); opacity: 0; } }
+  .pipe-particle { animation-name: kf-pipe-flow-v; }
+}
+
+/* ── Horizontales Regal: native Scroll-Snap, kein JavaScript. ────────── */
+.shelf {
+  display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x proximity;
+  padding: 6px 4px 20px; margin: 0 -4px; scrollbar-width: thin; scrollbar-color: var(--line) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+.shelf-card {
+  scroll-snap-align: start; flex: 0 0 auto; width: clamp(220px, 27vw, 290px);
+  background: var(--ink-2); border: 1px solid var(--line); padding: 22px 22px 24px;
+}
+.shelf-card b { display: block; font-family: var(--mono); font-size: .72rem; color: var(--acc); margin-bottom: 14px; }
+.shelf-card h4 { font-family: var(--display); font-weight: 500; font-size: 1.1rem; margin: 0 0 9px; }
+.shelf-card p { margin: 0; font-size: .87rem; line-height: 1.6; color: var(--paper-dim); }
+.shelf::-webkit-scrollbar { height: 5px; }
+.shelf::-webkit-scrollbar-thumb { background: var(--line); }
+.shelf::-webkit-scrollbar-track { background: transparent; }
+
+/* ── Vorher / Nachher: reine Radio-Umschaltung, kein JavaScript. ──────── */
+.vgl-in { position: absolute; opacity: 0; pointer-events: none; }
+.vgl-tabs { display: inline-flex; border: 1px solid var(--line); margin-bottom: 28px; }
+.vgl-tabs label {
+  padding: 11px 20px; font-size: .84rem; font-weight: 600; cursor: pointer; color: var(--paper-mute);
+  transition: color var(--t-ui) var(--ease-out), background-color var(--t-ui) var(--ease-out);
+}
+.vgl-in:checked + .vgl-tabs label[for="vgl-mit"],
+#vgl-ohne:checked ~ .vgl-tabs label[for="vgl-ohne"] { color: var(--ink); background: var(--acc); }
+#vgl-mit:checked ~ .vgl-tabs label[for="vgl-mit"] { color: var(--ink); background: var(--acc); }
+.vgl-panel { display: grid; grid-template-columns: 1fr; }
+/* Zielt auf jedes direkte Kind, nicht nur auf div — die Panels sind
+   <ul>-Listen, ein auf div beschraenkter Selektor haette sie nie
+   getroffen und beide waeren dauerhaft sichtbar geblieben. */
+.vgl-panel > * { grid-area: 1 / 1; opacity: 0; visibility: hidden; transform: translate3d(0,8px,0);
+  transition: opacity var(--t-panel) var(--ease-out), transform var(--t-panel) var(--ease-out),
+              visibility 0s linear var(--t-panel); }
+#vgl-ohne:checked ~ .vgl-panel > .vgl-ohne-el,
+#vgl-mit:checked ~ .vgl-panel > .vgl-mit-el { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.vgl-panel li { padding: 14px 0 14px 28px; position: relative; font-size: .93rem; color: var(--paper-dim);
+  border-bottom: 1px solid var(--line-soft); }
+.vgl-panel li::before { content: ''; position: absolute; left: 0; top: 19px; width: 9px; height: 9px; border-radius: 50%; }
+.vgl-ohne-el li::before { background: rgba(237,238,240,.22); }
+.vgl-mit-el li::before { background: var(--acc); box-shadow: 0 0 7px 0 var(--acc-dim); }
+@media (prefers-reduced-motion: reduce) {
+  .vgl-panel > div { transition: opacity 160ms linear !important; transform: none !important; }
+}
+
+/* ── Dashboard-Mockup: laufende Betreuung, ausdruecklich als Beispiel
+   markiert. Balken fuellt beim Reinscrollen, dieselbe Technik wie die
+   Ziffernrollen (statisch ohne Scroll-Driven-Unterstuetzung). ---------- */
+.dash { background: var(--ink-2); border: 1px solid var(--line); padding: clamp(24px,3vw,38px); }
+.dash-top { display: flex; align-items: center; gap: 10px; margin-bottom: 26px; padding-bottom: 20px; border-bottom: 1px solid var(--line-soft); }
+.dash-metrics { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+.dash-metrics b { display: block; font-size: clamp(1.5rem,2.4vw,2.1rem); color: var(--acc); margin-bottom: 6px; }
+.dash-metrics span { display: block; font-size: .78rem; color: var(--paper-mute); }
+.dash-bar { height: 3px; background: var(--line-soft); margin-top: 22px; position: relative; overflow: hidden; }
+.dash-bar i { position: absolute; inset: 0; background: var(--acc); transform-origin: 0 50%; transform: scaleX(0); }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .dash-bar i { animation: kf-dashbar linear both; animation-timeline: view(); animation-range: entry 0% entry 100%; }
+  }
+}
+@supports not (animation-timeline: view()) { .dash-bar i { transform: scaleX(.82); } }
+@keyframes kf-dashbar { to { transform: scaleX(.82); } }
+@media (prefers-reduced-motion: reduce) { .dash-bar i { animation: none !important; transform: scaleX(.82) !important; } }
+@media (max-width: 620px) { .dash-metrics { grid-template-columns: 1fr 1fr; } }
+
+/* ── FAQ: natives <details>, kein JavaScript. ─────────────────────────── */
+.faq-list { border-top: 1px solid var(--line-soft); }
+.faq-item { border-bottom: 1px solid var(--line-soft); }
+.faq-item summary {
+  list-style: none; cursor: pointer; padding: 22px 0; display: flex; justify-content: space-between;
+  align-items: center; gap: 24px; font-size: 1.04rem; color: var(--paper); font-family: var(--display);
+  transition: color var(--t-ui) var(--ease-out);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover { color: var(--acc); }
+.faq-plus { flex-shrink: 0; width: 17px; height: 17px; position: relative; }
+.faq-plus::before, .faq-plus::after { content: ''; position: absolute; top: 50%; left: 50%; background: var(--acc); }
+.faq-plus::before { width: 17px; height: 1px; transform: translate(-50%,-50%); }
+.faq-plus::after  { width: 1px; height: 17px; transform: translate(-50%,-50%); transition: transform var(--t-panel) var(--ease-out); }
+.faq-item[open] .faq-plus::after { transform: translate(-50%,-50%) rotate(90deg); }
+.faq-item p { margin: 0 0 26px; font-size: .94rem; line-height: 1.75; color: var(--paper-dim); max-width: 70ch; }
