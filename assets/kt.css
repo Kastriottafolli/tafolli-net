@@ -171,19 +171,19 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
       opacity: 1; transform: none; transition: none;
       animation: kf-rise linear both;
       animation-timeline: view();
-      animation-range: entry 2% cover 26%;
+      animation-range: entry 2% entry 100%;
     }
     .pop {
       opacity: 1; transform: none; transition: none;
       animation: kf-pop linear both;
       animation-timeline: view();
-      animation-range: entry 0% cover 34%;
+      animation-range: entry 0% entry 100%;
     }
     .wipe > span > span {
       transform: none; transition: none;
       animation: kf-wipe linear both;
       animation-timeline: view();
-      animation-range: entry 4% cover 24%;
+      animation-range: entry 4% entry 100%;
     }
   }
 }
@@ -246,7 +246,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     .thread::after {
       animation: kf-thread linear both;
       animation-timeline: view();
-      animation-range: entry 70% exit 30%;
+      animation-range: cover 12% cover 88%;
     }
   }
 }
@@ -402,4 +402,167 @@ section { position: relative; }
 }
 @media (max-width: 380px) {
   .bar-in > a svg { height: 21px; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CRAFT-SCHICHT
+   Ein Signature-Move statt vieler halber: ein eigener Zeiger, ein
+   Lichteinstieg, ein reagierendes 3D-Objekt im Hero, rollende Ziffern,
+   Kornstruktur. Alles gated hinter pointer:fine und reduced-motion.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Filmkorn: macht Flaechen aus einer Farbe lebendig ──────────────── */
+.grain {
+  position: fixed; inset: -10%; z-index: 1000; pointer-events: none;
+  opacity: .045; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@media (prefers-reduced-transparency: reduce) { .grain { display: none; } }
+
+/* ── Eigener Zeiger: Punkt folgt sofort, Ring hinkt leicht hinterher ──
+   Nur auf echten Zeigegeraeten; JS setzt .cur-on erst, wenn die Schleife
+   wirklich laeuft, damit ein JS-Fehler nie einen unsichtbaren Zeiger
+   hinterlaesst. ------------------------------------------------------- */
+html.cur-on, html.cur-on a, html.cur-on button, html.cur-on .lnk { cursor: none; }
+.cur { position: fixed; top: 0; left: 0; z-index: 1002; pointer-events: none; border-radius: 999px; will-change: transform; }
+.cur-dot { width: 6px; height: 6px; background: var(--acc); }
+.cur-ring { width: 34px; height: 34px; border: 1px solid var(--paper);
+  /* JS schreibt transform jede Bildwiederholung neu (Position + Skalierung
+     zusammen) — eine CSS-Regel auf derselben Eigenschaft wuerde nie
+     ankommen. Nur die Randfarbe bleibt hier, die setzt JS nicht. */
+  transition: border-color var(--t-ui) var(--ease-out); }
+.cur-ring[data-big] { border-color: var(--acc); }
+
+/* ── Lichteinstieg: ein Fahnenwisch in der Akzentfarbe, einmal pro
+   Sitzung. Reiner CSS-Ablauf mit Auto-Ausblendung — faellt JavaScript
+   aus, verschwindet die Flaeche trotzdem nach 1.3s. ------------------- */
+.intro {
+  position: fixed; inset: 0; z-index: 1001; display: flex; align-items: center; justify-content: center;
+  animation: kf-intro-aus .01s linear 1.2s forwards;
+}
+.intro-seen .intro { display: none; }
+.intro-veil { position: absolute; inset: 0; background: var(--acc);
+  transform: scaleY(0); transform-origin: 0 100%;
+  animation: kf-intro-veil 1.2s var(--ease-in-out) both; }
+.intro-mark { position: relative; z-index: 1; width: 56px; height: 56px; color: var(--ink);
+  animation: kf-intro-mark .6s var(--ease-out) .18s both; }
+@keyframes kf-intro-veil {
+  0%    { transform: scaleY(0);   transform-origin: 0 100%; }
+  26%   { transform: scaleY(1);   transform-origin: 0 100%; }
+  26.1% { transform: scaleY(1);   transform-origin: 0 0%; }
+  68%   { transform: scaleY(1);   transform-origin: 0 0%; }
+  100%  { transform: scaleY(0);   transform-origin: 0 0%; }
+}
+@keyframes kf-intro-mark { from { opacity: 0; transform: scale(.5) rotate(-18deg); } }
+@keyframes kf-intro-aus  { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+@media (prefers-reduced-motion: reduce) { .intro { display: none; } }
+
+/* ── Leitring im Hero: dreht sich im eigenen Sichtfenster ────────────
+   HUD-Motiv, passt zum Terminal- und Registermarken-Vokabular, das die
+   Seite schon traegt. ------------------------------------------------- */
+.orbit { position: absolute; top: 6%; right: 4%; width: clamp(200px, 24vw, 400px); aspect-ratio: 1;
+  pointer-events: none; z-index: 0; opacity: .6; }
+.orbit::before, .orbit::after { content: ''; position: absolute; inset: 0; border-radius: 50%; }
+.orbit::before { border: 1px solid var(--line); }
+.orbit::after  { border: 1px solid transparent; border-top-color: var(--acc); border-right-color: var(--acc); }
+.orbit i { position: absolute; top: 50%; left: 50%; width: 6px; height: 6px; margin: -3px;
+  border-radius: 999px; background: var(--acc); transform: translateX(calc(clamp(200px,24vw,400px) / -2)); }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .orbit::after, .orbit i {
+      animation: kf-spin linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}
+@keyframes kf-spin { to { transform: rotate(360deg); } }
+.orbit i { animation-name: kf-orbit-dot; }
+@keyframes kf-orbit-dot { to { transform: translateX(calc(clamp(200px,24vw,400px) / -2)) rotate(360deg); } }
+
+/* ── Tiefen-Austritt: Ueberschriften treten beim Hinausscrollen
+   zurueck, statt einfach mit der Seite zu verschwinden. -------------- */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .recede-exit {
+      animation: kf-recede-exit linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}
+@keyframes kf-recede-exit { to { transform: translate3d(0,-34px,-70px) scale(.96); filter: blur(1px); opacity: .82; } }
+
+/* ── 3D-Variante der Masken-Ueberschrift, nur fuer den Hero ──────────
+   Buchstabenzeilen kippen zusaetzlich aus der Tiefe, statt nur zu
+   schieben — der grosse Auftritt, den sonst keine Zeile bekommt. ----- */
+.wipe-3d > span { perspective: 640px; }
+.wipe-3d > span > span {
+  display: block; transform: translate3d(0,108%,-40px) rotateX(-55deg); transform-origin: 50% 100%;
+  transition: transform 760ms var(--ease-out); transition-delay: calc(var(--i, 0) * 85ms);
+}
+.wipe-3d.is-in > span > span { transform: none; }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .wipe-3d > span > span {
+      transform: none; transition: none;
+      animation: kf-wipe-3d linear both;
+      animation-timeline: view();
+      animation-range: entry 4% entry 100%;
+    }
+  }
+}
+@keyframes kf-wipe-3d { from { transform: translate3d(0,108%,-40px) rotateX(-55deg); } }
+
+/* ── Cursor-Neigung am Terminal: das eine Objekt, das wirklich
+   antwortet, statt nur beim Scrollen zu reagieren. -------------------- */
+.tilt { transition: transform var(--t-panel) var(--ease-out); transform-style: preserve-3d; will-change: transform; }
+
+/* ── Rollende Ziffern bei den Kennzahlen ──────────────────────────────
+   Werte stehen zur Bauzeit fest, darum reicht reines CSS: ohne
+   Scroll-Driven-Unterstuetzung steht die Ziffer einfach sofort richtig,
+   kein JavaScript noetig. ---------------------------------------------- */
+.odo { display: inline-flex; }
+.odo-col { display: inline-block; height: 1em; overflow: hidden; vertical-align: top; line-height: 1; }
+.odo-strip { display: flex; flex-direction: column; }
+.odo-strip span { height: 1em; display: block; }
+@supports not (animation-timeline: view()) {
+  .odo-strip { transform: translateY(calc(var(--t) * -1em)); }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* "entry" bis "entry" statt "entry" bis "cover": beide Enden
+       normieren sich auf dieselbe Strecke (die Hoehe des Elements
+       selbst). Bei einer 22px hohen Ziffernspalte liegen "entry" und
+       "cover" so weit auseinander, dass die Animation nie bei 100%
+       ankommt — gemessen: haengen bei rund 85% fest, falsche Ziffer. */
+      .odo-strip {
+      animation: kf-odo linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+  }
+}
+@keyframes kf-odo { to { transform: translateY(calc(var(--t) * -1em)); } }
+
+/* ── Regal-Wippen im Laufband: ambientes Leben fuer die Referenzliste,
+   nicht nur Dekoration — sie markiert eine laufende Praxis. ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .marq-track > span:nth-child(odd)  { animation: kf-shelf 3.4s ease-in-out infinite; }
+  .marq-track > span:nth-child(even) { animation: kf-shelf 3.4s ease-in-out infinite reverse; animation-delay: -1.7s; }
+}
+@keyframes kf-shelf { 0%, 100% { transform: translateY(0) rotateZ(0); } 50% { transform: translateY(-3px) rotateZ(-1.1deg); } }
+
+/* ── Bewegungsreduzierung: die neue Schicht faellt mit ab ────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .orbit::after, .orbit i { animation: none !important; }
+  .recede-exit { animation: none !important; transform: none !important; filter: none !important; opacity: 1 !important; }
+  .wipe-3d > span > span { animation: none !important; transition: none !important; transform: none !important; }
+  .odo-strip { animation: none !important; transform: translateY(calc(var(--t) * -1em)) !important; }
+  .marq-track > span { animation: none !important; }
+  .tilt { transform: none !important; }
+}
+@media (hover: none), (pointer: coarse) {
+  .cur { display: none; }
+  html.cur-on, html.cur-on a, html.cur-on button, html.cur-on .lnk { cursor: auto; }
 }

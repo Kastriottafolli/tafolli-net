@@ -69,33 +69,8 @@
     matchMedia('(min-width: 1041px)').addEventListener('change', function (e) { if (e.matches) setzen(false); });
   }
 
-  /* ── Kennzahlen zaehlen hoch ─────────────────────────────────────── */
-  var zahlen = document.querySelectorAll('[data-zaehl]');
-  if (zahlen.length) {
-    if (reduce || !('IntersectionObserver' in window)) {
-      Array.prototype.forEach.call(zahlen, function (el) {
-        el.textContent = el.getAttribute('data-zaehl') + (el.getAttribute('data-suffix') || '');
-      });
-    } else {
-      var io2 = new IntersectionObserver(function (es) {
-        es.forEach(function (e) {
-          if (!e.isIntersecting) return;
-          io2.unobserve(e.target);
-          var el = e.target;
-          var ziel = parseFloat(el.getAttribute('data-zaehl')) || 0;
-          var suffix = el.getAttribute('data-suffix') || '';
-          var t0 = null;
-          requestAnimationFrame(function schritt(ts) {
-            if (t0 === null) t0 = ts;
-            var p = Math.min((ts - t0) / 1400, 1);
-            el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * ziel) + suffix;
-            if (p < 1) requestAnimationFrame(schritt);
-          });
-        });
-      }, { threshold: 0.35 });
-      Array.prototype.forEach.call(zahlen, function (el) { io2.observe(el); });
-    }
-  }
+  /* Kennzahlen laufen jetzt als reine CSS-Ziffernrollen (.odo), der
+     Wert steht zur Bauzeit fest. Kein Hochzaehl-Skript mehr noetig. */
 
   /* ── Terminal ────────────────────────────────────────────────────── */
   var term = document.getElementById('term');
@@ -127,6 +102,68 @@
           })();
         })();
       })();
+    }
+  }
+
+  /* ── Eigener Zeiger, magnetische Knoepfe, Terminal-Neigung ──────────
+     Alles in einer Schleife, nur auf echten Zeigegeraeten und nur ohne
+     Bewegungsreduzierung. .cur-on setzt erst, wenn die Schleife wirklich
+     laeuft — ein JS-Fehler kann so nie einen unsichtbaren Zeiger
+     hinterlassen. */
+  var fein = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (fein && !reduce) {
+    document.documentElement.classList.add('cur-on');
+
+    var punkt = document.createElement('div'); punkt.className = 'cur cur-dot';
+    var ring = document.createElement('div'); ring.className = 'cur cur-ring';
+    document.body.appendChild(punkt); document.body.appendChild(ring);
+
+    var mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my, ringGross = false;
+    addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; }, { passive: true });
+    document.addEventListener('mouseover', function (e) {
+      ringGross = !!(e.target.closest && e.target.closest('a, button, .lnk, .card'));
+    }, { passive: true });
+
+    (function schleife() {
+      rx += (mx - rx) * .18; ry += (my - ry) * .18;
+      punkt.style.transform = 'translate3d(' + mx + 'px,' + my + 'px,0) translate(-50%,-50%)';
+      ring.style.transform = 'translate3d(' + rx + 'px,' + ry + 'px,0) translate(-50%,-50%)' + (ringGross ? ' scale(1.76)' : '');
+      if (ringGross) ring.setAttribute('data-big', ''); else ring.removeAttribute('data-big');
+      requestAnimationFrame(schleife);
+    })();
+
+    /* Magnetismus: Knopf folgt dem Zeiger innerhalb seiner Flaeche und
+       federt beim Verlassen per CSS-Transition zurueck. Druckgefuehl
+       sitzt direkt im selben Transform, weil eine CSS-:active-Regel vom
+       laufenden Inline-Stil uebertoent wuerde. */
+    Array.prototype.forEach.call(document.querySelectorAll('.btn'), function (m) {
+      var dx = 0, dy = 0, gedrueckt = false;
+      var zeichnen = function () {
+        m.style.transform = 'translate3d(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px,0)' + (gedrueckt ? ' scale(.97)' : '');
+      };
+      m.addEventListener('mousemove', function (e) {
+        var r = m.getBoundingClientRect();
+        dx = (e.clientX - (r.left + r.width / 2)) * .28;
+        dy = (e.clientY - (r.top + r.height / 2)) * .28 - 2;
+        zeichnen();
+      });
+      m.addEventListener('mousedown', function () { gedrueckt = true; zeichnen(); });
+      m.addEventListener('mouseup', function () { gedrueckt = false; zeichnen(); });
+      m.addEventListener('mouseleave', function () { gedrueckt = false; dx = 0; dy = 0; m.style.transform = ''; });
+    });
+
+    /* Das Terminal im Hero neigt sich zum Zeiger. Das einzige Objekt mit
+       echter Zeiger-Antwort — die Karten darunter leben vom Scrollen,
+       nicht vom Cursor, sonst wirkt jede Flaeche gleich laut. */
+    var bruecke = document.querySelector('.pop-wrap');
+    var innen = document.querySelector('.pop-wrap .tilt');
+    if (bruecke && innen) {
+      bruecke.addEventListener('mousemove', function (e) {
+        var r = bruecke.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+        innen.style.transform = 'rotateY(' + (px * 7).toFixed(2) + 'deg) rotateX(' + (-py * 7).toFixed(2) + 'deg)';
+      });
+      bruecke.addEventListener('mouseleave', function () { innen.style.transform = ''; });
     }
   }
 })();

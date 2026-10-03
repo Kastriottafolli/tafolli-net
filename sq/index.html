@@ -18,10 +18,20 @@
 <meta name="theme-color" content="#08090B">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="preload" as="font" type="font/woff2" href="../assets/schriften/space-grotesk-var.woff2" crossorigin>
-<link rel="stylesheet" href="../assets/schriften.css?v=3f7a3c63">
-<link rel="stylesheet" href="../assets/kt.css?v=3f7a3c63">
+<link rel="stylesheet" href="../assets/schriften.css?v=852dfffa">
+<link rel="stylesheet" href="../assets/kt.css?v=852dfffa">
 </head>
 <body>
+<script>(function(){try{if(sessionStorage.getItem("kt-intro")){document.documentElement.className+=" intro-seen";}else{sessionStorage.setItem("kt-intro","1");}}catch(e){}})();</script>
+<div class="intro" aria-hidden="true">
+  <div class="intro-veil"></div>
+  <svg class="intro-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="3" y="4" width="26" height="4" fill="currentColor"/>
+    <rect x="14" y="4" width="4" height="24" fill="currentColor"/>
+  </svg>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
 <a href="#inhalt" class="btn btn-1" style="position:absolute;left:-9999px;top:0;z-index:200"
    onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Kalo te përmbajtja</a>
 
@@ -43,6 +53,7 @@
 <section class="hero">
   <div class="floor"></div>
   <div class="glow" style="width:620px;height:620px;background:rgba(0,224,140,.10);top:-280px;left:-180px"></div>
+  <div class="orbit" aria-hidden="true"><i></i></div>
   <div class="shell" style="position:relative;z-index:1;padding-block:clamp(52px,7vw,104px)">
     <div class="split">
       <div>
@@ -51,7 +62,7 @@
           <span style="color:var(--line)">│</span>
           <span>Deti Baltik, Rügen 54.4°N</span>
         </p>
-        <h1 class="d1 wipe" style="margin-bottom:32px"><span><span style="--i:0">Pesë yje</span></span><span><span style="--i:1">në shërbim.</span></span><span><span style="--i:2">Një rresht</span></span><span><span style="--i:3">në kod.</span></span></h1>
+        <h1 class="d1 wipe-3d recede-exit" style="margin-bottom:32px"><span><span style="--i:0">Pesë yje</span></span><span><span style="--i:1">në shërbim.</span></span><span><span style="--i:2">Një rresht</span></span><span><span style="--i:3">në kod.</span></span></h1>
         <p class="lede rise" style="--i:1;margin-bottom:40px">Unë jam Kastriot Tafolli. Pesëmbëdhjetë vjet drejtim në hotelerinë me pesë yje dhe formim si inxhinier softueri me fokus në inteligjencën artificiale. I vë bizneset në rregull nga ana operative dhe më pas ndërtoj sistemet që ua heqin punën nga supet.</p>
         <div class="rise" style="--i:2;display:flex;flex-wrap:wrap;gap:13px">
           <a href="../kontakt.html" class="btn btn-1">Cakto një bisedë</a>
@@ -61,6 +72,7 @@
       <div class="pop-wrap">
         <div class="pop ticks" style="--i:1;background:var(--ink-2);border:1px solid var(--line);
              box-shadow:0 60px 120px -50px rgba(0,0,0,.9)">
+         <div class="tilt">
           <div style="display:flex;align-items:center;gap:7px;padding:13px 15px;border-bottom:1px solid var(--line-soft)">
             <span style="width:8px;height:8px;border-radius:999px;background:var(--line)"></span>
             <span style="width:8px;height:8px;border-radius:999px;background:var(--line)"></span>
@@ -68,6 +80,7 @@
             <span class="mono" style="font-size:.7rem;color:var(--paper-mute);margin-left:8px">tafolli@ruegen ~ %</span>
           </div>
           <div class="term" id="term" style="padding:19px 17px 24px;min-height:268px"><div data-z style="opacity:0" class="c">$ whoami</div><div data-z style="opacity:0" class="">kastriot tafolli / drejtor f&amp;b + inxhinier softueri</div><div data-z style="opacity:0" class="c">$ cat fokusi.txt</div><div data-z style="opacity:0" class="">01 drejtim gastronomie, pese yje</div><div data-z style="opacity:0" class="">02 blerje, kontrata, rimbursime</div><div data-z style="opacity:0" class="">03 faqe interneti, seo, fushata</div><div data-z style="opacity:0" class="">04 automatizim me ia dhe softuer i vet</div><div data-z style="opacity:0" class="c">$ ./teamo --status</div><div data-z style="opacity:0" class="">● online / 24 h / shumegjuhesh</div><span class="cursor blink"></span></div>
+         </div>
         </div>
       </div>
     </div>
@@ -76,16 +89,16 @@
 <section class="rule" style="background:var(--ink-2)">
   <div class="shell" style="padding-block:clamp(34px,4vw,54px)">
     <div class="g4" style="align-items:start"><div class="rise" style="--i:0">
-          <div class="d3 mono" style="color:var(--acc)"><span data-zaehl="200" data-suffix="+">0+</span></div>
+          <div class="d3 mono" style="color:var(--acc)"><span class="odo"><span class="odo-col"><span class="odo-strip" style="--t:2"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="odo-col"><span class="odo-strip" style="--t:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="odo-col"><span class="odo-strip" style="--t:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span></span>+</div>
           <p style="font-size:.86rem;color:var(--paper-mute);margin-top:7px">punonjës të drejtuar njëkohësisht</p>
         </div><div class="rise" style="--i:1">
-          <div class="d3 mono" style="color:var(--acc)"><span data-zaehl="50" data-suffix="+">0+</span></div>
+          <div class="d3 mono" style="color:var(--acc)"><span class="odo"><span class="odo-col"><span class="odo-strip" style="--t:5"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="odo-col"><span class="odo-strip" style="--t:0"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span></span>+</div>
           <p style="font-size:.86rem;color:var(--paper-mute);margin-top:7px">praktikantë të trajnuar</p>
         </div><div class="rise" style="--i:2">
-          <div class="d3 mono" style="color:var(--acc)"><span data-zaehl="15" data-suffix="+">0+</span></div>
+          <div class="d3 mono" style="color:var(--acc)"><span class="odo"><span class="odo-col"><span class="odo-strip" style="--t:1"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span><span class="odo-col"><span class="odo-strip" style="--t:5"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span></span>+</div>
           <p style="font-size:.86rem;color:var(--paper-mute);margin-top:7px">vjet në hoteleri me pesë yje</p>
         </div><div class="rise" style="--i:3">
-          <div class="d3 mono" style="color:var(--acc)"><span data-zaehl="4" data-suffix="+">0+</span></div>
+          <div class="d3 mono" style="color:var(--acc)"><span class="odo"><span class="odo-col"><span class="odo-strip" style="--t:4"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span></span>+</div>
           <p style="font-size:.86rem;color:var(--paper-mute);margin-top:7px">hotele të drejtuara njëkohësisht</p>
         </div></div>
     <div class="rule" style="margin-top:clamp(26px,3vw,38px);padding-top:clamp(20px,2.4vw,28px);
@@ -102,7 +115,7 @@
 <section class="pad">
   <div class="shell">
     <p class="tag rise"><span class="n">// 01</span>&nbsp;&nbsp;Dy gjuhë, një kokë</p>
-    <h2 class="d2 wipe" style="margin:20px 0 26px"><span><span style="--i:0">Ky kombinim gati</span></span><span><span style="--i:1">nuk ekziston në këtë fushë.</span></span></h2>
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 26px"><span><span style="--i:0">Ky kombinim gati</span></span><span><span style="--i:1">nuk ekziston në këtë fushë.</span></span></h2>
     <p class="lede rise" style="--i:1;margin-bottom:clamp(44px,5vw,76px)">Ka hotelierë që nuk kanë shkruar kurrë një rresht kod. Dhe ka agjenci që nuk kanë bërë kurrë një plan pune. Unë qëndroj midis tyre, dhe pikërisht prej andej vjen ndryshimi.</p>
     <div class="g2 pop-wrap">
       <div class="card pop ticks" style="--i:0">
@@ -133,7 +146,7 @@
 <section id="felder" class="pad" style="scroll-margin-top:96px;background:var(--ink-2)">
   <div class="shell">
     <p class="tag rise"><span class="n">// 02</span>&nbsp;&nbsp;Fushat e punës</p>
-    <h2 class="d2 wipe" style="margin:20px 0 26px"><span><span style="--i:0">Katër fusha,</span></span><span><span style="--i:1">një dorëshkrim.</span></span></h2>
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 26px"><span><span style="--i:0">Katër fusha,</span></span><span><span style="--i:1">një dorëshkrim.</span></span></h2>
     <p class="lede rise" style="--i:1;margin-bottom:clamp(44px,5vw,72px)">Shumica e bizneseve nuk kanë një problem, por disa që lidhen me njëri-tjetrin: kostoja e mallit nuk del, dukshmëria mungon, ekipi mbytet në kërkesa dhe shumë punë ende bëhet me dorë.</p>
     <div class="stack" style="perspective:1600px">
     <div class="stack-item">
@@ -211,7 +224,7 @@
     <div class="split" style="align-items:start">
       <div>
         <p class="tag rise"><span class="n">// 03</span>&nbsp;&nbsp;Llogaritësit</p>
-        <h2 class="d2 wipe" style="margin:20px 0 26px"><span><span style="--i:0">Bëni llogaritë</span></span><span><span style="--i:1">para se të flisni me mua.</span></span></h2>
+        <h2 class="d2 wipe recede-exit" style="margin:20px 0 26px"><span><span style="--i:0">Bëni llogaritë</span></span><span><span style="--i:1">para se të flisni me mua.</span></span></h2>
         <p class="lede rise" style="--i:1;margin-bottom:34px">Katër llogaritës, drejt e në shfletues: sa ju kushton telefoni? Sa komision portalesh paguani në vit? Çfarë fshihet në kontratën tuaj të pijeve? Dhe çfarë sjell postimi i rregullt? Të gjitha supozimet janë të hapura.</p>
         <a href="../rechner.html" class="btn btn-1 rise" style="--i:2">Shko te llogaritësit</a>
       </div>
@@ -247,7 +260,7 @@
 <section id="ablauf" class="pad" style="scroll-margin-top:96px;background:var(--ink-2)">
   <div class="shell">
     <p class="tag rise"><span class="n">// 04</span>&nbsp;&nbsp;Bashkëpunimi</p>
-    <h2 class="d2 wipe" style="margin:20px 0 26px"><span><span style="--i:0">Nga biseda e parë</span></span><span><span style="--i:1">te një rezultat i matshëm.</span></span></h2>
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 26px"><span><span style="--i:0">Nga biseda e parë</span></span><span><span style="--i:1">te një rezultat i matshëm.</span></span></h2>
     <p class="lede rise" style="--i:1;margin-bottom:clamp(44px,5vw,72px)">Asnjë paketë standarde që i vihet çdo biznesi. Shoh ku ndodheni dhe punoj për atë që sjell ndryshimin më të madh.</p>
     <div class="thread"><div class="rise" style="--i:0;padding:0 0 clamp(30px,3.4vw,46px) clamp(26px,3vw,46px)">
           <p class="mono" style="font-size:.72rem;letter-spacing:.2em;color:var(--acc);margin-bottom:10px">01</p>
@@ -275,7 +288,7 @@
 <section id="wissen" class="pad" style="scroll-margin-top:96px">
   <div class="shell">
     <p class="tag rise"><span class="n">// 05</span>&nbsp;&nbsp;Njohuri</p>
-    <h2 class="d2 wipe" style="margin:20px 0 clamp(44px,5vw,72px)"><span><span style="--i:0">Çfarë kam shkruar</span></span><span><span style="--i:1">nga praktika.</span></span></h2>
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 clamp(44px,5vw,72px)"><span><span style="--i:0">Çfarë kam shkruar</span></span><span><span style="--i:1">nga praktika.</span></span></h2>
     <div class="g3 pop-wrap"><a href="../wissen-ki-im-hotel.html" class="card pop lnk ticks" style="--i:0;display:flex;flex-direction:column;gap:14px">
           <p class="tag" style="color:var(--acc)">Inteligjencë artificiale</p>
           <h3 class="d3" style="font-size:clamp(1.2rem,1.8vw,1.55rem)">Çfarë merr përsipër vërtet një koleg me IA në hotel</h3>
@@ -304,7 +317,7 @@
   <div class="glow" style="width:560px;height:560px;background:rgba(0,224,140,.11);bottom:-260px;right:-160px"></div>
   <div class="shell" style="position:relative;z-index:1">
     <p class="tag rise">// hapi tjetër</p>
-    <h2 class="d2 wipe" style="margin:20px 0 26px;max-width:18ch"><span><span style="--i:0">Le të flasim për biznesin tuaj.</span></span></h2>
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 26px;max-width:18ch"><span><span style="--i:0">Le të flasim për biznesin tuaj.</span></span></h2>
     <p class="lede rise" style="--i:1;margin-bottom:38px">Biseda e parë zgjat gjysmë ore dhe nuk ju detyron me asgjë. Pas saj e dini nëse dhe ku mund t'ju ndihmoj.</p>
     <div class="rise" style="--i:2;display:flex;flex-wrap:wrap;gap:13px">
       <a href="../kontakt.html" class="btn btn-1">Cakto një bisedë</a>
@@ -341,6 +354,6 @@
     </div>
   </div>
 </footer>
-<script src="../assets/kt.js?v=3f7a3c63" defer></script>
+<script src="../assets/kt.js?v=852dfffa" defer></script>
 </body>
 </html>

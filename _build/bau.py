@@ -34,6 +34,18 @@ def kicker(nummer, text):
     return f'<p class="tag rise"><span class="n">// {nummer}</span>&nbsp;&nbsp;{text}</p>'
 
 
+def odometer(wert):
+    """Rollende Ziffernkette. Der Wert steht zur Bauzeit fest, darum reicht
+    reines CSS mit animation-timeline: view() — ohne Unterstuetzung zeigt
+    die Spalte die Ziffer einfach sofort, kein Laufzeit-JS noetig."""
+    spalten = "".join(
+        f'<span class="odo-col"><span class="odo-strip" style="--t:{ziffer}">'
+        + "".join(f'<span>{n}</span>' for n in range(10)) + '</span></span>'
+        for ziffer in str(wert)
+    )
+    return f'<span class="odo">{spalten}</span>'
+
+
 def seite(L):
     basis = '../' if L['dir'] else ''
     a = lambda p: f'{basis}{p}'
@@ -65,6 +77,7 @@ def seite(L):
 <section class="hero">
   <div class="floor"></div>
   <div class="glow" style="width:620px;height:620px;background:rgba(0,224,140,.10);top:-280px;left:-180px"></div>
+  <div class="orbit" aria-hidden="true"><i></i></div>
   <div class="shell" style="position:relative;z-index:1;padding-block:clamp(52px,7vw,104px)">
     <div class="split">
       <div>
@@ -73,7 +86,7 @@ def seite(L):
           <span style="color:var(--line)">│</span>
           <span>{L['hero_orte'][0]}</span>
         </p>
-        <h1 class="d1 wipe" style="margin-bottom:32px">{wipe(L['hero_h1'])}</h1>
+        <h1 class="d1 wipe-3d recede-exit" style="margin-bottom:32px">{wipe(L['hero_h1'])}</h1>
         <p class="lede rise" style="--i:1;margin-bottom:40px">{L['hero_text']}</p>
         <div class="rise" style="--i:2;display:flex;flex-wrap:wrap;gap:13px">
           <a href="{a('kontakt.html')}" class="btn btn-1">{L['hero_cta1']}</a>
@@ -83,6 +96,7 @@ def seite(L):
       <div class="pop-wrap">
         <div class="pop ticks" style="--i:1;background:var(--ink-2);border:1px solid var(--line);
              box-shadow:0 60px 120px -50px rgba(0,0,0,.9)">
+         <div class="tilt">
           <div style="display:flex;align-items:center;gap:7px;padding:13px 15px;border-bottom:1px solid var(--line-soft)">
             <span style="width:8px;height:8px;border-radius:999px;background:var(--line)"></span>
             <span style="width:8px;height:8px;border-radius:999px;background:var(--line)"></span>
@@ -90,6 +104,7 @@ def seite(L):
             <span class="mono" style="font-size:.7rem;color:var(--paper-mute);margin-left:8px">{L['term_titel']}</span>
           </div>
           <div class="term" id="term" style="padding:19px 17px 24px;min-height:268px">{term}<span class="cursor blink"></span></div>
+         </div>
         </div>
       </div>
     </div>
@@ -99,7 +114,7 @@ def seite(L):
     # ── Kennzahlen ────────────────────────────────────────────────────
     stats = "".join(
         f'''<div class="rise" style="--i:{i}">
-          <div class="d3 mono" style="color:var(--acc)"><span data-zaehl="{z}" data-suffix="{s}">0{s}</span></div>
+          <div class="d3 mono" style="color:var(--acc)">{odometer(z)}{s}</div>
           <p style="font-size:.86rem;color:var(--paper-mute);margin-top:7px">{t}</p>
         </div>''' for i, (z, s, t) in enumerate(L['stats']))
 
@@ -130,7 +145,7 @@ def seite(L):
 <section class="pad">
   <div class="shell">
     {kicker('01', L['pos_tag'])}
-    <h2 class="d2 wipe" style="margin:20px 0 26px">{wipe(L['pos_h2'])}</h2>
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 26px">{wipe(L['pos_h2'])}</h2>
     <p class="lede rise" style="--i:1;margin-bottom:clamp(44px,5vw,76px)">{L['pos_text']}</p>
     <div class="g2 pop-wrap">
       <div class="card pop ticks" style="--i:0">
@@ -187,7 +202,7 @@ def seite(L):
 <section id="felder" class="pad" style="scroll-margin-top:96px;background:var(--ink-2)">
   <div class="shell">
     {kicker('02', L['felder_tag'])}
-    <h2 class="d2 wipe" style="margin:20px 0 26px">{wipe(L['felder_h2'])}</h2>
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 26px">{wipe(L['felder_h2'])}</h2>
     <p class="lede rise" style="--i:1;margin-bottom:clamp(44px,5vw,72px)">{L['felder_text']}</p>
     <div class="stack" style="perspective:1600px">{karten}</div>
   </div>
@@ -207,7 +222,7 @@ def seite(L):
     <div class="split" style="align-items:start">
       <div>
         {kicker('03', L['rech_tag'])}
-        <h2 class="d2 wipe" style="margin:20px 0 26px">{wipe(L['rech_h2'])}</h2>
+        <h2 class="d2 wipe recede-exit" style="margin:20px 0 26px">{wipe(L['rech_h2'])}</h2>
         <p class="lede rise" style="--i:1;margin-bottom:34px">{L['rech_text']}</p>
         <a href="{a('rechner.html')}" class="btn btn-1 rise" style="--i:2">{L['rech_cta']}</a>
       </div>
@@ -237,7 +252,7 @@ def seite(L):
 <section id="ablauf" class="pad" style="scroll-margin-top:96px;background:var(--ink-2)">
   <div class="shell">
     {kicker('04', L['abl_tag'])}
-    <h2 class="d2 wipe" style="margin:20px 0 26px">{wipe(L['abl_h2'])}</h2>
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 26px">{wipe(L['abl_h2'])}</h2>
     <p class="lede rise" style="--i:1;margin-bottom:clamp(44px,5vw,72px)">{L['abl_text']}</p>
     <div class="thread">{schritte}</div>
   </div>
@@ -257,7 +272,7 @@ def seite(L):
 <section id="wissen" class="pad" style="scroll-margin-top:96px">
   <div class="shell">
     {kicker('05', L['wis_tag'])}
-    <h2 class="d2 wipe" style="margin:20px 0 clamp(44px,5vw,72px)">{wipe(L['wis_h2'])}</h2>
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 clamp(44px,5vw,72px)">{wipe(L['wis_h2'])}</h2>
     <div class="g3 pop-wrap">{artikel}</div>
     <figure class="rise" style="margin:clamp(52px,6vw,88px) 0 0;padding-top:clamp(36px,4vw,56px);border-top:1px solid var(--line)">
       <blockquote class="d3" style="margin:0 0 16px;max-width:30ch;font-weight:400">
@@ -274,7 +289,7 @@ def seite(L):
   <div class="glow" style="width:560px;height:560px;background:rgba(0,224,140,.11);bottom:-260px;right:-160px"></div>
   <div class="shell" style="position:relative;z-index:1">
     <p class="tag rise">{L['cta_tag']}</p>
-    <h2 class="d2 wipe" style="margin:20px 0 26px;max-width:18ch">{wipe(L['cta_h2'])}</h2>
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 26px;max-width:18ch">{wipe(L['cta_h2'])}</h2>
     <p class="lede rise" style="--i:1;margin-bottom:38px">{L['cta_text']}</p>
     <div class="rise" style="--i:2;display:flex;flex-wrap:wrap;gap:13px">
       <a href="{a('kontakt.html')}" class="btn btn-1">{L['cta_1']}</a>
@@ -344,6 +359,16 @@ def seite(L):
 <link rel="stylesheet" href="{a('assets/kt.css')}?v={VER}">
 </head>
 <body>
+<script>(function(){{try{{if(sessionStorage.getItem("kt-intro")){{document.documentElement.className+=" intro-seen";}}else{{sessionStorage.setItem("kt-intro","1");}}}}catch(e){{}}}})();</script>
+<div class="intro" aria-hidden="true">
+  <div class="intro-veil"></div>
+  <svg class="intro-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="3" y="4" width="26" height="4" fill="currentColor"/>
+    <rect x="14" y="4" width="4" height="24" fill="currentColor"/>
+  </svg>
+</div>
+<div class="grain" aria-hidden="true"></div>
+
 <a href="#inhalt" class="btn btn-1" style="position:absolute;left:-9999px;top:0;z-index:200"
    onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">{L['skip']}</a>
 
