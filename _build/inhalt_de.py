@@ -6,7 +6,7 @@ DE = {
 "titel": "Kastriot Tafolli · Gastronomie, Digitalisierung und Künstliche Intelligenz",
 "beschreibung": "Fünfzehn Jahre Führung in der 5-Sterne-Hotellerie, verbunden mit einer Ausbildung zum Softwareingenieur. F&B-Beratung, Online-Marketing, KI-Automatisierung und KI-Lösungen für Hotels und Restaurants.",
 
-"nav": [("#felder","Leistungen"),("#rechner","Rechner"),("#ablauf","Ablauf"),("#wissen","Wissen"),("kontakt.html","Kontakt")],
+"nav": [("ueber-mich.html","Über mich"),("werdegang.html","Werdegang"),("leistungen.html","Leistungen"),("teamo-ki.html","TeamO KI"),("rechner.html","Rechner"),("wissen.html","Wissen"),("kontakt.html","Kontakt")],
 "cta_nav": "Gespräch",
 "skip": "Zum Inhalt springen",
 "menu_auf": "Menü öffnen",
@@ -189,7 +189,7 @@ DE = {
             ("referenzen.html","Referenzen"),("kontakt.html","Kontakt")],
 "foot_sp2": "Schwerpunkte",
 "foot_l2": [("fb-beratung.html","F&B-Beratung"),("online-marketing.html","Online-Marketing & Web"),
-            ("kontakt.html","KI-Automatisierung"),("teamo-ki.html","KI-Lösungen"),("rechner.html","Rechner")],
+            ("#ki","KI-Automatisierung"),("teamo-ki.html","KI-Lösungen"),("rechner.html","Rechner")],
 "foot_sp3": "Kontakt",
 "foot_adresse": ["Hauptstraße 1, 18609 Ostseebad Binz","Schluchsee, Hochschwarzwald"],
 "foot_copy": "© 2026 Kastriot Tafolli · tafolli.net · Ostseebad Rügen / Schluchsee",

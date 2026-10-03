@@ -4,7 +4,7 @@ EN = {
 "titel": "Kastriot Tafolli · Hospitality, Digital and Artificial Intelligence",
 "beschreibung": "Fifteen years leading five-star hospitality, combined with training as a software engineer. F&B consulting, online marketing, AI automation and AI systems for hotels and restaurants.",
 
-"nav": [("#felder","Services"),("#rechner","Calculators"),("#ablauf","Process"),("#wissen","Insights"),("../kontakt.html","Contact")],
+"nav": [("../ueber-mich.html","About"),("../werdegang.html","Career"),("../leistungen.html","Services"),("../teamo-ki.html","TeamO AI"),("../rechner.html","Calculators"),("../wissen.html","Insights"),("../kontakt.html","Contact")],
 "cta_nav": "Talk to me",
 "skip": "Skip to content",
 "menu_auf": "Open menu",
@@ -187,7 +187,7 @@ EN = {
             ("../referenzen.html","References"),("../kontakt.html","Contact")],
 "foot_sp2": "Focus areas",
 "foot_l2": [("../fb-beratung.html","F&B consulting"),("../online-marketing.html","Online marketing & web"),
-            ("../kontakt.html","AI automation"),("../teamo-ki.html","AI systems"),("../rechner.html","Calculators")],
+            ("#ki","AI automation"),("../teamo-ki.html","AI systems"),("../rechner.html","Calculators")],
 "foot_sp3": "Contact",
 "foot_adresse": ["Hauptstraße 1, 18609 Ostseebad Binz, Germany","Schluchsee, Black Forest"],
 "foot_copy": "© 2026 Kastriot Tafolli · tafolli.net · Rügen / Schluchsee",

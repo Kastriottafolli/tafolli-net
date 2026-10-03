@@ -4,33 +4,41 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Seite nicht gefunden · Kastriot Tafolli</title>
+<meta name="description" content="Diese Seite gibt es nicht.">
 <meta name="robots" content="noindex">
+<meta name="author" content="Kastriot Tafolli">
+<link rel="canonical" href="https://tafolli.net/404.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kastriot Tafolli">
+<meta property="og:locale" content="de_DE">
+<meta property="og:title" content="Seite nicht gefunden · Kastriot Tafolli">
+<meta property="og:description" content="Diese Seite gibt es nicht.">
+<meta property="og:url" content="https://tafolli.net/404.html">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#08090B">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<link rel="stylesheet" href="/assets/schriften.css">
-<style>
-  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center;
-         background: #0C0B0A; color: #F7F3EA; font-family: 'IBM Plex Sans', system-ui, sans-serif;
-         text-align: center; padding: 24px; }
-  .m { font-family: 'JetBrains Mono', ui-monospace, monospace; }
-  a.z { display: inline-block; background: #C6A15B; color: #14120F; font-size: 12px; font-weight: 700;
-        letter-spacing: .07em; text-transform: uppercase; padding: 16px 30px; text-decoration: none;
-        transition: transform .3s ease; }
-  a.z:hover { transform: translateY(-2px); }
-</style>
+<link rel="preload" as="font" type="font/woff2" href="/assets/schriften/space-grotesk-var.woff2" crossorigin>
+<link rel="stylesheet" href="/assets/schriften.css?v=da343e7f">
+<link rel="stylesheet" href="/assets/kt.css?v=da343e7f">
 </head>
 <body>
-  <div>
-    <div class="m" style="font-size: 11.5px; letter-spacing: .16em; color: #8F887B; margin-bottom: 26px;">
-      <span style="color: #C6A15B;">//</span> 404
+<div class="grain" aria-hidden="true"></div>
+<main style="min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden">
+  <div class="floor"></div>
+  <div class="glow" style="width:560px;height:560px;background:rgba(0,224,140,.1);top:-200px;right:-160px"></div>
+  <div class="shell" style="position:relative;z-index:1">
+    <p class="tag"><span class="n">//</span>&nbsp;&nbsp;404</p>
+    <h1 class="d1" style="margin:20px 0 24px;font-size:clamp(2.8rem,8vw,6.5rem)">Diese Seite<br>gibt es nicht.</h1>
+    <p class="lede" style="margin-bottom:34px">Vielleicht hat sich die Adresse geändert. Von der Startseite aus finden Sie alles Weitere.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:13px">
+      <a href="/" class="btn btn-1">Zur Startseite</a>
+      <a href="/kontakt.html" class="btn btn-2">Kontakt</a>
     </div>
-    <h1 style="font-family: 'Bodoni Moda', Georgia, serif; font-weight: 400; font-size: clamp(38px,6vw,72px);
-               line-height: 1.05; letter-spacing: -.02em; margin: 0 0 22px 0;">
-      Diese Seite gibt es nicht.
-    </h1>
-    <p style="font-size: 17px; line-height: 1.7; color: #B5AEA1; max-width: 440px; margin: 0 auto 34px auto;">
-      Vielleicht hat sich die Adresse geändert. Von der Startseite aus finden Sie alles Weitere.
-    </p>
-    <a class="z m" href="/">Zur Startseite</a>
+    <pre class="mono" style="margin:48px 0 0;font-size:.78rem;color:var(--paper-mute)">$ curl tafolli.net{pfad}
+<span style="color:var(--acc)">● 404 · nicht gefunden</span></pre>
   </div>
+</main>
+<script>(function(){var p=document.querySelector('pre');if(p)p.innerHTML=p.innerHTML.replace('{pfad}',location.pathname.replace(/[<>&]/g,''));})();</script>
+<script src="/assets/kt.js?v=da343e7f" defer></script>
 </body>
 </html>

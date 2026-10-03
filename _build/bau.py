@@ -195,7 +195,7 @@ def seite(L):
         for label, wert, suf in L['ki_dash'])
 
     ki = f'''
-<section class="pad">
+<section id="ki" class="pad" style="scroll-margin-top:96px">
   <div class="shell">
     {kicker('02', L['ki_tag'])}
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe(L['ki_h2'])}</h2>
@@ -402,7 +402,7 @@ def seite(L):
     # ── Fusszeile ─────────────────────────────────────────────────────
     sp = lambda titel, links: (
         f'<div><p class="tag" style="color:var(--paper);margin-bottom:17px">{titel}</p>' +
-        "".join(f'<a href="{h if h.startswith("..") else a(h)}" class="lnk" '
+        "".join(f'<a href="{h if h.startswith(("..", "#")) else a(h)}" class="lnk" '
                 f'style="display:block;color:var(--paper-dim);font-size:.9rem;padding:5px 0">{t}</a>'
                 for h, t in links) + '</div>')
 
@@ -460,7 +460,6 @@ def seite(L):
 <link rel="stylesheet" href="{a('assets/kt.css')}?v={VER}">
 </head>
 <body>
-<script>(function(){{try{{if(sessionStorage.getItem("kt-intro")){{document.documentElement.className+=" intro-seen";}}else{{sessionStorage.setItem("kt-intro","1");}}}}catch(e){{}}}})();</script>
 <div class="intro" aria-hidden="true">
   <div class="intro-veil"></div>
   <svg class="intro-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">

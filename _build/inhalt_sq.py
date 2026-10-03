@@ -4,7 +4,7 @@ SQ = {
 "titel": "Kastriot Tafolli · Hoteleri, digjitalizim dhe inteligjencë artificiale",
 "beschreibung": "Pesëmbëdhjetë vjet drejtim në hotelerinë me pesë yje, i kombinuar me formimin si inxhinier softueri. Konsulencë F&B, marketing online, automatizim me IA dhe sisteme IA për hotele dhe restorante.",
 
-"nav": [("#felder","Shërbimet"),("#rechner","Llogaritësit"),("#ablauf","Procesi"),("#wissen","Njohuri"),("../kontakt.html","Kontakt")],
+"nav": [("../ueber-mich.html","Rreth meje"),("../werdegang.html","Karriera"),("../leistungen.html","Shërbimet"),("../teamo-ki.html","TeamO IA"),("../rechner.html","Llogaritësit"),("../wissen.html","Njohuri"),("../kontakt.html","Kontakt")],
 "cta_nav": "Bisedë",
 "skip": "Kalo te përmbajtja",
 "menu_auf": "Hap menynë",
@@ -187,7 +187,7 @@ SQ = {
             ("../referenzen.html","Referenca"),("../kontakt.html","Kontakt")],
 "foot_sp2": "Fushat",
 "foot_l2": [("../fb-beratung.html","Konsulencë F&B"),("../online-marketing.html","Marketing online dhe web"),
-            ("../kontakt.html","Automatizim me IA"),("../teamo-ki.html","Sisteme IA"),("../rechner.html","Llogaritësit")],
+            ("#ki","Automatizim me IA"),("../teamo-ki.html","Sisteme IA"),("../rechner.html","Llogaritësit")],
 "foot_sp3": "Kontakt",
 "foot_adresse": ["Hauptstraße 1, 18609 Ostseebad Binz, Gjermani","Schluchsee, Pylli i Zi"],
 "foot_copy": "© 2026 Kastriot Tafolli · tafolli.net · Rügen / Schluchsee",

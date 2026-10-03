@@ -166,4 +166,64 @@
       bruecke.addEventListener('mouseleave', function () { innen.style.transform = ''; });
     }
   }
+
+  /* ── Rechner: laufen vollstaendig im Browser, nichts wird gespeichert.
+     Balken ueber transform: scaleX statt width, damit nichts umlayoutet. */
+  var rechner = document.querySelector('[data-rechner]');
+  if (rechner) {
+    var w = {};
+    var felder = rechner.querySelectorAll('input[data-in]');
+    var n0 = function (v) { return Math.round(v).toLocaleString('de-DE'); };
+    var eur = function (v) { return Math.round(v).toLocaleString('de-DE') + ' €'; };
+    var anteil = function (v) { return Math.max(0, Math.min(1, v)); };
+
+    var rechnen = function () {
+      var kiStd = (w.anrufe + w.nachrichten) * w.minuten * 30 / 60;
+      var kiGespart = kiStd * 0.7;
+      var kiJahr = kiGespart * w.lohn * 12;
+
+      var umsatzMonat = w.naechte * w.preis;
+      var provJahr = umsatzMonat * (w.portal / 100) * 12 * (w.prov / 100);
+      var sparen = umsatzMonat * 12 * (Math.min(w.shift, w.portal) / 100) * (w.prov / 100);
+      var provNach = Math.max(0, provJahr - sparen);
+
+      var rvHeute = w.einkauf * (w.aktuell / 100);
+      var rvZiel = w.einkauf * (Math.max(w.ziel, w.aktuell) / 100);
+
+      var er = w.erate / 10;
+      var impr = w.posts * 4.33 * w.follower * (0.35 + er / 100 * 2.2);
+
+      var text = {
+        anrufe: w.anrufe, nachrichten: w.nachrichten, minuten: w.minuten, lohn: w.lohn,
+        kiStunden: n0(kiStd) + ' Std.', kiJahr: eur(kiJahr),
+        kiBar1Txt: n0(kiStd) + ' Std.', kiBar2Txt: n0(kiStd - kiGespart) + ' Std.',
+        naechte: n0(w.naechte), preis: w.preis, portal: w.portal, prov: w.prov, shift: w.shift,
+        provJahr: eur(provJahr), direktJahr: eur(sparen),
+        dBar1Txt: eur(provJahr), dBar2Txt: eur(provNach),
+        einkaufTxt: n0(w.einkauf), aktuell: w.aktuell, ziel: w.ziel,
+        rvHeute: eur(rvHeute), rvPlus: eur(rvZiel - rvHeute),
+        rBar1Txt: eur(rvHeute), rBar2Txt: eur(rvZiel),
+        posts: w.posts, followerTxt: n0(w.follower), erateTxt: er.toFixed(1),
+        smImpr: n0(impr), smAnfragen: n0(impr * 0.04 * 0.03)
+      };
+      var balken = {
+        kiBar1: 1, kiBar2: kiStd > 0 ? (kiStd - kiGespart) / kiStd : 0,
+        dBar1: 1, dBar2: provJahr > 0 ? provNach / provJahr : 0,
+        rBar1: rvZiel > 0 ? rvHeute / rvZiel : 0, rBar2: 1
+      };
+      Array.prototype.forEach.call(rechner.querySelectorAll('[data-v]'), function (el) {
+        var k = el.getAttribute('data-v');
+        if (text[k] !== undefined) el.textContent = text[k];
+      });
+      Array.prototype.forEach.call(rechner.querySelectorAll('[data-bar]'), function (el) {
+        var k = el.getAttribute('data-bar');
+        if (balken[k] !== undefined) el.style.transform = 'scaleX(' + anteil(balken[k]).toFixed(4) + ')';
+      });
+    };
+    Array.prototype.forEach.call(felder, function (el) {
+      w[el.getAttribute('data-in')] = Number(el.value);
+      el.addEventListener('input', function () { w[el.getAttribute('data-in')] = Number(el.value); rechnen(); });
+    });
+    rechnen();
+  }
 })();
