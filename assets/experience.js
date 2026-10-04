@@ -29,7 +29,8 @@
     paused = userPaused === null ? reduced.matches : userPaused;
     root.classList.toggle('motion-paused', paused);
     motionButton.setAttribute('aria-pressed', String(paused));
-    motionButton.querySelector('span').textContent = paused ? '▷' : 'Ⅱ';
+    const controlIcon = motionButton.querySelector('use');
+    controlIcon.setAttribute('href', controlIcon.getAttribute('href').split('#')[0] + (paused ? '#play' : '#pause'));
     if (paused) reveals.forEach(el => el.classList.add('is-visible'));
     if (paused && running) completeDemo();
     requestDraw();
@@ -52,10 +53,8 @@
     runButton.disabled = false;
   }
   function setRunLabel(label) {
-    runButton.textContent = label;
-    const arrow = document.createElement('span');
-    arrow.setAttribute('aria-hidden', 'true'); arrow.textContent = '↗';
-    runButton.appendChild(arrow);
+    const arrow = runButton.querySelector('span').cloneNode(true);
+    runButton.replaceChildren(document.createTextNode(label), arrow);
   }
   function selectScenario(index, focus = false) {
     clearDemoTimers(); selected = index;

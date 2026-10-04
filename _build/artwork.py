@@ -29,6 +29,6 @@ def build():
                 if col==0 and row in (0,6): continue
                 parts.append(f'<path d="M{x:.1f} {y:.1f}h18l12 13" fill="none" stroke="#f3f1e9" stroke-opacity=".4" stroke-width=".8"/><circle cx="{x:.1f}" cy="{y:.1f}" r="{3 if (row+col)%3 else 4}" fill="{ "#f28857" if (row+col)%5==0 else "#f3f1e9"}"/>')
         parts.append('</g>')
-    parts.append('<path d="M317 156V461Q315 487 301 510M325 156V461Q327 487 341 510" fill="none" stroke="url(#core)" stroke-width="3"/><rect x="292" y="284" width="56" height="56" rx="7" fill="#20231f" stroke="#f28857"/><text x="320" y="319" text-anchor="middle" font-family="monospace" font-size="19" fill="#d1ed78">AI</text><g fill="#40562e" font-family="monospace" font-size="9" letter-spacing="2"><text x="91" y="64">NEURAL OS / TAFOLLI</text><text x="91" y="589">KNOWLEDGE → REASON → ACTION</text><text x="440" y="589">HUMAN CONTROL</text></g></svg>')
+    parts.append('<path d="M317 156V461Q315 487 301 510M325 156V461Q327 487 341 510" fill="none" stroke="url(#core)" stroke-width="3"/><rect x="292" y="284" width="56" height="56" rx="7" fill="#20231f" stroke="#f28857"/><text x="320" y="319" text-anchor="middle" font-family="monospace" font-size="19" fill="#d1ed78">AI</text><g fill="#40562e" font-family="monospace" font-size="9" letter-spacing="2"><text x="91" y="64">NEURAL OS / TAFOLLI</text><text x="91" y="589">KNOWLEDGE / REASON / ACTION</text><text x="440" y="589">HUMAN CONTROL</text></g></svg>')
     (ROOT/'assets/intelligence.svg').write_text(''.join(parts))
 if __name__=='__main__': build()

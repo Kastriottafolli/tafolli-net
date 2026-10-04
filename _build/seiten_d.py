@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from icons import icon
 from bausteine import *
 from hotels import hotel_cards
 from partners import PROJECTS, GASTRO, TECH, tiles
@@ -215,7 +216,7 @@ def fehler404():
       <a href="/kontakt.html" class="btn btn-2">Kontakt</a>
     </div>
     <pre class="mono" style="margin:48px 0 0;font-size:.78rem;color:var(--paper-mute)">$ curl tafolli.net{{pfad}}
-<span style="color:var(--acc)">● 404 · nicht gefunden</span></pre>
+<span style="color:var(--acc)">{icon('dot')} 404 · nicht gefunden</span></pre>
   </div>
 </main>
 <script>(function(){{var p=document.querySelector('pre');if(p)p.innerHTML=p.innerHTML.replace('{{pfad}}',location.pathname.replace(/[<>&]/g,''));}})();</script>

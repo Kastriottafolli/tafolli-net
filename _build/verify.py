@@ -1,6 +1,7 @@
 """Check generated HTML, local assets, anchors, translations and demo data."""
 from collections import Counter
 from html.parser import HTMLParser
+from icons import GLYPHS
 import json
 from services import SERVICES
 from companies import COMPANIES
@@ -21,9 +22,14 @@ class Page(HTMLParser):
         self.in_nav=False; self.nav_links=[]; self.canonical=''; self.title=''; self.in_title=False
         self.schemas=[]; self.schema_text=''; self.in_schema=False
         self.breadcrumbs=0; self.intros=0
+        self.visible_text=''; self.hidden_text=[]; self.icon_count=0
         self.feed(path.read_text())
     def handle_starttag(self, tag, attrs):
         attrs=dict(attrs)
+        if tag in ['head','script','style']: self.hidden_text.append(tag)
+        if tag=='svg' and 'site-icon' in attrs.get('class','').split():
+            self.icon_count+=1
+            assert attrs.get('aria-hidden')=='true' and attrs.get('focusable')=='false', f'{self.path}: decorative icon must not be announced'
         if tag == 'html': self.lang=attrs.get('lang','')
         if tag == 'h1': self.h1+=1
         if tag == 'title': self.in_title=True
@@ -39,10 +45,12 @@ class Page(HTMLParser):
         if tag == 'meta': self.meta[attrs.get('name',attrs.get('property',''))]=attrs.get('content','')
         if tag == 'script' and attrs.get('id') == 'experience-config': self.in_config=True
     def handle_data(self,data):
+        if not self.hidden_text: self.visible_text+=data
         if self.in_config: self.config+=data
         if self.in_title: self.title+=data
         if self.in_schema: self.schema_text+=data
     def handle_endtag(self,tag):
+        if self.hidden_text and tag==self.hidden_text[-1]: self.hidden_text.pop()
         if tag=='title': self.in_title=False
         if tag=='nav': self.in_nav=False
         if tag == 'script':
@@ -52,8 +60,12 @@ class Page(HTMLParser):
 def verify():
     pages={p.resolve():Page(p) for p in [*ROOT.glob('*.html'),ROOT/'en/index.html',ROOT/'sq/index.html']}
     errors=[]
+    svg_ids={path.resolve():{node.get('id') for node in ET.parse(path).iter() if node.get('id')} for path in ROOT.rglob('*.svg')}
     for path,page in pages.items():
         relative=path.relative_to(ROOT)
+        glyphs=set(page.visible_text)&set(GLYPHS)
+        if glyphs: errors.append(f'{relative}: font glyph icons still visible: '+', '.join(sorted(glyphs)))
+        if not page.icon_count: errors.append(f'{relative}: SVG interface icons missing')
         if page.h1 != 1: errors.append(f'{relative}: expected one h1, got {page.h1}')
         if not page.lang: errors.append(f'{relative}: missing language')
         if not page.meta.get('description'): errors.append(f'{relative}: missing description')
@@ -95,6 +107,8 @@ def verify():
             if not target.exists(): errors.append(f'{relative}: broken link {link}')
             elif parsed.fragment and target in pages and unquote(parsed.fragment) not in pages[target].ids:
                 errors.append(f'{relative}: missing anchor {link}')
+            elif parsed.fragment and target in svg_ids and unquote(parsed.fragment) not in svg_ids[target]:
+                errors.append(f'{relative}: missing SVG symbol {link}')
         if page.config:
             cfg=json.loads(page.config)
             assert len(cfg['demos'])==3 and len(cfg['stages'])==5 and len(cfg['stage_notes'])==5

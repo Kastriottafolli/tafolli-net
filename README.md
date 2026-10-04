@@ -124,3 +124,11 @@ diese Aussage; die deutschsprachigen Unterseiten bleiben ausdrücklich als
 solche gekennzeichnet. Die Sitemap enthält die 37 indexierbaren Seiten;
 404 bleibt `noindex`. Der Prüflauf kontrolliert zusätzlich vollständige
 Menüabdeckung, eindeutige Metadaten, Schema-Assets und Einsatzgebiete.
+
+Die Bedienelemente verwenden eigene Vektorgrafiken aus `assets/icons.svg`.
+`_build/icons.py` ersetzt dekorative Schriftzeichen im abschließenden HTML-Bauschritt
+auf allen 38 Seiten; Metadaten, Skripte und vorhandene SVG-Kunst bleiben erhalten.
+Die Grafikreferenz trägt einen Inhalts-Hash gegen veraltete Browser-Caches.
+Pause/Play und die Workflow-Demo wechseln bzw. erhalten ihre SVG-Referenzen.
+`assets/arrow-up-right.svg` dient als CSS-Maske für Ergebnislisten.
+Der Prüflauf verhindert sichtbare Schriftzeichen-Icons und ungültige SVG-Symbolreferenzen.

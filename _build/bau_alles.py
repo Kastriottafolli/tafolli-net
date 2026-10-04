@@ -8,6 +8,8 @@ HIER = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HIER))
 WURZEL = HIER.parent
 
+from icons import iconize
+
 import seiten_a, seiten_b, seiten_c, seiten_d, experience, artwork, services
 
 SEITEN = {
@@ -34,6 +36,6 @@ if __name__ == '__main__':
     experience.build()
     services.build(WURZEL)
     for datei, fn in SEITEN.items():
-        html = fn()
+        html = iconize(fn())
         (WURZEL / datei).write_text(html)
         print(f"  {datei:30} {len(html):>7} Zeichen")
