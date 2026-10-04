@@ -2,6 +2,8 @@
 from collections import Counter
 from html.parser import HTMLParser
 import json
+from services import SERVICES
+from companies import COMPANIES
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
@@ -60,6 +62,13 @@ def verify():
     sitemap=ET.parse(ROOT/'sitemap.xml')
     urls=[el.text for el in sitemap.findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
     assert 'https://tafolli.net/ki-automatisierung.html' in urls
+    for service in SERVICES:
+        path=(ROOT/(service['slug']+'.html')).resolve()
+        assert path in pages and 'https://tafolli.net/'+path.name in urls
+        assert {'ausgangslage','umfang','praxis','ergebnisse','fragen'} <= set(pages[path].ids)
+    homepage=pages[(ROOT/'index.html').resolve()]
+    for name,url in COMPANIES:
+        assert url in homepage.links, f'Missing official station link: {name}'
     if errors: raise SystemExit('\n'.join(errors))
     print(f'PASS: {len(pages)} pages; local links, anchors, assets, metadata, localized demos and sitemap.')
 

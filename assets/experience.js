@@ -160,75 +160,48 @@
     $('roi-contact').href = 'mailto:info@tafolli.net?subject='+encodeURIComponent('AI Automation as a Service')+'&body='+encodeURIComponent(body);
   }
   roiInputs.forEach(input => input.addEventListener('input',calculate));
-  calculate();
+  if(roiInputs.length) calculate();
 
-  // Sculptural torus: a lit, breathing mesh rendered without WebGL or a library.
+  // A neural brain with travelling impulses; static SVG remains the fallback.
   const canvas = $('intelligence');
   const art = document.querySelector('.x-art');
   const ctx = canvas.getContext('2d');
-  const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
-  let pointerX = 0, pointerY = 0, rotationX = 0, rotationY = 0;
-  let artVisible = true, frame = 0, lastFrame = 0, elapsed = 0;
-  let dpr = Math.min(devicePixelRatio || 1,1.5);
+  let pointerX=0, pointerY=0, rotationX=0, rotationY=0;
+  let artVisible=true, frame=0, lastFrame=0, elapsed=0;
+  let dpr=Math.min(devicePixelRatio || 1,1.5);
+  const brain=new Image();
+  brain.src=document.querySelector('.x-bloom-fallback').src;
+  brain.addEventListener('load',requestDraw);
   function resizeCanvas() {
-    canvas.width = Math.round(640*dpr); canvas.height = Math.round(640*dpr);
-    if (ctx) ctx.setTransform(dpr,0,0,dpr,0,0);
+    canvas.width=Math.round(640*dpr); canvas.height=Math.round(640*dpr);
+    if(ctx) ctx.setTransform(dpr,0,0,dpr,0,0);
     requestDraw();
   }
-  if (fine) {
-    document.querySelector('.x-hero').addEventListener('pointermove',e => {
-      const bounds = art.getBoundingClientRect();
-      pointerX = Math.max(-1,Math.min(1,(e.clientX-bounds.left-bounds.width/2)/bounds.width));
-      pointerY = Math.max(-1,Math.min(1,(e.clientY-bounds.top-bounds.height/2)/bounds.height));
+  if(matchMedia('(hover:hover) and (pointer:fine)').matches) {
+    document.querySelector('.x-hero').addEventListener('pointermove',e=> {
+      const b=art.getBoundingClientRect();
+      pointerX=Math.max(-1,Math.min(1,(e.clientX-b.left-b.width/2)/b.width));
+      pointerY=Math.max(-1,Math.min(1,(e.clientY-b.top-b.height/2)/b.height));
       requestDraw();
     },{passive:true});
-    document.querySelector('.x-hero').addEventListener('pointerleave',() => { pointerX=0;pointerY=0; });
-  }
-  function rotate(x,y,z,ax,ay,az) {
-    let yy=y*Math.cos(ax)-z*Math.sin(ax),zz=y*Math.sin(ax)+z*Math.cos(ax);
-    let xx=x*Math.cos(ay)+zz*Math.sin(ay);zz=-x*Math.sin(ay)+zz*Math.cos(ay);
-    return [xx*Math.cos(az)-yy*Math.sin(az),xx*Math.sin(az)+yy*Math.cos(az),zz];
+    document.querySelector('.x-hero').addEventListener('pointerleave',()=>{pointerX=0;pointerY=0;});
   }
   function draw(time) {
-    if (!ctx) return;
+    if(!ctx || !brain.complete || !brain.naturalWidth) return;
     ctx.clearRect(0,0,640,640);
-    const drift = paused ? 0 : time;
-    const ax=1.02+rotationY*.3+Math.sin(drift*.0002)*.2;
-    const ay=.32+rotationX*.4+Math.sin(drift*.00016)*.24;
-    const az=-.56+Math.sin(drift*.00015)*.1;
-    const ringCount=64, tubeCount=24, points=[], normals=[], faces=[];
-    const breathe=paused?0:Math.sin(time*.00055)*.04;
-    for(let i=0;i<=ringCount;i++) {
-      const u=i/ringCount*Math.PI*2;
-      points[i]=[];normals[i]=[];
-      for(let j=0;j<=tubeCount;j++) {
-        const v=j/tubeCount*Math.PI*2;
-        const minor=.56+.09*Math.sin(5*u+time*.00045)+.035*Math.sin(3*v+time*.0006)+breathe;
-        const radius=1.23+minor*Math.cos(v);
-        const p=rotate(radius*Math.cos(u),radius*Math.sin(u),minor*Math.sin(v),ax,ay,az);
-        const n=rotate(Math.cos(v)*Math.cos(u),Math.cos(v)*Math.sin(u),Math.sin(v),ax,ay,az);
-        const perspective=5.4/(5.4-p[2]);
-        points[i][j]=[320+p[0]*145*perspective,315+p[1]*145*perspective,p[2]];
-        normals[i][j]=n;
-      }
+    ctx.save();ctx.translate(320+rotationX*12,320+rotationY*9);
+    ctx.rotate(rotationX*.035);const scale=1+(paused?0:Math.sin(time*.0007)*.008);ctx.scale(scale,scale);ctx.translate(-320,-320);
+    ctx.drawImage(brain,0,0,640,640);
+    for(let side=0;side<2;side++) for(let row=0;row<7;row++) for(let col=0;col<5;col++) {
+      if(col===0 && (row===0 || row===6)) continue;
+      let x=151+col*31+9*Math.sin(row*2+col),y=173+row*40+8*Math.cos(col*2+row);
+      if(side) x=640-x;
+      const pulse=paused?.3:Math.pow(Math.max(0,Math.sin(time*.003-row*.8-col*.5-side)),8);
+      if(pulse<.05) continue;
+      ctx.beginPath();ctx.arc(x,y,4+pulse*8,0,Math.PI*2);ctx.strokeStyle='rgba(242,136,87,'+pulse*.9+')';ctx.lineWidth=1.5;ctx.stroke();
+      ctx.beginPath();ctx.arc(x,y,2.5,0,Math.PI*2);ctx.fillStyle='#f28857';ctx.fill();
     }
-    for(let i=0;i<ringCount;i++)for(let j=0;j<tubeCount;j++) {
-      const quad=[points[i][j],points[i+1][j],points[i+1][j+1],points[i][j+1]];
-      faces.push({quad,n:normals[i][j],z:quad.reduce((sum,p)=>sum+p[2],0)/4});
-    }
-    faces.sort((a,b)=>a.z-b.z);
-    ctx.lineWidth=.65;
-    for(const {quad,n} of faces) {
-      const light=Math.max(0,n[0]*-.38+n[1]*-.5+n[2]*.75);
-      const shine=Math.pow(light,14);
-      const luminosity=26+light*42+shine*19;
-      ctx.fillStyle='hsl('+(66+light*6)+', '+(44+light*21)+'%, '+luminosity+'%)';
-      ctx.strokeStyle='rgba(38,49,12,'+(.12+light*.08)+')';
-      ctx.beginPath();ctx.moveTo(quad[0][0],quad[0][1]);
-      for(let k=1;k<4;k++)ctx.lineTo(quad[k][0],quad[k][1]);
-      ctx.closePath();ctx.fill();ctx.stroke();
-    }
-    art.classList.add('is-rendered');
+    ctx.restore();art.classList.add('is-rendered');
   }
   function tick(now) {
     frame=0;

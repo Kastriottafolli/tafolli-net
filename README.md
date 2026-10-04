@@ -25,8 +25,13 @@ Alle Seiten werden aus `_build/` erzeugt:
   Online-Marketing, TeamO, Rechner, Wissen mit drei Artikeln, Referenzen,
   Kontakt, Impressum, Datenschutz, 404).
 
+- `_build/services.py`: 18 vertiefte Leistungsseiten mit Ausgangslage, konkretem
+  Umfang, Anwendungsbeispiel, Zusammenarbeit, FAQ und passenden internen Links.
+  Zusammen mit den vier bestehenden Leistungsseiten bildet dies 22 Bereiche.
+- `_build/companies.py`: verifizierte offizielle Links der sechs beruflichen Stationen.
+
 Das neue Design und die Interaktionen liegen in `assets/experience.css`
-und `assets/experience.js`: animierte 3D-Grafik, Scroll-Erzählung,
+und `assets/experience.js`: animiertes neuronales KI-Gehirn, Scroll-Erzählung,
 Workflow-Demo mit drei Szenarien, Zeitwert-Rechner, mobile Navigation und
 Bewegungsschalter. Die vorhandenen Unterseiten verwenden weiterhin die
 Grundbausteine aus `assets/kt.css` und den Rechner aus `assets/kt.js`,
@@ -47,7 +52,11 @@ als normale, vollständig lesbare Liste dargestellt. Schriftarten und
 Grafiken werden lokal geladen; es gibt keine Tracker, Cookies oder
 externen Bibliotheken.
 
-Die Unterseiten sind derzeit nur auf Deutsch vorhanden.
+Die Unterseiten sind derzeit nur auf Deutsch vorhanden. Die Navigation führt
+zu echten Seiten. Die Startseite zeigt die Verbindung aus Hospitality und
+Technologie; Scroll-Erzählung, Betreuung und Zeitwert-Rechner liegen auf der
+eigenen Automation-Seite. Das Gesamtangebot ist über `leistungen.html` erreichbar.
+Die gemeinsame Palette verwendet Cremeweiß, Grün, Orange und dunkle Neutraltöne.
 
 Prüfen:
 

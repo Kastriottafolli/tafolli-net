@@ -8,7 +8,7 @@ HIER = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HIER))
 WURZEL = HIER.parent
 
-import seiten_a, seiten_b, seiten_c, seiten_d, experience, artwork
+import seiten_a, seiten_b, seiten_c, seiten_d, experience, artwork, services
 
 SEITEN = {
     'ueber-mich.html': seiten_a.ueber_mich,
@@ -32,6 +32,7 @@ SEITEN = {
 if __name__ == '__main__':
     artwork.build()
     experience.build()
+    services.build(WURZEL)
     for datei, fn in SEITEN.items():
         html = fn()
         (WURZEL / datei).write_text(html)

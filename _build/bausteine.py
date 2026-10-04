@@ -23,7 +23,12 @@ FOOT_L2 = [
     ("fb-beratung.html", "F&B-Beratung"),
     ("online-marketing.html", "Online-Marketing & Web"),
     ("ki-automatisierung.html", "KI-Automatisierung"),
-    ("teamo-ki.html", "KI-Lösungen"),
+    ("ki-entwicklung.html", "KI-Entwicklung"),
+    ("cybersecurity.html", "Cybersecurity"),
+    ("digitalisierung.html", "Digitalisierung"),
+    ("softwareentwicklung.html", "Softwareentwicklung"),
+    ("lieferantenvereinbarungen.html", "Lieferantenvereinbarungen"),
+    ("rueckverguetungen.html", "Rückvergütungen"),
     ("rechner.html", "Rechner"),
 ]
 
@@ -63,6 +68,8 @@ def seiten_kopf(titel, beschreibung, kanonisch_pfad):
 <meta name="theme-color" content="#f3f1e9">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preload" as="font" type="font/woff2" href="assets/schriften/space-grotesk-var.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/schriften/ibm-plex-sans-400.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/schriften/bodoni-moda-400-italic.woff2" crossorigin>
 <link rel="stylesheet" href="assets/schriften.css?v={VER}">
 <link rel="stylesheet" href="assets/kt.css?v={VER}">
 <link rel="stylesheet" href="assets/experience.css?v={VER}">
@@ -124,7 +131,7 @@ def fusszeile():
         <a href="impressum.html" style="font-size:.84rem;color:var(--paper-mute)">Impressum</a>
         <a href="datenschutz.html" style="font-size:.84rem;color:var(--paper-mute)">Datenschutz</a>
       </span>
-      <span class="mono" style="font-size:.72rem;color:var(--line)">$ gastronomie --digital --ki</span>
+      <span class="mono" style="font-size:.72rem;color:var(--paper-mute)">HOTELLERIE · GASTRONOMIE · TECHNOLOGIE</span>
     </div>
   </div>
 </footer>'''

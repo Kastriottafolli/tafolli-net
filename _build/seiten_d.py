@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from bausteine import *
+from companies import company_link
 
 
 def referenzen():
@@ -15,7 +16,7 @@ def referenzen():
     ]
     haus_karten = "".join(f'''<div class="card pop ticks" style="--i:{i}">
         <p class="tag" style="color:var(--acc);margin-bottom:12px">{o}</p>
-        <h3 class="d3" style="font-size:1.2rem;margin-bottom:10px">{t}</h3>
+        <h3 class="d3" style="font-size:1.2rem;margin-bottom:10px">{company_link(t)}</h3>
         <p style="color:var(--paper-dim);font-size:.9rem">{d}</p></div>''' for i, (t, o, d) in enumerate(haeuser))
     getraenke = ["Krombacher", "Bitburger", "Heineken", "Jägermeister", "Campari Deutschland", "Getränke Nordmann",
                  "Chefs Culinar", "Rügen Cash &amp; Carry", "Pernod Ricard", "Staatlich Fachingen", "Melitta Kaffee", "Monin",

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from bausteine import *
+from companies import company_link
+from services import catalogue
 
 
 def ueber_mich():
@@ -116,7 +118,7 @@ def werdegang():
     tl = "".join(f'''<div class="tl-item rise">
         <p class="tl-jahr">{j}</p>
         <h3 class="d3" style="font-size:clamp(1.2rem,2vw,1.6rem)">{t}</h3>
-        <p class="tl-ort">{o}</p>
+        <p class="tl-ort">{company_link(o)}</p>
         <p style="color:var(--paper-dim);font-size:.95rem;max-width:72ch">{d}</p>
         <div class="tl-chips">{"".join(f'<span class="chip">{c}</span>' for c in ch)}</div>
       </div>''' for j, t, o, d, ch in stationen)
@@ -233,7 +235,7 @@ def leistungen():
 
     inhalt = hero_klein("03", "Leistungen", [["Beratung aus der Praxis,"], ["Umsetzung aus einer Hand."]],
         "Ich berate nicht aus dem Lehrbuch, sondern aus fünfzehn Jahren Verantwortung für Häuser, Teams und Zahlen. Und ich setze um, statt nur zu empfehlen.",
-        ["11 Leistungen", "aus einer Hand", "bundesweit"]) + f'''
+        ["22 Leistungsbereiche", "aus einer Hand", "bundesweit"]) + f'''
 <section class="pad">
   <div class="shell">
     {kicker("01", "Drei Schwerpunkte")}
@@ -250,8 +252,8 @@ def leistungen():
 <section class="pad" style="background:var(--ink-2)">
   <div class="shell">
     {kicker("02", "Das gesamte Spektrum")}
-    <h2 class="d2 wipe recede-exit" style="margin:20px 0 clamp(40px,5vw,64px)">{wipe([["Elf Leistungen,"], ["alle aus einer Hand."]])}</h2>
-    {karten_grid(spektrum, "g3")}
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 clamp(40px,5vw,64px)">{wipe([["Das ganze Portfolio."], ["Jedes Thema im Detail."]])}</h2>
+    {catalogue()}
   </div>
 </section>
 
@@ -267,5 +269,5 @@ def leistungen():
         "Beratungsgespräch vereinbaren", "kontakt.html", "Rechner öffnen", "rechner.html")
 
     return seite_rahmen("leistungen.html", "Leistungen · Kastriot Tafolli",
-        "F&B-Beratung, Online-Marketing, Webentwicklung, KI-Automatisierung und TeamO: elf Leistungen für Hotels und Restaurants aus einer Hand.",
+        "F&B-Beratung, Online-Marketing, Webentwicklung, KI-Automatisierung und TeamO: 22 Leistungsbereiche für Hotels und Restaurants aus einer Hand.",
         "leistungen.html", inhalt)
