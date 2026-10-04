@@ -1,4 +1,5 @@
 """Editorial service catalogue. Each topic has its own substantial, linked page."""
+from icons import iconize
 import html
 from bausteine import seite_rahmen, cta_block
 from seo import region
@@ -216,5 +217,5 @@ def page(s):
 
 def build(root):
     for s in SERVICES:
-        (root/(s['slug']+'.html')).write_text(page(s))
+        (root/(s['slug']+'.html')).write_text(iconize(page(s)))
         print('  '+s['slug']+'.html [Leistung]')

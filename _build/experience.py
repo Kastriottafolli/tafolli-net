@@ -1,4 +1,5 @@
 """Dependency-free, localized automation experience. Built from source."""
+from icons import iconize
 import hashlib, html, json, pathlib
 from inhalt_de import DE
 from inhalt_en import EN
@@ -89,9 +90,9 @@ def build():
     for L in LANGUAGES:
         target = ROOT / (L['dir']+'/index.html' if L['dir'] else 'index.html')
         target.parent.mkdir(parents=True,exist_ok=True)
-        target.write_text(page(L))
+        target.write_text(iconize(page(L)))
         print(f'  {target.relative_to(ROOT)} [{L["name"]}]')
-    (ROOT/'ki-automatisierung.html').write_text(page(DE,detail=True))
+    (ROOT/'ki-automatisierung.html').write_text(iconize(page(DE,detail=True)))
     print('  ki-automatisierung.html [Deutsch]')
 
 if __name__ == '__main__':

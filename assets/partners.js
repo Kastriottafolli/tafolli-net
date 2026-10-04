@@ -22,7 +22,10 @@
     function sync(){
       const globalPaused=document.documentElement.classList.contains('motion-paused');
       const stopped=paused||globalPaused;button.disabled=globalPaused;
-      button.setAttribute('aria-pressed',String(stopped));button.setAttribute('aria-label',section.dataset[stopped?'playLabel':'pauseLabel']);button.querySelector('span').textContent=stopped?'▷':'Ⅱ';
+      button.setAttribute('aria-pressed',String(stopped));
+      button.setAttribute('aria-label',section.dataset[stopped?'playLabel':'pauseLabel']);
+      const controlIcon=button.querySelector('use');
+      controlIcon.setAttribute('href',controlIcon.getAttribute('href').split('#')[0]+(stopped?'#play':'#pause'));
       if(shouldRun()&&!frame){position=viewport.scrollLeft;frame=requestAnimationFrame(tick);}
       else if(!shouldRun()&&frame){cancelAnimationFrame(frame);frame=0;last=0;}
     }
