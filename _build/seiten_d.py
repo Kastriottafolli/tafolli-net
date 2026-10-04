@@ -165,6 +165,8 @@ def datenschutz():
 <p>Die verwendeten Schriftarten Space Grotesk, IBM Plex Sans und JetBrains Mono sind fest auf dem Server dieser Website hinterlegt und werden von dort geladen. Es wird keine Verbindung zu Servern von Google oder anderen Anbietern aufgebaut, und es werden keine Daten an Dritte übertragen.</p>
 <h2>Cookies, Analyse und Werbung</h2>
 <p>Diese Website setzt keine Cookies. Es kommen keine Werkzeuge zur Reichweitenmessung, keine Analysedienste und keine Werbenetzwerke zum Einsatz. Es findet kein Profiling statt, und es werden keine Daten für Werbezwecke ausgewertet oder weitergegeben.</p>
+<h2>Die Logo-Animation</h2>
+<p>Damit die kurze Startanimation nicht bei jedem Seitenaufruf wiederholt wird, merkt sich Ihr Browser im Sitzungsspeicher (sessionStorage), ob sie bereits gezeigt wurde. Gespeichert wird nur eine Kennzeichnung, ohne Besucherprofil oder weitere Angaben. Diese Kennzeichnung wird nicht an einen Server übertragen und gilt nur für die Tab-Sitzung.</p>
 <h2>Die Rechner auf dieser Seite</h2>
 <p>Auf der Seite Rechner können Sie eigene Werte eingeben, etwa die Zahl der Anrufe pro Tag oder den jährlichen Getränkeeinkauf. Diese Berechnungen laufen vollständig in Ihrem Browser ab. Es findet keine Übertragung an einen Server statt, nichts wird gespeichert, und nach dem Schließen der Seite sind Ihre Eingaben verschwunden.</p>
 <h2>Kontaktaufnahme</h2>

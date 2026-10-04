@@ -1,5 +1,6 @@
 """Shared references and partner identity. Brand sources live beside local assets."""
 import html, json, pathlib
+from brand import lockup
 ROOT=pathlib.Path(__file__).resolve().parent.parent
 SOURCES=json.loads((ROOT/'assets/partners/sources.json').read_text())
 
@@ -50,7 +51,7 @@ ALL={p['key']:p for p in PROJECTS+GASTRO+TECH}
 
 
 def logo(p,base=''):
-    if p['key']=='tafolli':return '<span class="partner-own-logo" aria-hidden="true">TAFOLLI<span>✳</span></span>'
+    if p['key']=='tafolli':return '<span class="partner-own-logo" aria-hidden="true">'+lockup(base)+'</span>'
     filename=SOURCES[p['key']]['file']
     return f'<img class="partner-logo{ " partner-logo-mono" if p["mono"] else ""} partner-logo-{p["key"]}" src="{base}assets/partners/{filename}" width="240" height="96" alt="" loading="lazy" decoding="async">'
 

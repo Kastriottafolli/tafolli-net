@@ -2,9 +2,10 @@
 """Gemeinsame Bausteine fuer alle Unterseiten. Kopf- und Fusszeile sind
 identisch zur Startseite, damit die Seite wie aus einem Guss wirkt."""
 import hashlib, pathlib
+from brand import lockup
 
 WURZEL = pathlib.Path(__file__).resolve().parent.parent
-LOGO = '<span class="x-wordmark">TAFOLLI<span aria-hidden="true">✳</span></span>'
+LOGO = lockup()
 VER = hashlib.sha256(
     (WURZEL / 'assets/kt.css').read_bytes() + (WURZEL / 'assets/kt.js').read_bytes()
     + (WURZEL / 'assets/experience.css').read_bytes()
@@ -66,7 +67,8 @@ def seiten_kopf(titel, beschreibung, kanonisch_pfad):
 <meta property="og:url" content="{kanonisch}">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#f3f1e9">
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
 <link rel="preload" as="font" type="font/woff2" href="assets/schriften/space-grotesk-var.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/schriften/ibm-plex-sans-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/schriften/bodoni-moda-400-italic.woff2" crossorigin>

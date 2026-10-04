@@ -63,6 +63,7 @@ Prüfen:
     python3 _build/verify.py
     node --check assets/experience.js
     node --check assets/partners.js
+    node --check assets/brand.js
     node --check assets/kt.js
 
 Die Prüfung kontrolliert alle erzeugten Seiten, lokale Links und Anker,
@@ -84,3 +85,15 @@ Jede Karte verbindet das verlinkte Logo mit Funktion, Zeitraum, Verantwortungsum
 und einem konkreten Kundennutzen aus der vorhandenen Berufserfahrung. Die Logos
 kommen von offiziellen Websites; bei Cerês am Meer ist die heutige Marke A-ROSA
 mit einem Hinweis auf der Karte sichtbar. Es werden keine neuen Erfolgszahlen behauptet.
+
+Das TAFOLLI-Markenzeichen verbindet eine Gehirn-Silhouette mit einem T im
+Negativraum und einem warmen Signalpunkt. `_build/brand.py` erzeugt den gemeinsamen
+Logo-Auftritt und die lokalisierte Startanimation. Das Originalzeichen liegt
+optimiert unter `assets/brand/`; Navigation, Fußzeile, Referenzkarte und Favicons
+verwenden dieselbe Identität. `assets/brand.js` zeigt auf den drei Startseiten
+eine höchstens 1,8 Sekunden lange Animation beim ersten Einstieg pro Tab-Sitzung.
+Das Zeichen verbindet sich aus zwei Hälften und wandert in die Kopfzeile.
+Direkte Ankerlinks, Folgebesuche, reduzierte Bewegung und inaktive Tabs überspringen
+das Intro. Jede Interaktion beendet es sofort; Inhalt und Navigation bleiben
+zugänglich. Ohne JavaScript ist das Intro verborgen und das Logo statisch sichtbar.
+Die Sitzungsmarkierung speichert ausschließlich, ob das Intro bereits gezeigt wurde.
