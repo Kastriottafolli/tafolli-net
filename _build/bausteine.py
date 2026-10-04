@@ -1,29 +1,40 @@
 # -*- coding: utf-8 -*-
 """Gemeinsame Bausteine fuer alle Unterseiten. Kopf- und Fusszeile sind
 identisch zur Startseite, damit die Seite wie aus einem Guss wirkt."""
-import hashlib, pathlib
+import hashlib, pathlib, html
+from brand import lockup, intro
+from navigation import nav as site_nav, toggle as nav_toggle, breadcrumbs, TITLES
+from seo import metadata, structured, region, SERVICE_META
+from explore import explore, HUBS
 
 WURZEL = pathlib.Path(__file__).resolve().parent.parent
-LOGO = (pathlib.Path(__file__).parent / 'logo.svg').read_text()
+LOGO = lockup()
 VER = hashlib.sha256(
     (WURZEL / 'assets/kt.css').read_bytes() + (WURZEL / 'assets/kt.js').read_bytes()
+    + (WURZEL / 'assets/experience.css').read_bytes()
+    + (WURZEL / 'assets/brand.js').read_bytes()
+    + (WURZEL / 'assets/navigation.js').read_bytes()
 ).hexdigest()[:8]
 
 NAV = [
+    ("ki-automatisierung.html", "AI Automation"),
     ("ueber-mich.html", "Über mich"),
-    ("werdegang.html", "Werdegang"),
     ("leistungen.html", "Leistungen"),
     ("teamo-ki.html", "TeamO KI"),
     ("rechner.html", "Rechner"),
-    ("wissen.html", "Wissen"),
     ("kontakt.html", "Kontakt"),
 ]
-FOOT_L1 = NAV + [("referenzen.html", "Referenzen")]
+FOOT_L1 = NAV + [("werdegang.html", "Werdegang"), ("wissen.html", "Wissen"), ("referenzen.html", "Referenzen")]
 FOOT_L2 = [
     ("fb-beratung.html", "F&B-Beratung"),
     ("online-marketing.html", "Online-Marketing & Web"),
-    ("index.html#ki", "KI-Automatisierung"),
-    ("teamo-ki.html", "KI-Lösungen"),
+    ("ki-automatisierung.html", "KI-Automatisierung"),
+    ("ki-entwicklung.html", "KI-Entwicklung"),
+    ("cybersecurity.html", "Cybersecurity"),
+    ("digitalisierung.html", "Digitalisierung"),
+    ("softwareentwicklung.html", "Softwareentwicklung"),
+    ("lieferantenvereinbarungen.html", "Lieferantenvereinbarungen"),
+    ("rueckverguetungen.html", "Rückvergütungen"),
     ("rechner.html", "Rechner"),
 ]
 
@@ -34,7 +45,7 @@ def wipe(zeilen, start=0, klasse="wipe"):
         teile = zeile if isinstance(zeile, list) else [zeile]
         for t in teile:
             out.append(f'<span><span style="--i:{start + len(out)}">{t}</span></span>')
-    return "".join(out)
+    return " ".join(out)
 
 
 def kicker(nummer, text):
@@ -43,6 +54,9 @@ def kicker(nummer, text):
 
 def seiten_kopf(titel, beschreibung, kanonisch_pfad):
     """<head>-Block. kanonisch_pfad z.B. 'ueber-mich.html'."""
+    titel, beschreibung = metadata(kanonisch_pfad, titel, beschreibung)
+    schema = structured(kanonisch_pfad, titel, beschreibung)
+    titel, beschreibung = html.escape(titel), html.escape(beschreibung)
     kanonisch = f"https://tafolli.net/{kanonisch_pfad}"
     return f'''<!doctype html>
 <html lang="de">
@@ -59,38 +73,25 @@ def seiten_kopf(titel, beschreibung, kanonisch_pfad):
 <meta property="og:title" content="{titel}">
 <meta property="og:description" content="{beschreibung}">
 <meta property="og:url" content="{kanonisch}">
-<meta name="twitter:card" content="summary">
-<meta name="theme-color" content="#08090B">
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta property="og:image" content="https://tafolli.net/assets/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+{schema}
+<meta name="theme-color" content="#f3f1e9">
+<link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+<link rel="preload" as="image" href="assets/brand/logo-mark.webp" fetchpriority="high">
 <link rel="preload" as="font" type="font/woff2" href="assets/schriften/space-grotesk-var.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/schriften/ibm-plex-sans-400.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/schriften/bodoni-moda-400-italic.woff2" crossorigin>
 <link rel="stylesheet" href="assets/schriften.css?v={VER}">
 <link rel="stylesheet" href="assets/kt.css?v={VER}">
+<link rel="stylesheet" href="assets/experience.css?v={VER}">
 </head>'''
 
 
-def kopfzeile(aktiv):
-    nav = "".join(
-        f'<a href="{h}"{" aria-current=\"true\"" if h == aktiv else ""}>{t}</a>'
-        for h, t in NAV)
-    blatt = nav
-    sprachwahl = (
-        '<a href="/" hreflang="de" aria-current="true" lang="de" title="Deutsch">DE</a>'
-        '<a href="/en/" hreflang="en" lang="en" title="English">EN</a>'
-        '<a href="/sq/" hreflang="sq" lang="sq" title="Shqip">SQ</a>'
-    )
-    return f'''<header class="bar">
-  <div class="shell bar-in">
-    <a href="index.html" style="flex-shrink:0;color:var(--paper)" aria-label="Kastriot Tafolli">{LOGO}</a>
-    <nav class="nav" aria-label="Seiten">{nav}</nav>
-    <div style="display:flex;align-items:center;gap:11px;flex-shrink:0">
-      <nav class="lang" aria-label="Sprache / Language / Gjuha">{sprachwahl}</nav>
-      <a href="kontakt.html" class="btn btn-1" style="padding:.8em 1.3em;font-size:.85rem">Gespräch</a>
-      <button type="button" class="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="sheet">
-        <span></span><span></span><span></span></button>
-    </div>
-  </div>
-  <div class="sheet" id="sheet">{blatt}</div>
-</header>'''
+def kopfzeile(aktiv, base=""):
+    sprachwahl = '<a href="/" hreflang="de" lang="de" title="Deutsch">DE</a><a href="/en/" hreflang="en" lang="en" title="English">EN</a><a href="/sq/" hreflang="sq" lang="sq" title="Shqip">SQ</a>'
+    return f'''<header class="bar site-header"><div class="shell bar-in"><a class="tafolli-brand-link" href="{base}index.html" aria-label="Kastriot Tafolli · Startseite">{lockup(base)}</a>{site_nav(aktiv, base)}<div class="site-header-controls"><nav class="lang" aria-label="Sprache / Language / Gjuha">{sprachwahl}</nav><a href="{base}kontakt.html" class="btn btn-1 site-talk">Gespräch ↗</a>{nav_toggle()}</div></div></header>'''
 
 
 def fusszeile():
@@ -103,7 +104,7 @@ def fusszeile():
     <div class="foot-grid">
       <div>
         <div style="color:var(--paper);margin-bottom:18px">{LOGO}</div>
-        <p style="color:var(--paper-dim);font-size:.9rem;max-width:34ch;margin-bottom:18px">Gastronomische Führung, Digitalisierung, KI-Automatisierung und KI-Lösungen für Hotellerie und Gastronomie.</p>
+        <p style="color:var(--paper-dim);font-size:.9rem;max-width:34ch;margin-bottom:18px">Gastronomische Führung, Digitalisierung und KI-Lösungen für Hotellerie und Unternehmen in Deutschland, Österreich, der Schweiz und Kosovo.</p>
         <p class="tag" style="color:var(--acc);display:flex;align-items:center;gap:9px">
           <span class="dot"></span> TB SOLUTIONS · ONLINE</p>
       </div>
@@ -123,24 +124,34 @@ def fusszeile():
         <a href="impressum.html" style="font-size:.84rem;color:var(--paper-mute)">Impressum</a>
         <a href="datenschutz.html" style="font-size:.84rem;color:var(--paper-mute)">Datenschutz</a>
       </span>
-      <span class="mono" style="font-size:.72rem;color:var(--line)">$ gastronomie --digital --ki</span>
+      <span class="mono" style="font-size:.72rem;color:var(--paper-mute)">HOTELLERIE · GASTRONOMIE · TECHNOLOGIE</span>
     </div>
   </div>
 </footer>'''
 
 
 def seite_rahmen(aktiv, titel, beschreibung, kanonisch_pfad, inhalt):
+    extra = explore(kanonisch_pfad) if kanonisch_pfad in HUBS else ''
+    if kanonisch_pfad.removesuffix('.html') in SERVICE_META and 'class="region-section"' not in inhalt:
+        extra += region(service=TITLES[kanonisch_pfad])
+    if extra:
+        position = inhalt.rfind('<section class="pad" style="overflow:hidden">')
+        if position < 0: position = len(inhalt)
+        inhalt = inhalt[:position] + extra + inhalt[position:]
     return f'''{seiten_kopf(titel, beschreibung, kanonisch_pfad)}
 <body>
+{intro()}
 <div class="grain" aria-hidden="true"></div>
 
 <a href="#inhalt" class="btn btn-1" style="position:absolute;left:-9999px;top:0;z-index:200"
    onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Zum Inhalt springen</a>
 
-{kopfzeile(aktiv)}
+{kopfzeile(kanonisch_pfad)}
 
-<main id="inhalt">{inhalt}</main>
+<main id="inhalt">{breadcrumbs(kanonisch_pfad)}{inhalt}</main>
 {fusszeile()}
+<script src="assets/navigation.js?v={VER}" defer></script>
+<script src="assets/brand.js?v={VER}" defer></script>
 <script src="assets/kt.js?v={VER}" defer></script>
 </body>
 </html>

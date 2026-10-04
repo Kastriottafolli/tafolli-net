@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from bausteine import *
+from services import link
 
 
 def fb_beratung():
@@ -82,6 +83,8 @@ def fb_beratung():
 </section>''' + cta_block("// nächster schritt", [["Lassen Sie mich einen Blick"], ["auf Ihre Verträge werfen."]],
         "Ein Gespräch, eine ehrliche Einschätzung. Wenn nichts zu holen ist, sage ich Ihnen das.",
         "Beratungsgespräch vereinbaren", "kontakt.html", "Rückvergütung berechnen", "rechner.html#einkauf")
+    inhalt += '<section class="service-section"><div class="shell"><p class="tag">EINZELNE LEISTUNGEN IM DETAIL</p><h2 class="d2">Vertiefen Sie Ihr Thema.</h2><div class="portfolio-links">' + "".join(link(slug) for slug in ['lieferantenvereinbarungen', 'getraenkevertraege', 'rueckverguetungen', 'wareneinsatz-kalkulation', 'inventur-warenwirtschaft', 'interim-fb-management', 'revenue-controlling', 'personal-recruiting']) + '</div></div></section>'
+
     return seite_rahmen("leistungen.html", "F&amp;B-Beratung für Hotels und Restaurants · Kastriot Tafolli",
         "F&B-Beratung aus der Praxis: Getränke- und Lieferverträge, Rückvergütungen, Wareneinsatz, Kalkulation und externe F&B-Leitung auf Zeit.",
         "fb-beratung.html", inhalt)
@@ -157,6 +160,8 @@ def online_marketing():
 </section>''' + cta_block("// nächster schritt", [["Wie sichtbar ist"], ["Ihr Haus wirklich?"]],
         "Ich sehe mir Ihre Seite und Ihre Sichtbarkeit an und sage Ihnen konkret, wo die größten Lücken sind.",
         "Beratungsgespräch vereinbaren", "kontakt.html", "Provision berechnen", "rechner.html#direkt")
+    inhalt += '<section class="service-section"><div class="shell"><p class="tag">EINZELNE LEISTUNGEN IM DETAIL</p><h2 class="d2">Vertiefen Sie Ihr Thema.</h2><div class="portfolio-links">' + "".join(link(slug) for slug in ['webdesign', 'suchmaschinenoptimierung', 'domain-hosting-email', 'social-media', 'foto-video']) + '</div></div></section>'
+
     return seite_rahmen("leistungen.html", "Online-Marketing und Webentwicklung · Kastriot Tafolli",
         "Website, SEO, Google Ads, Social Media, Foto und Video für Hotels und Restaurants. Sichtbarkeit, die Direktbuchungen bringt statt Portalprovision.",
         "online-marketing.html", inhalt)

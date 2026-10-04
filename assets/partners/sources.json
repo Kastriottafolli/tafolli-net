@@ -1,0 +1,243 @@
+{
+  "tafolli-glass": {
+    "file": "tafolli-glass.png",
+    "source": "https://www.tafolliglass.net/assets/img/logo-tafolli-glass-white.png",
+    "bytes": 75850,
+    "retrieved": "2026-10-04"
+  },
+  "wochenmarkt": {
+    "file": "wochenmarkt.png",
+    "source": "https://restaurant-wochenmarkt.de/wp-content/uploads/2021/06/cropped-wochenmarkt_restaurant_binz_ruegen_logo_01.png",
+    "bytes": 23632,
+    "retrieved": "2026-10-04"
+  },
+  "mel-maler": {
+    "file": "mel-maler.svg",
+    "source": "https://www.mel-maler.de/assets/mel-logo.svg",
+    "bytes": 21211,
+    "retrieved": "2026-10-04"
+  },
+  "panorama": {
+    "file": "panorama.svg",
+    "source": "https://www.panorama-hotel-lohme.de/wp-content/uploads/2020/10/logo.svg",
+    "bytes": 204650,
+    "retrieved": "2026-10-04"
+  },
+  "krombacher": {
+    "file": "krombacher.svg",
+    "source": "https://www.krombacher.de/static/img/whitelabel/krombacher-reloaded/logo.svg",
+    "bytes": 7806,
+    "retrieved": "2026-10-04"
+  },
+  "bitburger": {
+    "file": "bitburger.png",
+    "source": "https://bitburger-group.bynder.com/transform/3a71b013-d295-4f7f-9785-16e8a2dbbc44/BIT_Markenlogo_Kompact_4cS",
+    "bytes": 162378,
+    "retrieved": "2026-10-04"
+  },
+  "heineken": {
+    "file": "heineken.svg",
+    "source": "https://www.heineken.com/media/1cpdgi55/heineken-logo.svg",
+    "bytes": 13801,
+    "retrieved": "2026-10-04"
+  },
+  "jaegermeister": {
+    "file": "jaegermeister.png",
+    "source": "https://images.ctfassets.net/lzmdclvz8tzc/74LNqO5rkKI1iBJura9by0/75bbdc4f91c51ce39b5158aed47bbcd7/Ja_germeister_Logo.png",
+    "bytes": 154760,
+    "retrieved": "2026-10-04"
+  },
+  "campari": {
+    "file": "campari.webp",
+    "source": "https://www.campari.com/wp-content/uploads/sites/3/2026/01/logo-campari-main-white-1.webp",
+    "bytes": 2906,
+    "retrieved": "2026-10-04"
+  },
+  "nordmann": {
+    "file": "nordmann.png",
+    "source": "https://getraenke-nordmann.de/wp-content/uploads/2024/06/Getraenke-Nordmann-Logo.png",
+    "bytes": 23358,
+    "retrieved": "2026-10-04"
+  },
+  "chefs-culinar": {
+    "file": "chefs-culinar.svg",
+    "source": "https://www.chefsculinar.de/chefsculinar/ds_img/layout/logocc-wlf.svg",
+    "bytes": 18398,
+    "retrieved": "2026-10-04"
+  },
+  "ruegen-cash-carry": {
+    "file": "ruegen-cash-carry.png",
+    "source": "https://ruegencc-webshop.de/Custom/media/logo.png",
+    "bytes": 26809,
+    "retrieved": "2026-10-04"
+  },
+  "pernod-ricard": {
+    "file": "pernod-ricard.svg",
+    "source": "https://www.pernod-ricard.com/themes/custom/pr2021_front/assets/images/logo-black.svg",
+    "bytes": 34862,
+    "retrieved": "2026-10-04"
+  },
+  "fachingen": {
+    "file": "fachingen.png",
+    "source": "https://www.fachingen.de/api/media/file/logo.png",
+    "bytes": 10829,
+    "retrieved": "2026-10-04"
+  },
+  "monin": {
+    "file": "monin.png",
+    "source": "https://monin1912.com/cdn/shop/files/LOGO_MONIN_ONE-COLOR_versions_RGB_OK_Brown_903065d2-8711-417f-98ce-ba7ea89964f0.png?v=1775727115&width=400",
+    "bytes": 8470,
+    "retrieved": "2026-10-04"
+  },
+  "mionetto": {
+    "file": "mionetto.svg",
+    "source": "https://www.cheers-to-you.de/bilder/intern/markenlogos/mionetto-logo-neu2025.svg",
+    "bytes": 636272,
+    "retrieved": "2026-10-04"
+  },
+  "granini": {
+    "file": "granini.jpg",
+    "source": "https://a.storyblok.com/f/243238/441x159/d4378cd795/granini_logo.jpg",
+    "bytes": 39716,
+    "retrieved": "2026-10-04"
+  },
+  "bauer": {
+    "file": "bauer.png",
+    "source": "https://static.wixstatic.com/media/208d63_762a22cadfcd495eaef5855d0f2751b8~mv2.png",
+    "bytes": 11025,
+    "retrieved": "2026-10-04"
+  },
+  "coca-cola": {
+    "file": "coca-cola.png",
+    "source": "https://www.coca-cola.com/content/dam/onexp/de/de/home-images/deutschland-coca-cola-logo_black_600x96.png",
+    "bytes": 15158,
+    "retrieved": "2026-10-04"
+  },
+  "schweppes": {
+    "file": "schweppes.svg",
+    "source": "https://www.schweppes.de/static/img/whitelabel/schweppes-boostup/logo.svg",
+    "bytes": 9493,
+    "retrieved": "2026-10-04"
+  },
+  "rauch": {
+    "file": "rauch.png",
+    "source": "https://www.rauch.cc/typo3temp/assets/_processed_/9/f/csm_logo-allgemein_8dcd78f388.png",
+    "bytes": 3819,
+    "retrieved": "2026-10-04"
+  },
+  "red-bull": {
+    "file": "red-bull.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/en/f/f5/RedBullEnergyDrink.svg",
+    "retrieved": "2026-10-04"
+  },
+  "google": {
+    "file": "google.svg",
+    "source": "https://www.gstatic.com/marketing-cms/assets/images/f5/d3/a7f9db7045429cb6dc6be56bdcbe/google-logo-about.svg",
+    "bytes": 3050,
+    "retrieved": "2026-10-04"
+  },
+  "meta": {
+    "file": "meta.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg",
+    "retrieved": "2026-10-04"
+  },
+  "android": {
+    "file": "android.svg",
+    "source": "https://www.gstatic.com/marketing-cms/assets/images/cb/7d/6ef7637c46a495e29aa48ad7a067/android-wordmark.svg",
+    "bytes": 2407,
+    "retrieved": "2026-10-04"
+  },
+  "microsoft": {
+    "file": "microsoft.png",
+    "source": "https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png",
+    "bytes": 4054,
+    "retrieved": "2026-10-04"
+  },
+  "dreamhost": {
+    "file": "dreamhost.svg",
+    "source": "https://www.dreamhost.com/images/svgs/dh/dh-logo.white.svg",
+    "bytes": 6800,
+    "retrieved": "2026-10-04"
+  },
+  "ab-bau": {
+    "file": "ab-bau.svg",
+    "source": "https://www.ab-bau23.de/",
+    "extraction": "Official header SVG",
+    "retrieved": "2026-10-04"
+  },
+  "apple": {
+    "file": "apple.svg",
+    "source": "https://www.apple.com/de/",
+    "extraction": "Official header SVG",
+    "retrieved": "2026-10-04"
+  },
+  "anthropic": {
+    "file": "anthropic.svg",
+    "source": "https://www.anthropic.com/",
+    "extraction": "Official header SVG",
+    "retrieved": "2026-10-04"
+  },
+  "melitta": {
+    "file": "melitta.svg",
+    "source": "https://www.melitta.de/",
+    "extraction": "Official header SVG",
+    "retrieved": "2026-10-04"
+  },
+  "squarespace": {
+    "file": "squarespace.svg",
+    "source": "https://www.squarespace.com/",
+    "extraction": "Official header SVG",
+    "retrieved": "2026-10-04"
+  },
+  "grok": {
+    "file": "grok.svg",
+    "source": "https://x.ai/",
+    "extraction": "Official header SVG",
+    "retrieved": "2026-10-04"
+  },
+  "openai": {
+    "file": "openai.svg",
+    "source": "https://cdn.openai.com/brand/OpenAI-Logos-2025.zip",
+    "extraction": "OpenAI-black-wordmark.svg",
+    "retrieved": "2026-10-04"
+  },
+  "hotel-schluchsee": {
+    "file": "schluchsee.svg",
+    "source": "https://www.vjz.de/",
+    "bytes": 9480,
+    "retrieved": "2026-10-04",
+    "extraction": "Inline SVG #logo-vjz from official website"
+  },
+  "hotel-raulff": {
+    "file": "raulff.png",
+    "source": "https://www.raulff-hotels.de/wp-content/uploads/sites/275/2022/08/cropped-raulffHotels-Logo-Quer-RGB-72dpi.png",
+    "bytes": 6396,
+    "retrieved": "2026-10-04"
+  },
+  "hotel-roesing": {
+    "file": "roesing.svg",
+    "source": "https://www.roesing-touristik.de/assets/img/logos/logo-rhr-roesing-hotels-resorts.svg",
+    "bytes": 9193,
+    "retrieved": "2026-10-04"
+  },
+  "hotel-binz": {
+    "file": "vier-jahreszeiten-binz.png",
+    "source": "https://www.vier-jahreszeiten.de/wp-content/uploads/2020/10/logo-preloader.png",
+    "bytes": 1483,
+    "retrieved": "2026-10-04"
+  },
+  "hotel-ceres": {
+    "file": "ceres.webp",
+    "source": "https://arosahotels.de/_Resources/Persistent/9dfaece5c01dfd848419ddb277ca3de76c8f5c9e/ARO_Logo_Bronze_oSchutzraum_Barriere_Web-1500x280.webp",
+    "bytes": 31154,
+    "retrieved": "2026-10-04",
+    "extraction": "Current hotel brand A-ROSA on official Ceres am Meer page; career station predates brand change"
+  },
+  "hotel-grand-binz": {
+    "file": "grand-hotel-binz.svg",
+    "source": "https://www.grandhotelbinz.com/de/",
+    "bytes": 24682,
+    "retrieved": "2026-10-04",
+    "extraction": "Inline header SVG from official website"
+  }
+}

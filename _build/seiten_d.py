@@ -1,63 +1,37 @@
 # -*- coding: utf-8 -*-
 from bausteine import *
+from hotels import hotel_cards
+from partners import PROJECTS, GASTRO, TECH, tiles
 
 
 def referenzen():
-    kunden = ["A&amp;B Bau", "Bukowina", "Restaurant Wochenmarkt", "Bistro Cappuccino", "Salsa Latino",
-              "El Restaurante", "Hotel Panorama, Lohme", "Mel Mahler Renovierungsarbeiten", "MBJ, My Jasharaj"]
-    haeuser = [
-        ("Hotel Vier Jahreszeiten am Schluchsee", "Schwarzwald", "5 Sterne Plus, Wellness- und Familienresort, fünf F&B-Outlets"),
-        ("Raulff-Hotels OHG", "Rügen", "Zwei Häuser, 267 Zimmer, sechs Outlets, Verantwortung für die gesamte Gruppe"),
-        ("Rösing Touristik GmbH", "Rügen", "Drei Hotels und ein Resort mit fünf Restaurants"),
-        ("Vier Jahreszeiten, Meersinn & Suite Hotel", "Ostseebad Binz", "Drei Hotels, sieben Outlets, ausgezeichnetes Sterne-Restaurant"),
-        ("Cerês am Meer", "Ostseebad Binz", "5 Sterne Superior Designhotel mit Michelin-Stern-Restaurant"),
-        ("Grand Hotel Binz", "Ostseebad Binz", "Restaurant, Bar, Frühstück, Room Service und Bankett"),
-    ]
-    haus_karten = "".join(f'''<div class="card pop ticks" style="--i:{i}">
-        <p class="tag" style="color:var(--acc);margin-bottom:12px">{o}</p>
-        <h3 class="d3" style="font-size:1.2rem;margin-bottom:10px">{t}</h3>
-        <p style="color:var(--paper-dim);font-size:.9rem">{d}</p></div>''' for i, (t, o, d) in enumerate(haeuser))
-    getraenke = ["Krombacher", "Bitburger", "Heineken", "Jägermeister", "Campari Deutschland", "Getränke Nordmann",
-                 "Chefs Culinar", "Rügen Cash &amp; Carry", "Pernod Ricard", "Staatlich Fachingen", "Melitta Kaffee", "Monin",
-                 "Mionetto", "Granini", "Bauer Säfte", "Coca-Cola", "Schweppes", "Rauch Säfte", "Red Bull"]
-    technik = ["Google", "Meta", "Apple", "Android", "OpenAI", "Anthropic", "Grok", "Microsoft", "Squarespace", "DreamHost"]
-    wand = lambda xs: '<div class="wand rise">' + "".join(f"<span>{x}</span>" for x in xs) + '</div>'
-
-    inhalt = hero_klein("05", "Referenzen", [["Häuser, Betriebe"], ["und Partner."]],
-        "Von 5-Sterne-Resorts mit mehreren hundert Mitarbeitenden bis zum Bistro mit acht. Und die Lieferanten und Technologiepartner, mit denen ich täglich arbeite.",
-        ["6 Häuser in Verantwortung", "9 Kunden", "29 Partner"]) + f'''
-<section class="pad">
-  <div class="shell">
-    {kicker("01", "Kunden")}
-    <h2 class="d2 wipe recede-exit" style="margin:20px 0 clamp(40px,5vw,64px)">{wipe([["Betriebe, die ich mit"], ["TB Solutions begleite."]])}</h2>
-    {wand(kunden)}
-    <p class="rise" style="color:var(--paper-mute);font-size:.88rem;margin-top:22px;max-width:70ch">Weitere Referenzen nenne ich auf Anfrage und nur mit Zustimmung der jeweiligen Häuser. Zahlen und interne Details bleiben grundsätzlich vertraulich.</p>
-  </div>
-</section>
-
-<section class="pad" style="background:var(--ink-2)">
-  <div class="shell">
-    {kicker("02", "Stationen")}
-    <h2 class="d2 wipe recede-exit" style="margin:20px 0 clamp(40px,5vw,64px)">{wipe([["Häuser, für die ich"], ["Verantwortung getragen habe."]])}</h2>
-    <div class="g3 pop-wrap">{haus_karten}</div>
-  </div>
-</section>
-
-<section class="pad">
-  <div class="shell">
-    {kicker("03", "Partner")}
-    <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([["Lieferanten, Marken und"], ["Technologiepartner."]])}</h2>
-    <p class="lede rise" style="--i:1;margin-bottom:clamp(40px,5vw,64px)">Über die Jahre in Einkauf, Vertragsverhandlung und Digitalprojekten entstandene Verbindungen. Sie sind der Grund, warum ich bei Konditionen und Systemen weiß, wo der Spielraum liegt.</p>
-    <p class="tag rise" style="color:var(--acc);margin-bottom:14px">// getränke- und gastronomiepartner</p>
-    {wand(getraenke)}
-    <p class="tag rise" style="color:var(--acc);margin:40px 0 14px">// technologiepartner</p>
-    {wand(technik)}
-  </div>
-</section>''' + cta_block("// nächster schritt", [["Werden Sie der"], ["nächste Eintrag."]],
-        "Ob großes Resort oder kleiner Betrieb: Erzählen Sie mir, woran es hakt.",
-        "Beratungsgespräch vereinbaren", "kontakt.html", "Leistungen ansehen", "leistungen.html")
-    return seite_rahmen("referenzen.html", "Referenzen und Partner · Kastriot Tafolli",
-        "Häuser in Verantwortung, Kunden von TB Solutions sowie Getränke- und Technologiepartner von Kastriot Tafolli.",
+    inhalt = hero_klein("05", "Referenzen & Partner", [["Gute Arbeit entsteht"], ["im Zusammenspiel."]],
+        "Betriebe, digitale Auftritte und ein Netzwerk aus Gastronomie und Technologie. Entdecken Sie die Menschen, Marken und Plattformen hinter meiner Arbeit.",
+        ["6 Referenz-Websites", "30 Marken & Partner", "6 berufliche Stationen"]) + '''
+    <div class="shell"><nav class="partner-jump" aria-label="Referenzbereiche"><a href="#betriebe">Referenz-Websites ↗</a><a href="#gastronomie">Gastronomiepartner ↗</a><a href="#technologie">Technologiepartner ↗</a><a href="#stationen">Berufliche Stationen ↗</a></nav></div>''' + f'''
+<section class="pad" id="betriebe" style="scroll-margin-top:110px"><div class="shell">
+ <div class="partner-section-intro"><div>{kicker("01", "Betriebe & Referenz-Websites")}<h2 class="d2" style="margin-top:20px">Betriebe, die ich mit<br> TB Solutions begleite.</h2></div><p>Eine Auswahl zum direkten Entdecken: Bau, Glas, Gastronomie und Hotellerie. Tafolli Glass ergänzt das Netzwerk als Partner; tafolli.net zeigt meinen eigenen digitalen Auftritt.</p></div>
+ {tiles(PROJECTS,projects=True)}
+ <p class="tag" style="color:var(--acc);margin-top:40px">Weitere Betriebe aus meiner Zusammenarbeit</p><div class="partner-more"><span>Bukowina</span><span>Bistro Cappuccino</span><span>Salsa Latino</span><span>El Restaurante</span><span>MBJ · My Jasharaj</span></div>
+</div></section>
+<section class="pad" id="gastronomie" style="background:var(--ink-2);scroll-margin-top:110px"><div class="shell">
+ <div class="partner-section-intro"><div>{kicker("02", "Getränke- und Gastronomiepartner")}<h2 class="d2" style="margin-top:20px">Vom guten Einkauf<br> zum guten Geschmack.</h2></div><p>Getränke, Kaffee, Foodservice und Großhandel: Mein F&B-Alltag verbindet Sortiment, Lieferfähigkeit und wirtschaftliche Konditionen. Hier finden Sie die genannten Marken und Lieferanten direkt.</p></div>
+ {tiles(GASTRO)}
+</div></section>
+<section class="pad" id="technologie" style="scroll-margin-top:110px"><div class="shell">
+ <div class="partner-section-intro"><div>{kicker("03", "Technologiepartner")}<h2 class="d2" style="margin-top:20px">Die Werkzeuge.<br> Die Möglichkeiten.</h2></div><p>KI, Software, Sichtbarkeit und Infrastruktur. Diese Plattformen und Werkzeuge gehören zu meinem digitalen Arbeitsumfeld. Welche davon in Ihrem Projekt sinnvoll sind, entscheidet der konkrete Bedarf.</p></div>
+ {tiles(TECH)}
+</div></section>
+<section class="pad" id="stationen" style="background:var(--ink-2);scroll-margin-top:110px"><div class="shell">
+ <div class="partner-section-intro"><div>{kicker("04", "Berufliche Stationen")}<h2 class="d2" style="margin-top:20px">Häuser, für die ich<br> Verantwortung getragen habe.</h2></div><p>Ich kenne Hotellerie aus der täglichen Verantwortung: Teams führen, Gastronomie gestalten und mehrere Häuser koordinieren. Diese Erfahrung bringe ich in Ihre Beratung ein – mit Verständnis für Ihre Gäste, Ihre Mitarbeitenden und die Wirtschaftlichkeit Ihres Betriebs.</p></div>
+ {hotel_cards()}
+ <div class="career-transfer"><div><p class="tag">Für Ihr nächstes Projekt</p><h3>Hotellerie verstehen.<br> Möglichkeiten umsetzen.</h3><p>Auf dieser Grundlage verbinde ich F&B-Beratung mit Digitalisierung und KI-Automatisierung: Lösungen, die zu Ihren Teams, Abläufen und wirtschaftlichen Zielen passen.</p></div><div class="career-transfer-actions"><a class="btn btn-1" href="kontakt.html">Über Ihren Betrieb sprechen ↗</a><a class="btn btn-2" href="fb-beratung.html">F&B-Beratung entdecken ↗</a></div></div>
+ <p style="color:var(--paper-mute);font-size:.88rem;margin-top:28px;max-width:70ch">Weitere Referenzen nenne ich auf Anfrage und nur mit Zustimmung der jeweiligen Häuser. Zahlen und interne Details bleiben grundsätzlich vertraulich.</p>
+</div></section>''' + cta_block("// nächster schritt", [["Gute Verbindungen."], ["Neue Möglichkeiten."]],
+        "Ob gemeinsames Projekt, ein konkreter Auftrag oder eine neue Zusammenarbeit: Erzählen Sie mir, was Sie bewegen möchten.",
+        "Zusammenarbeit besprechen", "kontakt.html", "Leistungen ansehen", "leistungen.html")
+    return seite_rahmen("referenzen.html", "Referenz-Websites & Partner · Kastriot Tafolli",
+        "Referenz-Websites von A&B Bau, Tafolli Glass, Restaurant Wochenmarkt, MEL und Panorama Hotel Lohme. Gastronomie- und Technologiepartner mit Logos und Links.",
         "referenzen.html", inhalt)
 
 
@@ -81,7 +55,7 @@ def kontakt():
 
     inhalt = hero_klein("08", "Kontakt", [["Lassen Sie"], ["uns sprechen."]],
         "Ob F&amp;B-Beratung, Website, Kampagne, KI-Automatisierung oder TeamO: Der erste Schritt ist immer ein Gespräch, und das kostet nichts.",
-        ["Rückruf am selben Tag", "bundesweit", "unverbindlich"]) + f'''
+        ["Deutschland · Österreich · Schweiz · Kosovo", "unverbindlich", "persönlich"]) + f'''
 <section class="pad">
   <div class="shell">
     <div class="split" style="align-items:start;gap:clamp(36px,5vw,90px)">
@@ -117,7 +91,7 @@ def kontakt():
     <div class="pipe rise">{pipe}</div>
     {zitat_block("Ich bin immer offen für ein unverbindliches Gespräch.", "Kastriot Tafolli")}
   </div>
-</section>''' + cta_block("// nächster schritt", [["Schreiben Sie mir"], ["zwei Sätze."]],
+</section>''' + region(anchor=True) + cta_block("// nächster schritt", [["Schreiben Sie mir"], ["zwei Sätze."]],
         "Art des Betriebs und woran es hakt. Mehr brauche ich für den Anfang nicht.",
         "E-Mail an info@tafolli.net", "mailto:info@tafolli.net", "0176 64616146", "tel:+4917664616146")
     return seite_rahmen("kontakt.html", "Kontakt · Kastriot Tafolli",
@@ -146,7 +120,6 @@ def impressum():
 <h2>Verantwortlich für den Inhalt</h2>
 <p>Verantwortlich für den Inhalt nach § 18 Absatz 2 Medienstaatsvertrag ist Kastriot Tafolli, Hauptstraße 1, 18609 Ostseebad Binz.</p>
 <h2>Streitbeilegung</h2>
-<p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung bereit, erreichbar unter <a href="https://ec.europa.eu/consumers/odr" rel="noopener">ec.europa.eu/consumers/odr</a>. Meine E-Mail-Adresse finden Sie oben in diesem Impressum.</p>
 <p>Ich bin nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
 <h2>Haftung für Inhalte</h2>
 <p>Als Diensteanbieter bin ich nach den allgemeinen Gesetzen für eigene Inhalte auf diesen Seiten verantwortlich. Ich bin jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben davon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden entsprechender Rechtsverletzungen entferne ich diese Inhalte umgehend.</p>
@@ -191,6 +164,8 @@ def datenschutz():
 <p>Die verwendeten Schriftarten Space Grotesk, IBM Plex Sans und JetBrains Mono sind fest auf dem Server dieser Website hinterlegt und werden von dort geladen. Es wird keine Verbindung zu Servern von Google oder anderen Anbietern aufgebaut, und es werden keine Daten an Dritte übertragen.</p>
 <h2>Cookies, Analyse und Werbung</h2>
 <p>Diese Website setzt keine Cookies. Es kommen keine Werkzeuge zur Reichweitenmessung, keine Analysedienste und keine Werbenetzwerke zum Einsatz. Es findet kein Profiling statt, und es werden keine Daten für Werbezwecke ausgewertet oder weitergegeben.</p>
+<h2>Die Logo-Animation</h2>
+<p>Die kurze Logo-Animation erscheint bei jedem Seitenaufruf und läuft vollständig in Ihrem Browser. Dafür werden keine Daten gespeichert oder an einen Server übertragen. Wenn Sie in Ihrem Gerät reduzierte Bewegung eingestellt haben, wird die Animation übersprungen.</p>
 <h2>Die Rechner auf dieser Seite</h2>
 <p>Auf der Seite Rechner können Sie eigene Werte eingeben, etwa die Zahl der Anrufe pro Tag oder den jährlichen Getränkeeinkauf. Diese Berechnungen laufen vollständig in Ihrem Browser ab. Es findet keine Übertragung an einen Server statt, nichts wird gespeichert, und nach dem Schließen der Seite sind Ihre Eingaben verschwunden.</p>
 <h2>Kontaktaufnahme</h2>
@@ -225,6 +200,8 @@ def datenschutz():
 def fehler404():
     return f'''{seiten_kopf("Seite nicht gefunden · Kastriot Tafolli", "Diese Seite gibt es nicht.", "404.html").replace('<meta name="author"', '<meta name="robots" content="noindex">\n<meta name="author"').replace('href="assets/', 'href="/assets/')}
 <body>
+{intro("de", "/")}
+{kopfzeile("404.html", "/")}
 <div class="grain" aria-hidden="true"></div>
 <main style="min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden">
   <div class="floor"></div>
@@ -242,6 +219,8 @@ def fehler404():
   </div>
 </main>
 <script>(function(){{var p=document.querySelector('pre');if(p)p.innerHTML=p.innerHTML.replace('{{pfad}}',location.pathname.replace(/[<>&]/g,''));}})();</script>
+<script src="/assets/navigation.js?v={VER}" defer></script>
+<script src="/assets/brand.js?v={VER}" defer></script>
 <script src="/assets/kt.js?v={VER}" defer></script>
 </body>
 </html>

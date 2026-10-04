@@ -1,0 +1,26 @@
+name: Check website
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 _build/bau_alles.py
+      - run: python3 _build/verify.py
+      - run: node --check assets/experience.js
+      - run: node --check assets/kt.js
+      - run: node --check assets/partners.js
+      - run: node --check assets/brand.js
+      - run: node --check assets/navigation.js
+      - run: git diff --exit-code
