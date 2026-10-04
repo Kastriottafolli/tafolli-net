@@ -1,6 +1,7 @@
 """Editorial service catalogue. Each topic has its own substantial, linked page."""
-import html, json
+import html
 from bausteine import seite_rahmen, cta_block
+from seo import region
 
 SERVICES=[]
 def add(slug,title,group,lead,problem,approach,modules,example,outputs,faq,related):
@@ -202,17 +203,15 @@ def page(s):
     modules=''.join(f'<article><span class="tag">0{i+1}</span><h3>{t}</h3><p>{b}</p></article>' for i,(t,b) in enumerate(s['modules']))
     faq=''.join(f'<details><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>' for q,a in s['faq'])
     related=''.join(link(slug) for slug in s['related'])
-    schema=json.dumps({'@context':'https://schema.org','@type':'Service','name':s['title'],'description':s['lead'],'url':'https://tafolli.net/'+path,'provider':{'@type':'Person','name':'Kastriot Tafolli','url':'https://tafolli.net/'}},ensure_ascii=False).replace('<','\\u003c')
-    crumbs=json.dumps({'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Startseite','item':'https://tafolli.net/'},{'@type':'ListItem','position':2,'name':'Leistungen','item':'https://tafolli.net/leistungen.html'},{'@type':'ListItem','position':3,'name':s['title'],'item':'https://tafolli.net/'+path}]},ensure_ascii=False)
-    content=f'''<section class="service-hero"><div class="shell"><nav class="service-breadcrumb" aria-label="Brotkrumennavigation"><a href="index.html">Startseite</a><span>/</span><a href="leistungen.html">Leistungen</a><span>/</span><span>{title}</span></nav><div class="service-hero-grid"><div><p class="tag">{s['group']} / KASTRIOT TAFOLLI</p><h1>{title}</h1><p class="lede">{s['lead']}</p><a href="kontakt.html" class="btn btn-1">Projekt besprechen ↗</a></div><div class="service-visual" aria-hidden="true"><span class="tag">PRAXIS × TECHNOLOGIE</span><span class="service-symbol">✳</span><div><span>VERSTEHEN</span><span>VERBINDEN</span><span>UMSETZEN</span></div></div></div><nav class="service-toc" aria-label="Auf dieser Seite"><a href="#ausgangslage">01 Ausgangslage</a><a href="#umfang">02 Leistungen</a><a href="#praxis">03 Praxis</a><a href="#ergebnisse">04 Zusammenarbeit</a><a href="#fragen">05 Fragen</a></nav></div></section>
+    content=f'''<section class="service-hero"><div class="shell"><div class="service-hero-grid"><div><p class="tag">{s['group']} / KASTRIOT TAFOLLI</p><h1>{title}</h1><p class="lede">{s['lead']}</p><a href="kontakt.html" class="btn btn-1">Projekt besprechen ↗</a></div><div class="service-visual" aria-hidden="true"><span class="tag">PRAXIS × TECHNOLOGIE</span><span class="service-symbol">✳</span><div><span>VERSTEHEN</span><span>VERBINDEN</span><span>UMSETZEN</span></div></div></div><nav class="service-toc" aria-label="Auf dieser Seite"><a href="#ausgangslage">01 Ausgangslage</a><a href="#umfang">02 Leistungen</a><a href="#praxis">03 Praxis</a><a href="#ergebnisse">04 Zusammenarbeit</a><a href="#fragen">05 Fragen</a></nav></div></section>
 <section class="service-section" id="ausgangslage"><div class="shell service-editorial"><div><p class="tag">01 / AUSGANGSLAGE</p><h2>Am Alltag<br>ansetzen.</h2></div><div><p>{s['problem']}</p><p>{s['approach']}</p></div></div></section>
 <section class="service-section service-tint" id="umfang"><div class="shell"><p class="tag">02 / WAS DAZUGEHÖRT</p><h2>Konkrete Arbeit.<br>Klare Zuständigkeiten.</h2><div class="service-modules">{modules}</div></div></section>
 <section class="service-section" id="praxis"><div class="shell service-editorial"><div><p class="tag">03 / EIN MÖGLICHER ANWENDUNGSFALL</p><h2>So wird es<br>praktisch.</h2></div><div class="service-example"><span aria-hidden="true">↗</span><p>{s['example']}</p><small>Zur Erklärung: ein beispielhafter Ablauf, keine Kundenerfolgsmeldung.</small></div></div></section>
 <section class="service-section service-tint" id="ergebnisse"><div class="shell service-editorial"><div><p class="tag">04 / ZUSAMMENARBEIT</p><h2>Was Sie<br>mitnehmen.</h2></div><div><ul class="service-outputs">{''.join('<li>'+t+'</li>' for t in s['outputs'])}</ul><p>Am Anfang steht ein Gespräch über Ihren Betrieb. Danach erhalten Sie ein Angebot mit Umfang, Prioritäten und Zuständigkeiten. Wir beginnen mit einem überschaubaren Auftrag und prüfen gemeinsam, wie die Ergebnisse in Ihren Alltag passen. Eine laufende Begleitung kann separat vereinbart werden.</p><p>Meine Perspektive verbindet operative Hotellerie und Gastronomie mit Softwareentwicklung und KI. So lassen sich technische Möglichkeiten und die Anforderungen von Küche, Service und Führung gemeinsam betrachten.</p></div></div></section>
 <section class="service-section" id="fragen"><div class="shell service-editorial"><div><p class="tag">05 / HÄUFIGE FRAGEN</p><h2>Gut zu<br>wissen.</h2></div><div class="service-faq">{faq}</div></div></section>
 <section class="service-section service-related"><div class="shell"><p class="tag">DAS PASST DAZU</p><h2>Weiterdenken.</h2><div class="portfolio-links">{related}</div><a class="lnk" href="leistungen.html">Das gesamte Portfolio ansehen ↗</a></div></section>'''
+    content+=region(service=s['title'])
     content+=cta_block('// nächster schritt',[["Lassen Sie uns"],["konkret werden."]],f'Erzählen Sie mir, was Sie bei {title} verbessern möchten. Gemeinsam klären wir den passenden ersten Schritt.','Gespräch vereinbaren','kontakt.html','Über mich','ueber-mich.html')
-    content+=f'<script type="application/ld+json">{schema}</script><script type="application/ld+json">{crumbs}</script>'
     return seite_rahmen('leistungen.html',title+' · Kastriot Tafolli',desc,path,content)
 
 def build(root):

@@ -2,6 +2,7 @@
 from bausteine import *
 from companies import company_link
 from services import catalogue
+from portrait import portrait
 
 
 def ueber_mich():
@@ -57,6 +58,7 @@ def ueber_mich():
         </div>
       </div>
       <div class="pop-wrap" style="position:sticky;top:110px">
+        {portrait()}
         <div class="card pop ticks">
           <p class="tag" style="color:var(--acc);margin-bottom:12px">// auf einen blick</p>
           <dl class="daten" style="margin:0">{daten}</dl>
@@ -217,7 +219,7 @@ def leistungen():
           <p style="color:var(--paper-dim);font-size:.94rem;max-width:64ch">{b}</p>
         </div>''' for i, (n, t, b) in enumerate(ablauf))
     faq = [
-        ("Arbeiten Sie nur auf Rügen und im Schwarzwald?", "Nein. Vor Ort bin ich regelmäßig an der Ostsee und im Hochschwarzwald, beraten und umgesetzt wird aber bundesweit. Vieles lässt sich aus der Ferne klären, für Verhandlungen und Bestandsaufnahmen komme ich ins Haus."),
+        ("Arbeiten Sie nur auf Rügen und im Schwarzwald?", "Nein. Ich biete alle Leistungen in Deutschland, Österreich, der Schweiz und Kosovo an. Analyse und digitale Zusammenarbeit sind aus der Ferne möglich; Termine im Haus stimmen wir passend zu Aufgabe und Verfügbarkeit ab."),
         ("Ist das nicht ein Interessenkonflikt zu Ihrer Festanstellung?", "Nein. TB Solutions ist ein angemeldetes Nebengewerbe, die Beratung findet außerhalb meiner Arbeitszeit statt und betrifft keine Wettbewerber meines Arbeitgebers. Diskretion in beide Richtungen ist selbstverständlich."),
         ("Wie schnell sehen wir Ergebnisse?", "Bei Getränke- und Lieferverträgen oft schon mit der nächsten Jahresvereinbarung, also innerhalb weniger Wochen. Bei Sichtbarkeit und Suchmaschinen dauert es meist drei bis sechs Monate, bei Google Ads dagegen wenige Tage."),
         ("Können wir einzelne Leistungen buchen statt ein Gesamtpaket?", "Ja. Viele Häuser starten mit einem einzelnen Thema, etwa der Website oder der Vertragsverhandlung, und erweitern später. Ein Gesamtpaket ist nie Voraussetzung."),
@@ -235,7 +237,7 @@ def leistungen():
 
     inhalt = hero_klein("03", "Leistungen", [["Beratung aus der Praxis,"], ["Umsetzung aus einer Hand."]],
         "Ich berate nicht aus dem Lehrbuch, sondern aus fünfzehn Jahren Verantwortung für Häuser, Teams und Zahlen. Und ich setze um, statt nur zu empfehlen.",
-        ["22 Leistungsbereiche", "aus einer Hand", "bundesweit"]) + f'''
+        ["22 Leistungsbereiche", "Deutschland · Österreich · Schweiz · Kosovo", "aus einer Hand"]) + f'''
 <section class="pad">
   <div class="shell">
     {kicker("01", "Drei Schwerpunkte")}
@@ -263,7 +265,7 @@ def leistungen():
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 clamp(40px,5vw,64px)">{wipe([["So läuft die"], ["Zusammenarbeit."]])}</h2>
     <div class="thread">{schritte}</div>
   </div>
-</section>''' + faq_block("04", "Häufige Fragen", [["Was Kunden"], ["vorher wissen wollen."]], faq) + cta_block(
+</section>''' + faq_block("04", "Häufige Fragen", [["Was Kunden"], ["vorher wissen wollen."]], faq) + region() + cta_block(
         "// nächster schritt", [["Welches Thema"], ["brennt am meisten?"]],
         "Sagen Sie mir in zwei Sätzen, wo es hakt, und ich sage Ihnen ehrlich, ob es sich lohnt.",
         "Beratungsgespräch vereinbaren", "kontakt.html", "Rechner öffnen", "rechner.html")

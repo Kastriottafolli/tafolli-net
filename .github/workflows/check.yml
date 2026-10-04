@@ -22,4 +22,5 @@ jobs:
       - run: node --check assets/kt.js
       - run: node --check assets/partners.js
       - run: node --check assets/brand.js
+      - run: node --check assets/navigation.js
       - run: git diff --exit-code

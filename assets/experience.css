@@ -376,3 +376,124 @@ body:not(.experience) .bar-in{height:88px}body:not(.experience) .lang{border:0;g
 .motion-paused .brand-intro,.motion-paused .brand-intro-flight{display:none!important}
 
 @media(max-width:360px){.x-menu-button{font-size:0!important;gap:0}}
+
+/* Shared navigation: the complete portfolio, four readable entry points. */
+.site-header{position:sticky;top:0;z-index:90;color:#20231f}
+.site-header .bar-in,.site-header .x-header-inner{gap:24px;position:static}
+.site-header-controls{display:flex;align-items:center;gap:18px;flex:none}
+.site-talk{padding:12px 18px!important;font-size:12px!important;white-space:nowrap}
+.site-navigation{display:flex;align-items:center;gap:28px;font-family:'Space Grotesk',sans-serif;color:#20231f}
+.site-nav-section{position:static}
+.site-nav-section>summary{display:flex;align-items:center;gap:9px;cursor:pointer;list-style:none;font-size:14px;font-weight:500;padding:24px 0;white-space:nowrap}
+.site-nav-section>summary::-webkit-details-marker{display:none}
+.site-nav-section>summary>span{font-size:18px;transition:transform .2s}
+.site-nav-section[open]>summary>span{transform:rotate(180deg)}
+.site-nav-section>summary[data-current],.site-nav-section[open]>summary{color:#4e6232}
+.site-nav-section[open]>summary{box-shadow:inset 0 -2px #4e6232}
+.site-nav-panel{position:absolute;top:100%;left:0;right:0;background:#f3f1e9;border-bottom:1px solid #20231f30;box-shadow:0 24px 40px #20231f14;padding:25px max(30px,calc((100vw - 1320px)/2));max-height:calc(100dvh - 100px);overflow-y:auto;overscroll-behavior:contain;animation:nav-arrive .2s ease-out}
+.site-nav-panel-top{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-bottom:20px;border-bottom:1px solid #20231f30}
+.site-nav-panel-top>span{font:10px/1.6 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:#4e6232}
+.site-nav-panel a{color:#20231f!important;text-decoration:none;display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:40px;padding:9px 0;font-size:14px;line-height:1.4;border-bottom:1px solid #20231f12;transition:color .2s,padding .2s;overflow-wrap:anywhere}
+.site-nav-panel a>span{color:#4e6232;flex:none}
+.site-nav-panel a:hover,.site-nav-panel a[aria-current=page]{color:#4e6232!important;padding-left:6px}
+.site-nav-panel a[aria-current=page]{font-weight:700}
+.site-nav-panel a::after{display:none!important}
+.site-nav-panel .site-nav-overview{font-size:14px;font-weight:500;border-bottom:0;min-height:44px;padding:10px 18px;background:#e6eadb;gap:22px}
+.site-nav-columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:38px;padding:28px 0}
+.site-nav-section[data-section=wissen] .site-nav-columns,.site-nav-section[data-section=kontakt] .site-nav-columns{grid-template-columns:repeat(2,minmax(0,1fr))}
+.site-nav-column>p{font-size:18px!important;font-weight:500!important;line-height:1.3!important;color:#20231f!important;letter-spacing:-.02em;margin:0 0 16px!important}
+.site-nav-panel-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid #20231f30;padding-top:18px;font:9px/1.5 'JetBrains Mono',monospace;color:#59604f}
+.site-nav-toggle{display:none;align-items:center;gap:10px;border:0;background:transparent;color:#20231f;cursor:pointer;font:500 12px 'Space Grotesk',sans-serif;min-width:44px;min-height:44px;padding:0}
+.site-nav-toggle i{font-style:normal;font-size:26px;transition:transform .2s}
+.site-nav-toggle[aria-expanded=true] i{transform:rotate(45deg)}
+.site-navigation :focus-visible,.site-nav-toggle:focus-visible{outline:2px solid #4e6232!important;outline-offset:4px}
+.site-breadcrumb{padding-top:22px;padding-bottom:0;color:#59604f;font:12px/1.6 'IBM Plex Sans',sans-serif}
+.site-breadcrumb nav{display:flex;flex-wrap:wrap;gap:7px 12px;align-items:center}
+.site-breadcrumb a{color:#4e6232;text-decoration:underline;text-underline-offset:3px}
+@keyframes nav-arrive{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* A portrait in natural color. The motion expresses the meeting of craft and code. */
+.identity-portrait{isolation:isolate;aspect-ratio:.88;max-width:100%;background:#d6d7c8}
+.identity-portrait img,.identity-portrait:hover img{filter:none;transform:none;transition:none}
+.identity-portrait::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,#18201712 55%,#182017dc 100%);pointer-events:none}
+.portrait-circuit{position:absolute;inset:0;width:100%;height:100%;z-index:2;fill:none;stroke:#f3f1e9;stroke-width:1;opacity:.55;pointer-events:none;transition:opacity .4s}
+.portrait-circuit .portrait-signal{stroke:#f28857;stroke-width:2;stroke-dasharray:50 680;stroke-dashoffset:50}
+.identity-portrait:hover .portrait-circuit{opacity:1}
+.identity-portrait:hover .portrait-signal{animation:portrait-connect 2.4s ease-in-out both}
+.portrait-identity{position:absolute;z-index:3;bottom:30px;left:30px;right:30px;color:#f3f1e9}
+.portrait-name{font:400 clamp(32px,4vw,58px)/.97 'Space Grotesk',sans-serif;letter-spacing:-.055em;display:block}
+.portrait-name b{font-weight:500}
+.portrait-identity>div{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.portrait-identity>div>span{font:9px/1.3 'JetBrains Mono',monospace;letter-spacing:.05em;border:1px solid #f3f1e966;padding:7px 9px}
+.portrait-signature{font:9px/1.5 'JetBrains Mono',monospace;letter-spacing:.08em;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #f3f1e966;padding-top:16px;margin-top:18px}
+.portrait-signature i{font:normal 24px 'Space Grotesk',sans-serif;color:#f28857;transition:transform .5s}
+.identity-portrait:hover .portrait-signature i{transform:translate(4px,-4px)}
+@keyframes portrait-connect{to{stroke-dashoffset:-1410}}
+
+.region-section{padding:80px 0;background:#e8e8dd;scroll-margin-top:105px}
+.region-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:80px;align-items:center}
+.region-kicker{font:10px/1.6 'JetBrains Mono',monospace;color:#4e6232;letter-spacing:.05em;margin-bottom:22px}
+.region-section h2{font:500 clamp(30px,3.5vw,50px)/1.1 'Space Grotesk',sans-serif;letter-spacing:-.04em;max-width:24ch;margin:0 0 30px;overflow-wrap:anywhere;color:#20231f}
+.region-countries{display:flex;flex-wrap:wrap;gap:10px}
+.region-countries>span{display:flex;align-items:center;gap:10px;font-size:12px;line-height:1.4;border:1px solid #20231f30;padding:9px 12px;color:#20231f}
+.region-countries i{font-style:normal;color:#4e6232}
+.region-grid>div>p:not(.region-kicker){font-size:16px;line-height:1.8;color:#535b4b;margin:0 0 24px}
+.region-link{display:inline-flex;align-items:center;gap:24px;border-bottom:1px solid #4e6232;padding:10px 0;color:#20231f;font-size:14px;font-weight:500}
+.hub-explore{padding:70px 0;border-top:1px solid #20231f30}
+.hub-explore h2{font:500 clamp(30px,4vw,48px)/1.1 'Space Grotesk',sans-serif;letter-spacing:-.04em;margin:16px 0 28px}
+.hub-explore-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.hub-explore article{border-top:2px solid #4e6232;padding:22px 0}
+.hub-explore h3{font:500 24px/1.2 'Space Grotesk',sans-serif;letter-spacing:-.03em;margin:0 0 14px}
+.hub-explore p{font-size:15px;line-height:1.75;color:#535b4b;margin-bottom:18px}
+.hub-explore a{display:block;font-size:14px;color:#4e6232;text-decoration:underline;text-underline-offset:4px;padding:8px 0;min-height:40px}
+@media(max-width:1100px){
+ .site-header .bar-in,.site-header .x-header-inner{height:72px;gap:14px}
+ .site-header-controls,.site-header .x-header-controls{gap:12px}
+ .site-talk{display:none!important}
+ .site-navigation{display:none}
+ .site-nav-toggle{display:flex}
+ .site-navigation.is-open{display:block;position:absolute;top:100%;left:0;right:0;background:#f3f1e9;max-height:calc(100dvh - 72px);overflow-y:auto;overscroll-behavior:contain;padding:10px 24px 28px;box-shadow:0 20px 35px #20231f14;border-bottom:1px solid #20231f30}
+ .site-nav-section>summary{justify-content:space-between;font-size:22px;padding:18px 0;border-bottom:1px solid #20231f30}
+ .site-nav-section[open]>summary{box-shadow:none;color:#4e6232}
+ .site-nav-panel{position:static;padding:18px 0 22px;border:0;box-shadow:none;max-height:none;overflow:visible;animation:none}
+ .site-nav-panel-top{align-items:start;flex-direction:column;gap:12px}
+ .site-nav-panel-top>span{display:none}
+ .site-nav-panel .site-nav-overview{width:100%;font-size:13px}
+ .site-nav-columns{grid-template-columns:1fr!important;gap:30px;padding:25px 0}
+ .site-nav-panel a{min-height:44px}
+ .site-nav-panel-bottom{font-size:8px}
+ .site-nav-panel-bottom>span:first-child{display:none}
+ .site-nav-column>p{font-size:18px!important;margin-bottom:10px!important}
+ html:not(.nav-ready) .site-header>div{height:auto;flex-wrap:wrap}
+ html:not(.nav-ready) .site-navigation{display:block;order:4;flex-basis:100%;padding-bottom:20px}
+ html:not(.nav-ready) .site-nav-toggle{display:none}
+ .region-grid{gap:40px}
+}
+@media(max-width:600px){
+ .site-header .bar-in,.site-header .x-header-inner{gap:8px}
+ .site-header-controls,.site-header .x-header-controls{gap:7px}
+ .site-nav-toggle>span{display:none}
+ .site-header .tafolli-brand-name{font-size:22px}
+ .site-header .tafolli-brand-mark{width:30px;height:30px}
+ .site-header .lang a{padding:8px 4px;font-size:11px}
+ .site-header .x-motion-label{display:none}
+ .site-navigation.is-open{padding:6px 22px 24px}
+ .site-breadcrumb{padding-top:16px;font-size:11px}
+ .identity-portrait{aspect-ratio:.88}
+ .portrait-identity{left:25px;right:25px;bottom:25px}
+ .portrait-name{font-size:42px}
+ .portrait-identity>div{gap:6px;margin-top:16px}
+ .portrait-identity>div>span{font-size:8px;padding:6px}
+ .region-section,.hub-explore{padding:50px 0}
+ .region-grid,.hub-explore-grid{grid-template-columns:1fr;gap:28px}
+ .region-section h2{font-size:34px}
+ .region-kicker{font-size:9px}
+ .region-countries{gap:7px}
+ .region-countries>span{padding:8px 10px;font-size:11px}
+ .region-grid>div>p:not(.region-kicker){font-size:15px}
+}
+@media(prefers-reduced-motion:reduce){.site-nav-panel,.portrait-signal{animation:none!important}.portrait-signature i,.portrait-circuit{transition:none!important}}
+.motion-paused .portrait-signal{animation:none!important}
+.motion-paused .portrait-signature i{transition:none!important;transform:none!important}
+@media(max-width:1100px){html:not(.nav-ready) .site-header{position:relative}}
+.motion-paused .site-nav-panel{animation:none!important}

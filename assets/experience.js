@@ -10,27 +10,6 @@
   let paused = reduced.matches;
   const $ = id => document.getElementById(id);
 
-  // Native focus stays visible. The artwork follows the pointer, not the cursor.
-  const menuButton = document.querySelector('.x-menu-button');
-  const menu = $('x-menu');
-  function closeMenu() {
-    menu.hidden = true;
-    menuButton.setAttribute('aria-expanded', 'false');
-  }
-  menuButton.addEventListener('click', () => {
-    const open = menuButton.getAttribute('aria-expanded') !== 'true';
-    menu.hidden = !open;
-    menuButton.setAttribute('aria-expanded', String(open));
-  });
-  menu.addEventListener('click', e => { if (e.target.closest('a')) closeMenu(); });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && !menu.hidden) { closeMenu(); menuButton.focus(); }
-  });
-  document.addEventListener('click', e => {
-    if (!menu.hidden && !e.target.closest('.x-header')) closeMenu();
-  });
-  matchMedia('(min-width:801px)').addEventListener('change', e => { if (e.matches) closeMenu(); });
-
   const reveals = [...document.querySelectorAll('[data-reveal]')];
   const motionButton = document.querySelector('.x-motion');
   let revealObserver;

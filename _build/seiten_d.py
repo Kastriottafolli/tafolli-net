@@ -55,7 +55,7 @@ def kontakt():
 
     inhalt = hero_klein("08", "Kontakt", [["Lassen Sie"], ["uns sprechen."]],
         "Ob F&amp;B-Beratung, Website, Kampagne, KI-Automatisierung oder TeamO: Der erste Schritt ist immer ein Gespräch, und das kostet nichts.",
-        ["Rückruf am selben Tag", "bundesweit", "unverbindlich"]) + f'''
+        ["Deutschland · Österreich · Schweiz · Kosovo", "unverbindlich", "persönlich"]) + f'''
 <section class="pad">
   <div class="shell">
     <div class="split" style="align-items:start;gap:clamp(36px,5vw,90px)">
@@ -91,7 +91,7 @@ def kontakt():
     <div class="pipe rise">{pipe}</div>
     {zitat_block("Ich bin immer offen für ein unverbindliches Gespräch.", "Kastriot Tafolli")}
   </div>
-</section>''' + cta_block("// nächster schritt", [["Schreiben Sie mir"], ["zwei Sätze."]],
+</section>''' + region(anchor=True) + cta_block("// nächster schritt", [["Schreiben Sie mir"], ["zwei Sätze."]],
         "Art des Betriebs und woran es hakt. Mehr brauche ich für den Anfang nicht.",
         "E-Mail an info@tafolli.net", "mailto:info@tafolli.net", "0176 64616146", "tel:+4917664616146")
     return seite_rahmen("kontakt.html", "Kontakt · Kastriot Tafolli",
@@ -120,7 +120,6 @@ def impressum():
 <h2>Verantwortlich für den Inhalt</h2>
 <p>Verantwortlich für den Inhalt nach § 18 Absatz 2 Medienstaatsvertrag ist Kastriot Tafolli, Hauptstraße 1, 18609 Ostseebad Binz.</p>
 <h2>Streitbeilegung</h2>
-<p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung bereit, erreichbar unter <a href="https://ec.europa.eu/consumers/odr" rel="noopener">ec.europa.eu/consumers/odr</a>. Meine E-Mail-Adresse finden Sie oben in diesem Impressum.</p>
 <p>Ich bin nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
 <h2>Haftung für Inhalte</h2>
 <p>Als Diensteanbieter bin ich nach den allgemeinen Gesetzen für eigene Inhalte auf diesen Seiten verantwortlich. Ich bin jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben davon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden entsprechender Rechtsverletzungen entferne ich diese Inhalte umgehend.</p>
@@ -202,6 +201,7 @@ def fehler404():
     return f'''{seiten_kopf("Seite nicht gefunden · Kastriot Tafolli", "Diese Seite gibt es nicht.", "404.html").replace('<meta name="author"', '<meta name="robots" content="noindex">\n<meta name="author"').replace('href="assets/', 'href="/assets/')}
 <body>
 {intro("de", "/")}
+{kopfzeile("404.html", "/")}
 <div class="grain" aria-hidden="true"></div>
 <main style="min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden">
   <div class="floor"></div>
@@ -219,6 +219,7 @@ def fehler404():
   </div>
 </main>
 <script>(function(){{var p=document.querySelector('pre');if(p)p.innerHTML=p.innerHTML.replace('{{pfad}}',location.pathname.replace(/[<>&]/g,''));}})();</script>
+<script src="/assets/navigation.js?v={VER}" defer></script>
 <script src="/assets/brand.js?v={VER}" defer></script>
 <script src="/assets/kt.js?v={VER}" defer></script>
 </body>

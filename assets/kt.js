@@ -49,26 +49,6 @@
     }
   }
 
-  /* ── Menue ───────────────────────────────────────────────────────── */
-  var knopf = document.querySelector('.burger');
-  var blatt = document.getElementById('sheet');
-  if (knopf && blatt) {
-    var offenJa = function () { return knopf.getAttribute('aria-expanded') === 'true'; };
-    var setzen = function (auf) {
-      knopf.setAttribute('aria-expanded', auf ? 'true' : 'false');
-      if (auf) blatt.setAttribute('data-open', ''); else blatt.removeAttribute('data-open');
-    };
-    knopf.addEventListener('click', function (e) { e.stopPropagation(); setzen(!offenJa()); });
-    blatt.addEventListener('click', function (e) { if (e.target.tagName === 'A') setzen(false); });
-    document.addEventListener('click', function (e) {
-      if (offenJa() && !blatt.contains(e.target) && e.target !== knopf) setzen(false);
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && offenJa()) { setzen(false); knopf.focus(); }
-    });
-    matchMedia('(min-width: 1041px)').addEventListener('change', function (e) { if (e.matches) setzen(false); });
-  }
-
   /* Kennzahlen laufen jetzt als reine CSS-Ziffernrollen (.odo), der
      Wert steht zur Bauzeit fest. Kein Hochzaehl-Skript mehr noetig. */
 

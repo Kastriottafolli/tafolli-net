@@ -40,11 +40,11 @@ def _rechner(anker, nr, titel, text, regler, gross1_label, gross1, gross2_label,
 
 def rechner():
     r1 = _rechner("ki", "01 · Künstliche Intelligenz", "Was kostet Sie das Telefon?",
-        "Anrufe und Nachrichten binden jeden Tag Arbeitszeit, die niemand als Posten in der Bilanz sieht. TeamO übernimmt erfahrungsgemäß rund 70 Prozent dieser wiederkehrenden Vorgänge.",
+        "Anrufe und Nachrichten binden jeden Tag Arbeitszeit, die niemand als Posten in der Bilanz sieht. Der Rechner verwendet beispielhaft eine Übernahmequote von 70 Prozent. Was in Ihrem Betrieb möglich ist, hängt von Aufgaben, Daten und Freigaben ab.",
         [_regler("anrufe", "Anrufe pro Tag", 0, 200, 1, 45), _regler("nachrichten", "Nachrichten pro Tag (E-Mail, Chat, Social Media)", 0, 300, 1, 70),
          _regler("minuten", "Bearbeitungszeit pro Vorgang", 1, 12, 1, 4, " Min."), _regler("lohn", "Personalkosten pro Stunde", 15, 60, 1, 26, " €")],
         "Gebundene Zeit pro Monat", "kiStunden", "Ersparnis pro Jahr", "kiJahr", "Heute gebunden", "kiBar1", "Mit TeamO übrig", "kiBar2",
-        "Annahme: 30 Tage pro Monat, Übernahmequote 70 Prozent. Die Ersparnis ist gewonnene Arbeitszeit, kein automatischer Personalabbau.", "TeamO ansehen", "teamo-ki.html")
+        "Modellannahmen: 30 Tage pro Monat und 70 Prozent Übernahmequote. Zeitwert vor Einrichtung und laufenden Servicekosten; keine garantierte Einsparung und kein automatischer Personalabbau.", "TeamO ansehen", "teamo-ki.html")
     r2 = _rechner("direkt", "02 · Direktbuchungen", "Wie viel Provision zahlen Sie im Jahr?",
         "Jede Buchung über ein Portal kostet Provision. Eine eigene, gut auffindbare Website verschiebt einen Teil dieser Buchungen zu Ihnen. Schon wenige Prozentpunkte machen einen spürbaren Unterschied.",
         [_regler("naechte", "Übernachtungen pro Monat", 50, 4000, 10, 900), _regler("preis", "Durchschnittlicher Zimmerpreis", 40, 600, 5, 145, " €"),
@@ -115,10 +115,6 @@ def wissen():
           <p style="color:var(--paper-dim);font-size:.92rem;flex:1">{b}</p>
           <span style="color:var(--acc);font-size:.9rem;font-weight:600">Artikel lesen <span class="arrow">&rarr;</span></span>
         </a>''' for i, (h, k, z, t, b) in enumerate(ARTIKEL))
-    kommt = [("01", "Wareneinsatz richtig rechnen", "Warum die übliche Prozentrechnung in die Irre führt und wie ein Deckungsbeitrag pro Gericht die Karte verändert."),
-             ("02", "Dienstplan ohne Dauerkrise", "Planung, Springerlogik und die Frage, warum gute Leute wegen des Plans gehen und nicht wegen des Gehalts."),
-             ("03", "Die ersten neunzig Tage", "Was eine neue F&B-Leitung in den ersten drei Monaten tun sollte, und was sie auf keinen Fall zuerst anfassen darf."),
-             ("04", "KI-Management im Alltag", "Was nach dem Start eines KI-Systems passieren muss, damit es in einem Jahr noch so gut antwortet wie am ersten Tag.")]
     inhalt = hero_klein("07", "Wissen", [["Aufgeschrieben,"], ["weil ich es ständig erkläre."]],
         "Fachtexte aus der Praxis zu Künstlicher Intelligenz im Hotel, zum Getränkevertrag und zur Frage, warum Gäste über Portale buchen statt direkt.",
         ["3 Artikel", "offene Rechenwege", "aus der Praxis"]) + f'''
@@ -131,14 +127,7 @@ def wissen():
   </div>
 </section>
 
-<section class="pad" style="background:var(--ink-2)">
-  <div class="shell">
-    {kicker("02", "In Arbeit")}
-    <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([["Was als Nächstes kommt."]])}</h2>
-    <p class="lede rise" style="--i:1;margin-bottom:clamp(40px,5vw,64px)">Die Reihe wächst. Wenn Sie ein Thema besonders interessiert, schreiben Sie mir, dann rücke ich es nach vorne.</p>
-    {karten_grid(kommt, "g2", pop=False)}
-  </div>
-</section>''' + cta_block("// nächster schritt", [["Ein Thema,"], ["das hier fehlt?"]],
+''' + cta_block("// nächster schritt", [["Ein Thema,"], ["das hier fehlt?"]],
         "Schreiben Sie mir, worüber Sie mehr wissen wollen. Oft ist die Antwort schneller als ein Artikel.",
         "Beratungsgespräch vereinbaren", "kontakt.html", "Rechner öffnen", "rechner.html")
     return seite_rahmen("wissen.html", "Wissen · Kastriot Tafolli",
@@ -192,7 +181,7 @@ def wissen_ki():
 <div class="rechnung">
 <p class="tag" style="margin:0 0 6px;font-size:.69rem">// beispielrechnung</p>
 <div><span>Gebundene Zeit pro Monat</span><b>230 Stunden</b></div>
-<div><span>Übernahme durch das System</span><b>rund 70 %</b></div>
+<div><span>Beispielhafte Übernahmequote</span><b>70 %</b></div>
 <div><span>Zurückgewonnene Zeit pro Monat</span><b>161 Stunden</b></div>
 <div class="summe"><span>Gegenwert pro Jahr</span><b>rund 50.000 €</b></div>
 <div><span>Einrichtung und Training</span><b>ab 4.200 €</b></div>

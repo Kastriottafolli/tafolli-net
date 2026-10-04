@@ -98,3 +98,29 @@ Reduzierte Bewegung und inaktive Tabs überspringen das Intro. Ankersprünge
 innerhalb des bereits geöffneten Dokuments starten es nicht erneut. Jede
 Interaktion beendet es sofort; Inhalt und Navigation bleiben zugänglich. Ohne JavaScript ist das Intro verborgen und das Logo statisch sichtbar.
 Für die Animation wird nichts im Browser gespeichert.
+
+
+### Navigation, Porträt und SEO
+
+`_build/navigation.py` definiert die gemeinsame Hauptnavigation: Leistungen
+mit drei Gruppen und 22 Angeboten, Über mich mit Profil und Netzwerk, Wissen
+mit Ratgebern und vier Rechnern sowie Kontakt mit Zusammenarbeit und Rechtlichem.
+Alle 38 HTML-Seiten sind darin direkt verlinkt, einschließlich der drei Sprach-
+Startseiten und der 404-Orientierungsseite. Desktop- und Mobilansicht verwenden
+denselben Baum. Native `details` funktionieren ohne JavaScript;
+`assets/navigation.js` ergänzt gegenseitiges Schließen, Außenklick, Escape,
+Fokusrückkehr und den mobilen Menüknopf. Die aktive Detailseite ist markiert.
+
+`_build/portrait.py` zeigt das natürliche Farbfoto mit einer grafischen Signatur.
+Beim Darüberfahren läuft ein kurzer Impuls entlang des Rahmens. Reduzierte
+Bewegung und der Animations-Pauseknopf unterbinden diesen Effekt.
+
+`_build/seo.py` verwaltet individuelle Titel und Beschreibungen, konsistente
+Organization-/Person-/WebSite-Daten, Service-Daten für alle 22 Angebote,
+Artikel-Daten für die drei Ratgeber sowie sichtbare und strukturierte
+Brotkrumennavigation. Alle Leistungen haben sichtbare Einsatzgebiet-Inhalte
+für Deutschland, Österreich, Schweiz und Kosovo. Die Startseiten lokalisieren
+diese Aussage; die deutschsprachigen Unterseiten bleiben ausdrücklich als
+solche gekennzeichnet. Die Sitemap enthält die 37 indexierbaren Seiten;
+404 bleibt `noindex`. Der Prüflauf kontrolliert zusätzlich vollständige
+Menüabdeckung, eindeutige Metadaten, Schema-Assets und Einsatzgebiete.
