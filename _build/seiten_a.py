@@ -242,7 +242,7 @@ def leistungen():
     <div class="g3 pop-wrap">
       {schwerpunkt(0, "Operativ", "F&amp;B-Beratung", "Getränkeverträge, Einkauf, Kalkulation und Abläufe. Hier liegt in fast jedem Haus Geld, das niemand hebt, weil die Verhandlung Zeit kostet und Erfahrung braucht.", ["Verträge mit Brauereien und Lieferanten", "Rückvergütungen, Boni, Marketingzuschüsse", "Wareneinsatz, Kalkulation, Inventur", "Externe F&amp;B-Leitung auf Zeit"], "fb-beratung.html", "Zur F&amp;B-Beratung")}
       {schwerpunkt(1, "Digital", "Online-Marketing &amp; Web", "Website, Sichtbarkeit, Kampagnen und Inhalte. Damit Gäste Sie finden und direkt bei Ihnen buchen statt über ein Portal mit fünfzehn Prozent Provision.", ["Website und Webentwicklung", "SEO und lokale Sichtbarkeit", "Google Ads und Social Media", "Foto, Video und Drohne"], "online-marketing.html", "Zu den Digitalleistungen")}
-      {schwerpunkt(2, "Künstliche Intelligenz", "KI-Automatisierung &amp; TeamO", "Wiederkehrende Arbeit übernimmt eine Maschine, und jemand sorgt dafür, dass sie es richtig tut. Bis hin zum digitalen Mitarbeiter TeamO.", ["Telefon, Mail und Chat automatisiert", "Dokumente auslesen und einordnen", "Laufende Betreuung als KI-Management", "TeamO, der digitale KI-Mitarbeiter"], "teamo-ki.html", "Zu TeamO und KI")}
+      {schwerpunkt(2, "Künstliche Intelligenz", "AI Automation as a Service", "Für Ihren Betrieb gebaute KI-Workflows, in Ihre Systeme integriert und laufend betreut. Bis hin zum digitalen Mitarbeiter TeamO.", ["Telefon, Mail und Chat automatisiert", "Dokumente auslesen und einordnen", "Laufende Betreuung und menschliche Kontrolle", "TeamO, der digitale KI-Mitarbeiter"], "ki-automatisierung.html", "Automation ausprobieren")}
     </div>
   </div>
 </section>

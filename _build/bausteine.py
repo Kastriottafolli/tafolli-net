@@ -4,25 +4,25 @@ identisch zur Startseite, damit die Seite wie aus einem Guss wirkt."""
 import hashlib, pathlib
 
 WURZEL = pathlib.Path(__file__).resolve().parent.parent
-LOGO = (pathlib.Path(__file__).parent / 'logo.svg').read_text()
+LOGO = '<span class="x-wordmark">TAFOLLI<span aria-hidden="true">✳</span></span>'
 VER = hashlib.sha256(
     (WURZEL / 'assets/kt.css').read_bytes() + (WURZEL / 'assets/kt.js').read_bytes()
+    + (WURZEL / 'assets/experience.css').read_bytes()
 ).hexdigest()[:8]
 
 NAV = [
+    ("ki-automatisierung.html", "AI Automation"),
     ("ueber-mich.html", "Über mich"),
-    ("werdegang.html", "Werdegang"),
     ("leistungen.html", "Leistungen"),
     ("teamo-ki.html", "TeamO KI"),
     ("rechner.html", "Rechner"),
-    ("wissen.html", "Wissen"),
     ("kontakt.html", "Kontakt"),
 ]
-FOOT_L1 = NAV + [("referenzen.html", "Referenzen")]
+FOOT_L1 = NAV + [("werdegang.html", "Werdegang"), ("wissen.html", "Wissen"), ("referenzen.html", "Referenzen")]
 FOOT_L2 = [
     ("fb-beratung.html", "F&B-Beratung"),
     ("online-marketing.html", "Online-Marketing & Web"),
-    ("index.html#ki", "KI-Automatisierung"),
+    ("ki-automatisierung.html", "KI-Automatisierung"),
     ("teamo-ki.html", "KI-Lösungen"),
     ("rechner.html", "Rechner"),
 ]
@@ -60,11 +60,12 @@ def seiten_kopf(titel, beschreibung, kanonisch_pfad):
 <meta property="og:description" content="{beschreibung}">
 <meta property="og:url" content="{kanonisch}">
 <meta name="twitter:card" content="summary">
-<meta name="theme-color" content="#08090B">
+<meta name="theme-color" content="#f3f1e9">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preload" as="font" type="font/woff2" href="assets/schriften/space-grotesk-var.woff2" crossorigin>
 <link rel="stylesheet" href="assets/schriften.css?v={VER}">
 <link rel="stylesheet" href="assets/kt.css?v={VER}">
+<link rel="stylesheet" href="assets/experience.css?v={VER}">
 </head>'''
 
 
