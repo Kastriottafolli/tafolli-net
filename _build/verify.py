@@ -4,6 +4,7 @@ from html.parser import HTMLParser
 import json
 from services import SERVICES
 from companies import COMPANIES
+from partners import PROJECTS, GASTRO, TECH, SOURCES
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
@@ -69,6 +70,13 @@ def verify():
     homepage=pages[(ROOT/'index.html').resolve()]
     for name,url in COMPANIES:
         assert url in homepage.links, f'Missing official station link: {name}'
+    references=pages[(ROOT/'referenzen.html').resolve()]
+    for partner in PROJECTS+GASTRO+TECH:
+        assert partner['url'] in references.links, f"Missing partner link: {partner['name']}"
+        if partner['key']!='tafolli':
+            assert (ROOT/'assets/partners'/SOURCES[partner['key']]['file']).is_file()
+    for location in ['index.html','en/index.html','sq/index.html']:
+        assert 'partner' in pages[(ROOT/location).resolve()].ids
     if errors: raise SystemExit('\n'.join(errors))
     print(f'PASS: {len(pages)} pages; local links, anchors, assets, metadata, localized demos and sitemap.')
 

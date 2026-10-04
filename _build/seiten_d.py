@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 from bausteine import *
 from companies import company_link
+from partners import PROJECTS, GASTRO, TECH, tiles
 
 
 def referenzen():
-    kunden = ["A&amp;B Bau", "Bukowina", "Restaurant Wochenmarkt", "Bistro Cappuccino", "Salsa Latino",
-              "El Restaurante", "Hotel Panorama, Lohme", "Mel Mahler Renovierungsarbeiten", "MBJ, My Jasharaj"]
     haeuser = [
         ("Hotel Vier Jahreszeiten am Schluchsee", "Schwarzwald", "5 Sterne Plus, Wellness- und Familienresort, fünf F&B-Outlets"),
         ("Raulff-Hotels OHG", "Rügen", "Zwei Häuser, 267 Zimmer, sechs Outlets, Verantwortung für die gesamte Gruppe"),
@@ -18,47 +17,33 @@ def referenzen():
         <p class="tag" style="color:var(--acc);margin-bottom:12px">{o}</p>
         <h3 class="d3" style="font-size:1.2rem;margin-bottom:10px">{company_link(t)}</h3>
         <p style="color:var(--paper-dim);font-size:.9rem">{d}</p></div>''' for i, (t, o, d) in enumerate(haeuser))
-    getraenke = ["Krombacher", "Bitburger", "Heineken", "Jägermeister", "Campari Deutschland", "Getränke Nordmann",
-                 "Chefs Culinar", "Rügen Cash &amp; Carry", "Pernod Ricard", "Staatlich Fachingen", "Melitta Kaffee", "Monin",
-                 "Mionetto", "Granini", "Bauer Säfte", "Coca-Cola", "Schweppes", "Rauch Säfte", "Red Bull"]
-    technik = ["Google", "Meta", "Apple", "Android", "OpenAI", "Anthropic", "Grok", "Microsoft", "Squarespace", "DreamHost"]
-    wand = lambda xs: '<div class="wand rise">' + "".join(f"<span>{x}</span>" for x in xs) + '</div>'
 
-    inhalt = hero_klein("05", "Referenzen", [["Häuser, Betriebe"], ["und Partner."]],
-        "Von 5-Sterne-Resorts mit mehreren hundert Mitarbeitenden bis zum Bistro mit acht. Und die Lieferanten und Technologiepartner, mit denen ich täglich arbeite.",
-        ["6 Häuser in Verantwortung", "9 Kunden", "29 Partner"]) + f'''
-<section class="pad">
-  <div class="shell">
-    {kicker("01", "Kunden")}
-    <h2 class="d2 wipe recede-exit" style="margin:20px 0 clamp(40px,5vw,64px)">{wipe([["Betriebe, die ich mit"], ["TB Solutions begleite."]])}</h2>
-    {wand(kunden)}
-    <p class="rise" style="color:var(--paper-mute);font-size:.88rem;margin-top:22px;max-width:70ch">Weitere Referenzen nenne ich auf Anfrage und nur mit Zustimmung der jeweiligen Häuser. Zahlen und interne Details bleiben grundsätzlich vertraulich.</p>
-  </div>
-</section>
-
-<section class="pad" style="background:var(--ink-2)">
-  <div class="shell">
-    {kicker("02", "Stationen")}
-    <h2 class="d2 wipe recede-exit" style="margin:20px 0 clamp(40px,5vw,64px)">{wipe([["Häuser, für die ich"], ["Verantwortung getragen habe."]])}</h2>
-    <div class="g3 pop-wrap">{haus_karten}</div>
-  </div>
-</section>
-
-<section class="pad">
-  <div class="shell">
-    {kicker("03", "Partner")}
-    <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([["Lieferanten, Marken und"], ["Technologiepartner."]])}</h2>
-    <p class="lede rise" style="--i:1;margin-bottom:clamp(40px,5vw,64px)">Über die Jahre in Einkauf, Vertragsverhandlung und Digitalprojekten entstandene Verbindungen. Sie sind der Grund, warum ich bei Konditionen und Systemen weiß, wo der Spielraum liegt.</p>
-    <p class="tag rise" style="color:var(--acc);margin-bottom:14px">// getränke- und gastronomiepartner</p>
-    {wand(getraenke)}
-    <p class="tag rise" style="color:var(--acc);margin:40px 0 14px">// technologiepartner</p>
-    {wand(technik)}
-  </div>
-</section>''' + cta_block("// nächster schritt", [["Werden Sie der"], ["nächste Eintrag."]],
-        "Ob großes Resort oder kleiner Betrieb: Erzählen Sie mir, woran es hakt.",
-        "Beratungsgespräch vereinbaren", "kontakt.html", "Leistungen ansehen", "leistungen.html")
-    return seite_rahmen("referenzen.html", "Referenzen und Partner · Kastriot Tafolli",
-        "Häuser in Verantwortung, Kunden von TB Solutions sowie Getränke- und Technologiepartner von Kastriot Tafolli.",
+    inhalt = hero_klein("05", "Referenzen & Partner", [["Gute Arbeit entsteht"], ["im Zusammenspiel."]],
+        "Betriebe, digitale Auftritte und ein Netzwerk aus Gastronomie und Technologie. Entdecken Sie die Menschen, Marken und Plattformen hinter meiner Arbeit.",
+        ["6 Referenz-Websites", "30 Marken & Partner", "6 berufliche Stationen"]) + '''
+    <div class="shell"><nav class="partner-jump" aria-label="Referenzbereiche"><a href="#betriebe">Referenz-Websites ↗</a><a href="#gastronomie">Gastronomiepartner ↗</a><a href="#technologie">Technologiepartner ↗</a><a href="#stationen">Berufliche Stationen ↗</a></nav></div>''' + f'''
+<section class="pad" id="betriebe" style="scroll-margin-top:110px"><div class="shell">
+ <div class="partner-section-intro"><div>{kicker("01", "Betriebe & Referenz-Websites")}<h2 class="d2" style="margin-top:20px">Betriebe, die ich mit<br> TB Solutions begleite.</h2></div><p>Eine Auswahl zum direkten Entdecken: Bau, Glas, Gastronomie und Hotellerie. Tafolli Glass ergänzt das Netzwerk als Partner; tafolli.net zeigt meinen eigenen digitalen Auftritt.</p></div>
+ {tiles(PROJECTS,projects=True)}
+ <p class="tag" style="color:var(--acc);margin-top:40px">Weitere Betriebe aus meiner Zusammenarbeit</p><div class="partner-more"><span>Bukowina</span><span>Bistro Cappuccino</span><span>Salsa Latino</span><span>El Restaurante</span><span>MBJ · My Jasharaj</span></div>
+</div></section>
+<section class="pad" id="gastronomie" style="background:var(--ink-2);scroll-margin-top:110px"><div class="shell">
+ <div class="partner-section-intro"><div>{kicker("02", "Getränke- und Gastronomiepartner")}<h2 class="d2" style="margin-top:20px">Vom guten Einkauf<br> zum guten Geschmack.</h2></div><p>Getränke, Kaffee, Foodservice und Großhandel: Mein F&B-Alltag verbindet Sortiment, Lieferfähigkeit und wirtschaftliche Konditionen. Hier finden Sie die genannten Marken und Lieferanten direkt.</p></div>
+ {tiles(GASTRO)}
+</div></section>
+<section class="pad" id="technologie" style="scroll-margin-top:110px"><div class="shell">
+ <div class="partner-section-intro"><div>{kicker("03", "Technologiepartner")}<h2 class="d2" style="margin-top:20px">Die Werkzeuge.<br> Die Möglichkeiten.</h2></div><p>KI, Software, Sichtbarkeit und Infrastruktur. Diese Plattformen und Werkzeuge gehören zu meinem digitalen Arbeitsumfeld. Welche davon in Ihrem Projekt sinnvoll sind, entscheidet der konkrete Bedarf.</p></div>
+ {tiles(TECH)}
+</div></section>
+<section class="pad" id="stationen" style="background:var(--ink-2);scroll-margin-top:110px"><div class="shell">
+ {kicker("04", "Berufliche Stationen")}<h2 class="d2" style="margin:20px 0 40px">Häuser, für die ich<br> Verantwortung getragen habe.</h2>
+ <div class="g3 pop-wrap">{haus_karten}</div>
+ <p style="color:var(--paper-mute);font-size:.88rem;margin-top:28px;max-width:70ch">Weitere Referenzen nenne ich auf Anfrage und nur mit Zustimmung der jeweiligen Häuser. Zahlen und interne Details bleiben grundsätzlich vertraulich.</p>
+</div></section>''' + cta_block("// nächster schritt", [["Gute Verbindungen."], ["Neue Möglichkeiten."]],
+        "Ob gemeinsames Projekt, ein konkreter Auftrag oder eine neue Zusammenarbeit: Erzählen Sie mir, was Sie bewegen möchten.",
+        "Zusammenarbeit besprechen", "kontakt.html", "Leistungen ansehen", "leistungen.html")
+    return seite_rahmen("referenzen.html", "Referenz-Websites & Partner · Kastriot Tafolli",
+        "Referenz-Websites von A&B Bau, Tafolli Glass, Restaurant Wochenmarkt, MEL und Panorama Hotel Lohme. Gastronomie- und Technologiepartner mit Logos und Links.",
         "referenzen.html", inhalt)
 
 

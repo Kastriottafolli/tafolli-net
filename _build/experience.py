@@ -5,6 +5,7 @@ from inhalt_en import EN
 from inhalt_sq import SQ
 from experience_content import COPY
 from companies import company_link
+from partners import strip as partner_strip
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 LANGUAGES = [DE, EN, SQ]
@@ -18,7 +19,7 @@ def page(L, detail=False):
     if detail:
         C.update(description=C['automation_description'], hero_text=C['automation_hero_text'], hero_cta=C['automation_cta'])
     title = 'AI Automation as a Service · Kastriot Tafolli' if detail else C['title']
-    version = hashlib.sha256(b''.join((ROOT / f'assets/{f}').read_bytes() for f in ['kt.css', 'kt.js', 'experience.css', 'experience.js'])).hexdigest()[:10]
+    version = hashlib.sha256(b''.join((ROOT / f'assets/{f}').read_bytes() for f in ['kt.css', 'kt.js', 'experience.css', 'experience.js', 'partners.js'])).hexdigest()[:10]
     a = lambda p: p if p.startswith(('../', '/', '#', 'mailto:', 'https:')) else ('../' if L['dir'] else '') + p
     home = '/' + (L['dir'] + '/' if L['dir'] else '')
     canonical = 'https://tafolli.net/' + ('ki-automatisierung.html' if detail else (L['dir'] + '/' if L['dir'] else ''))
@@ -74,9 +75,9 @@ def page(L, detail=False):
 <link rel="icon" type="image/svg+xml" href="{a('assets/favicon.svg')}"><link rel="preload" as="font" type="font/woff2" href="{a('assets/schriften/space-grotesk-var.woff2')}" crossorigin><link rel="preload" as="font" type="font/woff2" href="{a('assets/schriften/ibm-plex-sans-400.woff2')}" crossorigin><link rel="preload" as="font" type="font/woff2" href="{a('assets/schriften/bodoni-moda-400-italic.woff2')}" crossorigin><link rel="stylesheet" href="{a('assets/schriften.css')}?v={version}"><link rel="stylesheet" href="{a('assets/experience.css')}?v={version}"><script type="application/ld+json">{schema}</script></head>
 <body class="experience{' service-detail' if detail else ''}"><a href="#inhalt" class="x-skip">{L['skip']}</a><div class="x-progress" aria-hidden="true"></div>
 <header class="x-header"><div class="x-shell x-header-inner"><a class="x-wordmark" href="{home}" aria-label="Kastriot Tafolli">TAFOLLI<span aria-hidden="true">✳</span></a><nav class="x-nav" aria-label="{L['foot_sp1']}">{nav}</nav><div class="x-header-controls"><nav class="x-languages" aria-label="Sprache / Language / Gjuha">{languages}</nav><button class="x-motion" type="button" aria-pressed="false" aria-label="{C['motion']}"><span aria-hidden="true">Ⅱ</span><span class="x-motion-label">{C['motion']}</span></button><button class="x-menu-button" type="button" aria-expanded="false" aria-controls="x-menu">{C['menu']}<span aria-hidden="true">+</span></button></div></div><nav id="x-menu" class="x-mobile-menu" aria-label="{C['menu']}" hidden>{nav}</nav></header>
-<main id="inhalt">{hero}{(story+lab+care+roi+services+bio+process+faq) if detail else (manifesto+services+bio+lab)}{closing}</main>{footer}
+<main id="inhalt">{hero}{(story+lab+care+roi+services+bio+process+faq) if detail else (partner_strip(L['code'], '../' if L['dir'] else '')+manifesto+services+bio+lab)}{closing}</main>{footer}
 <noscript><style>.x-tabs,.x-demo-control,.x-motion,.x-menu-button,.x-roi-grid{{display:none}}.x-nav{{display:flex;flex-wrap:wrap}}.x-header-inner{{height:auto;min-height:88px;flex-wrap:wrap;padding-block:15px}}</style><p class="x-shell">{C['demo_hint']}</p></noscript>
-<script type="application/json" id="experience-config">{config}</script><script src="{a('assets/experience.js')}?v={version}" defer></script></body></html>'''
+<script type="application/json" id="experience-config">{config}</script><script src="{a('assets/experience.js')}?v={version}" defer></script><script src="{a('assets/partners.js')}?v={version}" defer></script></body></html>'''
 
 def build():
     for L in LANGUAGES:

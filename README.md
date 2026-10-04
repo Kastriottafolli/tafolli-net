@@ -62,9 +62,19 @@ Prüfen:
 
     python3 _build/verify.py
     node --check assets/experience.js
+    node --check assets/partners.js
     node --check assets/kt.js
 
 Die Prüfung kontrolliert alle erzeugten Seiten, lokale Links und Anker,
 Assets, Metadaten, übersetzte Demo-Daten und den Sitemap-Eintrag. Ein
 GitHub-Actions-Check baut die Seiten bei Pull Requests neu und prüft,
 dass die eingecheckten Dateien dem Ergebnis entsprechen.
+
+Referenzen und Partner werden zentral in `_build/partners.py` gepflegt.
+Die sechs Referenz-Websites sowie Getränke-, Gastronomie- und Technologiepartner
+haben lokale Logos und direkte Website-Links. Die Herkunft der Logos steht in
+`assets/partners/sources.json`. Beim normalen Seitenbau wird nichts heruntergeladen.
+Die Startseiten enthalten eine kompakte Logo-Leiste aus einer Auswahl des Netzwerks.
+`assets/partners.js` ermöglicht langsames Gleiten und eine Pause, stoppt bei Fokus,
+Mauszeiger und unsichtbaren Tabs und berücksichtigt reduzierte Bewegung sowie den
+globalen Bewegungsschalter. Ohne JavaScript bleibt eine manuell scrollbare Leiste.

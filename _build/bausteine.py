@@ -39,7 +39,7 @@ def wipe(zeilen, start=0, klasse="wipe"):
         teile = zeile if isinstance(zeile, list) else [zeile]
         for t in teile:
             out.append(f'<span><span style="--i:{start + len(out)}">{t}</span></span>')
-    return "".join(out)
+    return " ".join(out)
 
 
 def kicker(nummer, text):
