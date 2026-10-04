@@ -1,23 +1,10 @@
 # -*- coding: utf-8 -*-
 from bausteine import *
-from companies import company_link
+from hotels import hotel_cards
 from partners import PROJECTS, GASTRO, TECH, tiles
 
 
 def referenzen():
-    haeuser = [
-        ("Hotel Vier Jahreszeiten am Schluchsee", "Schwarzwald", "5 Sterne Plus, Wellness- und Familienresort, fünf F&B-Outlets"),
-        ("Raulff-Hotels OHG", "Rügen", "Zwei Häuser, 267 Zimmer, sechs Outlets, Verantwortung für die gesamte Gruppe"),
-        ("Rösing Touristik GmbH", "Rügen", "Drei Hotels und ein Resort mit fünf Restaurants"),
-        ("Vier Jahreszeiten, Meersinn & Suite Hotel", "Ostseebad Binz", "Drei Hotels, sieben Outlets, ausgezeichnetes Sterne-Restaurant"),
-        ("Cerês am Meer", "Ostseebad Binz", "5 Sterne Superior Designhotel mit Michelin-Stern-Restaurant"),
-        ("Grand Hotel Binz", "Ostseebad Binz", "Restaurant, Bar, Frühstück, Room Service und Bankett"),
-    ]
-    haus_karten = "".join(f'''<div class="card pop ticks" style="--i:{i}">
-        <p class="tag" style="color:var(--acc);margin-bottom:12px">{o}</p>
-        <h3 class="d3" style="font-size:1.2rem;margin-bottom:10px">{company_link(t)}</h3>
-        <p style="color:var(--paper-dim);font-size:.9rem">{d}</p></div>''' for i, (t, o, d) in enumerate(haeuser))
-
     inhalt = hero_klein("05", "Referenzen & Partner", [["Gute Arbeit entsteht"], ["im Zusammenspiel."]],
         "Betriebe, digitale Auftritte und ein Netzwerk aus Gastronomie und Technologie. Entdecken Sie die Menschen, Marken und Plattformen hinter meiner Arbeit.",
         ["6 Referenz-Websites", "30 Marken & Partner", "6 berufliche Stationen"]) + '''
@@ -36,8 +23,9 @@ def referenzen():
  {tiles(TECH)}
 </div></section>
 <section class="pad" id="stationen" style="background:var(--ink-2);scroll-margin-top:110px"><div class="shell">
- {kicker("04", "Berufliche Stationen")}<h2 class="d2" style="margin:20px 0 40px">Häuser, für die ich<br> Verantwortung getragen habe.</h2>
- <div class="g3 pop-wrap">{haus_karten}</div>
+ <div class="partner-section-intro"><div>{kicker("04", "Berufliche Stationen")}<h2 class="d2" style="margin-top:20px">Häuser, für die ich<br> Verantwortung getragen habe.</h2></div><p>Ich kenne Hotellerie aus der täglichen Verantwortung: Teams führen, Gastronomie gestalten und mehrere Häuser koordinieren. Diese Erfahrung bringe ich in Ihre Beratung ein – mit Verständnis für Ihre Gäste, Ihre Mitarbeitenden und die Wirtschaftlichkeit Ihres Betriebs.</p></div>
+ {hotel_cards()}
+ <div class="career-transfer"><div><p class="tag">Für Ihr nächstes Projekt</p><h3>Hotellerie verstehen.<br> Möglichkeiten umsetzen.</h3><p>Auf dieser Grundlage verbinde ich F&B-Beratung mit Digitalisierung und KI-Automatisierung: Lösungen, die zu Ihren Teams, Abläufen und wirtschaftlichen Zielen passen.</p></div><div class="career-transfer-actions"><a class="btn btn-1" href="kontakt.html">Über Ihren Betrieb sprechen ↗</a><a class="btn btn-2" href="fb-beratung.html">F&B-Beratung entdecken ↗</a></div></div>
  <p style="color:var(--paper-mute);font-size:.88rem;margin-top:28px;max-width:70ch">Weitere Referenzen nenne ich auf Anfrage und nur mit Zustimmung der jeweiligen Häuser. Zahlen und interne Details bleiben grundsätzlich vertraulich.</p>
 </div></section>''' + cta_block("// nächster schritt", [["Gute Verbindungen."], ["Neue Möglichkeiten."]],
         "Ob gemeinsames Projekt, ein konkreter Auftrag oder eine neue Zusammenarbeit: Erzählen Sie mir, was Sie bewegen möchten.",

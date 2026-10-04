@@ -4,6 +4,7 @@ from html.parser import HTMLParser
 import json
 from services import SERVICES
 from companies import COMPANIES
+from hotels import HOTELS
 from partners import PROJECTS, GASTRO, TECH, SOURCES
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -71,7 +72,7 @@ def verify():
     for name,url in COMPANIES:
         assert url in homepage.links, f'Missing official station link: {name}'
     references=pages[(ROOT/'referenzen.html').resolve()]
-    for partner in PROJECTS+GASTRO+TECH:
+    for partner in PROJECTS+GASTRO+TECH+HOTELS:
         assert partner['url'] in references.links, f"Missing partner link: {partner['name']}"
         if partner['key']!='tafolli':
             assert (ROOT/'assets/partners'/SOURCES[partner['key']]['file']).is_file()

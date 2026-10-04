@@ -200,5 +200,44 @@
     "source": "https://cdn.openai.com/brand/OpenAI-Logos-2025.zip",
     "extraction": "OpenAI-black-wordmark.svg",
     "retrieved": "2026-10-04"
+  },
+  "hotel-schluchsee": {
+    "file": "schluchsee.svg",
+    "source": "https://www.vjz.de/",
+    "bytes": 9480,
+    "retrieved": "2026-10-04",
+    "extraction": "Inline SVG #logo-vjz from official website"
+  },
+  "hotel-raulff": {
+    "file": "raulff.png",
+    "source": "https://www.raulff-hotels.de/wp-content/uploads/sites/275/2022/08/cropped-raulffHotels-Logo-Quer-RGB-72dpi.png",
+    "bytes": 6396,
+    "retrieved": "2026-10-04"
+  },
+  "hotel-roesing": {
+    "file": "roesing.svg",
+    "source": "https://www.roesing-touristik.de/assets/img/logos/logo-rhr-roesing-hotels-resorts.svg",
+    "bytes": 9193,
+    "retrieved": "2026-10-04"
+  },
+  "hotel-binz": {
+    "file": "vier-jahreszeiten-binz.png",
+    "source": "https://www.vier-jahreszeiten.de/wp-content/uploads/2020/10/logo-preloader.png",
+    "bytes": 1483,
+    "retrieved": "2026-10-04"
+  },
+  "hotel-ceres": {
+    "file": "ceres.webp",
+    "source": "https://arosahotels.de/_Resources/Persistent/9dfaece5c01dfd848419ddb277ca3de76c8f5c9e/ARO_Logo_Bronze_oSchutzraum_Barriere_Web-1500x280.webp",
+    "bytes": 31154,
+    "retrieved": "2026-10-04",
+    "extraction": "Current hotel brand A-ROSA on official Ceres am Meer page; career station predates brand change"
+  },
+  "hotel-grand-binz": {
+    "file": "grand-hotel-binz.svg",
+    "source": "https://www.grandhotelbinz.com/de/",
+    "bytes": 24682,
+    "retrieved": "2026-10-04",
+    "extraction": "Inline header SVG from official website"
   }
 }

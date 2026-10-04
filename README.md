@@ -78,3 +78,9 @@ Die Startseiten enthalten eine kompakte Logo-Leiste aus einer Auswahl des Netzwe
 `assets/partners.js` ermöglicht langsames Gleiten und eine Pause, stoppt bei Fokus,
 Mauszeiger und unsichtbaren Tabs und berücksichtigt reduzierte Bewegung sowie den
 globalen Bewegungsschalter. Ohne JavaScript bleibt eine manuell scrollbare Leiste.
+
+Die sechs Hotelstationen auf der Referenzseite werden in `_build/hotels.py` gepflegt.
+Jede Karte verbindet das verlinkte Logo mit Funktion, Zeitraum, Verantwortungsumfang
+und einem konkreten Kundennutzen aus der vorhandenen Berufserfahrung. Die Logos
+kommen von offiziellen Websites; bei Cerês am Meer ist die heutige Marke A-ROSA
+mit einem Hinweis auf der Karte sichtbar. Es werden keine neuen Erfolgszahlen behauptet.
