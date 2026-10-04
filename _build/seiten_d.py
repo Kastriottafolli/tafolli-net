@@ -166,7 +166,7 @@ def datenschutz():
 <h2>Cookies, Analyse und Werbung</h2>
 <p>Diese Website setzt keine Cookies. Es kommen keine Werkzeuge zur Reichweitenmessung, keine Analysedienste und keine Werbenetzwerke zum Einsatz. Es findet kein Profiling statt, und es werden keine Daten für Werbezwecke ausgewertet oder weitergegeben.</p>
 <h2>Die Logo-Animation</h2>
-<p>Damit die kurze Startanimation nicht bei jedem Seitenaufruf wiederholt wird, merkt sich Ihr Browser im Sitzungsspeicher (sessionStorage), ob sie bereits gezeigt wurde. Gespeichert wird nur eine Kennzeichnung, ohne Besucherprofil oder weitere Angaben. Diese Kennzeichnung wird nicht an einen Server übertragen und gilt nur für die Tab-Sitzung.</p>
+<p>Die kurze Logo-Animation erscheint bei jedem Seitenaufruf und läuft vollständig in Ihrem Browser. Dafür werden keine Daten gespeichert oder an einen Server übertragen. Wenn Sie in Ihrem Gerät reduzierte Bewegung eingestellt haben, wird die Animation übersprungen.</p>
 <h2>Die Rechner auf dieser Seite</h2>
 <p>Auf der Seite Rechner können Sie eigene Werte eingeben, etwa die Zahl der Anrufe pro Tag oder den jährlichen Getränkeeinkauf. Diese Berechnungen laufen vollständig in Ihrem Browser ab. Es findet keine Übertragung an einen Server statt, nichts wird gespeichert, und nach dem Schließen der Seite sind Ihre Eingaben verschwunden.</p>
 <h2>Kontaktaufnahme</h2>
@@ -201,6 +201,7 @@ def datenschutz():
 def fehler404():
     return f'''{seiten_kopf("Seite nicht gefunden · Kastriot Tafolli", "Diese Seite gibt es nicht.", "404.html").replace('<meta name="author"', '<meta name="robots" content="noindex">\n<meta name="author"').replace('href="assets/', 'href="/assets/')}
 <body>
+{intro("de", "/")}
 <div class="grain" aria-hidden="true"></div>
 <main style="min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden">
   <div class="floor"></div>
@@ -218,6 +219,7 @@ def fehler404():
   </div>
 </main>
 <script>(function(){{var p=document.querySelector('pre');if(p)p.innerHTML=p.innerHTML.replace('{{pfad}}',location.pathname.replace(/[<>&]/g,''));}})();</script>
+<script src="/assets/brand.js?v={VER}" defer></script>
 <script src="/assets/kt.js?v={VER}" defer></script>
 </body>
 </html>

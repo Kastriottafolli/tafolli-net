@@ -1,4 +1,4 @@
-"""One TAFOLLI identity across navigation, footer, references and the first visit."""
+"""One TAFOLLI identity across navigation, footer, references and every page entry."""
 def lockup(base=''):
     return f'<span class="tafolli-brand"><img class="tafolli-brand-mark" src="{base}assets/brand/logo-mark.webp" width="42" height="42" alt="" decoding="async"><span class="tafolli-brand-name">TAFOLLI</span></span>'
 

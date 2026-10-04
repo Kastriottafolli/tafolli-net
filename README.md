@@ -90,10 +90,11 @@ Das TAFOLLI-Markenzeichen verbindet eine Gehirn-Silhouette mit einem T im
 Negativraum und einem warmen Signalpunkt. `_build/brand.py` erzeugt den gemeinsamen
 Logo-Auftritt und die lokalisierte Startanimation. Das Originalzeichen liegt
 optimiert unter `assets/brand/`; Navigation, Fußzeile, Referenzkarte und Favicons
-verwenden dieselbe Identität. `assets/brand.js` zeigt auf den drei Startseiten
-eine höchstens 1,8 Sekunden lange Animation beim ersten Einstieg pro Tab-Sitzung.
+verwenden dieselbe Identität. `assets/brand.js` zeigt
+auf allen Seiten eine höchstens 1,8 Sekunden lange Animation bei jedem Aufruf,
+Neuladen und Seitenwechsel, auch beim Zurück-/Vorwärtsgehen im Browser.
 Das Zeichen verbindet sich aus zwei Hälften und wandert in die Kopfzeile.
-Direkte Ankerlinks, Folgebesuche, reduzierte Bewegung und inaktive Tabs überspringen
-das Intro. Jede Interaktion beendet es sofort; Inhalt und Navigation bleiben
-zugänglich. Ohne JavaScript ist das Intro verborgen und das Logo statisch sichtbar.
-Die Sitzungsmarkierung speichert ausschließlich, ob das Intro bereits gezeigt wurde.
+Reduzierte Bewegung und inaktive Tabs überspringen das Intro. Ankersprünge
+innerhalb des bereits geöffneten Dokuments starten es nicht erneut. Jede
+Interaktion beendet es sofort; Inhalt und Navigation bleiben zugänglich. Ohne JavaScript ist das Intro verborgen und das Logo statisch sichtbar.
+Für die Animation wird nichts im Browser gespeichert.

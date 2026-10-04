@@ -1,13 +1,11 @@
-/* A brief first-visit signature. The page stays usable throughout. */
+/* A brief signature on every page entry. The page stays usable throughout. */
 (() => {
   'use strict';
   const intro=document.querySelector('.brand-intro');
   if(!intro)return;
   const root=document.documentElement;
   const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-  const key='tafolli-brand-intro-v1';
-  if(reduced.matches || location.hash || scrollY>40 || root.classList.contains('motion-paused'))return;
-  try{if(sessionStorage.getItem(key))return;}catch{/* Private/storage-blocked browsing still works. */}
+  if(reduced.matches || root.classList.contains('motion-paused'))return;
   const source=intro.querySelector('img');
   let finished=false,flight=null,timers=[],animations=[];
   const interruptEvents=['pointerdown','keydown','wheel','touchstart'];
@@ -29,8 +27,7 @@
     if(!source.complete){
       await Promise.race([source.decode().catch(()=>{}),new Promise(r=>setTimeout(r,250))]);
     }
-    if(!source.naturalWidth || reduced.matches || location.hash || scrollY>40 || document.hidden || !intro.animate)return;
-    try{if(sessionStorage.getItem(key))return;sessionStorage.setItem(key,'1');}catch{}
+    if(!source.naturalWidth || reduced.matches || document.hidden || root.classList.contains('motion-paused') || !intro.animate)return;
     intro.hidden=false;root.classList.add('brand-intro-active');
     interruptEvents.forEach(event=>window.addEventListener(event,finish,{passive:true}));
     reduced.addEventListener('change',motionChange);
@@ -39,7 +36,7 @@
     observer.observe(root,{attributes:true,attributeFilter:['class']});
     timers.push(setTimeout(()=>{
       if(finished)return;
-      const target=document.querySelector('.x-header .tafolli-brand-mark');
+      const target=document.querySelector('.x-header .tafolli-brand-mark, .bar .tafolli-brand-mark');
       const symbol=intro.querySelector('.brand-intro-symbol');
       const from=symbol.getBoundingClientRect(),to=target?.getBoundingClientRect();
       if(to && to.width){
@@ -57,5 +54,13 @@
     },1050));
     timers.push(setTimeout(finish,1800));
   }
-  start();
+  function play(){
+    finish();
+    finished=false;flight=null;timers=[];animations=[];
+    intro.querySelector('.brand-intro-symbol').style.opacity='';
+    start();
+  }
+  // Back/forward may restore the document without rerunning its scripts.
+  window.addEventListener('pageshow',event=>{if(event.persisted)play();});
+  play();
 })();

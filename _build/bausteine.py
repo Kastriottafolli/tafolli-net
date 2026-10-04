@@ -2,13 +2,14 @@
 """Gemeinsame Bausteine fuer alle Unterseiten. Kopf- und Fusszeile sind
 identisch zur Startseite, damit die Seite wie aus einem Guss wirkt."""
 import hashlib, pathlib
-from brand import lockup
+from brand import lockup, intro
 
 WURZEL = pathlib.Path(__file__).resolve().parent.parent
 LOGO = lockup()
 VER = hashlib.sha256(
     (WURZEL / 'assets/kt.css').read_bytes() + (WURZEL / 'assets/kt.js').read_bytes()
     + (WURZEL / 'assets/experience.css').read_bytes()
+    + (WURZEL / 'assets/brand.js').read_bytes()
 ).hexdigest()[:8]
 
 NAV = [
@@ -69,6 +70,7 @@ def seiten_kopf(titel, beschreibung, kanonisch_pfad):
 <meta name="theme-color" content="#f3f1e9">
 <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
 <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+<link rel="preload" as="image" href="assets/brand/logo-mark.webp" fetchpriority="high">
 <link rel="preload" as="font" type="font/woff2" href="assets/schriften/space-grotesk-var.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/schriften/ibm-plex-sans-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/schriften/bodoni-moda-400-italic.woff2" crossorigin>
@@ -142,6 +144,7 @@ def fusszeile():
 def seite_rahmen(aktiv, titel, beschreibung, kanonisch_pfad, inhalt):
     return f'''{seiten_kopf(titel, beschreibung, kanonisch_pfad)}
 <body>
+{intro()}
 <div class="grain" aria-hidden="true"></div>
 
 <a href="#inhalt" class="btn btn-1" style="position:absolute;left:-9999px;top:0;z-index:200"
@@ -151,6 +154,7 @@ def seite_rahmen(aktiv, titel, beschreibung, kanonisch_pfad, inhalt):
 
 <main id="inhalt">{inhalt}</main>
 {fusszeile()}
+<script src="assets/brand.js?v={VER}" defer></script>
 <script src="assets/kt.js?v={VER}" defer></script>
 </body>
 </html>
