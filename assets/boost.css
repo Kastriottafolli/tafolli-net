@@ -1,0 +1,14 @@
+/* Tafolli Boost: a homepage promotion in the existing portfolio palette. */
+.x-boost{background:var(--x-ink);color:var(--x-paper)}
+.x-boost-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(40px,6vw,100px);align-items:center}
+.x-boost-copy>.x-label{color:var(--x-lime)}
+.x-boost-copy h2{font-size:clamp(40px,5vw,72px);margin-bottom:28px}
+.x-boost-copy>p:not(.x-label){font-size:18px;line-height:1.7;max-width:600px;color:#d9dacf}
+.x-boost-actions{display:flex;flex-wrap:wrap;align-items:center;gap:22px;margin-top:32px}
+.x-boost-domain{margin:0!important;letter-spacing:0;color:#d9dacf;overflow-wrap:anywhere}
+.x-boost-documents{padding:clamp(24px,3.5vw,48px);background:var(--x-paper);color:var(--x-ink);border-radius:3px}
+.x-boost-documents ul{list-style:none;padding:0;margin:0;border-top:1px solid var(--x-line)}
+.x-boost-documents li{display:flex;align-items:baseline;gap:18px;padding:18px 0;border-bottom:1px solid var(--x-line);font-family:'Space Grotesk',sans-serif;font-size:clamp(17px,1.6vw,23px);font-weight:500;line-height:1.4}
+.x-boost-documents li>span{font:10px/1.6 'JetBrains Mono',monospace;color:#5d6654;flex-shrink:0}
+.x-boost-note{font-size:13px;line-height:1.7;margin-top:24px;color:#51594c}
+@media(max-width:800px){.x-boost-grid{grid-template-columns:1fr;gap:36px}.x-boost-copy>p:not(.x-label){font-size:16px}.x-boost-documents{max-width:600px}.x-boost-actions .x-button{max-width:100%;gap:20px}}
