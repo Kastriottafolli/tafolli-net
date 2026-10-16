@@ -58,7 +58,9 @@ class Page(HTMLParser):
             if self.in_schema: self.schemas.append(json.loads(self.schema_text));self.in_schema=False
 
 def verify():
-    pages={p.resolve():Page(p) for p in [*ROOT.glob('*.html'),ROOT/'en/index.html',ROOT/'sq/index.html']}
+    pages={p.resolve():Page(p) for p in [*ROOT.glob('*.html'),ROOT/'en/index.html',ROOT/'sq/index.html',ROOT/'angebot/index.html']}
+    # Eigenständige Angebotsseite: bewusst nicht in der Navigation der bestehenden Seiten.
+    offer=(ROOT/'angebot/index.html').resolve()
     errors=[]
     svg_ids={path.resolve():{node.get('id') for node in ET.parse(path).iter() if node.get('id')} for path in ROOT.rglob('*.svg')}
     for path,page in pages.items():
@@ -80,8 +82,8 @@ def verify():
             target=(ROOT/parsed.path.lstrip('/')).resolve() if parsed.path.startswith('/') else (path.parent/parsed.path).resolve()
             if target.is_dir():target=target/'index.html'
             nav_targets.add(target)
-        missing=set(pages)-nav_targets
-        if missing:errors.append(f'{relative}: pages missing from main menu: '+', '.join(p.name for p in missing))
+        missing=set(pages)-{offer}-nav_targets
+        if missing:errors.append(f'{relative}: pages missing from main menu: '+', '.join(sorted(p.name for p in missing)))
         graph=[node for schema in page.schemas for node in schema.get('@graph',[schema])]
         types={node.get('@type') for node in graph}
         if not {'Organization','Person','WebSite'}<=types: errors.append(f'{relative}: missing identity schema')
@@ -123,7 +125,7 @@ def verify():
     sitemap=ET.parse(ROOT/'sitemap.xml')
     urls=[el.text for el in sitemap.findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
     assert 'https://tafolli.net/ki-automatisierung.html' in urls
-    assert set(urls)=={page.canonical for path,page in pages.items() if path.name!='404.html'}, 'Sitemap must contain all 37 indexable canonical pages'
+    assert set(urls)=={page.canonical for path,page in pages.items() if path.name!='404.html'}, 'Sitemap must match the indexable canonical pages'
     assert len(urls)==len(set(urls)), 'Duplicate sitemap entries'
     for service in SERVICES:
         path=(ROOT/(service['slug']+'.html')).resolve()
