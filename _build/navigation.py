@@ -2,28 +2,27 @@
 from html import escape
 
 SERVICE_GROUPS = [
+ ('Kernangebote', [
+  ('ki-automatisierung-kleine-unternehmen.html','KI Automatisierung für kleine Unternehmen'),
+  ('landingpage-erstellen-lassen.html','Landingpage erstellen lassen'),
+  ('angebot/','Texte und Übersetzungen Deutsch, Englisch, Albanisch')]),
  ('KI & Technologie', [
   ('ki-automatisierung.html','AI Automation as a Service'), ('ki-entwicklung.html','KI-Entwicklung & Assistenten'),
   ('teamo-ki.html','TeamO · digitaler KI-Mitarbeiter'), ('digitalisierung.html','Digitalisierung'),
   ('softwareentwicklung.html','Softwareentwicklung'), ('app-entwicklung.html','App- & Web-App-Entwicklung'), ('cybersecurity.html','Cybersecurity & IT-Sicherheit')]),
- ('Hotellerie & Gastronomie', [
-  ('fb-beratung.html','F&B-Beratung'), ('lieferantenvereinbarungen.html','Lieferantenvereinbarungen'),
-  ('getraenkevertraege.html','Getränkeverträge'), ('rueckverguetungen.html','Rückvergütungen'),
-  ('wareneinsatz-kalkulation.html','Wareneinsatz & Kalkulation'), ('inventur-warenwirtschaft.html','Inventur & Warenwirtschaft'),
-  ('interim-fb-management.html','Interim F&B-Management'), ('revenue-controlling.html','Revenue & F&B-Controlling'), ('personal-recruiting.html','Recruiting & Teamentwicklung')]),
  ('Web & Sichtbarkeit', [
   ('online-marketing.html','Online-Marketing & Digitalstrategie'), ('webdesign.html','Webdesign & Webentwicklung'),
-  ('suchmaschinenoptimierung.html','Suchmaschinenoptimierung'), ('domain-hosting-email.html','Domain, Hosting & E-Mail'),
-  ('social-media.html','Social Media & Content'), ('foto-video.html','Foto & Video')])]
+  ('social-media.html','Social Media & Content'), ('suchmaschinenoptimierung.html','Suchmaschinenoptimierung'),
+  ('domain-hosting-email.html','Domain, Hosting & E-Mail'), ('foto-video.html','Foto & Video')])]
 SECTIONS = [
- ('leistungen','Leistungen','leistungen.html','Alle 22 Leistungsbereiche',SERVICE_GROUPS),
+ ('leistungen','Leistungen','leistungen.html','Alle Leistungsbereiche',SERVICE_GROUPS),
  ('profil','Über mich','ueber-mich.html','Kastriot Tafolli kennenlernen',[
-  ('Mensch & Erfahrung',[('ueber-mich.html','Über mich'),('werdegang.html','Mein Werdegang'),('referenzen.html','Referenzen & Partner'),('referenzen.html#stationen','Berufliche Stationen')]),
-  ('Netzwerk',[('referenzen.html#betriebe','Betriebe & Referenz-Websites'),('referenzen.html#gastronomie','Gastronomiepartner'),('referenzen.html#technologie','Technologiepartner')]),
+  ('Mensch & Erfahrung',[('ueber-mich.html','Über mich'),('werdegang.html','Mein Werdegang'),('referenzen.html','Referenzen & Partner')]),
+  ('Netzwerk',[('referenzen.html#betriebe','Betriebe & Referenz-Websites'),('referenzen.html#technologie','Technologiepartner')]),
   ('Startseiten & Sprachen',[('index.html','Deutsch'),('en/','English'),('sq/','Shqip')])]),
- ('wissen','Wissen','wissen.html','Alle Ratgeber & Werkzeuge',[
-  ('Wissen für Ihren Betrieb',[('wissen.html','Wissen · Übersicht'),('wissen-ki-im-hotel.html','KI im Hotel: Möglichkeiten & Grenzen'),('wissen-getraenkevertrag.html','Getränkeverträge verstehen'),('wissen-direktbuchungen.html','Mehr Direktbuchungen gewinnen')]),
-  ('Potenzial berechnen',[('rechner.html','Alle Potenzialrechner'),('rechner.html#ki','KI: Zeit & Arbeitsaufwand'),('rechner.html#direkt','Direktbuchungen & Provisionen'),('rechner.html#einkauf','Getränkeeinkauf & Konditionen'),('rechner.html#social','Social Media & Sichtbarkeit')])]),
+ ('wissen','Wissen','wissen.html','Ratgeber & Werkzeuge',[
+  ('Wissen für Ihr Projekt',[('wissen.html','Wissen · Übersicht'),('ki-automatisierung-kleine-unternehmen.html','KI Automatisierung für kleine Unternehmen'),('landingpage-erstellen-lassen.html','Landingpage erstellen lassen'),('angebot/','Texte und Übersetzungen')]),
+  ('Potenzial berechnen',[('rechner.html','Alle Potenzialrechner'),('rechner.html#ki','KI: Zeit & Arbeitsaufwand'),('rechner.html#social','Social Media & Sichtbarkeit')])]),
  ('kontakt','Kontakt','kontakt.html','Ein Projekt besprechen',[
   ('Zusammenarbeit',[('kontakt.html','Kontakt & Erstgespräch'),('kontakt.html#einsatzgebiet','Deutschland · Österreich · Schweiz · Kosovo'),('mailto:info@tafolli.net','E-Mail schreiben'),('tel:+4917664616146','+49 176 64616146')]),
   ('Rechtliches & Orientierung',[('impressum.html','Impressum'),('datenschutz.html','Datenschutz'),('404.html','Seite nicht gefunden · 404')])])]

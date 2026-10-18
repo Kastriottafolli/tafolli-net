@@ -5,9 +5,9 @@ def lockup(base=''):
 
 def intro(lang='de',base=''):
     label,tagline={
-      'de':('HOTELLERIE × TECHNOLOGIE','Menschliche Ideen. Intelligente Systeme.'),
-      'en':('HOSPITALITY × TECHNOLOGY','Human ideas. Intelligent systems.'),
-      'sq':('HOTELERI × TEKNOLOGJI','Ide njerëzore. Sisteme inteligjente.'),
+      'de':('SOFTWARE × KI','Menschliche Ideen. Intelligente Systeme.'),
+      'en':('SOFTWARE × AI','Human ideas. Intelligent systems.'),
+      'sq':('SOFTUER × IA','Ide njerëzore. Sisteme inteligjente.'),
     }[lang]
     paths=['M20 80H90L135 125H175','M0 200H160','M35 315H95L135 275H180','M380 80H310L265 125H225','M400 200H240','M365 315H305L265 275H220']
     network=''.join(f'<path d="{d}" pathLength="1" style="--branch:{i}"/>' for i,d in enumerate(paths))

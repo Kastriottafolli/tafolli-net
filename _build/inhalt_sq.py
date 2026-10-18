@@ -10,7 +10,7 @@ SQ = {
 "menu_auf": "Hap menynë",
 
 "hero_status": "I disponueshëm për konsulencë",
-"hero_orte": ["Deti Baltik, Rügen 54.4°N", "Schluchsee 47.8°N"],
+"hero_orte": ["Ostseebad Binz 54.4°N"],
 "hero_h1": [["Pesë yje","në shërbim."],["Një rresht","në kod."]],
 "hero_text": "Unë jam Kastriot Tafolli. Pesëmbëdhjetë vjet drejtim në hotelerinë me pesë yje dhe formim si inxhinier softueri me fokus në inteligjencën artificiale. I vë bizneset në rregull nga ana operative dhe më pas ndërtoj sistemet që ua heqin punën nga supet.",
 "hero_cta1": "Cakto një bisedë", "hero_cta2": "Llogarit kursimin",
@@ -28,8 +28,8 @@ SQ = {
           ("4","+","hotele të drejtuara njëkohësisht")],
 "sprachen_label": "Gjuhët", "sprachen_wert": "DE · EN · SQ", "sprachen_stufe": "C2 / C1 / AMTARE",
 
-"haeuser": ["Grand Hotel Binz","Cerês am Meer","Vier Jahreszeiten Binz","Rösing Touristik",
-            "Raulff-Hotels","Vier Jahreszeiten am Schluchsee","Hotel Panorama Lohme",
+"haeuser": ["Grand Hotel Binz","Cerês am Meer","Rösing Touristik",
+            "Raulff-Hotels","Hotel Panorama Lohme",
             "Restaurant Wochenmarkt","Bukowina","Salsa Latino"],
 
 "pos_tag": "Dy gjuhë, një kokë",
@@ -179,18 +179,18 @@ SQ = {
 "cta_text": "Biseda e parë zgjat gjysmë ore dhe nuk ju detyron me asgjë. Pas saj e dini nëse dhe ku mund t'ju ndihmoj.",
 "cta_1": "Cakto një bisedë", "cta_2": "Hap llogaritësit",
 
-"foot_text": "Drejtim gastronomie, digjitalizim, automatizim me IA dhe sisteme IA për hoteleri dhe gastronomi.",
+"foot_text": "Automatizim me IA, softuer, webdizajn dhe tekste për biznese në Gjermani, Austri, Zvicër dhe Kosovë.",
 "foot_status": "TB SOLUTIONS · ONLINE",
 "foot_sp1": "Faqet",
 "foot_l1": [("../ueber-mich.html","Rreth meje"),("../werdegang.html","Karriera"),("../leistungen.html","Shërbimet"),
             ("../teamo-ki.html","TeamO IA"),("../rechner.html","Llogaritësit"),("../wissen.html","Njohuri"),
             ("../referenzen.html","Referenca"),("../kontakt.html","Kontakt")],
 "foot_sp2": "Fushat",
-"foot_l2": [("../fb-beratung.html","Konsulencë F&B"),("../online-marketing.html","Marketing online dhe web"),
-            ("#ki","Automatizim me IA"),("../teamo-ki.html","Sisteme IA"),("../rechner.html","Llogaritësit")],
+"foot_l2": [("../ki-automatisierung.html","Automatizim me IA"),("../softwareentwicklung.html","Zhvillim softueri"),
+            ("../webdesign.html","Webdizajn"),("../online-marketing.html","Marketing online"),("../angebot/","Tekste dhe përkthime")],
 "foot_sp3": "Kontakt",
-"foot_adresse": ["Hauptstraße 1, 18609 Ostseebad Binz, Gjermani","Schluchsee, Pylli i Zi"],
-"foot_copy": "© 2026 Kastriot Tafolli · tafolli.net · Rügen / Schluchsee",
+"foot_adresse": ["Hauptstraße 1, 18609 Ostseebad Binz, Gjermani"],
+"foot_copy": "© 2026 Kastriot Tafolli · tafolli.net · Ostseebad Binz",
 "foot_impressum": "Impressum", "foot_datenschutz": "Privatësia",
 "foot_shell": "$ hoteleri --digjitale --ia",
 }

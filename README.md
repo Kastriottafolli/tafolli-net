@@ -1,7 +1,9 @@
 # tafolli.net
 
-Persönliche Webseite von Kastriot Tafolli. F&B Manager in der 5-Sterne-Hotellerie,
-Softwareingenieur mit Schwerpunkt Künstliche Intelligenz, Inhaber von TB Solutions.
+Persönliche Webseite von Kastriot Tafolli. Softwareingenieur mit Schwerpunkt
+Künstliche Intelligenz, Inhaber von TB Solutions. Öffentliche Angebote:
+KI-Automatisierung, Software- und App-Entwicklung, Webdesign, Online-Marketing
+sowie Texte und Übersetzungen auf Deutsch, Englisch und Albanisch.
 
 Reines HTML, CSS und JavaScript. Kein Framework, keine Abhängigkeiten zur
 Laufzeit, keine Anfrage an fremde Server. Die Dateien können so wie sie sind
@@ -53,8 +55,8 @@ Grafiken werden lokal geladen; es gibt keine Tracker, Cookies oder
 externen Bibliotheken.
 
 Die Unterseiten sind derzeit nur auf Deutsch vorhanden. Die Navigation führt
-zu echten Seiten. Die Startseite zeigt die Verbindung aus Hospitality und
-Technologie; Scroll-Erzählung, Betreuung und Zeitwert-Rechner liegen auf der
+zu echten Seiten. Die Startseite zeigt KI, Software, Web, Marketing und Übersetzungen.
+Scroll-Erzählung, Betreuung und Zeitwert-Rechner liegen auf der
 eigenen Automation-Seite. Das Gesamtangebot ist über `leistungen.html` erreichbar.
 Die gemeinsame Palette verwendet Cremeweiß, Grün, Orange und dunkle Neutraltöne.
 
@@ -80,7 +82,7 @@ Die Startseiten enthalten eine kompakte Logo-Leiste aus einer Auswahl des Netzwe
 Mauszeiger und unsichtbaren Tabs und berücksichtigt reduzierte Bewegung sowie den
 globalen Bewegungsschalter. Ohne JavaScript bleibt eine manuell scrollbare Leiste.
 
-Die sechs Hotelstationen auf der Referenzseite werden in `_build/hotels.py` gepflegt.
+Die früheren Stationen auf der Referenzseite werden in `_build/hotels.py` gepflegt.
 Jede Karte verbindet das verlinkte Logo mit Funktion, Zeitraum, Verantwortungsumfang
 und einem konkreten Kundennutzen aus der vorhandenen Berufserfahrung. Die Logos
 kommen von offiziellen Websites; bei Cerês am Meer ist die heutige Marke A-ROSA

@@ -37,7 +37,7 @@ def fb_beratung():
           <p>Ich habe diese Verhandlungen jahrelang selbst geführt, zuletzt für eine Hotelgruppe mit fünf Häusern und sechs F&amp;B-Outlets. Preisgestaltung, Einkauf und Vertragsverhandlungen lagen komplett bei mir. Ich kenne die Hebel, die Reihenfolge und die Stellen, an denen ein Lieferant tatsächlich nachgibt.</p>
           <p>Dazu kommt alles, was danach passiert: Wareneinsatz, Kalkulation, Inventur, Karten, Abläufe und Personal. Ein guter Einkaufspreis nützt wenig, wenn hinten im Betrieb die Struktur fehlt.</p>
         </div>
-        <a href="rechner.html#einkauf" class="btn btn-1 rise" style="margin-top:12px">Rückvergütung berechnen</a>
+        <a href="kontakt.html" class="btn btn-1 rise" style="margin-top:12px">Gespräch vereinbaren</a>
       </div>
       <div class="pop-wrap">
         <div class="card pop ticks">
@@ -82,7 +82,7 @@ def fb_beratung():
   </div>
 </section>''' + cta_block("// nächster schritt", [["Lassen Sie mich einen Blick"], ["auf Ihre Verträge werfen."]],
         "Ein Gespräch, eine ehrliche Einschätzung. Wenn nichts zu holen ist, sage ich Ihnen das.",
-        "Beratungsgespräch vereinbaren", "kontakt.html", "Rückvergütung berechnen", "rechner.html#einkauf")
+        "Beratungsgespräch vereinbaren", "kontakt.html", "Leistungen ansehen", "leistungen.html")
     inhalt += '<section class="service-section"><div class="shell"><p class="tag">EINZELNE LEISTUNGEN IM DETAIL</p><h2 class="d2">Vertiefen Sie Ihr Thema.</h2><div class="portfolio-links">' + "".join(link(slug) for slug in ['lieferantenvereinbarungen', 'getraenkevertraege', 'rueckverguetungen', 'wareneinsatz-kalkulation', 'inventur-warenwirtschaft', 'interim-fb-management', 'revenue-controlling', 'personal-recruiting']) + '</div></div></section>'
 
     return seite_rahmen("leistungen.html", "F&amp;B-Beratung für Hotels und Restaurants · Kastriot Tafolli",
@@ -117,20 +117,20 @@ def online_marketing():
         if i < len(ablauf) - 1:
             pipe += f'<div class="pipe-track"><span class="pipe-particle" style="--i:{i}"></span></div>'
 
-    inhalt = hero_klein("03.2", "Online-Marketing &amp; Web", [["Sichtbarkeit, die"], ["Direktbuchungen bringt."]],
-        "Website, Suchmaschinen, Kampagnen und Inhalte für Hotels und Restaurants. Aufgebaut von jemandem, der beide Seiten kennt, die Technik und den Betrieb.",
-        ["Website ab 1.100 €", "SEO und Ads", "Foto, Video, Drohne"]) + f'''
+    inhalt = hero_klein("03.2", "Online-Marketing &amp; Web", [["Sichtbarkeit, die"], ["Anfragen bringt."]],
+        "Website, Suchmaschinen, Kampagnen und Inhalte für Unternehmen. Aufgebaut so, dass Besucher Sie finden und sich melden können.",
+        ["Festpreis-Angebot auf Anfrage", "SEO und Ads", "Foto, Video, Drohne"]) + f'''
 <section class="pad">
   <div class="shell">
     <div class="split" style="align-items:start;gap:clamp(36px,5vw,90px)">
       <div>
-        <h2 class="d2 wipe recede-exit" style="font-size:clamp(1.8rem,3.6vw,3rem);margin-bottom:30px">{wipe([["Gefunden werden."], ["Direkt gebucht werden."]])}</h2>
+        <h2 class="d2 wipe recede-exit" style="font-size:clamp(1.8rem,3.6vw,3rem);margin-bottom:30px">{wipe([["Gefunden werden."], ["Anfragen bekommen."]])}</h2>
         <div class="prose rise">
-          <p>Die meisten Häuser zahlen zweimal: einmal für die Sichtbarkeit auf Portalen und dann noch einmal Provision für jede Buchung, die darüber kommt. Der Ausweg ist keine neue Plattform, sondern eine eigene digitale Präsenz, die trägt.</p>
-          <p>Mit TB Solutions baue ich diese Präsenz auf: eine Website, die schnell lädt und auf dem Telefon funktioniert, Inhalte, die gefunden werden, Kampagnen mit klarem Budget und Bilder, die Ihr Haus so zeigen, wie es ist.</p>
-          <p>Der Unterschied zu einer klassischen Agentur: Ich weiß, wie ein Reservierungsbuch aussieht, was ein Halbpensionsgast kostet und warum um 18 Uhr niemand Zeit hat, Texte freizugeben. Das ändert, wie wir arbeiten.</p>
+          <p>Sichtbarkeit allein reicht nicht, wenn niemand den nächsten Schritt findet. Eine eigene Website, klare Inhalte und Kampagnen mit einem Ziel gehören zusammen.</p>
+          <p>Mit TB Solutions baue ich diese Präsenz auf: eine Website, die schnell lädt und auf dem Telefon funktioniert, Inhalte, die gefunden werden, Kampagnen mit klarem Budget und Bilder, die Ihr Angebot zeigen.</p>
+          <p>Sie bekommen vorab einen Umfang. Laufende Betreuung für Website, Inhalte und Kampagnen ist möglich, aber ein eigener Auftrag.</p>
         </div>
-        <a href="rechner.html#direkt" class="btn btn-1 rise" style="margin-top:12px">Provision berechnen</a>
+        <a href="rechner.html#social" class="btn btn-1 rise" style="margin-top:12px">Social Media einordnen</a>
       </div>
       <div class="pop-wrap">
         <div class="card pop ticks">
@@ -157,13 +157,13 @@ def online_marketing():
     <div class="pipe rise">{pipe}</div>
     {zitat_block("Eine schöne Website ist kein Selbstzweck. Sie muss Anfragen bringen, sonst ist sie nur teuer.", "Kastriot Tafolli")}
   </div>
-</section>''' + cta_block("// nächster schritt", [["Wie sichtbar ist"], ["Ihr Haus wirklich?"]],
+</section>''' + cta_block("// nächster schritt", [["Wie sichtbar ist"], ["Ihre Website?"]],
         "Ich sehe mir Ihre Seite und Ihre Sichtbarkeit an und sage Ihnen konkret, wo die größten Lücken sind.",
-        "Beratungsgespräch vereinbaren", "kontakt.html", "Provision berechnen", "rechner.html#direkt")
+        "Beratungsgespräch vereinbaren", "kontakt.html", "Social Media einordnen", "rechner.html#social")
     inhalt += '<section class="service-section"><div class="shell"><p class="tag">EINZELNE LEISTUNGEN IM DETAIL</p><h2 class="d2">Vertiefen Sie Ihr Thema.</h2><div class="portfolio-links">' + "".join(link(slug) for slug in ['webdesign', 'suchmaschinenoptimierung', 'domain-hosting-email', 'social-media', 'foto-video']) + '</div></div></section>'
 
     return seite_rahmen("leistungen.html", "Online-Marketing und Webentwicklung · Kastriot Tafolli",
-        "Website, SEO, Google Ads, Social Media, Foto und Video für Hotels und Restaurants. Sichtbarkeit, die Direktbuchungen bringt statt Portalprovision.",
+        "Website, SEO, Google Ads, Social Media, Foto und Video für Unternehmen. Sichtbarkeit, die Anfragen bringt.",
         "online-marketing.html", inhalt)
 
 
@@ -218,20 +218,20 @@ def teamo():
         ("Wie steht es um den Datenschutz?", "Die Integration erfolgt nach den Vorgaben der Datenschutz-Grundverordnung. Vorab wird festgelegt, welche Daten verarbeitet werden, wo sie liegen und wie lange sie gespeichert bleiben."),
         ("Funktioniert das mit unserem bestehenden System?", "In der Regel ja. TeamO wird an gängige Hotel- und Kassensysteme, Reservierungssoftware, E-Mail und Kalender angebunden. Was konkret möglich ist, klären wir in der Analyse."),
         ("Wer kümmert sich nach dem Start um TeamO?", "Ich. Das ist der Teil, den ich KI-Management nenne: Antworten prüfen, nachschärfen, wenn sich Preise oder Abläufe ändern, und eingreifen, bevor eine kleine Abweichung beim Gast ankommt."),
-        ("Was kostet TeamO?", "KI-gestützte Lösungen starten bei 4.200 Euro für Einrichtung und Training, je nach Umfang der Anbindung. Dazu kommt eine laufende monatliche Betreuung. Sie bekommen vorab ein Angebot mit festem Umfang."),
+        ("Was kostet TeamO?", "Festpreis-Angebot auf Anfrage. Den Umfang der Einrichtung und einer möglichen Betreuung schreibe ich nach dem Gespräch auf. Einen Betrag vor diesem Gespräch nenne ich nicht."),
     ]
     inhalt = hero_klein("04", "KI-Produkt", [["TeamO, der digitale"], ["KI-Mitarbeiter."]],
-        "Entwickelt für Hotels, Restaurants und Gastronomiebetriebe. TeamO nimmt Anrufe an, beantwortet Anfragen in mehreren Sprachen, pflegt Reservierungen und berichtet der Geschäftsführung, rund um die Uhr.",
-        ["24 h erreichbar", "mehrsprachig", "DSGVO-konform", "ab 4.200 €"]) + f'''
+        "Ein digitaler Mitarbeiter für Anrufe, Nachrichten und wiederkehrende Anfragen. In mehreren Sprachen, mit Freigabe durch Ihr Team.",
+        ["24 h erreichbar", "mehrsprachig", "Festpreis-Angebot auf Anfrage"]) + f'''
 <section class="pad">
   <div class="shell">
     <div class="split" style="align-items:start;gap:clamp(36px,5vw,90px)">
       <div>
         <h2 class="d2 wipe recede-exit" style="font-size:clamp(1.8rem,3.6vw,3rem);margin-bottom:30px">{wipe([["Mehr als ein Chatbot."], ["Ein Mitarbeiter, der nicht schläft."]])}</h2>
         <div class="prose rise">
-          <p>TeamO ist ein vollwertiger digitaler Mitarbeiter, entwickelt speziell für Hotels, Restaurants und Gastronomiebetriebe. Basierend auf moderner KI-Technologie und erweitert durch eine eigene Systemlogik vereint TeamO Kommunikation, Organisation und Management in einem Assistenten.</p>
-          <p>Er nimmt Anrufe an, beantwortet E-Mails und Nachrichten in mehreren Sprachen, pflegt Reservierungen, verschickt Angebote und legt der Geschäftsführung morgens einen fertigen Tagesbericht hin. Rund um die Uhr, ohne Wartezeit, ohne Krankheitstage.</p>
-          <p>Jeder TeamO wird individuell auf den jeweiligen Betrieb trainiert: auf Ihre Karten, Ihre Zimmer, Ihre Preise, Ihre Öffnungszeiten und Ihren Ton. Die Anbindung an bestehende Systeme erfolgt datenschutzkonform nach den Vorgaben der Datenschutz-Grundverordnung.</p>
+          <p>TeamO ist ein digitaler Mitarbeiter für Anrufe, Nachrichten und wiederkehrende Aufgaben. Basierend auf moderner KI-Technologie und erweitert durch eine eigene Systemlogik vereint TeamO Kommunikation, Organisation und Auswertungen in einem Assistenten.</p>
+          <p>Er nimmt Anrufe an, beantwortet E-Mails und Nachrichten in mehreren Sprachen, verschickt Angebote und legt morgens einen fertigen Tagesbericht hin. Rund um die Uhr, ohne Wartezeit, ohne Krankheitstage.</p>
+          <p>Jeder TeamO wird individuell auf den jeweiligen Betrieb trainiert: auf Ihre Angebote, Ihre Preise, Ihre Öffnungszeiten und Ihren Ton. Die Anbindung an bestehende Systeme erfolgt datenschutzkonform nach den Vorgaben der Datenschutz-Grundverordnung.</p>
         </div>
         <div class="rise" style="display:flex;flex-wrap:wrap;gap:13px;margin-top:12px">
           <a href="kontakt.html" class="btn btn-1">TeamO anfragen</a>
@@ -286,6 +286,6 @@ def teamo():
         "// nächster schritt", [["TeamO für Ihr Haus."]],
         "Im Erstgespräch sehen wir uns an, wo bei Ihnen die meiste Zeit verloren geht. Daraus entsteht der konkrete Einsatzbereich.",
         "Beratungsgespräch vereinbaren", "kontakt.html", "Ersparnis berechnen", "rechner.html#ki")
-    return seite_rahmen("teamo-ki.html", "TeamO, der digitale KI-Mitarbeiter für Hotels · Kastriot Tafolli",
-        "TeamO nimmt Anrufe an, beantwortet Anfragen mehrsprachig, pflegt Reservierungen und erstellt Tagesberichte. Individuell trainiert, DSGVO-konform, ab 4.200 €.",
+    return seite_rahmen("teamo-ki.html", "TeamO, der digitale KI-Mitarbeiter · Kastriot Tafolli",
+        "TeamO nimmt Anrufe an, beantwortet Anfragen mehrsprachig und erstellt Tagesberichte. Individuell trainiert. Festpreis-Angebot auf Anfrage.",
         "teamo-ki.html", inhalt)

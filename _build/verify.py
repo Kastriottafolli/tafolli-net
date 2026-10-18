@@ -4,9 +4,9 @@ from html.parser import HTMLParser
 from icons import GLYPHS
 import json
 from services import SERVICES
-from companies import COMPANIES
 from hotels import HOTELS
-from partners import PROJECTS, GASTRO, TECH, SOURCES
+from seo import NOINDEX_PATHS
+from partners import PROJECTS, visible_tech, SOURCES
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
@@ -59,8 +59,6 @@ class Page(HTMLParser):
 
 def verify():
     pages={p.resolve():Page(p) for p in [*ROOT.glob('*.html'),ROOT/'en/index.html',ROOT/'sq/index.html',ROOT/'angebot/index.html']}
-    # Eigenständige Angebotsseite: bewusst nicht in der Navigation der bestehenden Seiten.
-    offer=(ROOT/'angebot/index.html').resolve()
     errors=[]
     svg_ids={path.resolve():{node.get('id') for node in ET.parse(path).iter() if node.get('id')} for path in ROOT.rglob('*.svg')}
     for path,page in pages.items():
@@ -82,7 +80,8 @@ def verify():
             target=(ROOT/parsed.path.lstrip('/')).resolve() if parsed.path.startswith('/') else (path.parent/parsed.path).resolve()
             if target.is_dir():target=target/'index.html'
             nav_targets.add(target)
-        missing=set(pages)-{offer}-nav_targets
+        indexable={p for p,pg in pages.items() if 'noindex' not in pg.meta.get('robots','')}
+        missing=indexable-nav_targets
         if missing:errors.append(f'{relative}: pages missing from main menu: '+', '.join(sorted(p.name for p in missing)))
         graph=[node for schema in page.schemas for node in schema.get('@graph',[schema])]
         types={node.get('@type') for node in graph}
@@ -125,22 +124,26 @@ def verify():
     sitemap=ET.parse(ROOT/'sitemap.xml')
     urls=[el.text for el in sitemap.findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
     assert 'https://tafolli.net/ki-automatisierung.html' in urls
-    assert set(urls)=={page.canonical for path,page in pages.items() if path.name!='404.html'}, 'Sitemap must match the indexable canonical pages'
+    indexable={path for path,page in pages.items() if 'noindex' not in page.meta.get('robots','')}
+    assert set(urls)=={pages[path].canonical for path in indexable}, 'Sitemap must match the indexable canonical pages'
     assert len(urls)==len(set(urls)), 'Duplicate sitemap entries'
     for service in SERVICES:
         path=(ROOT/(service['slug']+'.html')).resolve()
-        assert path in pages and 'https://tafolli.net/'+path.name in urls
+        assert path in pages
+        if 'noindex' not in pages[path].meta.get('robots',''):
+            assert 'https://tafolli.net/'+path.name in urls
         assert {'ausgangslage','umfang','praxis','ergebnisse','fragen'} <= set(pages[path].ids)
-    homepage=pages[(ROOT/'index.html').resolve()]
-    for name,url in COMPANIES:
-        assert url in homepage.links, f'Missing official station link: {name}'
     references=pages[(ROOT/'referenzen.html').resolve()]
-    for partner in PROJECTS+GASTRO+TECH+HOTELS:
+    for partner in PROJECTS+visible_tech()+HOTELS:
         assert partner['url'] in references.links, f"Missing partner link: {partner['name']}"
         if partner['key']!='tafolli':
             assert (ROOT/'assets/partners'/SOURCES[partner['key']]['file']).is_file()
     for location in ['index.html','en/index.html','sq/index.html']:
         assert 'partner' in pages[(ROOT/location).resolve()].ids
+    for rel in sorted(NOINDEX_PATHS):
+        page=pages[(ROOT/rel).resolve()]
+        if page.meta.get('robots')!='noindex': errors.append(f'{rel}: must stay noindex while kept for a later decision')
+        if pages[(ROOT/rel).resolve()].canonical in urls: errors.append(f'{rel}: noindex page must leave the sitemap')
     if errors: raise SystemExit('\n'.join(errors))
     print(f'PASS: {len(pages)} pages; local links, anchors, assets, metadata, all-page menu coverage, structured data, breadcrumbs, localized demos and sitemap.')
 

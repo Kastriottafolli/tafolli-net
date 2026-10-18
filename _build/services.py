@@ -9,7 +9,7 @@ def add(slug,title,group,lead,problem,approach,modules,example,outputs,faq,relat
     SERVICES.append(dict(slug=slug,title=title,group=group,lead=lead,problem=problem,approach=approach,modules=modules,example=example,outputs=outputs,faq=faq,related=related))
 
 add('digitalisierung','Digitalisierung','Technologie',
-'Ein digitaler Betrieb beginnt mit Abläufen, die zusammenpassen. Ich verbinde die Erfahrung aus dem Hotelalltag mit der technischen Umsetzung.',
+'Ein digitaler Betrieb beginnt mit Abläufen, die zusammenpassen. Ich verbinde vorhandene Systeme mit der technischen Umsetzung.',
 'Eine Reservierung steht im PMS, die Veranstaltungsdetails liegen in einer E-Mail und der Dienstplan lebt in einer Tabelle. Sobald Informationen mehrfach gepflegt werden, entstehen Rückfragen, Fehler und unnötige Handgriffe. Digitalisierung soll diesen Alltag vereinfachen und Ihrem Team eine verlässliche Grundlage geben.',
 'Ich nehme zunächst einen konkreten Ablauf auf: Wer benötigt welche Information, wann und in welchem System? Gemeinsam legen wir fest, welche Schritte bleiben, welche entfallen und wo eine technische Verbindung sinnvoll ist. Erst danach wählen wir Software und Schnittstellen aus.',
 [('Systemlandschaft verstehen','Hotelsoftware, Kassensystem, Warenwirtschaft und Kommunikation werden als zusammenhängender Ablauf betrachtet. Datenquellen, Zuständigkeiten und doppelte Arbeit werden sichtbar.'),('Werkzeuge verbinden','Schnittstellen oder strukturierte Importe übertragen Informationen zwischen den vereinbarten Systemen. Wo eine direkte Anbindung fehlt, planen wir einen nachvollziehbaren Übergang statt einer fragilen Abkürzung.'),('Menschen mitnehmen','Neue Abläufe werden mit den Mitarbeitenden erprobt und dokumentiert. Schulung, Verantwortlichkeiten und Rückmeldungen gehören zur Einführung ebenso wie die Technik.')],
@@ -19,7 +19,7 @@ add('digitalisierung','Digitalisierung','Technologie',
 ['softwareentwicklung','ki-entwicklung','ki-automatisierung'])
 
 add('cybersecurity','Cybersecurity & IT-Sicherheit','Technologie',
-'Gästedaten, E-Mail und Zugänge verdienen dieselbe Aufmerksamkeit wie Ihr Service. Ich unterstütze die praktische Absicherung Ihrer digitalen Arbeitsumgebung.',
+'Kundendaten, E-Mail und Zugänge verdienen dieselbe Aufmerksamkeit wie Ihr Tagesgeschäft. Ich unterstütze die praktische Absicherung Ihrer digitalen Arbeitsumgebung.',
 'Gemeinsame Passwörter, alte Benutzerkonten oder ein Backup, das noch nie wiederhergestellt wurde: Sicherheitsprobleme beginnen häufig bei alltäglichen Gewohnheiten. In Hotels und Restaurants arbeiten wechselnde Teams mit sensiblen Informationen und vielen externen Dienstleistern. Klar geregelte Zugriffe reduzieren vermeidbare Risiken.',
 'Wir erfassen die vereinbarten Systeme, Zugänge und Zuständigkeiten. Darauf folgt eine nach Dringlichkeit geordnete Maßnahmenliste. Ich unterstütze die Umsetzung grundlegender Schutzmaßnahmen und beziehe für spezialisierte Prüfungen die zuständigen IT-Partner ein. Der Umfang wird vorab festgelegt.',
 [('Zugänge und Rollen','Persönliche Konten, Mehrfaktor-Anmeldung und nachvollziehbare Berechtigungen ersetzen geteilte Zugänge. Für Eintritte, Rollenwechsel und Austritte entstehen einfache Checklisten.'),('Website und E-Mail','Updates, sichere Konfiguration und die Zuständigkeit für Wartung werden geprüft. Für E-Mail werden vorhandene Schutzfunktionen und die Authentifizierung der Absenderdomain gemeinsam mit dem Anbieter eingerichtet.'),('Backup und Wiederanlauf','Wir klären, welche Daten gesichert werden, wer die Sicherungen überwacht und wie eine Wiederherstellung abläuft. Ein dokumentierter Test zeigt, ob der vereinbarte Wiederanlauf praktisch funktioniert.')],
@@ -49,17 +49,17 @@ add('softwareentwicklung','Softwareentwicklung','Technologie',
 ['app-entwicklung','digitalisierung','ki-entwicklung'])
 
 add('app-entwicklung','App- & Web-App-Entwicklung','Technologie',
-'Checklisten, Bestellungen und Freigaben dort erledigen, wo die Arbeit stattfindet. Individuelle Anwendungen für Ihr Team und Ihre Gäste.',
+'Checklisten, Bestellungen und Freigaben dort erledigen, wo die Arbeit stattfindet. Individuelle Anwendungen für Ihr Team.',
 'Eine Papierliste lässt sich schnell ausfüllen, aber nur schwer über mehrere Schichten auswerten. Eine Tabelle am Bürocomputer hilft wenig, wenn die Bestellung im Restaurant aufgenommen werden muss. Eine passende Web-App bringt den Ablauf auf die Geräte, die Ihr Team tatsächlich nutzt.',
 'Wir legen die wichtigsten Nutzerwege fest und erproben eine erste Oberfläche mit echten Anwendern. Danach folgen Funktionen, Rollen und die Verbindung zu vorhandenen Daten. Browserbasierte Anwendungen sind häufig ein sinnvoller Einstieg; native Apps werden anhand des tatsächlichen Bedarfs bewertet.',
 [('Mobile Abläufe','Formulare und Ansichten werden für kleine Bildschirme und schnelle Bedienung gestaltet. Wichtige Pflichtangaben, klare Rückmeldungen und wenige Schritte reduzieren Fehler im Tagesgeschäft.'),('Freigaben und Übersicht','Bestellungen oder Aufgaben bekommen einen nachvollziehbaren Status. Zuständige Personen sehen offene Vorgänge, ohne in mehreren Chatgruppen nachfragen zu müssen.'),('Anbindung und Rechte','Die Anwendung verwendet vereinbarte Datenquellen und klar definierte Rollen. Wer etwas lesen, ändern oder freigeben darf, wird im Ablauf berücksichtigt.')],
 'Die Restaurantleitung meldet eine Bestellung per Smartphone. Der Einkauf prüft die Angaben, gibt sie frei und dokumentiert den Status; Rückfragen bleiben am Vorgang sichtbar.',
 ['Nutzerwege und erster Oberflächenentwurf','Anwendung mit abgestimmten Funktionen','Rollen und Statusmodell','Einführung mit Anwenderfeedback'],
 [('Muss jeder eine App installieren?','Eine Web-App kann im Browser genutzt werden. Ob eine Installation, Offline-Funktion oder native Anwendung erforderlich ist, klären wir anhand der Arbeitssituation.'),('Geht das auch für einen kleinen Betrieb?','Ja. Ein klar begrenztes Werkzeug für einen häufigen Ablauf ist oft sinnvoller als eine große Anwendung mit vielen selten genutzten Funktionen.')],
-['softwareentwicklung','digitalisierung','personal-recruiting'])
+['softwareentwicklung','digitalisierung','webdesign'])
 
 add('webdesign','Webdesign & Webentwicklung','Digitaler Auftritt',
-'Ein Hotelauftritt darf begeistern und muss den nächsten Schritt einfach machen. Ich entwickle Websites mit Persönlichkeit, klarer Struktur und echter Buchungsnähe.',
+'Ein Auftritt darf klar sein und muss den nächsten Schritt einfach machen. Ich entwickle Websites mit Persönlichkeit, verständlicher Struktur und einem direkten Weg zur Anfrage.',
 'Gäste wollen Atmosphäre erleben und zugleich konkrete Antworten finden: Zimmer, Küche, Lage, Preise und Buchung. Wenn die Website diese Informationen versteckt oder auf dem Smartphone schwer zu bedienen ist, verlieren selbst schöne Bilder ihre Wirkung. Gestaltung und Nutzbarkeit müssen zusammenarbeiten.',
 'Wir strukturieren Angebote und Zielgruppen, schreiben passende Inhalte und entwickeln ein visuelles Konzept. Animationen unterstützen die Geschichte Ihres Hauses. Buchungsstrecke, Kontakt und mobile Bedienung werden früh mitgedacht und vor dem Start geprüft.',
 [('Gestaltung mit Charakter','Typografie, Bildsprache und Bewegung bilden einen zusammenhängenden Auftritt. Das Design wird aus Ihrem Haus entwickelt und bleibt auch ohne Animation verständlich.'),('Technische Umsetzung','Responsive Seiten, verständliche Navigation und schlanke Medien unterstützen die Nutzung auf unterschiedlichen Geräten. Bestehende Buchungsanbieter werden im vereinbarten Umfang eingebunden.'),('Inhalte und Auffindbarkeit','Eigene Seiten für Angebote, Zimmer oder Veranstaltungen beantworten konkrete Suchfragen. Titel, Beschreibungen und interne Links geben Menschen und Suchmaschinen Orientierung.')],
@@ -69,7 +69,7 @@ add('webdesign','Webdesign & Webentwicklung','Digitaler Auftritt',
 ['suchmaschinenoptimierung','domain-hosting-email','foto-video'])
 
 add('suchmaschinenoptimierung','Suchmaschinenoptimierung & lokale Sichtbarkeit','Digitaler Auftritt',
-'Gefunden werden, wenn ein Gast genau Ihr Angebot sucht. SEO für Hotels und Restaurants verbindet Technik, Inhalte und lokale Relevanz.',
+'Gefunden werden, wenn jemand genau Ihr Angebot sucht. Suchmaschinenoptimierung verbindet Technik, Inhalte und lokale Relevanz.',
 'Eine Website kann viele Seiten haben und trotzdem die wichtigsten Fragen unbeantwortet lassen. Suchende möchten wissen, ob Ihr Haus zu ihrem Anlass passt: Familienurlaub, Dinner, Tagung oder ein Wochenende in Ihrer Region. Dafür brauchen sie hilfreiche Informationen und eindeutige Einstiegsseiten.',
 'Ich prüfe vorhandene Seiten, Suchfragen und technische Hindernisse. Daraus entsteht eine priorisierte Inhalts- und Maßnahmenplanung. Wir verbessern zunächst die Seiten mit dem größten Bezug zu Ihrem Angebot und beobachten anschließend, welche Suchanfragen und Kontakte daraus entstehen.',
 [('Technische Grundlage','Indexierbarkeit, Seitentitel, interne Links und mobile Nutzbarkeit werden geprüft. Beim Umbau bestehender Websites werden bisherige URLs und nötige Weiterleitungen berücksichtigt.'),('Hilfreiche Angebotsseiten','Jede wichtige Leistung oder Gästegruppe erhält passende Informationen. Inhalte beantworten konkrete Fragen, statt nur Suchbegriffe zu wiederholen.'),('Lokale Auffindbarkeit','Hausdaten, Öffnungszeiten und regionale Inhalte werden konsistent aufbereitet. Vorhandene Unternehmensprofile und deren Verbindung zur Website fließen in die Bestandsaufnahme ein.')],
@@ -89,7 +89,7 @@ add('domain-hosting-email','Domain, Hosting & E-Mail','Digitaler Auftritt',
 ['cybersecurity','webdesign','digitalisierung'])
 
 add('social-media','Social Media & Content','Digitaler Auftritt',
-'Zeigen, was Ihr Haus besonders macht. Mit Inhalten, die zu Ihrem Betrieb passen und einen klaren Weg zur Anfrage bieten.',
+'Zeigen, was Ihr Angebot besonders macht. Mit Inhalten, die zu Ihrem Betrieb passen und einen klaren Weg zur Anfrage bieten.',
 'Zwischen Service, Einkauf und Personal bleibt wenig Zeit für regelmäßige Beiträge. Spontane Posts zeigen einzelne Momente, ergeben aber selten eine erkennbare Geschichte. Ein durchdachter Plan verbindet Atmosphäre, Angebote und die Menschen hinter Ihrem Haus.',
 'Wir klären Zielgruppen, Kanäle und die wichtigsten Themen. Daraus entstehen ein Redaktionsplan und wiederverwendbare Formate. Inhalte werden mit Ihrem Team abgestimmt, Freigaben organisiert und Ergebnisse anhand der tatsächlich relevanten Reaktionen ausgewertet.',
 [('Themen und Planung','Saisonangebote, Kulinarik, Veranstaltungen und Teamgeschichten bilden einen planbaren Rhythmus. Die Frequenz richtet sich nach verfügbarer Qualität und Kapazität.'),('Beiträge und Reels','Text, Bild und kurze Videos werden für den jeweiligen Kanal gestaltet. Jeder Inhalt bekommt eine verständliche Aussage und bei Bedarf einen passenden Anfrageweg.'),('Betreuung und Auswertung','Kommentare, Zuständigkeiten und Freigaben werden geregelt. Neben Reichweite betrachten wir etwa Profilbesuche, Website-Klicks oder qualifizierte Anfragen.')],
@@ -99,7 +99,7 @@ add('social-media','Social Media & Content','Digitaler Auftritt',
 ['foto-video','online-marketing','webdesign'])
 
 add('foto-video','Foto, Video & visuelle Inhalte','Digitaler Auftritt',
-'Räume, Küche und Menschen so zeigen, dass Ihr Haus erlebbar wird. Visuelle Inhalte für Website, Kampagnen und soziale Kanäle.',
+'Mensch, Produkt und Raum so zeigen, dass Ihr Angebot verständlich wird. Visuelle Inhalte für Website, Kampagnen und soziale Kanäle.',
 'Ein Bild kann zeigen, wie ein Zimmer aussieht. Eine durchdachte Bildserie zeigt, wie sich ein Aufenthalt anfühlt. Häufig fehlt Betrieben eine konsistente Auswahl für Website, Angebote und Social Media; vorhandenes Material passt weder zum Format noch zum aktuellen Auftritt.',
 'Wir planen Motive, Einsatzorte und Formate vor dem Termin. Eine Aufnahmeplanung berücksichtigt den laufenden Betrieb, das Licht und beteiligte Personen. Produktion und Bearbeitung werden abgestimmt; besondere Aufnahmen wie Drohnenmaterial werden mit geeigneten Partnern und den erforderlichen Voraussetzungen geplant.',
 [('Bildkonzept und Motive','Zimmer, Gastronomie, Details und Gastgeber bekommen eine gemeinsame Bildsprache. Eine Motivliste hilft, wichtige Angebote vollständig abzubilden.'),('Formate für den Einsatz','Website benötigt andere Ausschnitte als ein Reel oder eine Anzeige. Die benötigten Varianten werden von Beginn an berücksichtigt.'),('Auswahl und Übergabe','Das Material wird für die vereinbarten Kanäle geordnet und passend aufbereitet. Nutzungsumfang, Freigaben und Übergabeformate werden vorab geklärt.')],
@@ -192,12 +192,21 @@ LOOKUP={s['slug']:s for s in SERVICES}
 EXISTING={'ki-automatisierung':'AI Automation as a Service','teamo-ki':'TeamO · digitaler KI-Mitarbeiter','fb-beratung':'F&B-Beratung','online-marketing':'Online-Marketing & Digitalstrategie','rechner':'Potenzialrechner','wissen-getraenkevertrag':'Wissen: Getränkeverträge','werdegang':'Mein Werdegang'}
 
 def link(slug):
+    special={
+        'angebot':('angebot/','Texte und Übersetzungen Deutsch, Englisch, Albanisch'),
+        'ki-kleine':('ki-automatisierung-kleine-unternehmen.html','KI Automatisierung für kleine Unternehmen'),
+        'landingpage':('landingpage-erstellen-lassen.html','Landingpage erstellen lassen'),
+    }
+    if slug in special:
+        href,label=special[slug]
+        return f'<a href="{href}">{html.escape(label)} <span aria-hidden="true">↗</span></a>'
     title=LOOKUP[slug]['title'] if slug in LOOKUP else EXISTING[slug]
     return f'<a href="{slug}.html">{html.escape(title)} <span aria-hidden="true">↗</span></a>'
 
 def catalogue():
-    groups=[('Technologie',['ki-automatisierung','ki-entwicklung','teamo-ki','digitalisierung','softwareentwicklung','app-entwicklung','cybersecurity']),('F&B & Hospitality',['fb-beratung','lieferantenvereinbarungen','getraenkevertraege','rueckverguetungen','wareneinsatz-kalkulation','inventur-warenwirtschaft','interim-fb-management','revenue-controlling','personal-recruiting']),('Digitaler Auftritt',['online-marketing','webdesign','suchmaschinenoptimierung','domain-hosting-email','social-media','foto-video'])]
-    return '<div class="portfolio-groups">'+''.join(f'<section><p class="tag">0{i+1} / {label}</p><h3>{["Intelligente Systeme.","Starke Betriebe.","Sichtbare Persönlichkeit."][i]}</h3><div class="portfolio-links">'+''.join(link(slug) for slug in slugs)+'</div></section>' for i,(label,slugs) in enumerate(groups))+'</div>'
+    groups=[('Kernangebote',['ki-kleine','landingpage','angebot']),('KI & Software',['ki-automatisierung','ki-entwicklung','teamo-ki','digitalisierung','softwareentwicklung','app-entwicklung','cybersecurity']),('Web & Sichtbarkeit',['webdesign','online-marketing','social-media','suchmaschinenoptimierung','domain-hosting-email','foto-video'])]
+    headings=['Drei Angebote.','Intelligente Systeme.','Sichtbare Auftritte.']
+    return '<div class="portfolio-groups">'+''.join(f'<section><p class="tag">0{i+1} / {html.escape(label)}</p><h3>{headings[i]}</h3><div class="portfolio-links">'+''.join(link(slug) for slug in slugs)+'</div></section>' for i,(label,slugs) in enumerate(groups))+'</div>'
 
 def page(s):
     path=s['slug']+'.html'; title=html.escape(s['title']); desc=html.escape(s['lead'])
