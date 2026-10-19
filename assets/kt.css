@@ -807,4 +807,10 @@ html.cur-on, html.cur-on a, html.cur-on button, html.cur-on .lnk { cursor: none;
 .daten div { display: grid; grid-template-columns: minmax(110px, 34%) 1fr; gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
 .daten dt { font-family: var(--mono); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--paper-mute); padding-top: 3px; }
 .daten dd { margin: 0; font-size: .94rem; color: var(--paper); }
+
+.anfrage-form{display:grid;gap:14px;margin:8px 0 28px;max-width:560px}
+.anfrage-form label{display:grid;gap:6px;font-size:.84rem;color:var(--paper-dim)}
+.anfrage-form input,.anfrage-form textarea{width:100%;min-height:44px;padding:12px 14px;border:1px solid var(--line);border-radius:2px;background:transparent;color:var(--paper);font:inherit}
+.anfrage-form textarea{min-height:140px;resize:vertical}
+.anfrage-form p:last-child{color:var(--paper-mute);font-size:.88rem;max-width:62ch}
 .daten a { color: var(--acc); }

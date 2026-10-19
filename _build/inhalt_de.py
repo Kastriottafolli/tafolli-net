@@ -12,7 +12,7 @@ DE = {
 "menu_auf": "Menü öffnen",
 
 "hero_status": "Verfügbar für Beratung",
-"hero_orte": ["Ostseebad Rügen 54.4°N", "Schluchsee 47.8°N"],
+"hero_orte": ["Ostseebad Binz 54.4°N"],
 "hero_h1": [["Fünf Sterne","im Service."],["Eine Zeile","im Code."]],
 "hero_text": "Ich bin Kastriot Tafolli. Fünfzehn Jahre Führung in der 5-Sterne-Hotellerie und eine Ausbildung zum Softwareingenieur mit Schwerpunkt Künstliche Intelligenz. Ich bringe Häuser operativ in Form und baue die Systeme, die ihnen danach Arbeit abnehmen.",
 "hero_cta1": "Beratungsgespräch", "hero_cta2": "Ersparnis berechnen",
@@ -30,8 +30,8 @@ DE = {
           ("4","+","Hotels zeitgleich geleitet")],
 "sprachen_label": "Sprachen", "sprachen_wert": "DE · EN · SQ", "sprachen_stufe": "C2 / C1 / NATIV",
 
-"haeuser": ["Grand Hotel Binz","Cerês am Meer","Vier Jahreszeiten Binz","Rösing Touristik",
-            "Raulff-Hotels","Vier Jahreszeiten am Schluchsee","Hotel Panorama Lohme",
+"haeuser": ["Grand Hotel Binz","Cerês am Meer","Rösing Touristik",
+            "Raulff-Hotels","Hotel Panorama Lohme",
             "Restaurant Wochenmarkt","Bukowina","Salsa Latino"],
 
 "pos_tag": "Zwei Sprachen, ein Kopf",
@@ -181,18 +181,18 @@ DE = {
 "cta_text": "Ein Erstgespräch kostet eine halbe Stunde und ist unverbindlich. Danach wissen Sie, ob und wo ich Ihnen helfen kann.",
 "cta_1": "Beratungsgespräch vereinbaren", "cta_2": "Rechner öffnen",
 
-"foot_text": "Gastronomische Führung, Digitalisierung, KI-Automatisierung und KI-Lösungen für Hotellerie und Gastronomie.",
+"foot_text": "KI-Automatisierung, Software, Webdesign und Texte für Unternehmen in Deutschland, Österreich, der Schweiz und Kosovo.",
 "foot_status": "TB SOLUTIONS · ONLINE",
 "foot_sp1": "Seiten",
 "foot_l1": [("ueber-mich.html","Über mich"),("werdegang.html","Werdegang"),("leistungen.html","Leistungen"),
             ("teamo-ki.html","TeamO KI"),("rechner.html","Rechner"),("wissen.html","Wissen"),
             ("referenzen.html","Referenzen"),("kontakt.html","Kontakt")],
 "foot_sp2": "Schwerpunkte",
-"foot_l2": [("fb-beratung.html","F&B-Beratung"),("online-marketing.html","Online-Marketing & Web"),
-            ("#ki","KI-Automatisierung"),("teamo-ki.html","KI-Lösungen"),("rechner.html","Rechner")],
+"foot_l2": [("ki-automatisierung.html","KI-Automatisierung"),("softwareentwicklung.html","Softwareentwicklung"),
+            ("webdesign.html","Webdesign"),("online-marketing.html","Online-Marketing"),("angebot/","Texte und Übersetzungen")],
 "foot_sp3": "Kontakt",
-"foot_adresse": ["Hauptstraße 1, 18609 Ostseebad Binz","Schluchsee, Hochschwarzwald"],
-"foot_copy": "© 2026 Kastriot Tafolli · tafolli.net · Ostseebad Rügen / Schluchsee",
+"foot_adresse": ["Hauptstraße 1, 18609 Ostseebad Binz"],
+"foot_copy": "© 2026 Kastriot Tafolli · tafolli.net · Ostseebad Binz",
 "foot_impressum": "Impressum", "foot_datenschutz": "Datenschutz",
 "foot_shell": "$ gastronomie --digital --ki",
 }

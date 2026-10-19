@@ -4,7 +4,7 @@ identisch zur Startseite, damit die Seite wie aus einem Guss wirkt."""
 import hashlib, pathlib, html
 from brand import lockup, intro
 from navigation import nav as site_nav, toggle as nav_toggle, breadcrumbs, TITLES
-from seo import metadata, structured, region, SERVICE_META
+from seo import metadata, structured, region, SERVICE_META, NOINDEX_PATHS
 from explore import explore, HUBS
 
 WURZEL = pathlib.Path(__file__).resolve().parent.parent
@@ -26,16 +26,18 @@ NAV = [
 ]
 FOOT_L1 = NAV + [("werdegang.html", "Werdegang"), ("wissen.html", "Wissen"), ("referenzen.html", "Referenzen")]
 FOOT_L2 = [
-    ("fb-beratung.html", "F&B-Beratung"),
-    ("online-marketing.html", "Online-Marketing & Web"),
+    ("ki-automatisierung-kleine-unternehmen.html", "KI Automatisierung für kleine Unternehmen"),
+    ("landingpage-erstellen-lassen.html", "Landingpage erstellen lassen"),
+    ("angebot/", "Texte und Übersetzungen"),
     ("ki-automatisierung.html", "KI-Automatisierung"),
-    ("ki-entwicklung.html", "KI-Entwicklung"),
-    ("cybersecurity.html", "Cybersecurity"),
-    ("digitalisierung.html", "Digitalisierung"),
     ("softwareentwicklung.html", "Softwareentwicklung"),
-    ("lieferantenvereinbarungen.html", "Lieferantenvereinbarungen"),
-    ("rueckverguetungen.html", "Rückvergütungen"),
-    ("rechner.html", "Rechner"),
+    ("app-entwicklung.html", "App-Entwicklung"),
+    ("webdesign.html", "Webdesign"),
+    ("online-marketing.html", "Online-Marketing"),
+    ("social-media.html", "Social Media"),
+    ("ki-entwicklung.html", "KI-Entwicklung"),
+    ("digitalisierung.html", "Digitalisierung"),
+    ("cybersecurity.html", "Cybersecurity"),
 ]
 
 
@@ -58,11 +60,13 @@ def seiten_kopf(titel, beschreibung, kanonisch_pfad):
     schema = structured(kanonisch_pfad, titel, beschreibung)
     titel, beschreibung = html.escape(titel), html.escape(beschreibung)
     kanonisch = f"https://tafolli.net/{kanonisch_pfad}"
+    robots = '<meta name="robots" content="noindex">\n' if kanonisch_pfad in NOINDEX_PATHS else ''
     return f'''<!doctype html>
 <html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{robots}
 <title>{titel}</title>
 <meta name="description" content="{beschreibung}">
 <meta name="author" content="Kastriot Tafolli">
@@ -94,17 +98,17 @@ def kopfzeile(aktiv, base=""):
     return f'''<header class="bar site-header"><div class="shell bar-in"><a class="tafolli-brand-link" href="{base}index.html" aria-label="Kastriot Tafolli · Startseite">{lockup(base)}</a>{site_nav(aktiv, base)}<div class="site-header-controls"><nav class="lang" aria-label="Sprache / Language / Gjuha">{sprachwahl}</nav><a href="{base}kontakt.html" class="btn btn-1 site-talk">Gespräch ↗</a>{nav_toggle()}</div></div></header>'''
 
 
-def fusszeile():
+def fusszeile(base=""):
     sp = lambda titel, links: (
         f'<div><p class="tag" style="color:var(--paper);margin-bottom:17px">{titel}</p>' +
-        "".join(f'<a href="{h}" class="lnk" style="display:block;color:var(--paper-dim);'
+        "".join(f'<a href="{base}{h}" class="lnk" style="display:block;color:var(--paper-dim);'
                 f'font-size:.9rem;padding:5px 0">{t}</a>' for h, t in links) + '</div>')
     return f'''<footer class="rule" style="background:var(--ink-2);padding-block:clamp(52px,6vw,82px) 30px">
   <div class="shell">
     <div class="foot-grid">
       <div>
-        <div style="color:var(--paper);margin-bottom:18px">{LOGO}</div>
-        <p style="color:var(--paper-dim);font-size:.9rem;max-width:34ch;margin-bottom:18px">Gastronomische Führung, Digitalisierung und KI-Lösungen für Hotellerie und Unternehmen in Deutschland, Österreich, der Schweiz und Kosovo.</p>
+        <div style="color:var(--paper);margin-bottom:18px">{lockup(base)}</div>
+        <p style="color:var(--paper-dim);font-size:.9rem;max-width:34ch;margin-bottom:18px">KI-Automatisierung, Software, Webdesign, Online-Marketing und Texte auf Deutsch, Englisch und Albanisch. Für Unternehmen in Deutschland, Österreich, der Schweiz und Kosovo.</p>
         <p class="tag" style="color:var(--acc);display:flex;align-items:center;gap:9px">
           <span class="dot"></span> TB SOLUTIONS · ONLINE</p>
       </div>
@@ -115,16 +119,15 @@ def fusszeile():
         <a href="tel:+4917664616146" class="lnk" style="display:block;color:var(--paper-dim);font-size:.9rem;padding:5px 0">0176 64616146</a>
         <a href="mailto:info@tafolli.net" class="lnk" style="display:block;color:var(--paper-dim);font-size:.9rem;padding:5px 0">info@tafolli.net</a>
         <p style="color:var(--paper-dim);font-size:.9rem;padding:5px 0">Hauptstraße 1, 18609 Ostseebad Binz</p>
-        <p style="color:var(--paper-dim);font-size:.9rem;padding:5px 0">Schluchsee, Hochschwarzwald</p>
       </div>
     </div>
     <div class="rule" style="padding-top:26px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center">
-      <span style="font-size:.84rem;color:var(--paper-mute)">© 2026 Kastriot Tafolli · tafolli.net · Ostseebad Rügen / Schluchsee</span>
+      <span style="font-size:.84rem;color:var(--paper-mute)">© 2026 Kastriot Tafolli · tafolli.net · Ostseebad Binz</span>
       <span style="display:flex;gap:22px">
-        <a href="impressum.html" style="font-size:.84rem;color:var(--paper-mute)">Impressum</a>
-        <a href="datenschutz.html" style="font-size:.84rem;color:var(--paper-mute)">Datenschutz</a>
+        <a href="{base}impressum.html" style="font-size:.84rem;color:var(--paper-mute)">Impressum</a>
+        <a href="{base}datenschutz.html" style="font-size:.84rem;color:var(--paper-mute)">Datenschutz</a>
       </span>
-      <span class="mono" style="font-size:.72rem;color:var(--paper-mute)">HOTELLERIE · GASTRONOMIE · TECHNOLOGIE</span>
+      <span class="mono" style="font-size:.72rem;color:var(--paper-mute)">SOFTWARE · KI · TEXTE</span>
     </div>
   </div>
 </footer>'''
@@ -133,7 +136,7 @@ def fusszeile():
 def seite_rahmen(aktiv, titel, beschreibung, kanonisch_pfad, inhalt):
     extra = explore(kanonisch_pfad) if kanonisch_pfad in HUBS else ''
     if kanonisch_pfad.removesuffix('.html') in SERVICE_META and 'class="region-section"' not in inhalt:
-        extra += region(service=TITLES[kanonisch_pfad])
+        extra += region(service=TITLES.get(kanonisch_pfad, titel.split(' · ')[0]))
     if extra:
         position = inhalt.rfind('<section class="pad" style="overflow:hidden">')
         if position < 0: position = len(inhalt)

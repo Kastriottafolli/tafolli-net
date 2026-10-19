@@ -2,31 +2,27 @@
 from icons import icon
 from bausteine import *
 from hotels import hotel_cards
-from partners import PROJECTS, GASTRO, TECH, tiles
+from partners import PROJECTS, visible_tech, tiles
 
 
 def referenzen():
     inhalt = hero_klein("05", "Referenzen & Partner", [["Gute Arbeit entsteht"], ["im Zusammenspiel."]],
-        "Betriebe, digitale Auftritte und ein Netzwerk aus Gastronomie und Technologie. Entdecken Sie die Menschen, Marken und Plattformen hinter meiner Arbeit.",
-        ["6 Referenz-Websites", "30 Marken & Partner", "6 berufliche Stationen"]) + '''
-    <div class="shell"><nav class="partner-jump" aria-label="Referenzbereiche"><a href="#betriebe">Referenz-Websites ↗</a><a href="#gastronomie">Gastronomiepartner ↗</a><a href="#technologie">Technologiepartner ↗</a><a href="#stationen">Berufliche Stationen ↗</a></nav></div>''' + f'''
+        "Referenz-Websites aus gemeinsamen Projekten.",
+        ["6 Referenz-Websites", "Werkzeuge", "4 frühere Stationen"]) + '''
+    <div class="shell"><nav class="partner-jump" aria-label="Referenzbereiche"><a href="#betriebe">Referenz-Websites ↗</a><a href="#technologie">Werkzeuge ↗</a><a href="#stationen">Berufliche Stationen ↗</a></nav></div>''' + f'''
 <section class="pad" id="betriebe" style="scroll-margin-top:110px"><div class="shell">
- <div class="partner-section-intro"><div>{kicker("01", "Betriebe & Referenz-Websites")}<h2 class="d2" style="margin-top:20px">Betriebe, die ich mit<br> TB Solutions begleite.</h2></div><p>Eine Auswahl zum direkten Entdecken: Bau, Glas, Gastronomie und Hotellerie. Tafolli Glass ergänzt das Netzwerk als Partner; tafolli.net zeigt meinen eigenen digitalen Auftritt.</p></div>
+ <div class="partner-section-intro"><div>{kicker("01", "Betriebe & Referenz-Websites")}<h2 class="d2" style="margin-top:20px">Betriebe, die ich mit<br> TB Solutions begleite.</h2></div><p>Eine Auswahl zum direkten Entdecken. Tafolli Glass ergänzt das Netzwerk als Partner; tafolli.net zeigt meinen eigenen digitalen Auftritt.</p></div>
  {tiles(PROJECTS,projects=True)}
  <p class="tag" style="color:var(--acc);margin-top:40px">Weitere Betriebe aus meiner Zusammenarbeit</p><div class="partner-more"><span>Bukowina</span><span>Bistro Cappuccino</span><span>Salsa Latino</span><span>El Restaurante</span><span>MBJ · My Jasharaj</span></div>
 </div></section>
-<section class="pad" id="gastronomie" style="background:var(--ink-2);scroll-margin-top:110px"><div class="shell">
- <div class="partner-section-intro"><div>{kicker("02", "Getränke- und Gastronomiepartner")}<h2 class="d2" style="margin-top:20px">Vom guten Einkauf<br> zum guten Geschmack.</h2></div><p>Getränke, Kaffee, Foodservice und Großhandel: Mein F&B-Alltag verbindet Sortiment, Lieferfähigkeit und wirtschaftliche Konditionen. Hier finden Sie die genannten Marken und Lieferanten direkt.</p></div>
- {tiles(GASTRO)}
-</div></section>
-<section class="pad" id="technologie" style="scroll-margin-top:110px"><div class="shell">
- <div class="partner-section-intro"><div>{kicker("03", "Technologiepartner")}<h2 class="d2" style="margin-top:20px">Die Werkzeuge.<br> Die Möglichkeiten.</h2></div><p>KI, Software, Sichtbarkeit und Infrastruktur. Diese Plattformen und Werkzeuge gehören zu meinem digitalen Arbeitsumfeld. Welche davon in Ihrem Projekt sinnvoll sind, entscheidet der konkrete Bedarf.</p></div>
- {tiles(TECH)}
+<section class="pad" id="technologie" style="background:var(--ink-2);scroll-margin-top:110px"><div class="shell">
+ <div class="partner-section-intro"><div>{kicker("02", "Werkzeuge")}<h2 class="d2" style="margin-top:20px">Werkzeuge.<br> Keine Partnerschaft.</h2></div><p>Diese Logos zeigen Programme, mit denen ich arbeite. Sie sind keine Partnerschaft und keine Kundenempfehlung.</p></div>
+ {tiles(visible_tech())}
 </div></section>
 <section class="pad" id="stationen" style="background:var(--ink-2);scroll-margin-top:110px"><div class="shell">
- <div class="partner-section-intro"><div>{kicker("04", "Berufliche Stationen")}<h2 class="d2" style="margin-top:20px">Häuser, für die ich<br> Verantwortung getragen habe.</h2></div><p>Ich kenne Hotellerie aus der täglichen Verantwortung: Teams führen, Gastronomie gestalten und mehrere Häuser koordinieren. Diese Erfahrung bringe ich in Ihre Beratung ein – mit Verständnis für Ihre Gäste, Ihre Mitarbeitenden und die Wirtschaftlichkeit Ihres Betriebs.</p></div>
+ <div class="partner-section-intro"><div>{kicker("04", "Frühere Stationen")}<h2 class="d2" style="margin-top:20px">Abgeschlossene Stationen.<br> Nicht das Angebot.</h2></div><p>Diese Einträge dokumentieren frühere Aufgaben. Das aktuelle Angebot ist KI, Software, Web, Marketing und Texte.</p></div>
  {hotel_cards()}
- <div class="career-transfer"><div><p class="tag">Für Ihr nächstes Projekt</p><h3>Hotellerie verstehen.<br> Möglichkeiten umsetzen.</h3><p>Auf dieser Grundlage verbinde ich F&B-Beratung mit Digitalisierung und KI-Automatisierung: Lösungen, die zu Ihren Teams, Abläufen und wirtschaftlichen Zielen passen.</p></div><div class="career-transfer-actions"><a class="btn btn-1" href="kontakt.html">Über Ihren Betrieb sprechen ↗</a><a class="btn btn-2" href="fb-beratung.html">F&B-Beratung entdecken ↗</a></div></div>
+ <div class="career-transfer"><div><p class="tag">Für Ihr nächstes Projekt</p><h3>Systeme bauen.<br> Texte klären.</h3><p>KI-Automatisierung, Software, Websites und Übersetzungen auf Deutsch, Englisch und Albanisch. Den Umfang besprechen wir direkt.</p></div><div class="career-transfer-actions"><a class="btn btn-1" href="kontakt.html">Projekt besprechen ↗</a><a class="btn btn-2" href="leistungen.html">Leistungen ansehen ↗</a></div></div>
  <p style="color:var(--paper-mute);font-size:.88rem;margin-top:28px;max-width:70ch">Weitere Referenzen nenne ich auf Anfrage und nur mit Zustimmung der jeweiligen Häuser. Zahlen und interne Details bleiben grundsätzlich vertraulich.</p>
 </div></section>''' + cta_block("// nächster schritt", [["Gute Verbindungen."], ["Neue Möglichkeiten."]],
         "Ob gemeinsames Projekt, ein konkreter Auftrag oder eine neue Zusammenarbeit: Erzählen Sie mir, was Sie bewegen möchten.",
@@ -41,12 +37,11 @@ def kontakt():
              ("E-Mail", '<a href="mailto:info@tafolli.net">info@tafolli.net</a>'),
              ("Web", "tafolli.net"),
              ("TB Solutions", "Hauptstraße 1, 18609 Ostseebad Binz"),
-             ("Zweiter Standort", "Schluchsee, Hochschwarzwald"),
-             ("Erreichbarkeit", "Vormittags und abends ab 22 Uhr, Rückruf am selben Tag"),
+             ("Erreichbarkeit", "Rückruf in der Regel am selben Tag"),
              ("Team", "Gemeinsam mit Boriss Bockans, TB Solutions")]
     dl = "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in daten)
-    schritte = [("Sie schildern die Lage", "Art des Betriebs, Größe, was gerade nicht läuft. Zahlen brauchen Sie dafür nicht parat zu haben."),
-                ("Ich stelle Fragen", "Meist sind es zehn bis fünfzehn, zu Einkauf, Karte, Team, Sichtbarkeit und Systemen. Daran merken Sie schnell, ob ich das Geschäft kenne."),
+    schritte = [("Sie schildern die Lage", "Welches Thema, welcher Ablauf, was gerade nicht läuft. Zahlen brauchen Sie dafür nicht parat zu haben."),
+                ("Ich stelle Fragen", "Meist sind es zehn bis fünfzehn, zu Systemen, Website, Texten oder dem Ablauf, der Zeit kostet."),
                 ("Ehrliche Einschätzung", "Wo Potenzial liegt, wo nicht, was zuerst angegangen werden sollte und ob sich eine Zusammenarbeit überhaupt lohnt. Auch wenn die Antwort nein lautet.")]
     pipe = ""
     for i, (t, d) in enumerate(schritte):
@@ -55,7 +50,7 @@ def kontakt():
             pipe += f'<div class="pipe-track"><span class="pipe-particle" style="--i:{i}"></span></div>'
 
     inhalt = hero_klein("08", "Kontakt", [["Lassen Sie"], ["uns sprechen."]],
-        "Ob F&amp;B-Beratung, Website, Kampagne, KI-Automatisierung oder TeamO: Der erste Schritt ist immer ein Gespräch, und das kostet nichts.",
+        "KI, Software, Website, Marketing oder eine Übersetzung: Der erste Schritt ist ein Gespräch, und das kostet nichts.",
         ["Deutschland · Österreich · Schweiz · Kosovo", "unverbindlich", "persönlich"]) + f'''
 <section class="pad">
   <div class="shell">
@@ -64,15 +59,22 @@ def kontakt():
         <h2 class="d2 wipe recede-exit" style="font-size:clamp(1.8rem,3.6vw,3rem);margin-bottom:30px">{wipe([["Ein Gespräch, dreißig Minuten,"], ["unverbindlich."]])}</h2>
         <div class="prose rise">
           <p>Ich bin immer offen für ein unverbindliches Gespräch, ganz gleich ob es um eine Beratung, ein Digitalprojekt oder eine neue Zusammenarbeit geht. Rufen Sie an oder schreiben Sie kurz, worum es geht, ich melde mich zeitnah.</p>
-          <p>Am besten erreichen Sie mich vormittags oder nach 22 Uhr. Wenn ich nicht drangehe, bin ich im Service und rufe zurück.</p>
+          <p>Wenn ich nicht drangehe, rufe ich zurück. Eine kurze Nachricht mit dem Thema genügt für den Anfang.</p>
         </div>
+        <form id="anfrage" class="anfrage-form rise" action="mailto:info@tafolli.net?subject=Anfrage%20von%20tafolli.net" method="post" enctype="text/plain">
+          <p class="tag" style="color:var(--acc)">Anfrage</p>
+          <label>Name<input name="Name" autocomplete="name" required></label>
+          <label>E-Mail<input name="E-Mail" type="email" autocomplete="email" required></label>
+          <label>Worüber soll es gehen?<textarea name="Anliegen" required></textarea></label>
+          <button class="btn btn-1" type="submit">Nachricht im E-Mail-Programm öffnen</button>
+          <p>Das Formular speichert nichts auf dieser Website. Es öffnet Ihr E-Mail-Programm mit dem Text, den Sie eingetragen haben.</p>
+        </form>
         <div class="rise" style="display:flex;flex-wrap:wrap;gap:13px;margin:8px 0 34px">
-          <a href="mailto:info@tafolli.net" class="btn btn-1">E-Mail schreiben</a>
           <a href="tel:+4917664616146" class="btn btn-2">Anrufen</a>
         </div>
         <div class="card pop ticks">
           <p class="tag" style="color:var(--acc);margin-bottom:12px">// womit Sie mir helfen</p>
-          <p style="color:var(--paper-dim);font-size:.94rem">Schreiben Sie mir kurz: Art des Betriebs, Anzahl der Outlets oder Zimmer, und woran es gerade konkret hakt. Dann kann ich im ersten Gespräch schon etwas Brauchbares sagen statt nur Fragen zu stellen.</p>
+          <p style="color:var(--paper-dim);font-size:.94rem">Schreiben Sie mir kurz, welches Angebot Sie meinen und woran es gerade hakt. Dann kann ich im ersten Gespräch schon etwas Brauchbares sagen statt nur Fragen zu stellen.</p>
         </div>
       </div>
       <div class="pop-wrap" style="position:sticky;top:110px">
@@ -149,7 +151,7 @@ def datenschutz():
 <li>Diese Seite setzt keine Cookies und verwendet keine Analyse- oder Werbewerkzeuge.</li>
 <li>Die Schriften liegen auf dem eigenen Server. Es wird keine Verbindung zu Google aufgebaut.</li>
 <li>Die Rechner auf der Seite laufen vollständig in Ihrem Browser. Ihre Eingaben verlassen Ihr Gerät nicht und werden nirgends gespeichert.</li>
-<li>Es gibt kein Kontaktformular. Wenn Sie mir schreiben, tun Sie das über Ihr eigenes E-Mail-Programm oder Telefon.</li>
+<li>Das Anfrageformular speichert nichts auf dieser Website. Es öffnet Ihr eigenes E-Mail-Programm. Telefon und E-Mail bleiben die Wege, auf denen eine Nachricht bei mir ankommt.</li>
 </ul>
 <h2>Aufruf der Website und Server-Logfiles</h2>
 <p>Diese Website wird bei GitHub Pages gehostet, einem Dienst der GitHub Inc., 88 Colin P Kelly Jr Street, San Francisco, CA 94107, USA. Beim Aufruf einer Seite werden durch den Hoster automatisch Informationen verarbeitet, die Ihr Browser übermittelt. Das sind insbesondere:</p>

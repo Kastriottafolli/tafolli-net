@@ -96,6 +96,9 @@
     var anteil = function (v) { return Math.max(0, Math.min(1, v)); };
 
     var rechnen = function () {
+      ['anrufe','nachrichten','minuten','lohn','naechte','preis','portal','prov','shift','einkauf','aktuell','ziel','posts','follower','erate'].forEach(function (k) {
+        if (typeof w[k] !== 'number' || isNaN(w[k])) w[k] = 0;
+      });
       var kiStd = (w.anrufe + w.nachrichten) * w.minuten * 30 / 60;
       var kiGespart = kiStd * 0.7;
       var kiJahr = kiGespart * w.lohn * 12;

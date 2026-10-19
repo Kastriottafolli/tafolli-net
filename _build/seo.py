@@ -5,15 +5,23 @@ from navigation import TITLES, parent
 
 ORIGIN='https://tafolli.net/'
 COUNTRIES=[{'@type':'Country','name':name} for name in ['Germany','Austria','Switzerland','Kosovo']]
+# Kept on disk for a later decision, but not offered in navigation, sitemap or search.
+NOINDEX_PATHS={
+ 'fb-beratung.html','lieferantenvereinbarungen.html','getraenkevertraege.html','rueckverguetungen.html',
+ 'wareneinsatz-kalkulation.html','inventur-warenwirtschaft.html','interim-fb-management.html',
+ 'revenue-controlling.html','personal-recruiting.html','wissen-ki-im-hotel.html',
+ 'wissen-getraenkevertrag.html','wissen-direktbuchungen.html'}
 # Editorial intent, not keyword-volume or ranking claims.
 SERVICE_META={
- 'ki-automatisierung':('KI-Automatisierung als Service | Kastriot Tafolli','KI-Automatisierung für Hotels, Gastronomie und Unternehmen: Workflows, Systemanbindung und laufende Betreuung in Deutschland, Österreich, Schweiz und Kosovo.'),
+ 'ki-automatisierung':('KI-Automatisierung als Service | Kastriot Tafolli','KI-Automatisierung für Unternehmen: Workflows, Systemanbindung und laufende Betreuung in Deutschland, Österreich, Schweiz und Kosovo.'),
+ 'ki-automatisierung-kleine-unternehmen':('KI Automatisierung für kleine Unternehmen | Kastriot Tafolli','KI Automatisierung für kleine Unternehmen: die erste Automatisierung zum Festpreis, zum Beispiel für E-Mail, Angebote oder Termine. Immer mit Ihrer Freigabe. Festpreis-Angebot auf Anfrage.'),
+ 'landingpage-erstellen-lassen':('Landingpage erstellen lassen | Kastriot Tafolli','Landingpage erstellen lassen oder eine Website zum Festpreis, inklusive Pflege und technischem Check. Barrierefreiheit und Datenschutz nur als technische Prüfung. Festpreis-Angebot auf Anfrage.'),
  'ki-entwicklung':('KI-Entwicklung & Assistenten | Kastriot Tafolli','KI-Assistenten für Ihren Betrieb: eigene Wissensquellen, geprüfte Antworten und klare Freigaben. Entwicklung und Integration in DACH und Kosovo. Projekt besprechen.'),
- 'teamo-ki':('TeamO: KI-Mitarbeiter für Hotels | Kastriot Tafolli','TeamO unterstützt Hotels und Restaurants bei Telefon, Nachrichten und wiederkehrenden Anfragen. KI-Lösungen für DACH und Kosovo. Möglichkeiten im Gespräch klären.'),
- 'digitalisierung':('Digitalisierung für Hotels & Betriebe | Kastriot Tafolli','Hotelsoftware, Kasse und Kommunikation sinnvoll verbinden. Digitalisierung mit Bestandsaufnahme, Umsetzung und Team-Einführung in DACH und Kosovo. Jetzt anfragen.'),
+ 'teamo-ki':('TeamO: digitaler KI-Mitarbeiter | Kastriot Tafolli','TeamO übernimmt Telefon, Nachrichten und wiederkehrende Anfragen. KI-Lösungen für DACH und Kosovo. Möglichkeiten im Gespräch klären.'),
+ 'digitalisierung':('Digitalisierung für Betriebe | Kastriot Tafolli','Bestehende Systeme und Kommunikation sinnvoll verbinden. Digitalisierung mit Bestandsaufnahme, Umsetzung und Einführung in DACH und Kosovo. Jetzt anfragen.'),
  'softwareentwicklung':('Individuelle Softwareentwicklung | Kastriot Tafolli','Individuelle Software, Datenbanken, Dashboards und Schnittstellen für Ihren Betrieb. Von der Anforderung bis zur Übergabe in DACH und Kosovo. Projekt besprechen.'),
  'app-entwicklung':('App- & Web-App-Entwicklung | Kastriot Tafolli','Web-Apps für Checklisten, Bestellungen und Freigaben: mobil nutzbar, mit Rollen und passenden Schnittstellen. Entwicklung für DACH und Kosovo. Projekt anfragen.'),
- 'cybersecurity':('Cybersecurity & IT-Sicherheit | Kastriot Tafolli','Zugänge, E-Mail, Backups und Website praktisch absichern. IT-Sicherheit für Hotels und Unternehmen in DACH und Kosovo. Umfang und Maßnahmen gemeinsam festlegen.'),
+ 'cybersecurity':('Cybersecurity & IT-Sicherheit | Kastriot Tafolli','Zugänge, E-Mail, Backups und Website praktisch absichern. IT-Sicherheit für Unternehmen in DACH und Kosovo. Umfang und Maßnahmen gemeinsam festlegen.'),
  'fb-beratung':('F&B-Beratung für Hotels & Gastronomie | Kastriot Tafolli','F&B-Beratung aus operativer Hotelpraxis: Einkauf, Wareneinsatz, Teams und Abläufe verbessern. Für Deutschland, Österreich, Schweiz und Kosovo. Erstgespräch anfragen.'),
  'lieferantenvereinbarungen':('Lieferantenvereinbarungen für Gastronomie | Tafolli','Lieferantenangebote, Konditionen und Leistungspflichten strukturiert vergleichen. Einkaufsberatung für Hotels und Gastronomie in DACH und Kosovo. Gespräch anfragen.'),
  'getraenkevertraege':('Getränkeverträge & Einkaufsberatung | Kastriot Tafolli','Getränkeverträge für Hotels und Gastronomie prüfen: Preise, Bindungen, Ausstattung und Lieferleistung gemeinsam betrachten. Beratung in DACH und Kosovo anfragen.'),
@@ -23,23 +31,23 @@ SERVICE_META={
  'interim-fb-management':('Interim F&B-Management für Hotels | Kastriot Tafolli','F&B-Führung auf Zeit: Teams, Standards und Zahlen im Hotelbetrieb strukturieren. Einsätze in DACH und Kosovo nach abgestimmtem Auftrag und Verfügbarkeit anfragen.'),
  'revenue-controlling':('Revenue Management & F&B-Controlling | Tafolli','Budget, Forecast und Outlet-Kennzahlen für Hotels und Gastronomie nutzbar machen. Revenue- und F&B-Controlling in DACH und Kosovo. Erstgespräch vereinbaren.'),
  'personal-recruiting':('Hospitality-Recruiting & Teamentwicklung | Tafolli','Rollen, Auswahl, Onboarding und Schulung für Hotellerie und Gastronomie. Recruiting und Teamentwicklung in DACH und Kosovo. Ihren konkreten Bedarf besprechen.'),
- 'online-marketing':('Online-Marketing für Hotels & Restaurants | Tafolli','Website, Suchmaschinen und Inhalte auf Anfragen und Direktbuchungen ausrichten. Online-Marketing für Hotels und Restaurants in DACH und Kosovo. Projekt besprechen.'),
- 'webdesign':('Webdesign für Hotels & Unternehmen | Kastriot Tafolli','Individuelle Websites mit klaren Inhalten, mobiler Bedienung und Buchungsnähe. Webdesign und Webentwicklung für DACH und Kosovo. Ihren neuen Auftritt besprechen.'),
- 'suchmaschinenoptimierung':('SEO für Hotels & Restaurants | Kastriot Tafolli','Technische SEO, hilfreiche Angebotsseiten und lokale Sichtbarkeit für Hotels und Restaurants. Suchmaschinenoptimierung in DACH und Kosovo. Website prüfen lassen.'),
+ 'online-marketing':('Online-Marketing & Digitalstrategie | Kastriot Tafolli','Website, Suchmaschinen und Inhalte auf Anfragen ausrichten. Online-Marketing für Unternehmen in DACH und Kosovo. Projekt besprechen.'),
+ 'webdesign':('Webdesign & Webentwicklung | Kastriot Tafolli','Individuelle Websites mit klaren Inhalten und mobiler Bedienung. Webdesign und Webentwicklung für DACH und Kosovo. Ihren neuen Auftritt besprechen.'),
+ 'suchmaschinenoptimierung':('Suchmaschinenoptimierung | Kastriot Tafolli','Technische SEO, hilfreiche Angebotsseiten und lokale Sichtbarkeit für Unternehmen. Suchmaschinenoptimierung in DACH und Kosovo. Website prüfen lassen.'),
  'domain-hosting-email':('Domain, Hosting & E-Mail für Betriebe | Tafolli','Domains, Hosting und professionelle E-Mail strukturiert einrichten oder umziehen. Dokumentierte Zugänge und Betreuung für DACH und Kosovo. Bedarf besprechen.'),
- 'social-media':('Social Media für Hotels & Gastronomie | Tafolli','Redaktionsplanung, Beiträge und Reels mit klarem Weg zur Anfrage. Social-Media-Betreuung für Hotels und Gastronomie in DACH und Kosovo. Inhalte gemeinsam planen.'),
- 'foto-video':('Foto & Video für Hotels & Gastronomie | Tafolli','Atmosphäre, Küche und Menschen in Bildern zeigen. Foto- und Videoinhalte für Websites und Social Media in DACH und Kosovo. Aufnahmeumfang und Termine besprechen.')}
+ 'social-media':('Social Media & Content | Kastriot Tafolli','Redaktionsplanung, Beiträge und Reels mit klarem Weg zur Anfrage. Social-Media-Betreuung für Unternehmen in DACH und Kosovo. Inhalte gemeinsam planen.'),
+ 'foto-video':('Foto & Video | Kastriot Tafolli','Menschen, Produkte und Räume in Bildern zeigen. Foto- und Videoinhalte für Websites und Social Media in DACH und Kosovo. Aufnahmeumfang und Termine besprechen.')}
 PAGE_META={
- 'leistungen.html':('KI, F&B & digitale Dienstleistungen | Kastriot Tafolli','22 Leistungsbereiche für Hotels, Gastronomie und Unternehmen: KI, Software, F&B-Beratung und Web. In Deutschland, Österreich, Schweiz und Kosovo. Portfolio entdecken.'),
- 'ueber-mich.html':('Kastriot Tafolli: Hotellerie, F&B & KI-Kompetenz','Vom Hotelbetrieb zur Software und KI: Lernen Sie Kastriot Tafolli kennen. Operative Erfahrung, technische Ausbildung und persönliche Beratung für DACH und Kosovo.'),
- 'werdegang.html':('Werdegang: Hotellerie & KI Engineering | Tafolli','Die beruflichen Stationen von Kastriot Tafolli: Service, F&B-Leitung und operative Verantwortung, ergänzt durch Softwareentwicklung und KI Engineering. Profil entdecken.'),
- 'referenzen.html':('Referenzen, Hotels & Partner | Kastriot Tafolli','Entdecken Sie Referenz-Websites, berufliche Hotelstationen und das Netzwerk von Kastriot Tafolli und TB Solutions. Mit Logos, Einordnung und direkten Website-Links.'),
- 'wissen.html':('Wissen zu Hotel-KI, Einkauf & Direktbuchungen | Tafolli','Praxiswissen für Hotels und Gastronomie: KI sinnvoll einsetzen, Getränkeverträge verstehen und Direktbuchungen stärken. Ratgeber und Potenzialrechner entdecken.'),
- 'rechner.html':('Hotel-Rechner: KI, Einkauf & Direktbuchungen | Tafolli','Vier interaktive Rechner zu KI-Zeitpotenzial, Portalprovisionen, Getränkeeinkauf und Social Media. Eigene Werte eingeben und Annahmen nachvollziehen. Ohne Speicherung.'),
+ 'leistungen.html':('Leistungsübersicht: KI, Software, Web und Texte | Tafolli','Übersicht der Angebote: KI-Automatisierung, Software, Webdesign, Online-Marketing und Übersetzungen für Unternehmen in Deutschland, Österreich, Schweiz und Kosovo.'),
+ 'ueber-mich.html':('Kastriot Tafolli: KI, Software und Web','Lernen Sie Kastriot Tafolli kennen: Softwareentwicklung, KI, Websites und Texte auf Deutsch, Englisch und Albanisch. TB Solutions in Ostseebad Binz.'),
+ 'werdegang.html':('Werdegang: Software, KI und Projekte | Tafolli','Stationen von Kastriot Tafolli: Softwareentwicklung, KI Engineering und frühere Projektverantwortung. Profil entdecken.'),
+ 'referenzen.html':('Referenzen und Partner | Kastriot Tafolli','Referenz-Websites und Technologiepartner von Kastriot Tafolli und TB Solutions. Mit Logos, Einordnung und direkten Website-Links.'),
+ 'wissen.html':('Wissen zu KI, Software und Web | Tafolli','Orientierung zu KI-Automatisierung, Software und digitaler Sichtbarkeit. Ratgeber und Potenzialrechner von Kastriot Tafolli.'),
+ 'rechner.html':('Rechner: KI-Zeit und Social Media | Tafolli','Zwei interaktive Rechner zu KI-Zeitpotenzial und Social Media. Eigene Werte eingeben und Annahmen nachvollziehen. Ohne Speicherung.'),
  'wissen-ki-im-hotel.html':('KI im Hotel: Anwendungen, Grenzen & Einstieg | Tafolli','Wo KI im Hotel hilft, welche Aufgaben Freigaben brauchen und wie Sie sinnvoll starten. Praxisratgeber von Kastriot Tafolli mit passenden Leistungen und Rechner.'),
  'wissen-getraenkevertrag.html':('Getränkevertrag prüfen: Konditionen & Bindungen | Tafolli','Getränkeverträge verstehen: Einkaufspreise, Rückvergütung, Ausstattung und Laufzeit gemeinsam bewerten. Praxiswissen für Hotellerie und Gastronomie von Kastriot Tafolli.'),
  'wissen-direktbuchungen.html':('Mehr Direktbuchungen für Hotels gewinnen | Tafolli','Website, Suchmaschinen und Buchungsweg gemeinsam verbessern: So stärken Hotels ihre Direktbuchungen. Praxiswissen, Provisionsrechner und Umsetzung mit Kastriot Tafolli.'),
- 'kontakt.html':('Kontakt & Beratung in DACH und Kosovo | Kastriot Tafolli','KI, F&B-Beratung, Software oder Webdesign besprechen: Kontakt zu Kastriot Tafolli und TB Solutions. Deutschland, Österreich, Schweiz und Kosovo. Erstgespräch anfragen.'),
+ 'kontakt.html':('Kontakt & Beratung in DACH und Kosovo | Kastriot Tafolli','KI, Software, Webdesign, Marketing oder Übersetzungen besprechen: Kontakt zu Kastriot Tafolli und TB Solutions. Deutschland, Österreich, Schweiz und Kosovo.'),
  'impressum.html':('Impressum | Kastriot Tafolli','Anbieterinformationen und Kontaktdaten für tafolli.net: Kastriot Tafolli, Hauptstraße 1, 18609 Ostseebad Binz. Telefon, E-Mail und Verantwortlichkeit für die Inhalte.'),
  'datenschutz.html':('Datenschutz | Kastriot Tafolli','Informationen zur Datenverarbeitung auf tafolli.net: Hosting, Kontakt, lokale Schriftarten, Logo-Animation und Rechner. Hinweise und Kontakt zu Kastriot Tafolli.')}
 PAGE_META.update({slug+'.html':meta for slug,meta in SERVICE_META.items()})
@@ -59,7 +67,8 @@ def structured(path,title,description,lang='de'):
  graph=identity+[page]
  slug=path.removesuffix('.html')
  if slug in SERVICE_META:
-  graph.append({'@type':'Service','@id':url+'#service','name':TITLES[path],'serviceType':TITLES[path],'url':url,'description':description,'provider':{'@id':ORIGIN+'#business'},'areaServed':COUNTRIES})
+  service_name=TITLES.get(path) or title.split(' | ')[0]
+  graph.append({'@type':'Service','@id':url+'#service','name':service_name,'serviceType':service_name,'url':url,'description':description,'provider':{'@id':ORIGIN+'#business'},'areaServed':COUNTRIES})
  if path.startswith('wissen-'):
   graph.append({'@type':'Article','@id':url+'#article','headline':title.split(' | ')[0],'author':{'@id':ORIGIN+'#kastriot'},'publisher':{'@id':ORIGIN+'#business'},'inLanguage':'de','mainEntityOfPage':{'@id':url+'#page'}})
  if path not in ['index.html','en/','sq/','404.html']:

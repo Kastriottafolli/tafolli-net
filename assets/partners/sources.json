@@ -201,13 +201,6 @@
     "extraction": "OpenAI-black-wordmark.svg",
     "retrieved": "2026-10-04"
   },
-  "hotel-schluchsee": {
-    "file": "schluchsee.svg",
-    "source": "https://www.vjz.de/",
-    "bytes": 9480,
-    "retrieved": "2026-10-04",
-    "extraction": "Inline SVG #logo-vjz from official website"
-  },
   "hotel-raulff": {
     "file": "raulff.png",
     "source": "https://www.raulff-hotels.de/wp-content/uploads/sites/275/2022/08/cropped-raulffHotels-Logo-Quer-RGB-72dpi.png",
@@ -218,12 +211,6 @@
     "file": "roesing.svg",
     "source": "https://www.roesing-touristik.de/assets/img/logos/logo-rhr-roesing-hotels-resorts.svg",
     "bytes": 9193,
-    "retrieved": "2026-10-04"
-  },
-  "hotel-binz": {
-    "file": "vier-jahreszeiten-binz.png",
-    "source": "https://www.vier-jahreszeiten.de/wp-content/uploads/2020/10/logo-preloader.png",
-    "bytes": 1483,
     "retrieved": "2026-10-04"
   },
   "hotel-ceres": {

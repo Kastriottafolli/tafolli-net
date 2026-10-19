@@ -10,7 +10,7 @@ EN = {
 "menu_auf": "Open menu",
 
 "hero_status": "Available for consulting",
-"hero_orte": ["Baltic Sea, Rügen 54.4°N", "Schluchsee 47.8°N"],
+"hero_orte": ["Ostseebad Binz 54.4°N"],
 "hero_h1": [["Five stars","in service."],["One line","in code."]],
 "hero_text": "I am Kastriot Tafolli. Fifteen years leading five-star hospitality and training as a software engineer specialising in artificial intelligence. I get properties into operational shape, then build the systems that take the work off their hands.",
 "hero_cta1": "Book a conversation", "hero_cta2": "Calculate savings",
@@ -28,8 +28,8 @@ EN = {
           ("4","+","hotels run simultaneously")],
 "sprachen_label": "Languages", "sprachen_wert": "DE · EN · SQ", "sprachen_stufe": "C2 / C1 / NATIVE",
 
-"haeuser": ["Grand Hotel Binz","Cerês am Meer","Vier Jahreszeiten Binz","Rösing Touristik",
-            "Raulff-Hotels","Vier Jahreszeiten am Schluchsee","Hotel Panorama Lohme",
+"haeuser": ["Grand Hotel Binz","Cerês am Meer","Rösing Touristik",
+            "Raulff-Hotels","Hotel Panorama Lohme",
             "Restaurant Wochenmarkt","Bukowina","Salsa Latino"],
 
 "pos_tag": "Two languages, one head",
@@ -179,18 +179,18 @@ EN = {
 "cta_text": "A first conversation takes half an hour and commits you to nothing. Afterwards you know whether and where I can help you.",
 "cta_1": "Arrange a conversation", "cta_2": "Open the calculators",
 
-"foot_text": "Hospitality leadership, digitalisation, AI automation and AI systems for hotels and restaurants.",
+"foot_text": "AI automation, software, web design and texts for businesses in Germany, Austria, Switzerland and Kosovo.",
 "foot_status": "TB SOLUTIONS · ONLINE",
 "foot_sp1": "Pages",
 "foot_l1": [("../ueber-mich.html","About me"),("../werdegang.html","Career"),("../leistungen.html","Services"),
             ("../teamo-ki.html","TeamO AI"),("../rechner.html","Calculators"),("../wissen.html","Insights"),
             ("../referenzen.html","References"),("../kontakt.html","Contact")],
 "foot_sp2": "Focus areas",
-"foot_l2": [("../fb-beratung.html","F&B consulting"),("../online-marketing.html","Online marketing & web"),
-            ("#ki","AI automation"),("../teamo-ki.html","AI systems"),("../rechner.html","Calculators")],
+"foot_l2": [("../ki-automatisierung.html","AI automation"),("../softwareentwicklung.html","Software development"),
+            ("../webdesign.html","Web design"),("../online-marketing.html","Online marketing"),("../angebot/","Texts and translations")],
 "foot_sp3": "Contact",
-"foot_adresse": ["Hauptstraße 1, 18609 Ostseebad Binz, Germany","Schluchsee, Black Forest"],
-"foot_copy": "© 2026 Kastriot Tafolli · tafolli.net · Rügen / Schluchsee",
+"foot_adresse": ["Hauptstraße 1, 18609 Ostseebad Binz, Germany"],
+"foot_copy": "© 2026 Kastriot Tafolli · tafolli.net · Ostseebad Binz",
 "foot_impressum": "Imprint", "foot_datenschutz": "Privacy",
 "foot_shell": "$ hospitality --digital --ai",
 }
