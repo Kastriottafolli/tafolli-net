@@ -8,11 +8,80 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tafolli.net/"/>
   </url>
   <url>
+    <loc>https://tafolli.net/angebot/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tafolli.net/angebot/"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://tafolli.net/sq/faqe-dhe-perkthime.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tafolli.net/angebot/"/>
+  </url>
+  <url>
+    <loc>https://tafolli.net/app-entwicklung.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/cybersecurity.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/datenschutz.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/digitalisierung.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/domain-hosting-email.html</loc>
+  </url>
+  <url>
     <loc>https://tafolli.net/en/</loc>
     <xhtml:link rel="alternate" hreflang="de" href="https://tafolli.net/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tafolli.net/en/"/>
     <xhtml:link rel="alternate" hreflang="sq" href="https://tafolli.net/sq/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tafolli.net/"/>
+  </url>
+  <url>
+    <loc>https://tafolli.net/foto-video.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/impressum.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/ki-automatisierung-arztpraxen.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/ki-automatisierung-kleine-unternehmen.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tafolli.net/ki-automatisierung-kleine-unternehmen.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://tafolli.net/sq/automatizim-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tafolli.net/ki-automatisierung-kleine-unternehmen.html"/>
+  </url>
+  <url>
+    <loc>https://tafolli.net/ki-automatisierung.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/ki-entwicklung.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/kontakt.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/landingpage-erstellen-lassen.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/leistungen.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/online-marketing.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/onlineshop-kleine-haendler.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/rechner.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/referenzen.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/social-media.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/softwareentwicklung.html</loc>
   </url>
   <url>
     <loc>https://tafolli.net/sq/</loc>
@@ -22,88 +91,42 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tafolli.net/"/>
   </url>
   <url>
-    <loc>https://tafolli.net/ki-automatisierung-kleine-unternehmen.html</loc>
-    <lastmod>2026-10-18</lastmod>
-    <priority>0.9</priority>
+    <loc>https://tafolli.net/sq/automatizim-ia.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tafolli.net/ki-automatisierung-kleine-unternehmen.html"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://tafolli.net/sq/automatizim-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tafolli.net/ki-automatisierung-kleine-unternehmen.html"/>
   </url>
   <url>
-    <loc>https://tafolli.net/landingpage-erstellen-lassen.html</loc>
-    <lastmod>2026-10-18</lastmod>
-    <priority>0.9</priority>
+    <loc>https://tafolli.net/sq/faqe-dhe-perkthime.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://tafolli.net/angebot/"/>
+    <xhtml:link rel="alternate" hreflang="sq" href="https://tafolli.net/sq/faqe-dhe-perkthime.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tafolli.net/angebot/"/>
   </url>
   <url>
-    <loc>https://tafolli.net/ki-automatisierung.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tafolli.net/leistungen.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tafolli.net/online-marketing.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <priority>0.9</priority>
+    <loc>https://tafolli.net/suchmaschinenoptimierung.html</loc>
   </url>
   <url>
     <loc>https://tafolli.net/teamo-ki.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://tafolli.net/rechner.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tafolli.net/wissen.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://tafolli.net/ueber-mich.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tafolli.net/webdesign.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/website-fuer-handwerker.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/website-fuer-vereine.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/website-pflege-kleine-betriebe.html</loc>
   </url>
   <url>
     <loc>https://tafolli.net/werdegang.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://tafolli.net/referenzen.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://tafolli.net/kontakt.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://tafolli.net/impressum.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://tafolli.net/datenschutz.html</loc>
-    <lastmod>2026-10-04</lastmod>
-    <priority>0.3</priority>
-  </url>
-  <url><loc>https://tafolli.net/digitalisierung.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
-  <url><loc>https://tafolli.net/cybersecurity.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
-  <url><loc>https://tafolli.net/ki-entwicklung.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
-  <url><loc>https://tafolli.net/softwareentwicklung.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
-  <url><loc>https://tafolli.net/app-entwicklung.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
-  <url><loc>https://tafolli.net/webdesign.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
-  <url><loc>https://tafolli.net/suchmaschinenoptimierung.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
-  <url><loc>https://tafolli.net/domain-hosting-email.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
-  <url><loc>https://tafolli.net/social-media.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
-  <url><loc>https://tafolli.net/foto-video.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
-  <url>
-    <loc>https://tafolli.net/angebot/</loc>
-    <lastmod>2026-10-16</lastmod>
-    <priority>0.8</priority>
+    <loc>https://tafolli.net/wissen.html</loc>
   </url>
 </urlset>

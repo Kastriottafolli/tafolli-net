@@ -10,7 +10,7 @@ WURZEL = HIER.parent
 
 from icons import iconize
 
-import seiten_a, seiten_b, seiten_c, seiten_d, kern, experience, artwork, services
+import seiten_a, seiten_b, seiten_c, seiten_d, kern, experience, artwork, services, landings
 
 SEITEN = {
     'ueber-mich.html': seiten_a.ueber_mich,
@@ -32,6 +32,55 @@ SEITEN = {
     'datenschutz.html': seiten_d.datenschutz,
     '404.html': seiten_d.fehler404,
 }
+
+def sitemap_schreiben():
+    """Sitemap aus den gebauten Seiten. noindex bleibt draußen."""
+    gruppen = {
+        'https://tafolli.net/': [('de', 'https://tafolli.net/'), ('en', 'https://tafolli.net/en/'), ('sq', 'https://tafolli.net/sq/'), ('x-default', 'https://tafolli.net/')],
+        'https://tafolli.net/en/': [('de', 'https://tafolli.net/'), ('en', 'https://tafolli.net/en/'), ('sq', 'https://tafolli.net/sq/'), ('x-default', 'https://tafolli.net/')],
+        'https://tafolli.net/sq/': [('de', 'https://tafolli.net/'), ('en', 'https://tafolli.net/en/'), ('sq', 'https://tafolli.net/sq/'), ('x-default', 'https://tafolli.net/')],
+        'https://tafolli.net/ki-automatisierung-kleine-unternehmen.html': [
+            ('de', 'https://tafolli.net/ki-automatisierung-kleine-unternehmen.html'),
+            ('sq', 'https://tafolli.net/sq/automatizim-ia.html'),
+            ('x-default', 'https://tafolli.net/ki-automatisierung-kleine-unternehmen.html')],
+        'https://tafolli.net/sq/automatizim-ia.html': [
+            ('de', 'https://tafolli.net/ki-automatisierung-kleine-unternehmen.html'),
+            ('sq', 'https://tafolli.net/sq/automatizim-ia.html'),
+            ('x-default', 'https://tafolli.net/ki-automatisierung-kleine-unternehmen.html')],
+        'https://tafolli.net/angebot/': [
+            ('de', 'https://tafolli.net/angebot/'),
+            ('sq', 'https://tafolli.net/sq/faqe-dhe-perkthime.html'),
+            ('x-default', 'https://tafolli.net/angebot/')],
+        'https://tafolli.net/sq/faqe-dhe-perkthime.html': [
+            ('de', 'https://tafolli.net/angebot/'),
+            ('sq', 'https://tafolli.net/sq/faqe-dhe-perkthime.html'),
+            ('x-default', 'https://tafolli.net/angebot/')],
+    }
+    dateien = [*WURZEL.glob('*.html'), * (WURZEL / 'en').glob('*.html'), * (WURZEL / 'sq').glob('*.html'), WURZEL / 'angebot' / 'index.html']
+    orte = []
+    for datei in dateien:
+        text = datei.read_text()
+        if 'name="robots" content="noindex"' in text:
+            continue
+        relativ = datei.relative_to(WURZEL).as_posix()
+        if relativ == 'index.html':
+            ort = 'https://tafolli.net/'
+        elif relativ.endswith('/index.html'):
+            ort = 'https://tafolli.net/' + relativ[:-len('index.html')]
+        else:
+            ort = 'https://tafolli.net/' + relativ
+        orte.append(ort)
+    zeilen = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for ort in sorted(set(orte), key=lambda wert: (wert != 'https://tafolli.net/', wert)):
+        zeilen.append('  <url>')
+        zeilen.append(f'    <loc>{ort}</loc>')
+        for code, href in gruppen.get(ort, []):
+            zeilen.append(f'    <xhtml:link rel="alternate" hreflang="{code}" href="{href}"/>')
+        zeilen.append('  </url>')
+    zeilen.append('</urlset>')
+    (WURZEL / 'sitemap.xml').write_text('\n'.join(zeilen) + '\n')
+    print(f'  {"sitemap.xml":30} {len(orte):>7} Adressen')
+
 
 def angebot_auffrischen():
     """angebot/index.html is hand-authored. Refresh shared chrome so it matches the build."""
@@ -62,3 +111,5 @@ if __name__ == '__main__':
         (WURZEL / datei).write_text(html)
         print(f"  {datei:30} {len(html):>7} Zeichen")
     angebot_auffrischen()
+    landings.build(WURZEL)
+    sitemap_schreiben()

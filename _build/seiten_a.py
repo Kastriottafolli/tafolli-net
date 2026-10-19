@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from bausteine import *
-from companies import company_link
 from services import catalogue
 from portrait import portrait
 
@@ -16,16 +15,16 @@ def ueber_mich():
     daten = "".join(f'<div><dt>{k}</dt><dd>{v}</dd></div>' for k, v in steckbrief)
 
     haltung = [
-        ("01", "Praxis vor Theorie", "Ich habe selbst am Pass gestanden, Dienstpläne geschrieben und Inventuren gemacht. Ich empfehle nichts, was im Tagesgeschäft nicht funktioniert, nur weil es in einer Präsentation gut aussieht."),
+        ("01", "Praxis vor Theorie", "Ich baue, was im Alltag benutzt wird. Ich empfehle nichts, nur weil es in einer Präsentation gut aussieht."),
         ("02", "Zahlen als Grundlage", "Entscheidungen brauchen eine Basis. Ich rechne, bevor ich rate, und lege die Rechnung offen."),
-        ("03", "Auf Augenhöhe", "Ich rede mit dem Küchenchef genauso wie mit der Geschäftsführung. Beratung heißt nicht, Ihrem Team zu erklären, was es falsch macht, sondern mit ihm zu arbeiten."),
-        ("04", "Diskretion", "Zahlen, Verträge und interne Themen bleiben, wo sie hingehören. Referenzen nenne ich nur mit Zustimmung, Details nie."),
+        ("03", "Auf Augenhöhe", "Ich rede mit der Person, die die Arbeit macht, genauso wie mit der Geschäftsführung. Beratung heißt, mit Ihrem Team zu arbeiten."),
+        ("04", "Diskretion", "Zahlen und interne Themen bleiben, wo sie hingehören. Referenzen nenne ich nur mit Zustimmung, Details nie."),
     ]
-    hotel = [
-        ("Ausbildung Restaurantfachmann", "Klassische Serviceausbildung mit Haute-Cuisine-Techniken: Flambieren, Filetieren, Tranchieren"),
-        ("Hotel- und Restaurantmanagement", "Betriebswirtschaft, Kalkulation, Revenue Management, Qualitätsmanagement"),
-        ("Führung und Ausbildereignung", "Teamaufbau, Mitarbeiterführung, Ausbildung von über 50 Nachwuchskräften"),
-        ("Sterne- und Bankettgastronomie", "Michelin-ausgezeichnete Restaurants, Veranstaltungen und Großgastronomie"),
+    sprache = [
+        ("Albanisch", "Muttersprache. Texte und Gespräche für Betriebe in Deutschland, im Kosovo und in Albanien."),
+        ("Deutsch C2", "Texte, Websites und Abstimmungen auf Deutsch."),
+        ("Englisch C1", "Texte und Abstimmungen auf Englisch."),
+        ("Drei Richtungen", "Deutsch, Englisch und Albanisch. Jede Richtung. Die Festpreise stehen auf der Angebotsseite."),
     ]
     technik = [
         ("Ausbildung Softwareingenieur", "Softwareentwicklung, Datenbanken, Systemarchitektur"),
@@ -49,7 +48,7 @@ def ueber_mich():
       <div>
         <h2 class="d2 wipe recede-exit" style="font-size:clamp(1.8rem,3.6vw,3rem);margin-bottom:30px">{wipe([["Vom Lernen zum Bauen,"],["und jetzt zu eigenen Projekten."]])}</h2>
         <div class="prose rise">
-          <p>Mein Weg begann im Kosovo. Über Stationen im Vertrieb, im Marketing und in der Projektarbeit bin ich 2018 an die Ostsee gekommen. Der Sitz von TB Solutions ist Ostseebad Binz.</p>
+          <p>Mein Weg begann im Kosovo. 2018 bin ich an die Ostsee gekommen. Der Sitz von TB Solutions ist Ostseebad Binz.</p>
           <p>Parallel dazu habe ich programmieren gelernt. Eine Ausbildung zum Softwareingenieur, eine abgeschlossene sechsmonatige Spezialisierung auf KI Engineering mit Fokus auf die Automatisierung von Geschäftsprozessen und eine dreimonatige Schulung zum Prompt Engineer.</p>
           <p>Mit TB Solutions, das ich gemeinsam mit meinem Geschäftspartner Boriss Bockans aufgebaut habe, setze ich das um: KI-Automatisierung, Software und Apps, Websites, Online-Marketing und Texte auf Deutsch, Englisch und Albanisch. Wir sind keine anonyme Agentur, sondern zwei Leute, die Projekte direkt begleiten.</p>
         </div>
@@ -69,7 +68,7 @@ def ueber_mich():
   <div class="shell">
     {kicker("02", "Haltung")}
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([["Wie ich arbeite."]])}</h2>
-    <p class="lede rise" style="--i:1;margin-bottom:clamp(40px,5vw,64px)">Vier Dinge, auf die Sie sich verlassen können, ganz gleich ob es um eine Vertragsverhandlung oder um eine Website geht.</p>
+    <p class="lede rise" style="--i:1;margin-bottom:clamp(40px,5vw,64px)">Vier Dinge, auf die Sie sich verlassen können, ob es um eine Automatisierung, eine Website oder einen Text geht.</p>
     {karten_grid(haltung, "g2")}
   </div>
 </section>
@@ -78,7 +77,7 @@ def ueber_mich():
   <div class="shell">
     {kicker("03", "Ausbildung und Weiterbildung")}
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 clamp(40px,5vw,64px)">{wipe([["Zwei Welten,"],["bewusst gelernt."]])}</h2>
-    <div class="g2 pop-wrap">{bildung("// hotellerie & gastronomie", hotel, 0)}{bildung("// technik & digitales", technik, 1)}</div>
+    <div class="g2 pop-wrap">{bildung("// sprachen", sprache, 0)}{bildung("// technik & digitales", technik, 1)}</div>
     {zitat_block("Ich habe programmieren gelernt, weil ich sah, wie viel Arbeitszeit verbrennt, die eine Maschine übernehmen könnte.", "Kastriot Tafolli")}
   </div>
 </section>''' + cta_block("// nächster schritt", [["Lernen wir uns kennen."]],
@@ -93,37 +92,26 @@ def ueber_mich():
 def werdegang():
     stationen = [
         ("2026", "Weiterbildung KI Engineering", "Master School Institute of Technology · Berlin",
-         "Abgeschlossene sechsmonatige Spezialisierung auf KI Engineering mit Fokus auf die Automatisierung allgemeiner Geschäftsprozesse, ergänzt durch eine dreimonatige Schulung zum Prompt Engineer. Grundlage für die Entwicklung von TeamO.",
+         "Abgeschlossene sechsmonatige Spezialisierung auf KI Engineering. Schwerpunkt: Automatisierung von Geschäftsprozessen. Dazu eine dreimonatige Schulung zum Prompt Engineer. Das ist die Grundlage für TeamO.",
          ["Prozessautomatisierung", "Prompt Engineering", "Systemintegration"]),
-        ("2025", "Gastronomischer Direktor", "Raulff-Hotels OHG · Sassnitz",
-         "Leitung von zwei Hotels mit 267 Zimmern und sechs F&B-Outlets, Führung von 120+ Mitarbeitenden, Steigerung der Gästezufriedenheit um 70 Prozent. Zusätzlich verantwortlich für die gesamte Hotelgruppe mit Hotel Badehaus Goor, Schlosshotel Ralswiek, Kurhotel Sassnitz, Rügen-Hotel und Rosencafé Putbus, inklusive Preisgestaltung, Einkauf und Vertragsverhandlungen.",
-         ["267 Zimmer", "6 Outlets", "Gruppenverantwortung", "+70 % Zufriedenheit"]),
-        ("2024", "Director of Operations", "Rösing Touristik GmbH · Sassnitz",
-         "Gesamtverantwortung für drei Hotels sowie ein Resort mit fünf Restaurants, Führung eines Teams von 150+ Mitarbeitenden. Schwerpunkt auf Vereinheitlichung von Standards, Einkauf und Personalplanung über mehrere Häuser hinweg.",
-         ["3 Hotels", "5 Restaurants", "150+ Mitarbeitende"]),
-        ("2022 bis 2023", "F&B Manager", "Cerês am Meer · Ostseebad Binz",
-         "Operatives Management im F&B-Bereich eines 5-Sterne-Superior Designhotels mit Michelin-Stern-Restaurant, Führung von 30+ Mitarbeitenden. Höchste Ansprüche an Service, Ablauf und Detailgenauigkeit.",
-         ["5 Sterne Superior", "Michelin-Stern", "30+ Mitarbeitende"]),
-        ("2018 bis 2022", "F&B Manager", "Grand Hotel Binz · Ostseebad Binz",
-         "Operative Verantwortung für Restaurant, Bar, Frühstück, Room Service und Bankett, Führung von 100+ Mitarbeitenden. Aufbau von Abläufen, Schulungskonzepten und Ausbildung zahlreicher Nachwuchskräfte.",
-         ["5 Outlets", "100+ Mitarbeitende", "Ausbildungsbetrieb"]),
+        ("davor", "Ausbildung Softwareingenieur", "Software und Systeme",
+         "Softwareentwicklung, Datenbanken und Systemarchitektur. Darauf bauen die Websites, Web-Apps und Automationen auf, die ich heute anbiete.",
+         ["Python", "JavaScript", "SQL"]),
+        ("heute", "TB Solutions", "Ostseebad Binz",
+         "Gemeinsam mit Boriss Bockans. KI-Automatisierung, Software, Websites und Texte auf Deutsch, Englisch und Albanisch. Projekte begleiten wir direkt.",
+         ["KI", "Web", "Texte"]),
     ]
     tl = "".join(f'''<div class="tl-item rise">
         <p class="tl-jahr">{j}</p>
         <h3 class="d3" style="font-size:clamp(1.2rem,2vw,1.6rem)">{t}</h3>
-        <p class="tl-ort">{company_link(o)}</p>
+        <p class="tl-ort">{o}</p>
         <p style="color:var(--paper-dim);font-size:.95rem;max-width:72ch">{d}</p>
         <div class="tl-chips">{"".join(f'<span class="chip">{c}</span>' for c in ch)}</div>
       </div>''' for j, t, o, d, ch in stationen)
 
     erste = [
-        ("2017 bis 2018", "Online Marketing Manager", "Private Palace Hotels and Resorts, Grand Hotel Binz"),
-        ("2017", "Restaurant Manager", "Merlin Entertainments plc, Soltau"),
-        ("2017", "Teamleiter Call Center (DHL)", "IQ to Link, Prizren"),
-        ("2017", "Verkaufs- und Marketingleiter", "Gjirafa.com, Prizren"),
-        ("2014 bis 2016", "Verkaufs-Regionalleiter und Marketingleiter", "Swiss Concept International Ltd, Prizren"),
-        ("2013 bis 2014", "Restaurantleiter", "Premium Park Hotel, Prizren"),
-        ("2011 bis 2013", "Oberkellner", "Grand Hotel Prishtina, mit klassischen Serviertechniken der Haute Cuisine"),
+        ("Sprachen", "Albanisch, Deutsch, Englisch", "Texte und Gespräche in diesen drei Sprachen."),
+        ("Sitz", "Ostseebad Binz", "TB Solutions, Hauptstraße 1. Arbeit für Betriebe in Deutschland, Österreich, der Schweiz und im Kosovo."),
     ]
     erste_html = "".join(f'''<div class="rise" style="--i:{i};display:grid;grid-template-columns:minmax(110px,170px) 1fr;gap:18px;padding:15px 0;border-bottom:1px solid var(--line-soft)">
         <span class="mono" style="font-size:.78rem;color:var(--acc)">{j}</span>
@@ -131,19 +119,15 @@ def werdegang():
       </div>''' for i, (j, t, o) in enumerate(erste))
 
     kompetenzen = [
-        ("01", "Hotel- und Gastronomiemanagement", "Operative Leitung mehrerer Häuser und Outlets, Prozessoptimierung, Qualitätsmanagement, Standardisierung über Standorte hinweg."),
-        ("02", "F&B-Management", "Konzeptentwicklung, Sterne- und Bankettgastronomie, Menü- und Getränkekalkulation, Wareneinsatzsteuerung, Inventur."),
-        ("03", "Revenue Management und Controlling", "Budgetplanung, Forecast, Deckungsbeitragsrechnung, Preisgestaltung, Kosten- und Personalkostenkontrolle."),
-        ("04", "HR und Leadership", "Recruiting, Teamaufbau, Dienstplanung, Schulungskonzepte, Ausbildung, Employer Branding, Mitarbeiterbindung."),
-        ("05", "Einkauf und Verhandlung", "Getränke- und Lieferverträge, Rückvergütungen, Boni, Marketingzuschüsse, Lieferkonditionen und Jahresvereinbarungen."),
-        ("06", "Digitalisierung und IT", "Einführung und Betrieb von Hotel- und Kassensystemen, Schnittstellen, Reporting, Automatisierung von Routineaufgaben."),
-        ("07", "Online-Marketing", "SEO, Google Ads, Social Media, Content, Analytics, lokale Sichtbarkeit und Direktbuchungsstrategie."),
-        ("08", "KI und Automatisierung", "Entwicklung KI-gestützter Assistenten, Prozessautomatisierung, Prompt Engineering, Anbindung an bestehende Systeme."),
-        ("09", "Softwareentwicklung", "Python, JavaScript, HTML, CSS, SQL, C und C++, Datenbanken und Webanwendungen."),
+        ("01", "KI und Automatisierung", "Assistenten und Abläufe für E-Mail, Angebote oder Termine. Freigabe bleibt bei Ihnen."),
+        ("02", "Softwareentwicklung", "Python, JavaScript, HTML, CSS, SQL, C und C++. Datenbanken und Webanwendungen."),
+        ("03", "Web-Apps", "Checklisten, Bestellungen und Freigaben auf dem Telefon. Rollen und ein klarer Status."),
+        ("04", "Websites", "Kleine Seiten und Landingpages. Auf dem Telefon lesbar, mit Weg zur Anfrage."),
+        ("05", "Texte", "Deutsch, Englisch und Albanisch. Festpreise 49, 59 und 99 €. Ich prüfe jeden Text selbst."),
+        ("06", "Online-Marketing", "SEO, Google Ads, Social Media, Content und lokale Sichtbarkeit. Ohne Versprechen auf einen Platz in der Suche."),
     ]
     werkzeug = [
         ("// programmiersprachen", ["Python", "JavaScript", "HTML", "CSS", "SQL", "C", "C++"]),
-        ("// hotel- und kassensoftware", ["Fidelio", "Protel", "Suite8", "Gastronovi", "Micros", "Lightspeed", "Shiji", "Customer Alliance", "Dailypoint"]),
         ("// marketing und analyse", ["Google Ads", "Analytics", "Search Console", "Meta Business", "Canva", "Adobe", "Squarespace"]),
     ]
     werkzeug_html = "".join(f'''<div class="rise" style="--i:{i};margin-bottom:26px">
@@ -151,14 +135,14 @@ def werdegang():
         <div style="display:flex;flex-wrap:wrap;gap:8px">{"".join(f'<span class="chip">{c}</span>' for c in cs)}</div>
       </div>''' for i, (t, cs) in enumerate(werkzeug))
 
-    inhalt = hero_klein("02", "Werdegang", [["Jede Station hat"], ["etwas hinzugefügt."]],
-        "Von früheren Projekten bis zu Softwareentwicklung und KI Engineering. Die Stationen, die ich hier nenne, sind abgeschlossene Aufgaben, nicht das Angebot dieser Website.",
-        ["seit 2011", "Software und KI", "3 Sprachen"]) + f'''
+    inhalt = hero_klein("02", "Werdegang", [["Software, KI"], ["und drei Sprachen."]],
+        "Was ich gelernt habe und was ich heute anbiete.",
+        ["Software", "KI Engineering", "3 Sprachen"]) + f'''
 <section class="pad">
   <div class="shell">
-    {kicker("01", "Stationen")}
-    <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([["Siebzehn Jahre,"], ["ein roter Faden."]])}</h2>
-    <p class="lede rise" style="--i:1;margin-bottom:clamp(44px,5vw,72px)">Frühere Stationen und die technische Weiterbildung. Was ich heute anbiete, steht unter Leistungen: KI, Software, Web, Marketing und Texte.</p>
+    {kicker("01", "Lernen und Angebot")}
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([["Vom Lernen"], ["zum eigenen Angebot."]])}</h2>
+    <p class="lede rise" style="--i:1;margin-bottom:clamp(44px,5vw,72px)">Die technische Weiterbildung und TB Solutions. Was ich heute anbiete, steht unter Leistungen: KI, Software, Web, Marketing und Texte.</p>
     <div class="timeline">{tl}</div>
     <div style="margin-top:clamp(30px,4vw,56px)">
       <p class="tag rise" style="margin-bottom:14px">// erste stationen</p>
@@ -170,13 +154,13 @@ def werdegang():
 <section class="pad" style="background:var(--ink-2)">
   <div class="shell">
     {kicker("02", "Kompetenzen")}
-    <h2 class="d2 wipe recede-exit" style="margin:20px 0 clamp(40px,5vw,64px)">{wipe([["Operative Führung trifft"], ["digitales Handwerk."]])}</h2>
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 clamp(40px,5vw,64px)">{wipe([["Was ich"], ["heute kann."]])}</h2>
     {karten_grid(kompetenzen, "g3")}
     <div style="margin-top:clamp(48px,5vw,76px)">{werkzeug_html}</div>
   </div>
-</section>''' + cta_block("// nächster schritt", [["Diese Erfahrung"], ["können Sie mieten."]],
+</section>''' + cta_block("// nächster schritt", [["Welches Thema"], ["soll das erste sein?"]],
         "Als Projekt oder als laufende Betreuung. Sagen Sie mir, woran es gerade hakt.",
-        "Beratungsgespräch vereinbaren", "kontakt.html", "Leistungen ansehen", "leistungen.html")
+        "Anfragen", "kontakt.html", "Leistungen ansehen", "leistungen.html")
 
     return seite_rahmen("werdegang.html", "Werdegang · Kastriot Tafolli",
         "Stationen und Kompetenzen von Kastriot Tafolli: Softwareentwicklung, KI Engineering und frühere Projekte.",
@@ -184,19 +168,6 @@ def werdegang():
 
 
 def leistungen():
-    spektrum = [
-        ("01", "Online-Marketing & Digitalstrategie", "Strategie, Kampagnenplanung und Budgetsteuerung. Gezielt auf Anfragen und Direktbuchungen ausgerichtet statt auf Reichweite ohne Wirkung."),
-        ("02", "Webdesign & Webentwicklung", "Schnelle Websites für Hotels und Restaurants, auch als Modernisierung. Mit Buchungsanbindung, Speisekarten und mehrsprachigen Inhalten."),
-        ("03", "Suchmaschinenoptimierung", "Technik, Inhalte und lokale Sichtbarkeit, damit Ihr Haus gefunden wird, wenn jemand nach Restaurant, Hotel oder Ihrer Region sucht."),
-        ("04", "Domain, Hosting & E-Mail", "Professionelle Domains, schnelles Hosting und E-Mail-Adressen unter Ihrem eigenen Namen, betreut und gewartet."),
-        ("05", "Social Media & Content", "Redaktionsplan, Beiträge, Reels und Betreuung der Kanäle. Inhalte, die Ihr Haus zeigen, wie es wirklich ist."),
-        ("06", "App- & Web-App-Entwicklung", "Individuelle Anwendungen für interne Abläufe: Dienstpläne, Checklisten, Bestellungen, Reporting und Schnittstellen zwischen Systemen."),
-        ("07", "KI-gestützte Lösungen", "Individuell trainierte KI-Systeme für Kommunikation, Reservierung und Reporting, bis hin zum digitalen Mitarbeiter TeamO."),
-        ("08", "KI-Automatisierung & KI-Management", "Wiederkehrende Abläufe automatisieren und das laufende System dauerhaft betreuen: prüfen, nachschärfen, eingreifen, wenn etwas nicht passt."),
-        ("09", "Cybersicherheit", "Absicherung von Website, E-Mail und Systemen, Backups, Zugriffsrechte und Schutz von Gästedaten."),
-        ("10", "F&B-Consulting", "Konzeptentwicklung, Prozessoptimierung, Vertrags- und Partnerberatung sowie strategische Betriebsberatung aus fünfzehn Jahren Praxis."),
-        ("11", "Hospitality-Recruiting", "Teamaufbau, Stellenprofile, Auswahlverfahren, Schulungskonzepte und Employer Branding für Hotellerie und Gastronomie."),
-    ]
     ablauf = [
         ("01", "Erstgespräch, unverbindlich", "Dreißig Minuten am Telefon oder vor Ort. Sie schildern die Lage, ich stelle Fragen und sage offen, ob und wo ich helfen kann."),
         ("02", "Analyse", "Ich sehe mir an, was relevant ist: Abläufe, Systeme, Website, Sichtbarkeit und Texte."),
@@ -241,6 +212,22 @@ def leistungen():
     </div>
   </div>
 </section>
+<section class="pad" id="fuer-wen" style="scroll-margin-top:110px">
+  <div class="shell">
+    {kicker("01b", "Für wen")}
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([["Eine Seite"], ["pro Zielgruppe."]])}</h2>
+    <p class="lede rise" style="--i:1;margin-bottom:28px">Dieselben Leistungen, zugeschnitten auf einen Betrieb. Die Preise sind dieselben wie auf den Angebotsseiten.</p>
+    <div class="portfolio-links">
+      <a href="website-fuer-handwerker.html">Website für Handwerker <span aria-hidden="true">↗</span></a>
+      <a href="ki-automatisierung-arztpraxen.html">KI für Arztpraxen und Therapeuten <span aria-hidden="true">↗</span></a>
+      <a href="website-fuer-vereine.html">Website für Vereine <span aria-hidden="true">↗</span></a>
+      <a href="website-pflege-kleine-betriebe.html">Website-Pflege für kleine Betriebe <span aria-hidden="true">↗</span></a>
+      <a href="onlineshop-kleine-haendler.html">Onlineshop für kleine Händler <span aria-hidden="true">↗</span></a>
+      <a href="sq/faqe-dhe-perkthime.html" lang="sq">Faqe web dhe përkthime <span aria-hidden="true">↗</span></a>
+      <a href="sq/automatizim-ia.html" lang="sq">Automatizim me IA <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
 
 <section class="pad" style="background:var(--ink-2)">
   <div class="shell">
@@ -264,4 +251,4 @@ def leistungen():
 
     return seite_rahmen("leistungen.html", "Leistungen · Kastriot Tafolli",
         "KI-Automatisierung, Software, Webdesign, Online-Marketing und Übersetzungen. Leistungen von Kastriot Tafolli und TB Solutions.",
-        "leistungen.html", inhalt)
+        "leistungen.html", inhalt, faq=faq)

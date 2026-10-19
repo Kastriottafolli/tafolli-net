@@ -13,7 +13,15 @@ SERVICE_GROUPS = [
  ('Web & Sichtbarkeit', [
   ('online-marketing.html','Online-Marketing & Digitalstrategie'), ('webdesign.html','Webdesign & Webentwicklung'),
   ('social-media.html','Social Media & Content'), ('suchmaschinenoptimierung.html','Suchmaschinenoptimierung'),
-  ('domain-hosting-email.html','Domain, Hosting & E-Mail'), ('foto-video.html','Foto & Video')])]
+  ('domain-hosting-email.html','Domain, Hosting & E-Mail'), ('foto-video.html','Foto & Video')]),
+ ('Für wen', [
+  ('website-fuer-handwerker.html','Website für Handwerker'),
+  ('ki-automatisierung-arztpraxen.html','KI für Arztpraxen und Therapeuten'),
+  ('website-fuer-vereine.html','Website für Vereine'),
+  ('website-pflege-kleine-betriebe.html','Website-Pflege für kleine Betriebe'),
+  ('onlineshop-kleine-haendler.html','Onlineshop für kleine Händler'),
+  ('sq/faqe-dhe-perkthime.html','Faqe web dhe përkthime'),
+  ('sq/automatizim-ia.html','Automatizim me IA')])]
 SECTIONS = [
  ('leistungen','Leistungen','leistungen.html','Alle Leistungsbereiche',SERVICE_GROUPS),
  ('profil','Über mich','ueber-mich.html','Kastriot Tafolli kennenlernen',[
@@ -34,7 +42,7 @@ def nav( current='index.html', base='', lang='de'):
  def link(url,label,cls=''):
   href=url if ':' in url else base+url
   active=' aria-current="page"' if url==current else ''
-  language=' lang="de"' if lang!='de' and url.endswith('.html') and url!='index.html' else ''
+  language=' lang="sq"' if url.startswith('sq/') else (' lang="de"' if lang!='de' and url.endswith('.html') and url!='index.html' else '')
   return f'<a href="{escape(href,quote=True)}" class="{cls}"{active}{language}>{escape(label)}<span aria-hidden="true">↗</span></a>'
  sections=[]
  for i,(key,label,url,overview,groups) in enumerate(SECTIONS):
@@ -54,11 +62,12 @@ def parent(path):
    return (label,url) if path!=url and key!='kontakt' else None
  return None
 
-def breadcrumbs(path):
+def breadcrumbs(path, base='', home_href=None, home_label='Startseite'):
  if path in ['index.html','en/','sq/','404.html']:return ''
  title=TITLES.get(path,path)
  trail=parent(path)
- parts='<a href="index.html">Startseite</a>'
- if trail:parts+=f'<span aria-hidden="true">/</span><a href="{trail[1]}">{escape(trail[0])}</a>'
+ href=home_href if home_href is not None else base+'index.html'
+ parts=f'<a href="{href}">{escape(home_label)}</a>'
+ if trail:parts+=f'<span aria-hidden="true">/</span><a href="{base}{trail[1]}">{escape(trail[0])}</a>'
  parts+=f'<span aria-hidden="true">/</span><span aria-current="page">{escape(title)}</span>'
  return '<div class="shell site-breadcrumb"><nav aria-label="Brotkrumennavigation">'+parts+'</nav></div>'

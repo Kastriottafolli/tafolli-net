@@ -71,12 +71,18 @@ HIDDEN_LOGOS={'openai','google','microsoft'}
 def visible_tech():
     return [p for p in TECH if p['key'] not in HIDDEN_LOGOS]
 
+# Hotel- und Gaststätten-Logos bleiben in den Daten, werden auf indexierbaren Seiten nicht gezeigt.
+HIDDEN_PROJECTS={'wochenmarkt','panorama'}
+
+def visible_projects():
+    return [p for p in PROJECTS if p['key'] not in HIDDEN_PROJECTS]
+
 def strip(lang,base=''):
     copy={
       'de':['REFERENZEN','Gute Arbeit verbindet.','Ausgewählte Projekte aus meiner Arbeit.','Alle Referenzen','Logo-Slider pausieren','Logo-Slider abspielen'],
       'en':['REFERENCES','Good work connects.','Selected projects from my work.','All references','Pause logo slider','Play logo slider'],
       'sq':['REFERENCA','Puna e mirë na lidh.','Projekte të zgjedhura nga puna ime.','Të gjitha referencat','Ndaloni rrëshqitjen e logove','Luani rrëshqitjen e logove'],
     }[lang]
-    keys=['tafolli-glass','ab-bau','mel-maler','wochenmarkt','panorama']
+    keys=['tafolli-glass','ab-bau','mel-maler','tafolli']
     cards=''.join(f'<li><a href="{html.escape(ALL[key]["url"])}" target="_blank" rel="noopener noreferrer" aria-label="{html.escape(ALL[key]["name"])}">{logo(ALL[key],base)}<span class="partner-slider-name">{html.escape(ALL[key]["name"])}</span></a></li>' for key in keys)
     return f'''<section class="partner-strip" id="partner" data-partner-slider aria-label="{copy[0]}" data-pause-label="{copy[4]}" data-play-label="{copy[5]}"><div class="x-shell"><div class="partner-strip-heading"><div><p class="x-label">{copy[0]}</p><h2>{copy[1]}</h2><p>{copy[2]}</p></div><div class="partner-strip-actions"><a href="{base}referenzen.html">{copy[3]} ↗</a><button type="button" class="partner-slider-pause" aria-pressed="false" aria-label="{copy[4]}" hidden><span aria-hidden="true">Ⅱ</span></button></div></div><div class="partner-slider-viewport"><ul class="partner-slider-track">{cards}</ul></div></div></section>'''

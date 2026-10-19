@@ -88,7 +88,7 @@ def rechner():
   <div class="shell">
     {kicker("02", "Einordnung")}
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([["Rechner ersetzen"], ["kein Gespräch."]])}</h2>
-    <p class="lede rise" style="--i:1">Die Zahlen hier oben sind Modellrechnungen mit offen gelegten Annahmen. Sie zeigen Größenordnungen, keine Garantien. Was in Ihrem Haus tatsächlich möglich ist, hängt von Verträgen, Auslastung, Team und Region ab. Genau das sehe ich mir im Erstgespräch an, und wenn nichts zu holen ist, sage ich Ihnen das.</p>
+    <p class="lede rise" style="--i:1">Die Zahlen hier oben sind Modellrechnungen mit offen gelegten Annahmen. Sie zeigen Größenordnungen, keine Garantien. Was in Ihrem Betrieb möglich ist, hängt von Aufgaben, Daten und Freigaben ab. Genau das sehe ich mir im Erstgespräch an.</p>
   </div>
 </section>''' + cta_block("// nächster schritt", [["Prüfen wir Ihre"], ["echten Zahlen."]],
         "Bringen Sie Ihre Werte mit, dann rechnen wir im Gespräch mit Ihrem Ablauf statt nur mit Annahmen.",
