@@ -18,11 +18,11 @@ for _key in (
     'website-fuer-handwerker', 'ki-automatisierung-arztpraxen', 'website-fuer-vereine',
     'website-pflege-kleine-betriebe', 'onlineshop-kleine-haendler'):
     _title, _desc = SERVICE_META[_key]
-    if len(_title) > 60 or len(_desc) > 155:
+    if not 50 <= len(_title) <= 60 or not 150 <= len(_desc) <= 160:
         raise SystemExit(f'{_key}: title {len(_title)}, description {len(_desc)}')
 for _path in ('sq/faqe-dhe-perkthime.html', 'sq/automatizim-ia.html'):
     _title, _desc = PAGE_META[_path]
-    if len(_title) > 60 or len(_desc) > 155:
+    if not 50 <= len(_title) <= 60 or not 150 <= len(_desc) <= 160:
         raise SystemExit(f'{_path}: title {len(_title)}, description {len(_desc)}')
 
 

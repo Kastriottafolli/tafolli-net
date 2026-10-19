@@ -201,6 +201,7 @@ def link(slug):
         'web-apps':('web-apps.html','Web-App oder Tool nach Maß'),
         'firmenprofile':('firmenprofile.html','Firmenprofile im Netz'),
         'preisrechner':('preisrechner.html','Preisrechner'),
+        'kontakt':('kontakt.html','Kontakt'),
     }
     if slug in special:
         href,label=special[slug]
@@ -217,7 +218,20 @@ def page(s):
     path=s['slug']+'.html'; title=html.escape(s['title']); desc=html.escape(s['lead'])
     modules=''.join(f'<article><span class="tag">0{i+1}</span><h3>{t}</h3><p>{b}</p></article>' for i,(t,b) in enumerate(s['modules']))
     faq=''.join(f'<details><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>' for q,a in s['faq'])
-    related=''.join(link(slug) for slug in s['related'])
+    related_slugs = list(s['related'])
+    extra_related = {
+        'webdesign': ['website-pflege', 'onlineshop', 'firmenprofile'],
+        'app-entwicklung': ['web-apps'],
+        'online-marketing': ['webdesign', 'website-pflege'],
+        'suchmaschinenoptimierung': ['website-pflege', 'webdesign'],
+    }
+    for slug in extra_related.get(s['slug'], []):
+        if slug not in related_slugs:
+            related_slugs.append(slug)
+    for slug in ('preisrechner', 'kontakt'):
+        if slug not in related_slugs:
+            related_slugs.append(slug)
+    related=''.join(link(slug) for slug in related_slugs)
     content=f'''<section class="service-hero"><div class="shell"><div class="service-hero-grid"><div><p class="tag">{s['group']} / KASTRIOT TAFOLLI</p><h1>{title}</h1><p class="lede">{s['lead']}</p><a href="kontakt.html" class="btn btn-1">Projekt besprechen ↗</a></div><div class="service-visual" aria-hidden="true"><span class="tag">PRAXIS × TECHNOLOGIE</span><span class="service-symbol">✳</span><div><span>VERSTEHEN</span><span>VERBINDEN</span><span>UMSETZEN</span></div></div></div><nav class="service-toc" aria-label="Auf dieser Seite"><a href="#ausgangslage">01 Ausgangslage</a><a href="#umfang">02 Leistungen</a><a href="#praxis">03 Praxis</a><a href="#ergebnisse">04 Zusammenarbeit</a><a href="#fragen">05 Fragen</a></nav></div></section>
 <section class="service-section" id="ausgangslage"><div class="shell service-editorial"><div><p class="tag">01 / AUSGANGSLAGE</p><h2>Am Alltag<br>ansetzen.</h2></div><div><p>{s['problem']}</p><p>{s['approach']}</p></div></div></section>
 <section class="service-section service-tint" id="umfang"><div class="shell"><p class="tag">02 / WAS DAZUGEHÖRT</p><h2>Konkrete Arbeit.<br>Klare Zuständigkeiten.</h2><div class="service-modules">{modules}</div></div></section>

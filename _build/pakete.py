@@ -3,6 +3,7 @@
 
 Die Beträge sind die vom Inhaber genannten Endpreise. Keine fremden Paketnamen.
 """
+import html
 from bausteine import VER, cta_block, faq_block, hero_klein, karten_grid, kicker, seite_rahmen, wipe
 
 END = "Endpreis. Gemäß § 19 UStG wird keine Umsatzsteuer berechnet."
@@ -12,7 +13,23 @@ def hinweis():
     return f'<p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:28px">{END} <a href="impressum.html">Impressum</a></p>'
 
 
+def dazu(links):
+    items = ''.join(
+        f'<a href="{href}">{html.escape(label)} <span aria-hidden="true">↗</span></a>'
+        for href, label in links)
+    return (
+        '<section class="pad"><div class="shell"><p class="tag">Das passt dazu</p>'
+        '<h2 class="d2" style="margin:14px 0 22px">Weiter auf tafolli.net</h2>'
+        f'<div class="portfolio-links">{items}</div></div></section>')
+
+
 def website_pflege():
+    fragen = [
+        ("Kann ich monatlich kündigen?", "Ja. Die Kündigung gilt zum Ende des laufenden Monats. Es gibt keine Mindestlaufzeit."),
+        ("Machen Sie das Hosting?", "Nein. Die Website bleibt bei Ihnen oder bei Ihrem Hoster. Ich arbeite mit den Zugängen, die Sie mir geben."),
+        ("Ist die Seite dann rund um die Uhr betreut?", "Nein. Ich antworte an Werktagen in der Frist der Stufe. Es gibt keine Notfallbereitschaft."),
+        ("Sichern Sie ein Ranking zu?", "Nein. Die Pflege hält Ihre Seite aktuell. Eine Platzierung verspreche ich nicht."),
+    ]
     inhalt = hero_klein(
         "01", "Website-Pflege",
         [["Website-Pflege"], ["im Monatsabo."]],
@@ -31,11 +48,11 @@ def website_pflege():
     {hinweis()}
     <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch">Eine kleine Änderung ist ein Tausch von Text oder Bild oder eine Korrektur an einem bestehenden Element. Eine neue Website, ein Shop oder eine neue Funktion sind ein eigener Auftrag. Hosting zahlen Sie an Ihren Anbieter.</p>
   </div>
-</section>''' + faq_block("03", "Häufige Fragen", [["Vor dem"], ["Abo."]], [
-        ("Kann ich monatlich kündigen?", "Ja. Die Kündigung gilt zum Ende des laufenden Monats. Es gibt keine Mindestlaufzeit."),
-        ("Machen Sie das Hosting?", "Nein. Die Website bleibt bei Ihnen oder bei Ihrem Hoster. Ich arbeite mit den Zugängen, die Sie mir geben."),
-        ("Ist die Seite dann rund um die Uhr betreut?", "Nein. Ich antworte an Werktagen in der Frist der Stufe. Es gibt keine Notfallbereitschaft."),
-        ("Sichern Sie ein Ranking zu?", "Nein. Die Pflege hält Ihre Seite aktuell. Eine Platzierung verspreche ich nicht."),
+</section>''' + faq_block("03", "Häufige Fragen", [["Vor dem"], ["Abo."]], fragen) + dazu([
+        ('webdesign.html', 'Webdesign'),
+        ('onlineshop.html', 'Onlineshop'),
+        ('preisrechner.html', 'Preisrechner'),
+        ('kontakt.html', 'Kontakt'),
     ]) + cta_block(
         "// nächster schritt", [["Welche Stufe"], ["passt?"]],
         "Schreiben Sie mir, welche Website es ist und welche Stufe Sie meinen. Die Schätzung im Preisrechner ist unverbindlich.",
@@ -44,10 +61,16 @@ def website_pflege():
         "website-pflege.html",
         "Website-Pflege im Monatsabo | Kastriot Tafolli",
         "Website-Pflege in drei Stufen: 99, 199 oder 299 € im Monat. Updates, Backups und kleine Änderungen, monatlich kündbar.",
-        "website-pflege.html", inhalt)
+        "website-pflege.html", inhalt, faq=fragen)
 
 
 def onlineshop():
+    fragen = [
+        ("Liegt der Shop bei Ihnen?", "Nein. Konto, Hosting und Software bleiben bei Ihnen oder beim Anbieter. Ich richte ein und zeige Ihnen den Umgang."),
+        ("Schreiben Sie die Rechtstexte?", "Nein. AGB, Widerruf und Datenschutz kommen von Ihnen oder von einer Stelle, die das darf. Ich baue sie nicht."),
+        ("Was ist ein kleiner Shop?", "Ein überschaubares Sortiment, das Sie als Liste oder Datei liefern. Ein großes Warenwirtschaftssystem ist ein eigener Auftrag."),
+        ("Ist 990 € der Endpreis?", "Ja, für die Stufe Start. Die Stufe Erweitert kostet 1.990 €. Beides sind Endpreise."),
+    ]
     inhalt = hero_klein(
         "01", "Onlineshop",
         [["Onlineshop."], ["Ab 990 €."]],
@@ -65,11 +88,12 @@ def onlineshop():
     {hinweis()}
     <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch">Nicht im Preis: Rechtstexte, Produktfotos, Bestellungen und Werbung. Umsätze kann ich nicht versprechen.</p>
   </div>
-</section>''' + faq_block("03", "Häufige Fragen", [["Vor dem"], ["Shop."]], [
-        ("Liegt der Shop bei Ihnen?", "Nein. Konto, Hosting und Software bleiben bei Ihnen oder beim Anbieter. Ich richte ein und zeige Ihnen den Umgang."),
-        ("Schreiben Sie die Rechtstexte?", "Nein. AGB, Widerruf und Datenschutz kommen von Ihnen oder von einer Stelle, die das darf. Ich baue sie nicht."),
-        ("Was ist ein kleiner Shop?", "Ein überschaubares Sortiment, das Sie als Liste oder Datei liefern. Ein großes Warenwirtschaftssystem ist ein eigener Auftrag."),
-        ("Ist 990 € der Endpreis?", "Ja, für die Stufe Start. Die Stufe Erweitert kostet 1.990 €. Beides sind Endpreise."),
+</section>''' + faq_block("03", "Häufige Fragen", [["Vor dem"], ["Shop."]], fragen) + dazu([
+        ('webdesign.html', 'Webdesign'),
+        ('website-pflege.html', 'Website-Pflege'),
+        ('firmenprofile.html', 'Firmenprofile'),
+        ('preisrechner.html', 'Preisrechner'),
+        ('kontakt.html', 'Kontakt'),
     ]) + cta_block(
         "// nächster schritt", [["Welcher Shop"], ["soll entstehen?"]],
         "Schreiben Sie mir, wo der Shop liegen soll und wie viele Produkte Sie mitbringen. Die Schätzung im Preisrechner ist unverbindlich.",
@@ -78,10 +102,16 @@ def onlineshop():
         "onlineshop.html",
         "Onlineshop | Kastriot Tafolli",
         "Onlineshop einrichten und einweisen. Stufe Start 990 €, Stufe Erweitert 1.990 €. Hosting und Shop-Software laufen beim Kunden oder beim Anbieter.",
-        "onlineshop.html", inhalt)
+        "onlineshop.html", inhalt, faq=fragen)
 
 
 def web_apps():
+    fragen = [
+        ("Ist 390 € immer der Preis?", "Nein. 390 € ist der Einstieg für ein kleines Werkzeug. Sobald der Ablauf größer wird, nenne ich den Festpreis im Angebot, bevor die Arbeit beginnt."),
+        ("Ist das die KI-Automatisierung?", "Nein. KI-Automatisierung ist ein eigenes Angebot. Preis auf Anfrage."),
+        ("Speichert das Werkzeug Daten auf Ihrer Website?", "Nur, wenn wir das vorher so festlegen. Ein reiner Rechner im Browser speichert nichts. Steht eine Speicherung im Umfang, sage ich das vor dem Start."),
+        ("Betreiben Sie das Werkzeug rund um die Uhr?", "Nein. Ich übergebe es und erkläre den Umgang. Eine Bereitschaft nachts oder am Wochenende ist kein Teil dieses Preises."),
+    ]
     inhalt = hero_klein(
         "01", "Web-App",
         [["Ein Werkzeug."], ["Ab 390 €."]],
@@ -99,11 +129,11 @@ def web_apps():
     {hinweis()}
     <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch">KI-Automatisierung ist ein eigenes Angebot. Preis auf Anfrage. Eine App für den App-Store, Dauerbetrieb und Rechtsberatung gehören nicht dazu.</p>
   </div>
-</section>''' + faq_block("03", "Häufige Fragen", [["Vor dem"], ["Werkzeug."]], [
-        ("Ist 390 € immer der Preis?", "Nein. 390 € ist der Einstieg für ein kleines Werkzeug. Sobald der Ablauf größer wird, nenne ich den Festpreis im Angebot, bevor die Arbeit beginnt."),
-        ("Ist das die KI-Automatisierung?", "Nein. KI-Automatisierung ist ein eigenes Angebot. Preis auf Anfrage."),
-        ("Speichert das Werkzeug Daten auf Ihrer Website?", "Nur, wenn wir das vorher so festlegen. Ein reiner Rechner im Browser speichert nichts. Steht eine Speicherung im Umfang, sage ich das vor dem Start."),
-        ("Betreiben Sie das Werkzeug rund um die Uhr?", "Nein. Ich übergebe es und erkläre den Umgang. Eine Bereitschaft nachts oder am Wochenende ist kein Teil dieses Preises."),
+</section>''' + faq_block("03", "Häufige Fragen", [["Vor dem"], ["Werkzeug."]], fragen) + dazu([
+        ('app-entwicklung.html', 'App- und Web-App-Entwicklung'),
+        ('softwareentwicklung.html', 'Softwareentwicklung'),
+        ('preisrechner.html', 'Preisrechner'),
+        ('kontakt.html', 'Kontakt'),
     ]) + cta_block(
         "// nächster schritt", [["Welcher Ablauf"], ["soll es sein?"]],
         "Beschreiben Sie den einen Ablauf. Danach sage ich, ob er bei 390 € beginnt oder ein eigenes Festpreis-Angebot braucht.",
@@ -112,10 +142,16 @@ def web_apps():
         "web-apps.html",
         "Web-App oder Tool nach Maß | Kastriot Tafolli",
         "Kleine Web-App oder ein Tool nach Maß ab 390 €. Ein Ablauf im Browser. Größere Projekte zum Festpreis nach Angebot.",
-        "web-apps.html", inhalt)
+        "web-apps.html", inhalt, faq=fragen)
 
 
 def firmenprofile():
+    fragen = [
+        ("Geht das Google-Profil ohne mich online?", "Nein. Google prüft das Profil mit Ihnen. Ohne echten Standort geht es nicht online."),
+        ("Legen Sie neue Social-Media-Kanäle an?", "Nein. In der Stufe Komplett gleiche ich Profile an, die Sie schon haben. Neue Kanäle und laufende Beiträge sind ein anderer Auftrag."),
+        ("Warum 399 und 899 €?", "399 € deckt das Datenblatt, das Google-Profil und bis zu fünf Verzeichnisse. 899 € erweitert das auf bis zu fünfzehn Verzeichnisse, vorhandene Social-Profile und die Liste zur Übergabe."),
+        ("Wer behält die Zugänge?", "Sie. Konten und Passwörter bleiben bei Ihnen."),
+    ]
     inhalt = hero_klein(
         "01", "Firmenprofile",
         [["Firmenprofile"], ["im Netz."]],
@@ -133,11 +169,11 @@ def firmenprofile():
     {hinweis()}
     <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch">Jedes Verzeichnis entscheidet selbst. Bewertungen, ein Ranking oder ein erfundener Standort gehören nicht dazu.</p>
   </div>
-</section>''' + faq_block("03", "Häufige Fragen", [["Vor den"], ["Profilen."]], [
-        ("Geht das Google-Profil ohne mich online?", "Nein. Google prüft das Profil mit Ihnen. Ohne echten Standort geht es nicht online."),
-        ("Legen Sie neue Social-Media-Kanäle an?", "Nein. In der Stufe Komplett gleiche ich Profile an, die Sie schon haben. Neue Kanäle und laufende Beiträge sind ein anderer Auftrag."),
-        ("Warum 399 und 899 €?", "399 € deckt das Datenblatt, das Google-Profil und bis zu fünf Verzeichnisse. 899 € erweitert das auf bis zu fünfzehn Verzeichnisse, vorhandene Social-Profile und die Liste zur Übergabe."),
-        ("Wer behält die Zugänge?", "Sie. Konten und Passwörter bleiben bei Ihnen."),
+</section>''' + faq_block("03", "Häufige Fragen", [["Vor den"], ["Profilen."]], fragen) + dazu([
+        ('webdesign.html', 'Webdesign'),
+        ('website-pflege.html', 'Website-Pflege'),
+        ('preisrechner.html', 'Preisrechner'),
+        ('kontakt.html', 'Kontakt'),
     ]) + cta_block(
         "// nächster schritt", [["Welche Profile"], ["fehlen?"]],
         "Schreiben Sie mir den Firmennamen und ob es schon ein Google-Profil gibt. Die Schätzung im Preisrechner ist unverbindlich.",
@@ -146,7 +182,7 @@ def firmenprofile():
         "firmenprofile.html",
         "Firmenprofile im Netz einrichten | Kastriot Tafolli",
         "Google-Unternehmensprofil und Verzeichnisse mit einheitlichen Angaben. Festpreis 399 oder 899 €. Die Bestätigung bei Google machen Sie selbst.",
-        "firmenprofile.html", inhalt)
+        "firmenprofile.html", inhalt, faq=fragen)
 
 
 def preisrechner():

@@ -198,21 +198,26 @@ def fehler404():
 {intro("de", "/")}
 {kopfzeile("404.html", "/")}
 <div class="grain" aria-hidden="true"></div>
-<main style="min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden">
+<a href="#inhalt" class="btn btn-1" style="position:absolute;left:-9999px;top:0;z-index:200"
+   onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Zum Inhalt springen</a>
+<main id="inhalt" style="min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden">
   <div class="floor"></div>
   <div class="glow" style="width:560px;height:560px;background:rgba(0,224,140,.1);top:-200px;right:-160px"></div>
   <div class="shell" style="position:relative;z-index:1">
     <p class="tag"><span class="n">//</span>&nbsp;&nbsp;404</p>
     <h1 class="d1" style="margin:20px 0 24px;font-size:clamp(2.8rem,8vw,6.5rem)">Diese Seite<br>gibt es nicht.</h1>
-    <p class="lede" style="margin-bottom:34px">Vielleicht hat sich die Adresse geändert. Von der Startseite aus finden Sie alles Weitere.</p>
+    <p class="lede" style="margin-bottom:34px">Vielleicht hat sich die Adresse geändert. Von der Startseite, den Leistungen oder dem Preisrechner aus finden Sie weiter.</p>
     <div style="display:flex;flex-wrap:wrap;gap:13px">
       <a href="/" class="btn btn-1">Zur Startseite</a>
+      <a href="/leistungen.html" class="btn btn-2">Leistungen</a>
+      <a href="/preisrechner.html" class="btn btn-2">Preisrechner</a>
       <a href="/kontakt.html" class="btn btn-2">Kontakt</a>
     </div>
     <pre class="mono" style="margin:48px 0 0;font-size:.78rem;color:var(--paper-mute)">$ curl tafolli.net{{pfad}}
 <span style="color:var(--acc)">{icon('dot')} 404 · nicht gefunden</span></pre>
   </div>
 </main>
+{fusszeile("/")}
 <script>(function(){{var p=document.querySelector('pre');if(p)p.innerHTML=p.innerHTML.replace('{{pfad}}',location.pathname.replace(/[<>&]/g,''));}})();</script>
 <script src="/assets/navigation.js?v={VER}" defer></script>
 <script src="/assets/brand.js?v={VER}" defer></script>

@@ -7,7 +7,8 @@ from inhalt_sq import SQ
 from experience_content import COPY
 from brand import lockup, intro
 from navigation import nav as site_nav, toggle as nav_toggle, breadcrumbs
-from seo import metadata, structured, region
+from seo import metadata, meta_block, region
+from bausteine import asset_hints
 from portrait import portrait
 from partners import strip as partner_strip
 from boost import promotion as boost_promotion
@@ -24,16 +25,14 @@ def page(L, detail=False):
     C = dict(COPY[L['code']])
     if detail:
         C.update(description=C['automation_description'], hero_text=C['automation_hero_text'], hero_cta=C['automation_cta'])
+    current = 'ki-automatisierung.html' if detail else (L['dir']+'/' if L['dir'] else 'index.html')
     title = 'AI Automation as a Service · Kastriot Tafolli' if detail else C['title']
-    if detail: title, C['description'] = metadata('ki-automatisierung.html', title, C['description'])
+    title, C['description'] = metadata(current, title, C['description'])
     version = hashlib.sha256(b''.join((ROOT / f'assets/{f}').read_bytes() for f in ['kt.css', 'kt.js', 'experience.css', 'experience.js', 'partners.js', 'brand.js', 'navigation.js'])).hexdigest()[:10]
     a = lambda p: p if p.startswith(('../', '/', '#', 'mailto:', 'https:')) else ('../' if L['dir'] else '') + p
     home = '/' + (L['dir'] + '/' if L['dir'] else '')
-    canonical = 'https://tafolli.net/' + ('ki-automatisierung.html' if detail else (L['dir'] + '/' if L['dir'] else ''))
-    current = 'ki-automatisierung.html' if detail else (L['dir']+'/' if L['dir'] else 'index.html')
     nav = site_nav(current, '../' if L['dir'] else '', L['code'])
     languages = ''.join(f'<a href="/{s["dir"] + "/" if s["dir"] else ""}" lang="{s["code"]}" hreflang="{s["code"]}" aria-label="{s["code"].upper()} – {s["name"]}"'+(' aria-current="page"' if s['code']==L['code'] and not detail else '')+f'>{s["code"].upper()}</a>' for s in LANGUAGES)
-    alternatives = '' if detail else ''.join(f'<link rel="alternate" hreflang="{s["code"]}" href="https://tafolli.net/{s["dir"] + "/" if s["dir"] else ""}">' for s in LANGUAGES)+'<link rel="alternate" hreflang="x-default" href="https://tafolli.net/">'
     hero_lines = C['detail_hero'] if detail else C['hero']
     hero = f'''
 <section class="x-hero" id="top"><div class="x-shell">
@@ -74,20 +73,24 @@ def page(L, detail=False):
 <section class="x-about x-section" id="ueber"><div class="x-shell"><div class="x-about-grid"><figure data-reveal>{portrait('../' if L['dir'] else '', L['code'])}<figcaption class="x-label">{C['about_caption']}</figcaption></figure><div class="x-about-copy"><p class="x-label" data-reveal>{C['about_label']}</p><h2 data-reveal>{heading(C['about_title'])}</h2><p data-reveal>{C['about_text']}</p><a class="x-text-link" href="{a('ueber-mich.html')}">{C['about_link']} ↗</a><div class="x-credentials">{''.join(f'<div data-reveal><b>{n}</b><span>{t}</span></div>' for n,t in C['credentials'])}</div></div></div></div></section>'''
     process = f'<section class="x-process x-section" id="ablauf"><div class="x-shell"><p class="x-label" data-reveal>{C["process_label"]}</p><h2 data-reveal>{heading(C["process_title"])}</h2><div class="x-process-grid">'+''.join(f'<article data-reveal><span class="x-process-number">0{i+1}</span><h3>{t}</h3><p>{b}</p></article>' for i,(t,b) in enumerate(C['process']))+'</div></div></section>'
     faq = f'<section class="x-faq x-section"><div class="x-shell x-faq-grid"><div><p class="x-label" data-reveal>{C["faq_label"]}</p><h2 data-reveal>{C["faq_title"]}</h2><span class="x-faq-star" aria-hidden="true">✳</span></div><div>'+''.join(f'<details><summary>{q}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>' for q,answer in L['faq'][:6])+'</div></div></section>'
-    closing = f'<section class="x-closing x-section" id="kontakt"><div class="x-shell"><p class="x-label" data-reveal>{C["cta_label"]}</p><div class="x-closing-grid"><h2 data-reveal>{heading(C["cta_title"])}</h2><div data-reveal><div class="x-closing-arrow" aria-hidden="true">↗</div><p>{C["cta_text"]}</p><a class="x-button x-button-dark" href="{a("kontakt.html#anfrage")}">{C["cta_button"]}{ARROW}</a><small>{C["cta_note"]}</small></div></div></div></section>'
+    preis_link = f'<a class="x-text-link" href="{a("preisrechner.html")}">Preisrechner ↗</a>' if detail else ''
+    closing = f'<section class="x-closing x-section" id="kontakt"><div class="x-shell"><p class="x-label" data-reveal>{C["cta_label"]}</p><div class="x-closing-grid"><h2 data-reveal>{heading(C["cta_title"])}</h2><div data-reveal><div class="x-closing-arrow" aria-hidden="true">↗</div><p>{C["cta_text"]}</p><a class="x-button x-button-dark" href="{a("kontakt.html#anfrage")}">{C["cta_button"]}{ARROW}</a>{preis_link}<small>{C["cta_note"]}</small></div></div></div></section>'
     footlinks = ''.join(f'<a href="{a(h)}">{t}</a>' for h,t in L['foot_l1'])
-    footer = f'<footer class="x-footer"><div class="x-shell"><div class="x-footer-top"><a class="tafolli-brand-link" href="{home}" aria-label="Kastriot Tafolli">{lockup("../" if L["dir"] else "")}</a><p class="x-label">{C["footer_tag"]}</p><a href="#top" class="x-back-top">{C["top"]} ↑</a></div><div class="x-footer-links">{footlinks}</div><div class="x-footer-contact"><a href="mailto:info@tafolli.net">info@tafolli.net ↗</a><a href="tel:+4917664616146">+49 176 64616146</a><span>Deutschland · Österreich · Schweiz · Kosovo</span></div><div class="x-footer-bottom"><span>© 2026 Kastriot Tafolli · TB Solutions</span><div><a href="{a("impressum.html")}">{L["foot_impressum"]}</a><a href="{a("datenschutz.html")}">{L["foot_datenschutz"]}</a></div><span>MADE WITH INTENTION. ✳</span></div></div></footer>'
+    footer = f'<footer class="x-footer"><div class="x-shell"><div class="x-footer-top"><a class="tafolli-brand-link" href="{home}" aria-label="Kastriot Tafolli">{lockup("../" if L["dir"] else "")}</a><p class="x-label">{C["footer_tag"]}</p><a href="#top" class="x-back-top">{C["top"]} ↑</a></div><div class="x-footer-links">{footlinks}</div><div class="x-footer-contact"><span>Kastriot Tafolli</span><span>Hauptstraße 1, 18609 Ostseebad Binz</span><a href="mailto:info@tafolli.net">info@tafolli.net ↗</a><a href="tel:+4917664616146">0176 64616146</a><span>Deutschland · Österreich · Schweiz · Kosovo</span></div><div class="x-footer-bottom"><span>© 2026 Kastriot Tafolli · TB Solutions</span><div><a href="{a("impressum.html")}">{L["foot_impressum"]}</a><a href="{a("datenschutz.html")}">{L["foot_datenschutz"]}</a></div><span>MADE WITH INTENTION. ✳</span></div></div></footer>'
     config = json.dumps({k:C[k] for k in ['demos','stages','stage_notes','ready','run','running','replay','roi_units']},ensure_ascii=False).replace('<','\\u003c')
-    schema = structured(current,title,C['description'],L['code'], L['faq'][:6] if detail else None)
+    schema_path = 'ki-automatisierung.html' if detail else current
+    block = meta_block(schema_path, title, C['description'], L['code'], L['faq'][:6] if detail else None)
     dock = anfrage_dock() if detail else ''
     boost_version = hashlib.sha256((ROOT / 'assets/boost.css').read_bytes()).hexdigest()[:10]
-    boost_styles = '' if detail else f'<link rel="stylesheet" href="{a("assets/boost.css")}?v={boost_version}">'
+    # Boost sits below the first screen, so it does not block the first paint.
+    boost_styles = '' if detail else f'<link rel="preload" href="{a("assets/boost.css")}?v={boost_version}" as="style" onload="this.onload=null;this.rel=\'stylesheet\'"><noscript><link rel="stylesheet" href="{a("assets/boost.css")}?v={boost_version}"></noscript>'
     return f'''<!doctype html><html lang="{L['code']}"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{html.escape(title)}</title><meta name="description" content="{html.escape(C['description'])}"><meta name="author" content="Kastriot Tafolli"><link rel="canonical" href="{canonical}">{alternatives}
-<meta property="og:type" content="website"><meta property="og:site_name" content="Kastriot Tafolli"><meta property="og:locale" content="{L['locale']}"><meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(C['description'])}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="https://tafolli.net/assets/social-preview.png"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#f3f1e9">
-<link rel="icon" type="image/svg+xml" href="{a('assets/brand/favicon.svg')}"><link rel="apple-touch-icon" href="{a('assets/brand/apple-touch-icon.png')}"><link rel="preload" as="image" href="{a('assets/brand/logo-mark-84.webp')}" fetchpriority="high"><link rel="preload" as="image" href="{a('assets/brand/logo-mark.webp')}"><link rel="preload" as="font" type="font/woff2" href="{a('assets/schriften/space-grotesk-var.woff2')}" crossorigin><link rel="preload" as="font" type="font/woff2" href="{a('assets/schriften/ibm-plex-sans-400.woff2')}" crossorigin><link rel="preload" as="font" type="font/woff2" href="{a('assets/schriften/bodoni-moda-400-italic.woff2')}" crossorigin><link rel="stylesheet" href="{a('assets/schriften.css')}?v={version}"><link rel="stylesheet" href="{a('assets/experience.css')}?v={version}">{boost_styles}{schema}</head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">{block}
+<meta name="theme-color" content="#f3f1e9">
+<link rel="icon" type="image/svg+xml" href="{a('assets/brand/favicon.svg')}"><link rel="apple-touch-icon" href="{a('assets/brand/apple-touch-icon.png')}">{asset_hints(a(''))}{boost_styles}
+<link rel="stylesheet" href="{a('assets/schriften.css')}?v={version}"><link rel="stylesheet" href="{a('assets/experience.css')}?v={version}"></head>
 <body class="experience{' service-detail has-anfrage-dock' if detail else ''}"><a href="#inhalt" class="x-skip">{L['skip']}</a><div class="x-progress" aria-hidden="true"></div>{intro(L["code"], "../" if L["dir"] else "")}
-<header class="x-header site-header"><div class="x-shell x-header-inner"><a class="tafolli-brand-link" href="{home}" aria-label="Kastriot Tafolli">{lockup("../" if L["dir"] else "", "assets/brand/logo-mark-84.webp")}</a>{nav}<div class="x-header-controls site-header-controls"><nav class="x-languages" aria-label="Sprache / Language / Gjuha">{languages}</nav><button class="x-motion" type="button" aria-pressed="false" aria-label="{C['motion']}"><span aria-hidden="true">Ⅱ</span><span class="x-motion-label">{C['motion']}</span></button>{nav_toggle(L['code'])}</div></div></header>
+<header class="x-header site-header"><div class="x-shell x-header-inner"><a class="tafolli-brand-link" href="{home}" aria-label="Kastriot Tafolli">{lockup("../" if L["dir"] else "", "assets/brand/logo-mark-84.webp", loading="eager", priority=True)}</a>{nav}<div class="x-header-controls site-header-controls"><nav class="x-languages" aria-label="Sprache / Language / Gjuha">{languages}</nav><button class="x-motion" type="button" aria-pressed="false" aria-label="{C['motion']}"><span aria-hidden="true">Ⅱ</span><span class="x-motion-label">{C['motion']}</span></button>{nav_toggle(L['code'])}</div></div></header>
 <main id="inhalt">{breadcrumbs(current) if detail else ""}{hero}{(story+lab+care+roi+services+bio+region(service="KI-Automatisierung als Service")+process+faq) if detail else (partner_strip(L['code'], '../' if L['dir'] else '')+manifesto+services+extra+boost_promotion(L['code'])+bio+region(L["code"], "../" if L["dir"] else "")+lab)}{closing}</main>{dock}{footer}
 <noscript><style>.x-tabs,.x-demo-control,.x-motion,.x-roi-grid{{display:none}}.x-nav{{display:flex;flex-wrap:wrap}}.x-header-inner{{height:auto;min-height:88px;flex-wrap:wrap;padding-block:15px}}</style><p class="x-shell">{C['demo_hint']}</p></noscript>
 <script type="application/json" id="experience-config">{config}</script><script src="{a('assets/navigation.js')}?v={version}" defer></script><script src="{a('assets/brand.js')}?v={version}" defer></script><script src="{a('assets/experience.js')}?v={version}" defer></script><script src="{a('assets/partners.js')}?v={version}" defer></script></body></html>'''

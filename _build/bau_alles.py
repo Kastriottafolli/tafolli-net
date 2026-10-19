@@ -40,27 +40,7 @@ SEITEN = {
 
 def sitemap_schreiben():
     """Sitemap aus den gebauten Seiten. noindex bleibt draußen."""
-    gruppen = {
-        'https://tafolli.net/': [('de', 'https://tafolli.net/'), ('en', 'https://tafolli.net/en/'), ('sq', 'https://tafolli.net/sq/'), ('x-default', 'https://tafolli.net/')],
-        'https://tafolli.net/en/': [('de', 'https://tafolli.net/'), ('en', 'https://tafolli.net/en/'), ('sq', 'https://tafolli.net/sq/'), ('x-default', 'https://tafolli.net/')],
-        'https://tafolli.net/sq/': [('de', 'https://tafolli.net/'), ('en', 'https://tafolli.net/en/'), ('sq', 'https://tafolli.net/sq/'), ('x-default', 'https://tafolli.net/')],
-        'https://tafolli.net/ki-automatisierung-kleine-unternehmen.html': [
-            ('de', 'https://tafolli.net/ki-automatisierung-kleine-unternehmen.html'),
-            ('sq', 'https://tafolli.net/sq/automatizim-ia.html'),
-            ('x-default', 'https://tafolli.net/ki-automatisierung-kleine-unternehmen.html')],
-        'https://tafolli.net/sq/automatizim-ia.html': [
-            ('de', 'https://tafolli.net/ki-automatisierung-kleine-unternehmen.html'),
-            ('sq', 'https://tafolli.net/sq/automatizim-ia.html'),
-            ('x-default', 'https://tafolli.net/ki-automatisierung-kleine-unternehmen.html')],
-        'https://tafolli.net/angebot/': [
-            ('de', 'https://tafolli.net/angebot/'),
-            ('sq', 'https://tafolli.net/sq/faqe-dhe-perkthime.html'),
-            ('x-default', 'https://tafolli.net/angebot/')],
-        'https://tafolli.net/sq/faqe-dhe-perkthime.html': [
-            ('de', 'https://tafolli.net/angebot/'),
-            ('sq', 'https://tafolli.net/sq/faqe-dhe-perkthime.html'),
-            ('x-default', 'https://tafolli.net/angebot/')],
-    }
+    from seo import SITEMAP_LASTMOD, alternates_for
     dateien = [*WURZEL.glob('*.html'), * (WURZEL / 'en').glob('*.html'), * (WURZEL / 'sq').glob('*.html'), WURZEL / 'angebot' / 'index.html']
     orte = []
     for datei in dateien:
@@ -77,9 +57,11 @@ def sitemap_schreiben():
         orte.append(ort)
     zeilen = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for ort in sorted(set(orte), key=lambda wert: (wert != 'https://tafolli.net/', wert)):
+        schluessel = 'index.html' if ort == 'https://tafolli.net/' else ort.removeprefix('https://tafolli.net/')
         zeilen.append('  <url>')
         zeilen.append(f'    <loc>{ort}</loc>')
-        for code, href in gruppen.get(ort, []):
+        zeilen.append(f'    <lastmod>{SITEMAP_LASTMOD}</lastmod>')
+        for code, href in alternates_for(schluessel):
             zeilen.append(f'    <xhtml:link rel="alternate" hreflang="{code}" href="{href}"/>')
         zeilen.append('  </url>')
     zeilen.append('</urlset>')
@@ -89,24 +71,19 @@ def sitemap_schreiben():
 
 def angebot_auffrischen():
     """angebot/index.html is hand-authored. Refresh shared chrome so it matches the build."""
-    import json
     from bausteine import VER, fusszeile, kopfzeile
     from brand import intro
-    from seo import texte_angebot
+    from seo import ANGEBOT_FAQ, meta_block
     pfad = WURZEL / 'angebot' / 'index.html'
     text = pfad.read_text()
-    mark = '<script type="application/ld+json">'
-    begin = text.find(mark)
-    end = text.find('</script>', begin)
-    if begin < 0 or end < 0:
-        raise SystemExit('angebot/index.html: missing structured data')
-    data = json.loads(text[begin+len(mark):end])
-    angebot = texte_angebot()
-    data['@graph'] = [node for node in data['@graph'] if node.get('@id') != angebot['@id']]
-    place = next(i for i,node in enumerate(data['@graph']) if node.get('@type') == 'BreadcrumbList')
-    data['@graph'].insert(place, angebot)
-    blob = json.dumps(data, ensure_ascii=False).replace('<', '\\u003c')
-    text = text[:begin+len(mark)] + blob + text[end:]
+    block = meta_block('angebot/', '', '', 'de', ANGEBOT_FAQ).rstrip()
+    title_at = text.find('<title>')
+    script_at = text.find('<script type="application/ld+json">')
+    script_end = text.find('</script>', script_at)
+    if min(title_at, script_at, script_end) < 0 or not title_at < script_at:
+        raise SystemExit('angebot/index.html: head metadata missing')
+    text = text[:title_at] + block + text[script_end + len('</script>'):]
+    text = re.sub(r'\n?<link rel="preload" as="image" href="\.\./assets/brand/logo-mark\.webp">', '', text)
     start = text.find('<div class="brand-intro"')
     grain = text.find('<div class="grain"')
     header = text.find('<header')
@@ -118,6 +95,10 @@ def angebot_auffrischen():
     text = text[:start] + intro('de', '../') + '\n' + text[grain:header] + iconize(kopfzeile('angebot/', '../')) + '\n\n' + text[main:footer] + iconize(fusszeile('../')) + '\n' + text[script:]
     text = re.sub(r'(assets/(?:schriften|kt|experience)\.css\?v=)[0-9a-f]+', r'\g<1>' + VER, text)
     text = re.sub(r'(assets/(?:navigation|brand|kt)\.js\?v=)[0-9a-f]+', r'\g<1>' + VER, text)
+    crumb = '<div class="shell site-breadcrumb"><nav aria-label="Brotkrumennavigation"><a href="../index.html">Startseite</a><span aria-hidden="true">/</span><a href="../leistungen.html">Leistungen</a><span aria-hidden="true">/</span><span aria-current="page">Texte und Übersetzungen</span></nav></div>'
+    text, count = re.subn(r'<div class="shell site-breadcrumb"><nav aria-label="Brotkrumennavigation">.*?</nav></div>', crumb, text, count=1)
+    if count != 1:
+        raise SystemExit('angebot/index.html: breadcrumb missing')
     pfad.write_text(text)
     print(f"  {'angebot/index.html':30} {len(text):>7} Zeichen")
 
