@@ -2,6 +2,12 @@
 """The three public offers. No invented prices, reviews or results."""
 from bausteine import cta_block, faq_block, hero_klein, karten_grid, kicker, seite_rahmen, wipe
 
+KI_ALT = [
+    ('de', 'https://tafolli.net/ki-automatisierung-kleine-unternehmen.html'),
+    ('sq', 'https://tafolli.net/sq/automatizim-ia.html'),
+    ('x-default', 'https://tafolli.net/ki-automatisierung-kleine-unternehmen.html'),
+]
+
 
 def ki_kleine():
     ablauf = [
@@ -35,12 +41,12 @@ def ki_kleine():
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 clamp(40px,5vw,64px)">{wipe([["So entsteht"], ["der Festpreis."]])}</h2>
     {karten_grid(ablauf)}
   </div>
-</section>''' + faq_block("04", "Häufige Fragen", [["Vor dem"], ["ersten Ablauf."]], [
+</section>''' + faq_block("04", "Häufige Fragen", [["Vor dem"], ["ersten Ablauf."]], (faq := [
         ("Was kostet die erste Automatisierung?", "Festpreis-Angebot auf Anfrage. Den Preis nenne ich, nachdem der Ablauf und die Anbindung klar sind. Einen Betrag vor diesem Gespräch nenne ich nicht."),
         ("Geht etwas ohne mich raus?", "Nein. Entwürfe, die nach außen gehen oder einen Termin oder ein Angebot festmachen, brauchen Ihre Freigabe."),
         ("Ersetzen Sie mein Team?", "Nein. Der Ablauf bereitet Arbeit vor. Entscheidungen bleiben bei Ihnen."),
         ("Ist das Rechtsberatung zum Datenschutz?", "Nein. Ich richte den Ablauf technisch ein und sage, welche Daten der Entwurf sieht. Eine rechtliche Prüfung ist keine Leistung dieser Seite."),
-    ]) + cta_block(
+    ])) + cta_block(
         "// nächster schritt", [["Welcher Ablauf"], ["soll der erste sein?"]],
         "Schreiben Sie mir, ob es um E-Mail, Angebote oder Termine geht. Danach bekommen Sie ein Festpreis-Angebot.",
         "Anfrage senden", "kontakt.html#anfrage", "Weitere KI-Seiten", "ki-automatisierung.html")
@@ -48,7 +54,7 @@ def ki_kleine():
         "ki-automatisierung-kleine-unternehmen.html",
         "KI Automatisierung für kleine Unternehmen · Kastriot Tafolli",
         "KI Automatisierung für kleine Unternehmen: erste Automatisierung zum Festpreis.",
-        "ki-automatisierung-kleine-unternehmen.html", inhalt)
+        "ki-automatisierung-kleine-unternehmen.html", inhalt, faq=faq, alternates=KI_ALT)
 
 
 def landingpage():
@@ -79,12 +85,12 @@ def landingpage():
       <p>Das ist keine Rechtsberatung und keine Zertifizierung. Ob eine Seite eine gesetzliche Pflicht erfüllt, prüfe ich nicht. Wenn Sie eine rechtliche Bewertung brauchen, holen Sie die bei einer dafür zugelassenen Stelle ein.</p>
     </div>
   </div>
-</section>''' + faq_block("04", "Häufige Fragen", [["Vor dem"], ["Festpreis."]], [
+</section>''' + faq_block("04", "Häufige Fragen", [["Vor dem"], ["Festpreis."]], (faq := [
         ("Was kostet eine Landingpage?", "Festpreis-Angebot auf Anfrage. Der Preis hängt davon ab, ob es eine einzelne Seite oder eine kleine Website ist und ob Texte schon vorliegen."),
         ("Ist die Pflege im ersten Preis enthalten?", "Nur, wenn wir sie in den Umfang schreiben. Sonst ist die Pflege ein eigener Auftrag. Das Monatsabo steht unter <a href=\"website-pflege.html\">Website-Pflege</a>: 99, 199 oder 299 €."),
         ("Prüfen Sie die Seite rechtlich?", "Nein. Barrierefreiheit und Datenschutz prüfe ich als Technik: Bedienung, Beschriftung, Kontrast und ob Daten auf der Website gespeichert werden. Eine rechtliche Aussage mache ich nicht."),
         ("Kann eine vorhandene Seite überarbeitet werden?", "Ja, wenn die Zugänge da sind. Was bleibt und was neu wird, steht vor dem Start im Angebot."),
-    ]) + cta_block(
+    ])) + cta_block(
         "// nächster schritt", [["Welche Seite"], ["soll entstehen?"]],
         "Schreiben Sie mir, ob Sie eine Landingpage oder eine kleine Website brauchen. Danach bekommen Sie ein Festpreis-Angebot.",
         "Anfrage senden", "kontakt.html#anfrage", "Texte und Übersetzungen", "angebot/")
@@ -92,4 +98,4 @@ def landingpage():
         "landingpage-erstellen-lassen.html",
         "Landingpage erstellen lassen · Kastriot Tafolli",
         "Landingpage erstellen lassen, zum Festpreis.",
-        "landingpage-erstellen-lassen.html", inhalt)
+        "landingpage-erstellen-lassen.html", inhalt, faq=faq)

@@ -59,15 +59,26 @@ def kicker(nummer, text):
     return f'<p class="tag rise"><span class="n">// {nummer}</span>&nbsp;&nbsp;{text}</p>'
 
 
-def seiten_kopf(titel, beschreibung, kanonisch_pfad):
+def anfrage_dock(base='', lang='de'):
+    label = {'de': 'Anfragen', 'en': 'Get in touch', 'sq': 'Na shkruani'}[lang]
+    return f'<a class="anfrage-dock" href="{base}kontakt.html">{label} <span aria-hidden="true">↗</span></a>'
+
+
+def _anfrage_seite(pfad):
+    return pfad.removesuffix('.html') in SERVICE_META or pfad in {'leistungen.html'} or pfad.startswith('sq/')
+
+
+def seiten_kopf(titel, beschreibung, kanonisch_pfad, faq=None, base='', lang='de', alternates=None):
     """<head>-Block. kanonisch_pfad z.B. 'ueber-mich.html'."""
     titel, beschreibung = metadata(kanonisch_pfad, titel, beschreibung)
-    schema = structured(kanonisch_pfad, titel, beschreibung)
+    schema = structured(kanonisch_pfad, titel, beschreibung, lang, faq)
     titel, beschreibung = html.escape(titel), html.escape(beschreibung)
-    kanonisch = f"https://tafolli.net/{kanonisch_pfad}"
+    kanonisch = f"https://tafolli.net/{'' if kanonisch_pfad == 'index.html' else kanonisch_pfad}"
     robots = '<meta name="robots" content="noindex">\n' if kanonisch_pfad in NOINDEX_PATHS else ''
+    locale = {'de': 'de_DE', 'en': 'en_US', 'sq': 'sq_AL'}[lang]
+    alt = ''.join(f'<link rel="alternate" hreflang="{code}" href="{href}">\n' for code, href in (alternates or []))
     return f'''<!doctype html>
-<html lang="de">
+<html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -76,9 +87,9 @@ def seiten_kopf(titel, beschreibung, kanonisch_pfad):
 <meta name="description" content="{beschreibung}">
 <meta name="author" content="Kastriot Tafolli">
 <link rel="canonical" href="{kanonisch}">
-<meta property="og:type" content="website">
+{alt}<meta property="og:type" content="website">
 <meta property="og:site_name" content="Kastriot Tafolli">
-<meta property="og:locale" content="de_DE">
+<meta property="og:locale" content="{locale}">
 <meta property="og:title" content="{titel}">
 <meta property="og:description" content="{beschreibung}">
 <meta property="og:url" content="{kanonisch}">
@@ -86,16 +97,16 @@ def seiten_kopf(titel, beschreibung, kanonisch_pfad):
 <meta name="twitter:card" content="summary_large_image">
 {schema}
 <meta name="theme-color" content="#f3f1e9">
-<link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
-<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
-<link rel="preload" as="image" href="assets/brand/logo-mark-84.webp" fetchpriority="high">
-<link rel="preload" as="image" href="assets/brand/logo-mark.webp">
-<link rel="preload" as="font" type="font/woff2" href="assets/schriften/space-grotesk-var.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="assets/schriften/ibm-plex-sans-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="assets/schriften/bodoni-moda-400-italic.woff2" crossorigin>
-<link rel="stylesheet" href="assets/schriften.css?v={VER}">
-<link rel="stylesheet" href="assets/kt.css?v={VER}">
-<link rel="stylesheet" href="assets/experience.css?v={VER}">
+<link rel="icon" type="image/svg+xml" href="{base}assets/brand/favicon.svg">
+<link rel="apple-touch-icon" href="{base}assets/brand/apple-touch-icon.png">
+<link rel="preload" as="image" href="{base}assets/brand/logo-mark-84.webp" fetchpriority="high">
+<link rel="preload" as="image" href="{base}assets/brand/logo-mark.webp">
+<link rel="preload" as="font" type="font/woff2" href="{base}assets/schriften/space-grotesk-var.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{base}assets/schriften/ibm-plex-sans-400.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{base}assets/schriften/bodoni-moda-400-italic.woff2" crossorigin>
+<link rel="stylesheet" href="{base}assets/schriften.css?v={VER}">
+<link rel="stylesheet" href="{base}assets/kt.css?v={VER}">
+<link rel="stylesheet" href="{base}assets/experience.css?v={VER}">
 </head>'''
 
 
@@ -139,29 +150,33 @@ def fusszeile(base=""):
 </footer>'''
 
 
-def seite_rahmen(aktiv, titel, beschreibung, kanonisch_pfad, inhalt):
+def seite_rahmen(aktiv, titel, beschreibung, kanonisch_pfad, inhalt, faq=None, base='', lang='de', alternates=None, home_href=None, home_label='Startseite'):
     extra = explore(kanonisch_pfad) if kanonisch_pfad in HUBS else ''
-    if kanonisch_pfad.removesuffix('.html') in SERVICE_META and 'class="region-section"' not in inhalt:
+    if kanonisch_pfad.removesuffix('.html') in SERVICE_META and 'class="region-section"' not in inhalt and lang == 'de':
         extra += region(service=TITLES.get(kanonisch_pfad, titel.split(' · ')[0]))
     if extra:
         position = inhalt.rfind('<section class="pad" style="overflow:hidden">')
         if position < 0: position = len(inhalt)
         inhalt = inhalt[:position] + extra + inhalt[position:]
-    return f'''{seiten_kopf(titel, beschreibung, kanonisch_pfad)}
-<body>
-{intro()}
+    dock = anfrage_dock(base, lang) if _anfrage_seite(kanonisch_pfad) else ''
+    body = ' class="has-anfrage-dock"' if dock else ''
+    skip = {'de': 'Zum Inhalt springen', 'en': 'Skip to content', 'sq': 'Shko te përmbajtja'}[lang]
+    return f'''{seiten_kopf(titel, beschreibung, kanonisch_pfad, faq, base, lang, alternates)}
+<body{body}>
+{intro(lang, base)}
 <div class="grain" aria-hidden="true"></div>
 
 <a href="#inhalt" class="btn btn-1" style="position:absolute;left:-9999px;top:0;z-index:200"
-   onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Zum Inhalt springen</a>
+   onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">{skip}</a>
 
-{kopfzeile(kanonisch_pfad)}
+{kopfzeile(kanonisch_pfad, base)}
 
-<main id="inhalt">{breadcrumbs(kanonisch_pfad)}{inhalt}</main>
-{fusszeile()}
-<script src="assets/navigation.js?v={VER}" defer></script>
-<script src="assets/brand.js?v={VER}" defer></script>
-<script src="assets/kt.js?v={VER}" defer></script>
+<main id="inhalt">{breadcrumbs(kanonisch_pfad, base, home_href, home_label)}{inhalt}</main>
+{dock}
+{fusszeile(base)}
+<script src="{base}assets/navigation.js?v={VER}" defer></script>
+<script src="{base}assets/brand.js?v={VER}" defer></script>
+<script src="{base}assets/kt.js?v={VER}" defer></script>
 </body>
 </html>
 '''

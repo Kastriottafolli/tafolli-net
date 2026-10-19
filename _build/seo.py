@@ -40,7 +40,12 @@ SERVICE_META={
  'website-pflege':('Website-Pflege im Monatsabo | Kastriot Tafolli','Website-Pflege in drei Stufen: 99, 199 oder 299 € im Monat. Updates, Backups und kleine Änderungen, monatlich kündbar.'),
  'onlineshop':('Onlineshop | Kastriot Tafolli','Onlineshop einrichten und einweisen. Stufe Start 990 €, Stufe Erweitert 1.990 €. Hosting und Shop-Software laufen beim Kunden oder beim Anbieter.'),
  'web-apps':('Web-App oder Tool nach Maß | Kastriot Tafolli','Kleine Web-App oder ein Tool nach Maß ab 390 €. Ein Ablauf im Browser. Größere Projekte zum Festpreis nach Angebot.'),
- 'firmenprofile':('Firmenprofile im Netz einrichten | Kastriot Tafolli','Google-Unternehmensprofil und Verzeichnisse mit einheitlichen Angaben. Festpreis 399 oder 899 €. Die Bestätigung bei Google machen Sie selbst.')}
+ 'firmenprofile':('Firmenprofile im Netz einrichten | Kastriot Tafolli','Google-Unternehmensprofil und Verzeichnisse mit einheitlichen Angaben. Festpreis 399 oder 899 €. Die Bestätigung bei Google machen Sie selbst.'),
+ 'website-fuer-handwerker':('Website für Handwerker | Kastriot Tafolli','Website für Handwerker: Leistungen, Einsatzgebiet und Anfrage auf dem Telefon. Website zum Festpreis nach Umfang. Texte ab 199 €.'),
+ 'ki-automatisierung-arztpraxen':('KI für Arztpraxen und Therapeuten | Tafolli','KI-Automatisierung für Arztpraxen und Therapeuten: Termine und E-Mails, mit Ihrer Freigabe. Keine Patientendaten. Preis auf Anfrage.'),
+ 'website-fuer-vereine':('Website für Vereine | Kastriot Tafolli','Website für Vereine: Termine, Kontakt und Mitgliedschaft klar auf einer Seite. Festpreis nach Umfang. Texte ab 199 €.'),
+ 'website-pflege-kleine-betriebe':('Website-Pflege für kleine Betriebe | Tafolli','Website-Pflege für kleine Betriebe in den Stufen Basis, Laufend und Intensiv. 99, 199 oder 299 € im Monat.'),
+ 'onlineshop-kleine-haendler':('Onlineshop für kleine Händler | Tafolli','Onlineshop für kleine Händler: Stufe Start 990 €, Stufe Erweitert 1.990 €. Produkttexte ab 199 €.')}
 PAGE_META={
  'leistungen.html':('Leistungsübersicht: KI, Software, Web und Texte | Tafolli','Übersicht der Angebote: KI-Automatisierung, Software, Webdesign, Online-Marketing und Übersetzungen für Unternehmen in Deutschland, Österreich, Schweiz und Kosovo.'),
  'ueber-mich.html':('Kastriot Tafolli: KI, Software und Web','Lernen Sie Kastriot Tafolli kennen: Softwareentwicklung, KI, Websites und Texte auf Deutsch, Englisch und Albanisch. TB Solutions in Ostseebad Binz.'),
@@ -54,10 +59,15 @@ PAGE_META={
  'kontakt.html':('Kontakt & Beratung in DACH und Kosovo | Kastriot Tafolli','KI, Software, Webdesign, Marketing oder Übersetzungen besprechen: Kontakt zu Kastriot Tafolli und TB Solutions. Deutschland, Österreich, Schweiz und Kosovo.'),
  'impressum.html':('Impressum | Kastriot Tafolli','Anbieterinformationen und Kontaktdaten für tafolli.net: Kastriot Tafolli, Hauptstraße 1, 18609 Ostseebad Binz. Telefon, E-Mail und Verantwortlichkeit für die Inhalte.'),
  'datenschutz.html':('Datenschutz | Kastriot Tafolli','Informationen zur Datenverarbeitung auf tafolli.net: Hosting, Kontakt, lokale Schriftarten, Logo-Animation und Rechner. Hinweise und Kontakt zu Kastriot Tafolli.'),
- 'preisrechner.html':('Preisrechner | Kastriot Tafolli','Unverbindliche Preisschätzung für KI, Website, Shop, Web-App, Pflege-Abo, Firmenprofile und Texte. Die Rechnung bleibt im Browser.')}
+ 'preisrechner.html':('Preisrechner | Kastriot Tafolli','Unverbindliche Preisschätzung für KI, Website, Shop, Web-App, Pflege-Abo, Firmenprofile und Texte. Die Rechnung bleibt im Browser.'),
+ 'sq/faqe-dhe-perkthime.html':('Faqe web dhe përkthime DE/EN/SQ | Tafolli','Faqe web dhe përkthime për biznese që flasin shqip. Tekste DE/EN/SQ: 99, 199 dhe 299 €.'),
+ 'sq/automatizim-ia.html':('Automatizim me IA për biznese | Tafolli','Automatizim me IA për biznese që flasin shqip: email, oferta ose takime. Asgjë nuk del pa miratimin tuaj. Çmimi pas bisedës.')}
 PAGE_META.update({slug+'.html':meta for slug,meta in SERVICE_META.items()})
 
 def metadata(path,title,description):return PAGE_META.get(path,(title,description))
+
+def faq_node(url, pairs):
+ return {'@type':'FAQPage','@id':url+'#faq','url':url,'mainEntity':[{'@type':'Question','name':q,'acceptedAnswer':{'@type':'Answer','text':a}} for q,a in pairs]}
 
 def texte_angebot():
  """Fixed text prices. Extra language and rush work have no published amount."""
@@ -66,7 +76,7 @@ def texte_angebot():
   {'@type':'Offer','name':'Website-Text','price':'199','priceCurrency':'EUR'},
   {'@type':'Offer','name':'Content-Paket','price':'299','priceCurrency':'EUR'}]}
 
-def structured(path,title,description,lang='de'):
+def structured(path,title,description,lang='de',faq=None):
  url=ORIGIN+('' if path=='index.html' else path)
  identity=[
   {'@type':'Organization','@id':ORIGIN+'#business','name':'Kastriot Tafolli · TB Solutions','url':ORIGIN,'logo':ORIGIN+'assets/brand/logo-mark.webp','email':'info@tafolli.net','telephone':'+4917664616146','areaServed':COUNTRIES,'contactPoint':{'@type':'ContactPoint','contactType':'project enquiries','email':'info@tafolli.net','telephone':'+4917664616146','availableLanguage':['de','en','sq']}},
@@ -93,6 +103,7 @@ def structured(path,title,description,lang='de'):
   items.append((TITLES.get(path,title),url))
   graph.append({'@type':'BreadcrumbList','@id':url+'#breadcrumbs','itemListElement':[{'@type':'ListItem','position':i+1,'name':name,'item':item} for i,(name,item) in enumerate(items)]})
   page['breadcrumb']={'@id':url+'#breadcrumbs'}
+ if faq: graph.append(faq_node(url, faq))
  return '<script type="application/ld+json">'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False).replace('<','\\u003c')+'</script>'
 
 REGION_COPY={

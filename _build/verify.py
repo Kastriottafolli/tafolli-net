@@ -4,9 +4,8 @@ from html.parser import HTMLParser
 from icons import GLYPHS
 import json
 from services import SERVICES
-from hotels import HOTELS
 from seo import NOINDEX_PATHS
-from partners import PROJECTS, visible_tech, SOURCES
+from partners import visible_projects, visible_tech, SOURCES
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
@@ -58,7 +57,7 @@ class Page(HTMLParser):
             if self.in_schema: self.schemas.append(json.loads(self.schema_text));self.in_schema=False
 
 def verify():
-    pages={p.resolve():Page(p) for p in [*ROOT.glob('*.html'),ROOT/'en/index.html',ROOT/'sq/index.html',ROOT/'angebot/index.html']}
+    pages={p.resolve():Page(p) for p in [*ROOT.glob('*.html'),*(ROOT/'en').glob('*.html'),*(ROOT/'sq').glob('*.html'),ROOT/'angebot/index.html']}
     errors=[]
     svg_ids={path.resolve():{node.get('id') for node in ET.parse(path).iter() if node.get('id')} for path in ROOT.rglob('*.svg')}
     for path,page in pages.items():
@@ -134,7 +133,7 @@ def verify():
             assert 'https://tafolli.net/'+path.name in urls
         assert {'ausgangslage','umfang','praxis','ergebnisse','fragen'} <= set(pages[path].ids)
     references=pages[(ROOT/'referenzen.html').resolve()]
-    for partner in PROJECTS+visible_tech()+HOTELS:
+    for partner in visible_projects()+visible_tech():
         assert partner['url'] in references.links, f"Missing partner link: {partner['name']}"
         if partner['key']!='tafolli':
             assert (ROOT/'assets/partners'/SOURCES[partner['key']]['file']).is_file()

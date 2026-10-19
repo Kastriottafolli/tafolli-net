@@ -94,18 +94,18 @@ def online_marketing():
     werkzeuge = ["Google Ads", "Analytics", "Search Console", "Google Business", "Meta Business", "Instagram",
                  "Facebook", "Squarespace", "WordPress", "DreamHost", "Adobe", "Canva"]
     leistungen = [
-        ("01", "Website und Webentwicklung", "Neue Website oder Modernisierung der bestehenden. Schnell, auf dem Telefon gedacht, mehrsprachig, mit Speisekarten, Zimmerdarstellung und Anbindung an Ihr Buchungssystem."),
-        ("02", "Suchmaschinenoptimierung", "Technik, Struktur und Inhalte so aufgebaut, dass Ihr Haus bei den Suchanfragen auftaucht, die wirklich Gäste bringen, statt bei Begriffen ohne Kaufabsicht."),
-        ("03", "Lokale Sichtbarkeit", "Google-Unternehmensprofil, Karten, Verzeichnisse und Bewertungen. Vollständig gepflegt, mit Bildern, Öffnungszeiten und aktuellen Angaben."),
-        ("04", "Google Ads", "Kampagnen mit klarem Budgetrahmen und messbarer Rendite, saisonal gesteuert, auf Direktbuchungen und Anfragen ausgerichtet."),
-        ("05", "Social Media", "Redaktionsplan, Beiträge, Reels und Betreuung von Instagram und Facebook. Mit einem Ton, der zu Ihrem Haus passt, nicht zu einer Agenturvorlage."),
-        ("06", "Content und Text", "Texte für Website, Karten, Newsletter und Kampagnen. Verständlich, konkret und ohne die Floskeln, die jeder Gast überliest."),
-        ("07", "Foto, Video und Drohne", "Produktfotografie, Zimmer- und Restaurantaufnahmen, Imagefilme und Luftaufnahmen. Das Material gehört anschließend Ihnen."),
+        ("01", "Website und Webentwicklung", "Neue Website oder Modernisierung der bestehenden. Schnell, auf dem Telefon gedacht, mehrsprachig, mit klarem Weg zur Anfrage."),
+        ("02", "Suchmaschinenoptimierung", "Technik, Struktur und Inhalte so aufgebaut, dass Ihr Betrieb bei den Suchanfragen auftaucht, die zu Ihrem Angebot passen."),
+        ("03", "Lokale Sichtbarkeit", "Google-Unternehmensprofil, Karten, Verzeichnisse. Vollständig gepflegt, mit Bildern, Öffnungszeiten und aktuellen Angaben."),
+        ("04", "Google Ads", "Kampagnen mit klarem Budgetrahmen, auf Anfragen ausgerichtet. Eine Rendite verspreche ich nicht."),
+        ("05", "Social Media", "Redaktionsplan, Beiträge, Reels und Betreuung von Instagram und Facebook. Mit einem Ton, der zu Ihrem Betrieb passt."),
+        ("06", "Content und Text", "Texte für Website, Newsletter und Kampagnen. Verständlich, konkret und ohne leere Floskeln."),
+        ("07", "Foto, Video und Drohne", "Produktfotografie, Aufnahmen aus dem Betrieb, Imagefilme und Luftaufnahmen. Das Material gehört anschließend Ihnen."),
         ("08", "Domain, Hosting und E-Mail", "Eigene Domain, schnelles und sicheres Hosting, E-Mail-Adressen unter Ihrem Namen, laufend betreut."),
-        ("09", "Cybersicherheit", "Absicherung von Website und Systemen, Backups, Zugriffsrechte, Schutz von Gäste- und Buchungsdaten."),
+        ("09", "Cybersicherheit", "Absicherung von Website und Systemen, Backups, Zugriffsrechte und Schutz der Daten, die Sie uns anvertrauen."),
     ]
     ablauf = [
-        ("Bestandsaufnahme", "Wir sehen uns an, was vorhanden ist: Website, Sichtbarkeit, Bewertungen, Kanäle, Buchungswege und woher Ihre Gäste heute tatsächlich kommen."),
+        ("Bestandsaufnahme", "Wir sehen uns an, was vorhanden ist: Website, Sichtbarkeit, Kanäle und woher Ihre Anfragen heute kommen."),
         ("Konzept", "Struktur, Inhalte, Bildsprache und Maßnahmenplan. Sie sehen vorab, wie die Seite aussehen und was sie leisten soll."),
         ("Produktion", "Umsetzung von Website, Texten und Bildern, Aufsetzen von Kampagnen und Profilen, Einrichtung von Hosting und E-Mail."),
         ("Start und Messung", "Veröffentlichung, Einrichtung der Auswertung und Übergabe. Sie sehen, was passiert, nicht nur, dass etwas passiert."),
@@ -155,25 +155,33 @@ def online_marketing():
     {kicker("03", "Ablauf")}
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 clamp(48px,5.5vw,80px)">{wipe([["Von der ersten Skizze"], ["bis zur laufenden Betreuung."]])}</h2>
     <div class="pipe rise">{pipe}</div>
-    {zitat_block("Eine schöne Website ist kein Selbstzweck. Sie muss Anfragen bringen, sonst ist sie nur teuer.", "Kastriot Tafolli")}
+    {zitat_block("Eine schöne Website ist kein Selbstzweck. Der Weg zur Anfrage muss klar sein.", "Kastriot Tafolli")}
   </div>
 </section>''' + cta_block("// nächster schritt", [["Wie sichtbar ist"], ["Ihre Website?"]],
         "Ich sehe mir Ihre Seite und Ihre Sichtbarkeit an und sage Ihnen konkret, wo die größten Lücken sind.",
         "Beratungsgespräch vereinbaren", "kontakt.html", "Social Media einordnen", "rechner.html#social")
     inhalt += '<section class="service-section"><div class="shell"><p class="tag">EINZELNE LEISTUNGEN IM DETAIL</p><h2 class="d2">Vertiefen Sie Ihr Thema.</h2><div class="portfolio-links">' + "".join(link(slug) for slug in ['webdesign', 'suchmaschinenoptimierung', 'domain-hosting-email', 'social-media', 'foto-video', 'firmenprofile', 'preisrechner']) + '</div></div></section>'
 
+    faq = [
+        ("Was kostet Online-Marketing?", "Festpreis-Angebot auf Anfrage. Der Preis hängt davon ab, ob es um eine Website, um Kampagnen oder um laufende Betreuung geht. Einen Betrag vor diesem Gespräch nenne ich nicht."),
+        ("Garantieren Sie einen Platz in der Suche?", "Nein. Ich richte Seiten, Technik und Inhalte so aus, dass Menschen das Angebot finden können. Einen Rang verspreche ich nicht."),
+        ("Ist die laufende Betreuung im ersten Preis enthalten?", "Nur, wenn wir sie in den Umfang schreiben. Sonst ist die Betreuung ein eigener Auftrag, mit festem Umfang vor dem Start."),
+        ("Können wir mit einer Sache starten?", "Ja. Oft ist das die Website oder ein klarer Kanal. Den Rest können wir später dazunehmen."),
+        ("Arbeiten Sie auch für kleine Betriebe?", "Ja. Der Umfang richtet sich nach der Aufgabe, nicht nach der Größe des Unternehmens."),
+    ]
+    inhalt += faq_block("04", "Häufige Fragen", [["Vor dem"], ["ersten Schritt."]], faq)
     return seite_rahmen("leistungen.html", "Online-Marketing und Webentwicklung · Kastriot Tafolli",
         "Website, SEO, Google Ads, Social Media, Foto und Video für Unternehmen. Sichtbarkeit, die Anfragen bringt.",
-        "online-marketing.html", inhalt)
+        "online-marketing.html", inhalt, faq=faq)
 
 
 def teamo():
     funktionen = [
-        ("01", "Telefonate annehmen und bearbeiten", ["Automatische Annahme eingehender Anrufe", "Reservierungen entgegennehmen", "Verfügbarkeiten prüfen", "Auskunft zu Zimmern, Preisen, Öffnungszeiten und Veranstaltungen", "Weiterleitung an zuständige Mitarbeitende, wenn es nötig ist"], "Rund um die Uhr erreichbar, ohne Wartezeiten."),
-        ("02", "Nachrichten und Anfragen beantworten", ["E-Mails automatisch beantworten", "WhatsApp und Website-Chats verwalten", "Anfragen über Social Media bearbeiten", "Angebote erstellen und versenden", "Kommunikation in mehreren Sprachen"], "Schnell, professionell und immer im Ton Ihres Hauses."),
-        ("03", "Tagesberichte und Auswertungen", ["Automatische Tagesberichte", "Auslastungsanalysen", "Umsatzübersichten", "Personal- und Serviceberichte", "Zusammenfassungen für die Geschäftsführung"], "Alle relevanten Zahlen, strukturiert aufbereitet."),
-        ("04", "Rezeption und Reservierung", ["Reservierungsverwaltung", "Angebotsversand und Buchungsbestätigungen", "Stornobearbeitung", "Gästekommunikation vor, während und nach dem Aufenthalt", "Pflege von Gästedaten und Sonderwünschen"], "Entlastet die Rezeption genau dann, wenn es voll wird."),
-        ("05", "Restaurantmanagement", ["Tischreservierungen verwalten", "Event- und Gruppenanfragen bearbeiten", "Menü- und Allergeninformationen bereitstellen", "Feedback und Bewertungen analysieren", "Dienstpläne vorbereiten", "Bestell- und Warenprozesse unterstützen"], "Der Überblick bleibt, auch wenn das Haus voll ist."),
+        ("01", "Telefonate annehmen und vorbereiten", ["Eingehende Anrufe annehmen", "Anliegen notieren", "Rückruf notieren", "Auskunft zu Leistungen, Preisen und Öffnungszeiten, soweit Sie das freigeben", "Weiterleitung an eine zuständige Person, wenn es nötig ist"], "Erreichbar, auch wenn niemand im Büro ist."),
+        ("02", "Nachrichten und Anfragen vorbereiten", ["E-Mails als Entwurf vorbereiten", "Chats auf der Website sichten", "Anfragen über Social Media sammeln", "Angebotsentwürfe mit den Angaben, die schon da sind", "Kommunikation in mehreren Sprachen"], "Im Ton Ihres Betriebs. Versand erst nach Ihrer Freigabe."),
+        ("03", "Tagesberichte", ["Kurze Tagesberichte", "Offene Anfragen", "Was erledigt ist und was wartet", "Zusammenfassung für die Geschäftsführung"], "Zahlen nur aus den Quellen, die Sie anbinden."),
+        ("04", "Termine und Angebote", ["Terminvorschläge sammeln", "Angebotsentwurf bereitstellen", "Absagen notieren", "Rückfragen am Vorgang lassen"], "Bestätigt wird ein Termin erst von Ihnen."),
+        ("05", "Wiederkehrende Auskünfte", ["Öffnungszeiten und Leistungen nennen", "Gruppenanfragen sammeln", "Unterlagen an die richtige Person geben", "Bestellhinweise weiterleiten, wenn das vereinbart ist"], "Was Ermessen braucht, geht an einen Menschen."),
     ]
     karten = ""
     for i, (nr, titel, punkte, fazit) in enumerate(funktionen):
@@ -193,16 +201,16 @@ def teamo():
       </div>
     </div></div>'''
     besonders = [
-        ("01", "Rund um die Uhr einsatzbereit", "Auch nachts, am Wochenende und in der Hochsaison. Keine Wartezeit in der Leitung, keine unbeantwortete Anfrage über Nacht."),
-        ("02", "Keine Ausfälle", "Keine Krankheitstage, kein Urlaub, keine Einarbeitung bei Personalwechsel. Das Wissen bleibt im System."),
-        ("03", "Mehrsprachig", "Antwortet in der Sprache, in der gefragt wird. Gerade in touristischen Regionen ein spürbarer Unterschied."),
-        ("04", "Individuell trainiert", "Auf Ihre Karten, Zimmer, Preise, Abläufe und Ihren Ton. Kein Standardassistent mit austauschbaren Antworten."),
-        ("05", "Datenschutzkonform", "Integration nach den Vorgaben der Datenschutz-Grundverordnung, mit klaren Regeln, welche Daten wo verarbeitet werden."),
-        ("06", "Nahtlose Anbindung", "Verbindung zu bestehenden Hotel- und Kassensystemen, Reservierungssoftware, E-Mail und Kalendern."),
+        ("01", "Auch außerhalb der Bürozeit", "Anrufe und Mails können vorbereitet werden, wenn niemand da ist. Was rausgeht, geben Sie frei."),
+        ("02", "Wissen bleibt im Ablauf", "Öffnungszeiten, Leistungen und Ton liegen im System. Ein Personalwechsel löscht sie nicht."),
+        ("03", "Mehrsprachig", "Antwortet in der Sprache, in der gefragt wird. Deutsch, Englisch und Albanisch sind der übliche Rahmen."),
+        ("04", "Auf Ihren Betrieb trainiert", "Auf Ihre Leistungen, Preise, Öffnungszeiten und Ihren Ton. Kein Standardtext für jeden."),
+        ("05", "Datenschutz", "Integration nach den Vorgaben der Datenschutz-Grundverordnung. Vorher steht fest, welche Daten verarbeitet werden."),
+        ("06", "Anbindung", "Verbindung zu E-Mail, Kalender und den Programmen, die Sie schon nutzen. Was geht und was nicht, steht im Angebot."),
     ]
     einf = [
-        ("Analyse Ihres Betriebs", "Wir sehen uns an, wo die meiste Zeit verloren geht: Telefon, E-Mail, Reservierungen, Gruppenanfragen oder Reporting. Daraus entsteht der Einsatzbereich."),
-        ("Training auf Ihr Haus", "TeamO lernt Ihre Karten, Zimmer, Preise, Öffnungszeiten, Hausregeln und Ihren Ton. Sie geben vor, was er sagen darf und was nicht."),
+        ("Analyse Ihres Betriebs", "Wir sehen uns an, wo die meiste Zeit verloren geht: Telefon, E-Mail, Termine oder Berichte. Daraus entsteht der Einsatzbereich."),
+        ("Training auf Ihren Betrieb", "TeamO lernt Ihre Leistungen, Preise, Öffnungszeiten und Ihren Ton. Sie geben vor, was er sagen darf und was nicht."),
         ("Anbindung und Test", "Verbindung zu Telefon, E-Mail, Website, Messenger und Ihren Systemen. Danach Probebetrieb, in dem Sie jede Antwort prüfen können."),
         ("Start und Feinschliff", "TeamO geht live. In den ersten Wochen wird nachjustiert, bis Ton und Abläufe sitzen. Danach läuft er, und Sie bekommen die Berichte."),
     ]
@@ -212,12 +220,12 @@ def teamo():
         if i < len(einf) - 1:
             pipe += f'<div class="pipe-track"><span class="pipe-particle" style="--i:{i}"></span></div>'
     faq = [
-        ("Ersetzt TeamO unsere Mitarbeitenden?", "Nein. TeamO übernimmt das, was ohnehin liegen bleibt: das Telefon während des Services, Anfragen nach Feierabend, wiederkehrende Auskünfte und Berichte. Ihr Team gewinnt dadurch Zeit für die Gäste, die im Haus sind."),
-        ("Merkt der Gast, dass er mit einer KI spricht?", "Sie entscheiden, wie transparent TeamO auftritt. In vielen Häusern wird offen kommuniziert, dass ein digitaler Assistent annimmt und bei Bedarf an einen Menschen übergibt. Das wird erfahrungsgemäß gut angenommen."),
+        ("Ersetzt TeamO unsere Mitarbeitenden?", "Nein. TeamO bereitet vor, was sonst liegen bleibt: das Telefon, Anfragen nach Feierabend, wiederkehrende Auskünfte und Berichte. Entscheidungen bleiben bei Ihrem Team."),
+        ("Merkt die anrufende Person, dass sie mit einer KI spricht?", "Sie entscheiden, wie offen TeamO auftritt. Sie können sagen lassen, dass ein digitaler Assistent annimmt und bei Bedarf an einen Menschen übergibt."),
         ("Was passiert bei komplizierten Anliegen?", "TeamO erkennt, wenn ein Anliegen über seinen Rahmen hinausgeht, und leitet an die zuständige Person weiter, mit einer Zusammenfassung des bisherigen Gesprächs."),
         ("Wie steht es um den Datenschutz?", "Die Integration erfolgt nach den Vorgaben der Datenschutz-Grundverordnung. Vorab wird festgelegt, welche Daten verarbeitet werden, wo sie liegen und wie lange sie gespeichert bleiben."),
-        ("Funktioniert das mit unserem bestehenden System?", "In der Regel ja. TeamO wird an gängige Hotel- und Kassensysteme, Reservierungssoftware, E-Mail und Kalender angebunden. Was konkret möglich ist, klären wir in der Analyse."),
-        ("Wer kümmert sich nach dem Start um TeamO?", "Ich. Das ist der Teil, den ich KI-Management nenne: Antworten prüfen, nachschärfen, wenn sich Preise oder Abläufe ändern, und eingreifen, bevor eine kleine Abweichung beim Gast ankommt."),
+        ("Funktioniert das mit unserem bestehenden System?", "Das hängt vom System ab. TeamO kann an E-Mail, Kalender und weitere Programme angebunden werden, wenn eine Schnittstelle da ist. Was konkret möglich ist, klären wir in der Analyse."),
+        ("Wer kümmert sich nach dem Start um TeamO?", "Ich. Antworten prüfen, nachschärfen, wenn sich Preise oder Abläufe ändern, und eingreifen, bevor eine kleine Abweichung bei der Kundin ankommt."),
         ("Was kostet TeamO?", "Festpreis-Angebot auf Anfrage. Den Umfang der Einrichtung und einer möglichen Betreuung schreibe ich nach dem Gespräch auf. Einen Betrag vor diesem Gespräch nenne ich nicht."),
     ]
     inhalt = hero_klein("04", "KI-Produkt", [["TeamO, der digitale"], ["KI-Mitarbeiter."]],
@@ -231,7 +239,7 @@ def teamo():
         <div class="prose rise">
           <p>TeamO ist ein digitaler Mitarbeiter für Anrufe, Nachrichten und wiederkehrende Aufgaben. Basierend auf moderner KI-Technologie und erweitert durch eine eigene Systemlogik vereint TeamO Kommunikation, Organisation und Auswertungen in einem Assistenten.</p>
           <p>Er nimmt Anrufe an, beantwortet E-Mails und Nachrichten in mehreren Sprachen, verschickt Angebote und legt morgens einen fertigen Tagesbericht hin. Rund um die Uhr, ohne Wartezeit, ohne Krankheitstage.</p>
-          <p>Jeder TeamO wird individuell auf den jeweiligen Betrieb trainiert: auf Ihre Angebote, Ihre Preise, Ihre Öffnungszeiten und Ihren Ton. Die Anbindung an bestehende Systeme erfolgt datenschutzkonform nach den Vorgaben der Datenschutz-Grundverordnung.</p>
+          <p>Jeder TeamO wird auf den jeweiligen Betrieb trainiert: auf Ihre Angebote, Ihre Preise, Ihre Öffnungszeiten und Ihren Ton. Die Anbindung an bestehende Systeme erfolgt nach den Vorgaben der Datenschutz-Grundverordnung.</p>
         </div>
         <div class="rise" style="display:flex;flex-wrap:wrap;gap:13px;margin-top:12px">
           <a href="kontakt.html" class="btn btn-1">TeamO anfragen</a>
@@ -245,9 +253,9 @@ def teamo():
           <div class="dash-top"><span class="dot pulse"></span><span class="mono" style="font-size:.82rem">TeamO · online</span></div>
           <div class="term" style="font-size:.78rem">
             <div class="c">$ teamo --bericht heute</div>
-            <div>anrufe angenommen ........ 38</div>
-            <div>reservierungen ........... 14</div>
-            <div>mails beantwortet ........ 51</div>
+            <div>anrufe angenommen ........ 12</div>
+            <div>termine vorbereitet ...... 4</div>
+            <div>mails als entwurf ........ 9</div>
             <div>an mitarbeitende ......... 3</div>
             <div class="c">● alle offenen vorgänge erfasst</div>
           </div>
@@ -281,11 +289,11 @@ def teamo():
     <p class="lede rise" style="--i:1;margin-bottom:clamp(48px,5.5vw,80px)">Die Einführung läuft parallel zum Tagesgeschäft. Ihr Team muss nichts umstellen, bis TeamO wirklich läuft.</p>
     <div class="pipe rise">{pipe}</div>
   </div>
-</section>''' + faq_block("05", "Häufige Fragen", [["Was Häuser"], ["vorher wissen wollen."]], faq) + f'''
-<section class="pad"><div class="shell">{zitat_block("Abends um halb elf ruft jemand an, um einen Tisch zu verschieben. TeamO nimmt ab.", "TeamO · TB Solutions")}</div></section>''' + cta_block(
-        "// nächster schritt", [["TeamO für Ihr Haus."]],
+</section>''' + faq_block("05", "Häufige Fragen", [["Was Betriebe"], ["vorher wissen wollen."]], faq) + f'''
+<section class="pad"><div class="shell">{zitat_block("Abends ruft jemand an, weil eine Frage nicht bis morgen warten soll. TeamO nimmt das Anliegen auf.", "TeamO · TB Solutions")}</div></section>''' + cta_block(
+        "// nächster schritt", [["TeamO für Ihren Betrieb."]],
         "Im Erstgespräch sehen wir uns an, wo bei Ihnen die meiste Zeit verloren geht. Daraus entsteht der konkrete Einsatzbereich.",
         "Beratungsgespräch vereinbaren", "kontakt.html", "Ersparnis berechnen", "rechner.html#ki")
     return seite_rahmen("teamo-ki.html", "TeamO, der digitale KI-Mitarbeiter · Kastriot Tafolli",
         "TeamO nimmt Anrufe an, beantwortet Anfragen mehrsprachig und erstellt Tagesberichte. Individuell trainiert. Festpreis-Angebot auf Anfrage.",
-        "teamo-ki.html", inhalt)
+        "teamo-ki.html", inhalt, faq=faq)

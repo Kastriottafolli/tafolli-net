@@ -1,34 +1,26 @@
 # -*- coding: utf-8 -*-
 from icons import icon
 from bausteine import *
-from hotels import hotel_cards
-from partners import PROJECTS, visible_tech, tiles
+from partners import visible_projects, visible_tech, tiles
 
 
 def referenzen():
     inhalt = hero_klein("05", "Referenzen & Partner", [["Gute Arbeit entsteht"], ["im Zusammenspiel."]],
         "Referenz-Websites aus gemeinsamen Projekten.",
-        ["6 Referenz-Websites", "Werkzeuge", "4 frühere Stationen"]) + '''
-    <div class="shell"><nav class="partner-jump" aria-label="Referenzbereiche"><a href="#betriebe">Referenz-Websites ↗</a><a href="#technologie">Werkzeuge ↗</a><a href="#stationen">Berufliche Stationen ↗</a></nav></div>''' + f'''
+        ["Referenz-Websites", "Werkzeuge", "TB Solutions"]) + '''
+    <div class="shell"><nav class="partner-jump" aria-label="Referenzbereiche"><a href="#betriebe">Referenz-Websites ↗</a><a href="#technologie">Werkzeuge ↗</a></nav></div>''' + f'''
 <section class="pad" id="betriebe" style="scroll-margin-top:110px"><div class="shell">
- <div class="partner-section-intro"><div>{kicker("01", "Betriebe & Referenz-Websites")}<h2 class="d2" style="margin-top:20px">Betriebe, die ich mit<br> TB Solutions begleite.</h2></div><p>Eine Auswahl zum direkten Entdecken. Tafolli Glass ergänzt das Netzwerk als Partner; tafolli.net zeigt meinen eigenen digitalen Auftritt.</p></div>
- {tiles(PROJECTS,projects=True)}
- <p class="tag" style="color:var(--acc);margin-top:40px">Weitere Betriebe aus meiner Zusammenarbeit</p><div class="partner-more"><span>Bukowina</span><span>Bistro Cappuccino</span><span>Salsa Latino</span><span>El Restaurante</span><span>MBJ · My Jasharaj</span></div>
+ <div class="partner-section-intro"><div>{kicker("01", "Betriebe & Referenz-Websites")}<h2 class="d2" style="margin-top:20px">Betriebe, die ich mit<br> TB Solutions begleite.</h2></div><p>Eine Auswahl zum direkten Entdecken. Tafolli Glass ergänzt das Netzwerk als Partner. tafolli.net zeigt meinen eigenen digitalen Auftritt.</p></div>
+ {tiles(visible_projects(),projects=True)}
 </div></section>
 <section class="pad" id="technologie" style="background:var(--ink-2);scroll-margin-top:110px"><div class="shell">
  <div class="partner-section-intro"><div>{kicker("02", "Werkzeuge")}<h2 class="d2" style="margin-top:20px">Werkzeuge.<br> Keine Partnerschaft.</h2></div><p>Diese Logos zeigen Programme, mit denen ich arbeite. Sie sind keine Partnerschaft und keine Kundenempfehlung.</p></div>
  {tiles(visible_tech())}
-</div></section>
-<section class="pad" id="stationen" style="background:var(--ink-2);scroll-margin-top:110px"><div class="shell">
- <div class="partner-section-intro"><div>{kicker("04", "Frühere Stationen")}<h2 class="d2" style="margin-top:20px">Abgeschlossene Stationen.<br> Nicht das Angebot.</h2></div><p>Diese Einträge dokumentieren frühere Aufgaben. Das aktuelle Angebot ist KI, Software, Web, Marketing und Texte.</p></div>
- {hotel_cards()}
- <div class="career-transfer"><div><p class="tag">Für Ihr nächstes Projekt</p><h3>Systeme bauen.<br> Texte klären.</h3><p>KI-Automatisierung, Software, Websites und Übersetzungen auf Deutsch, Englisch und Albanisch. Den Umfang besprechen wir direkt.</p></div><div class="career-transfer-actions"><a class="btn btn-1" href="kontakt.html">Projekt besprechen ↗</a><a class="btn btn-2" href="leistungen.html">Leistungen ansehen ↗</a></div></div>
- <p style="color:var(--paper-mute);font-size:.88rem;margin-top:28px;max-width:70ch">Weitere Referenzen nenne ich auf Anfrage und nur mit Zustimmung der jeweiligen Häuser. Zahlen und interne Details bleiben grundsätzlich vertraulich.</p>
 </div></section>''' + cta_block("// nächster schritt", [["Gute Verbindungen."], ["Neue Möglichkeiten."]],
         "Ob gemeinsames Projekt, ein konkreter Auftrag oder eine neue Zusammenarbeit: Erzählen Sie mir, was Sie bewegen möchten.",
         "Zusammenarbeit besprechen", "kontakt.html", "Leistungen ansehen", "leistungen.html")
     return seite_rahmen("referenzen.html", "Referenz-Websites & Partner · Kastriot Tafolli",
-        "Referenz-Websites von A&B Bau, Tafolli Glass, Restaurant Wochenmarkt, MEL und Panorama Hotel Lohme. Gastronomie- und Technologiepartner mit Logos und Links.",
+        "Referenz-Websites und Werkzeuge von Kastriot Tafolli und TB Solutions. Mit Logos und direkten Links.",
         "referenzen.html", inhalt)
 
 
