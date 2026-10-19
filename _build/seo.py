@@ -38,10 +38,9 @@ SERVICE_META={
  'social-media':('Social Media & Content | Kastriot Tafolli','Redaktionsplanung, Beiträge und Reels mit klarem Weg zur Anfrage. Social-Media-Betreuung für Unternehmen in DACH und Kosovo. Inhalte gemeinsam planen.'),
  'foto-video':('Foto & Video | Kastriot Tafolli','Menschen, Produkte und Räume in Bildern zeigen. Foto- und Videoinhalte für Websites und Social Media in DACH und Kosovo. Aufnahmeumfang und Termine besprechen.'),
  'website-pflege':('Website-Pflege im Monatsabo | Kastriot Tafolli','Website-Pflege in drei Stufen: 99, 199 oder 299 € im Monat. Updates, Backups und kleine Änderungen, monatlich kündbar.'),
- 'onlineshop':('Onlineshop Start | Kastriot Tafolli','Kleinen Onlineshop einrichten und einweisen: Festpreis 990 oder 1.990 €. Hosting und Shop-Software laufen beim Kunden oder beim Anbieter.'),
+ 'onlineshop':('Onlineshop | Kastriot Tafolli','Onlineshop einrichten und einweisen. Stufe Start 990 €, Stufe Erweitert 1.990 €. Hosting und Shop-Software laufen beim Kunden oder beim Anbieter.'),
  'web-apps':('Web-App oder Tool nach Maß | Kastriot Tafolli','Kleine Web-App oder ein Tool nach Maß ab 390 €. Ein Ablauf im Browser. Größere Projekte zum Festpreis nach Angebot.'),
- 'firmenprofile':('Firmenprofile im Netz einrichten | Kastriot Tafolli','Google-Unternehmensprofil und Verzeichnisse mit einheitlichen Angaben. Festpreis 399 oder 899 €. Die Bestätigung bei Google machen Sie selbst.'),
- 'preisrechner':('Preisrechner | Kastriot Tafolli','Unverbindliche Preisschätzung für Website, Shop, Web-App, Pflege-Abo, Firmenprofile und Texte. Die Rechnung bleibt im Browser.')}
+ 'firmenprofile':('Firmenprofile im Netz einrichten | Kastriot Tafolli','Google-Unternehmensprofil und Verzeichnisse mit einheitlichen Angaben. Festpreis 399 oder 899 €. Die Bestätigung bei Google machen Sie selbst.')}
 PAGE_META={
  'leistungen.html':('Leistungsübersicht: KI, Software, Web und Texte | Tafolli','Übersicht der Angebote: KI-Automatisierung, Software, Webdesign, Online-Marketing und Übersetzungen für Unternehmen in Deutschland, Österreich, Schweiz und Kosovo.'),
  'ueber-mich.html':('Kastriot Tafolli: KI, Software und Web','Lernen Sie Kastriot Tafolli kennen: Softwareentwicklung, KI, Websites und Texte auf Deutsch, Englisch und Albanisch. TB Solutions in Ostseebad Binz.'),
@@ -54,7 +53,8 @@ PAGE_META={
  'wissen-direktbuchungen.html':('Mehr Direktbuchungen für Hotels gewinnen | Tafolli','Website, Suchmaschinen und Buchungsweg gemeinsam verbessern: So stärken Hotels ihre Direktbuchungen. Praxiswissen, Provisionsrechner und Umsetzung mit Kastriot Tafolli.'),
  'kontakt.html':('Kontakt & Beratung in DACH und Kosovo | Kastriot Tafolli','KI, Software, Webdesign, Marketing oder Übersetzungen besprechen: Kontakt zu Kastriot Tafolli und TB Solutions. Deutschland, Österreich, Schweiz und Kosovo.'),
  'impressum.html':('Impressum | Kastriot Tafolli','Anbieterinformationen und Kontaktdaten für tafolli.net: Kastriot Tafolli, Hauptstraße 1, 18609 Ostseebad Binz. Telefon, E-Mail und Verantwortlichkeit für die Inhalte.'),
- 'datenschutz.html':('Datenschutz | Kastriot Tafolli','Informationen zur Datenverarbeitung auf tafolli.net: Hosting, Kontakt, lokale Schriftarten, Logo-Animation und Rechner. Hinweise und Kontakt zu Kastriot Tafolli.')}
+ 'datenschutz.html':('Datenschutz | Kastriot Tafolli','Informationen zur Datenverarbeitung auf tafolli.net: Hosting, Kontakt, lokale Schriftarten, Logo-Animation und Rechner. Hinweise und Kontakt zu Kastriot Tafolli.'),
+ 'preisrechner.html':('Preisrechner | Kastriot Tafolli','Unverbindliche Preisschätzung für KI, Website, Shop, Web-App, Pflege-Abo, Firmenprofile und Texte. Die Rechnung bleibt im Browser.')}
 PAGE_META.update({slug+'.html':meta for slug,meta in SERVICE_META.items()})
 
 def metadata(path,title,description):return PAGE_META.get(path,(title,description))
@@ -71,7 +71,9 @@ def structured(path,title,description,lang='de'):
  if path in ['leistungen.html','wissen.html','referenzen.html']:page['@type']='CollectionPage'
  graph=identity+[page]
  slug=path.removesuffix('.html')
- if slug in SERVICE_META:
+ if path=='preisrechner.html':
+  graph.append({'@type':'WebApplication','@id':url+'#app','name':'Preisrechner','url':url,'description':description,'applicationCategory':'BusinessApplication','offers':{'@type':'Offer','price':'0','priceCurrency':'EUR'},'provider':{'@id':ORIGIN+'#business'}})
+ elif slug in SERVICE_META:
   service_name=TITLES.get(path) or title.split(' | ')[0]
   graph.append({'@type':'Service','@id':url+'#service','name':service_name,'serviceType':service_name,'url':url,'description':description,'provider':{'@id':ORIGIN+'#business'},'areaServed':COUNTRIES})
  if path.startswith('wissen-'):

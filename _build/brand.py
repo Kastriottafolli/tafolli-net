@@ -1,6 +1,6 @@
 """One TAFOLLI identity across navigation, footer, references and every page entry."""
-def lockup(base=''):
-    return f'<span class="tafolli-brand"><img class="tafolli-brand-mark" src="{base}assets/brand/logo-mark.webp" width="42" height="42" alt="" decoding="async"><span class="tafolli-brand-name">TAFOLLI</span></span>'
+def lockup(base='', src='assets/brand/logo-mark.webp'):
+    return f'<span class="tafolli-brand"><img class="tafolli-brand-mark" src="{base}{src}" width="42" height="42" alt="" decoding="async"><span class="tafolli-brand-name">TAFOLLI</span></span>'
 
 
 def intro(lang='de',base=''):

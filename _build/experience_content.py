@@ -209,13 +209,13 @@ for language,values in POSITIONING.items():
 EXTRA={
  'de':dict(extra_label='WEITERE FESTPREISE',extra_title=['Weitere Festpreise.','Kurz gesagt.'],extra_text='Pflege, ein kleiner Shop, ein Werkzeug und Firmenprofile. Die Schätzung im Preisrechner ist unverbindlich.',extra_items=[
   ('Website-Pflege','Updates, Backups, kleine Änderungen. Monatlich kündbar.','99 / 199 / 299 € im Monat','website-pflege.html'),
-  ('Onlineshop Start','Einrichtung und Einweisung. Hosting beim Kunden oder Anbieter.','ab 990 €','onlineshop.html'),
+  ('Onlineshop','Einrichtung und Einweisung. Stufen Start und Erweitert.','ab 990 €','onlineshop.html'),
   ('Web-App oder Tool','Ein kleiner Ablauf. Größeres nach Angebot.','ab 390 €','web-apps.html'),
   ('Firmenprofile im Netz','Google-Profil und Verzeichnisse, gleiche Angaben.','399–899 €','firmenprofile.html'),
   ('Preisrechner','Unverbindliche Schätzung, kein Angebot.','kostenlos','preisrechner.html')]),
  'en':dict(extra_label='MORE FIXED PRICES',extra_title=['More fixed prices.','In short.'],extra_text='Care, a small shop, a tool and business profiles. The estimate in the price calculator is non-binding. Detail pages are in German.',extra_items=[
   ('Website care','Updates, backups, small edits. Cancel any month.','€99 / €199 / €299 per month','website-pflege.html'),
-  ('Online shop start','Setup and a walkthrough. Hosting stays with you or the provider.','from €990','onlineshop.html'),
+  ('Online shop','Setup and a walkthrough. Stages Start and Extended.','from €990','onlineshop.html'),
   ('Web app or tool','One small workflow. Larger work by quote.','from €390','web-apps.html'),
   ('Business profiles','Google profile and directories, the same details.','€399–€899','firmenprofile.html'),
   ('Price calculator','A non-binding estimate, not a quote.','free','preisrechner.html')]),

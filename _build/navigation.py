@@ -13,7 +13,7 @@ SERVICE_GROUPS = [
   ('web-apps.html','Web-App oder Tool nach Maß'), ('cybersecurity.html','Cybersecurity & IT-Sicherheit')]),
  ('Web & Sichtbarkeit', [
   ('online-marketing.html','Online-Marketing & Digitalstrategie'), ('webdesign.html','Webdesign & Webentwicklung'),
-  ('website-pflege.html','Website-Pflege im Monatsabo'), ('onlineshop.html','Onlineshop Start'),
+  ('website-pflege.html','Website-Pflege im Monatsabo'), ('onlineshop.html','Onlineshop'),
   ('firmenprofile.html','Firmenprofile im Netz'), ('social-media.html','Social Media & Content'),
   ('suchmaschinenoptimierung.html','Suchmaschinenoptimierung'), ('domain-hosting-email.html','Domain, Hosting & E-Mail'),
   ('foto-video.html','Foto & Video')])]

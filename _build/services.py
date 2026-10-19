@@ -197,7 +197,7 @@ def link(slug):
         'ki-kleine':('ki-automatisierung-kleine-unternehmen.html','KI Automatisierung für kleine Unternehmen'),
         'landingpage':('landingpage-erstellen-lassen.html','Landingpage erstellen lassen'),
         'website-pflege':('website-pflege.html','Website-Pflege im Monatsabo'),
-        'onlineshop':('onlineshop.html','Onlineshop Start'),
+        'onlineshop':('onlineshop.html','Onlineshop'),
         'web-apps':('web-apps.html','Web-App oder Tool nach Maß'),
         'firmenprofile':('firmenprofile.html','Firmenprofile im Netz'),
         'preisrechner':('preisrechner.html','Preisrechner'),
