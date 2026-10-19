@@ -29,6 +29,11 @@ FOOT_L2 = [
     ("ki-automatisierung-kleine-unternehmen.html", "KI Automatisierung für kleine Unternehmen"),
     ("landingpage-erstellen-lassen.html", "Landingpage erstellen lassen"),
     ("angebot/", "Texte und Übersetzungen"),
+    ("website-pflege.html", "Website-Pflege"),
+    ("onlineshop.html", "Onlineshop"),
+    ("web-apps.html", "Web-App oder Tool"),
+    ("firmenprofile.html", "Firmenprofile im Netz"),
+    ("preisrechner.html", "Preisrechner"),
     ("ki-automatisierung.html", "KI-Automatisierung"),
     ("softwareentwicklung.html", "Softwareentwicklung"),
     ("app-entwicklung.html", "App-Entwicklung"),
@@ -83,7 +88,8 @@ def seiten_kopf(titel, beschreibung, kanonisch_pfad):
 <meta name="theme-color" content="#f3f1e9">
 <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
 <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
-<link rel="preload" as="image" href="assets/brand/logo-mark.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/brand/logo-mark-84.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/brand/logo-mark.webp">
 <link rel="preload" as="font" type="font/woff2" href="assets/schriften/space-grotesk-var.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/schriften/ibm-plex-sans-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/schriften/bodoni-moda-400-italic.woff2" crossorigin>
@@ -95,7 +101,7 @@ def seiten_kopf(titel, beschreibung, kanonisch_pfad):
 
 def kopfzeile(aktiv, base=""):
     sprachwahl = '<a href="/" hreflang="de" lang="de" title="Deutsch">DE</a><a href="/en/" hreflang="en" lang="en" title="English">EN</a><a href="/sq/" hreflang="sq" lang="sq" title="Shqip">SQ</a>'
-    return f'''<header class="bar site-header"><div class="shell bar-in"><a class="tafolli-brand-link" href="{base}index.html" aria-label="Kastriot Tafolli · Startseite">{lockup(base)}</a>{site_nav(aktiv, base)}<div class="site-header-controls"><nav class="lang" aria-label="Sprache / Language / Gjuha">{sprachwahl}</nav><a href="{base}kontakt.html" class="btn btn-1 site-talk">Gespräch ↗</a>{nav_toggle()}</div></div></header>'''
+    return f'''<header class="bar site-header"><div class="shell bar-in"><a class="tafolli-brand-link" href="{base}index.html" aria-label="Kastriot Tafolli · Startseite">{lockup(base, 'assets/brand/logo-mark-84.webp')}</a>{site_nav(aktiv, base)}<div class="site-header-controls"><nav class="lang" aria-label="Sprache / Language / Gjuha">{sprachwahl}</nav><a href="{base}kontakt.html" class="btn btn-1 site-talk">Gespräch ↗</a>{nav_toggle()}</div></div></header>'''
 
 
 def fusszeile(base=""):

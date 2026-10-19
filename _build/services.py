@@ -196,6 +196,11 @@ def link(slug):
         'angebot':('angebot/','Texte und Übersetzungen Deutsch, Englisch, Albanisch'),
         'ki-kleine':('ki-automatisierung-kleine-unternehmen.html','KI Automatisierung für kleine Unternehmen'),
         'landingpage':('landingpage-erstellen-lassen.html','Landingpage erstellen lassen'),
+        'website-pflege':('website-pflege.html','Website-Pflege im Monatsabo'),
+        'onlineshop':('onlineshop.html','Onlineshop'),
+        'web-apps':('web-apps.html','Web-App oder Tool nach Maß'),
+        'firmenprofile':('firmenprofile.html','Firmenprofile im Netz'),
+        'preisrechner':('preisrechner.html','Preisrechner'),
     }
     if slug in special:
         href,label=special[slug]
@@ -204,8 +209,8 @@ def link(slug):
     return f'<a href="{slug}.html">{html.escape(title)} <span aria-hidden="true">↗</span></a>'
 
 def catalogue():
-    groups=[('Kernangebote',['ki-kleine','landingpage','angebot']),('KI & Software',['ki-automatisierung','ki-entwicklung','teamo-ki','digitalisierung','softwareentwicklung','app-entwicklung','cybersecurity']),('Web & Sichtbarkeit',['webdesign','online-marketing','social-media','suchmaschinenoptimierung','domain-hosting-email','foto-video'])]
-    headings=['Drei Angebote.','Intelligente Systeme.','Sichtbare Auftritte.']
+    groups=[('Kernangebote',['ki-kleine','landingpage','angebot']),('KI & Software',['ki-automatisierung','ki-entwicklung','teamo-ki','digitalisierung','softwareentwicklung','app-entwicklung','web-apps','cybersecurity']),('Web & Sichtbarkeit',['webdesign','online-marketing','website-pflege','onlineshop','firmenprofile','social-media','suchmaschinenoptimierung','domain-hosting-email','foto-video']),('Schätzen',['preisrechner'])]
+    headings=['Drei Angebote.','Intelligente Systeme.','Sichtbare Auftritte.','Unverbindlich rechnen.']
     return '<div class="portfolio-groups">'+''.join(f'<section><p class="tag">0{i+1} / {html.escape(label)}</p><h3>{headings[i]}</h3><div class="portfolio-links">'+''.join(link(slug) for slug in slugs)+'</div></section>' for i,(label,slugs) in enumerate(groups))+'</div>'
 
 def page(s):
