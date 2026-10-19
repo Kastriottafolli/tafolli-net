@@ -206,6 +206,28 @@ for language,values in POSITIONING.items():
     COPY[language].update(values)
     COPY[language]['services']=OFFERS[language]
 
+EXTRA={
+ 'de':dict(extra_label='WEITERE FESTPREISE',extra_title=['Weitere Festpreise.','Kurz gesagt.'],extra_text='Pflege, ein kleiner Shop, ein Werkzeug und Firmenprofile. Die Schätzung im Preisrechner ist unverbindlich.',extra_items=[
+  ('Website-Pflege','Updates, Backups, kleine Änderungen. Monatlich kündbar.','99 / 199 / 299 € im Monat','website-pflege.html'),
+  ('Onlineshop Start','Einrichtung und Einweisung. Hosting beim Kunden oder Anbieter.','ab 990 €','onlineshop.html'),
+  ('Web-App oder Tool','Ein kleiner Ablauf. Größeres nach Angebot.','ab 390 €','web-apps.html'),
+  ('Firmenprofile im Netz','Google-Profil und Verzeichnisse, gleiche Angaben.','399–899 €','firmenprofile.html'),
+  ('Preisrechner','Unverbindliche Schätzung, kein Angebot.','kostenlos','preisrechner.html')]),
+ 'en':dict(extra_label='MORE FIXED PRICES',extra_title=['More fixed prices.','In short.'],extra_text='Care, a small shop, a tool and business profiles. The estimate in the price calculator is non-binding. Detail pages are in German.',extra_items=[
+  ('Website care','Updates, backups, small edits. Cancel any month.','€99 / €199 / €299 per month','website-pflege.html'),
+  ('Online shop start','Setup and a walkthrough. Hosting stays with you or the provider.','from €990','onlineshop.html'),
+  ('Web app or tool','One small workflow. Larger work by quote.','from €390','web-apps.html'),
+  ('Business profiles','Google profile and directories, the same details.','€399–€899','firmenprofile.html'),
+  ('Price calculator','A non-binding estimate, not a quote.','free','preisrechner.html')]),
+ 'sq':dict(extra_label='ÇMIME TË TJERA FIKSE',extra_title=['Çmime të tjera fikse.','Shkurt.'],extra_text='Mirëmbajtje, një dyqan i vogël, një mjet dhe profile biznesi. Vlerësimi në kalkulator është i paobliguar. Faqet e detajuara janë në gjermanisht.',extra_items=[
+  ('Mirëmbajtje e faqes','Përditësime, kopje rezervë, ndryshime të vogla. Anulohet çdo muaj.','99 / 199 / 299 € në muaj','website-pflege.html'),
+  ('Dyqan online','Ngritje dhe udhëzim. Hosting mbetet te ju ose te ofruesi.','nga 990 €','onlineshop.html'),
+  ('Aplikacion ose mjet','Një proces i vogël. Më i madh me ofertë.','nga 390 €','web-apps.html'),
+  ('Profile biznesi','Profili në Google dhe direktori, të njëjtat të dhëna.','399–899 €','firmenprofile.html'),
+  ('Kalkulator çmimesh','Vlerësim i paobliguar, jo ofertë.','falas','preisrechner.html')])}
+for code,values in EXTRA.items():
+    COPY[code].update(values)
+
 AUTOMATION={
  'de':dict(description='KI-Automatisierung als Service: Workflows, Systemanbindung und laufende Betreuung von Kastriot Tafolli. Für Unternehmen in Deutschland, Österreich, der Schweiz und Kosovo.',hero_text='Ich baue KI-Systeme, die Arbeit übernehmen. Damit Ihr Team wieder Zeit für das hat, was Menschen am besten können.',hero_cta='Automation entdecken'),
  'en':dict(description='AI automation as a service: workflows, system integration and ongoing care by Kastriot Tafolli. For businesses in Germany, Austria, Switzerland and Kosovo.',hero_text='I build AI systems that take work off your hands. So your team can get back to what people do best.',hero_cta='Explore automation'),

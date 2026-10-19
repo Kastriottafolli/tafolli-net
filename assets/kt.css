@@ -813,4 +813,10 @@ html.cur-on, html.cur-on a, html.cur-on button, html.cur-on .lnk { cursor: none;
 .anfrage-form input,.anfrage-form textarea{width:100%;min-height:44px;padding:12px 14px;border:1px solid var(--line);border-radius:2px;background:transparent;color:var(--paper);font:inherit}
 .anfrage-form textarea{min-height:140px;resize:vertical}
 .anfrage-form p:last-child{color:var(--paper-mute);font-size:.88rem;max-width:62ch}
+.anfrage-form select{width:100%;min-height:44px;padding:12px 14px;border:1px solid var(--line);border-radius:2px;background:transparent;color:var(--paper);font:inherit}
+.anfrage-form fieldset{border:1px solid var(--line-soft);margin:0;padding:8px 16px 12px}
+.anfrage-form legend{padding:0 6px;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-mute)}
+.anfrage-form label.choice{display:flex;align-items:flex-start;gap:12px;min-height:44px;padding:8px 0}
+.anfrage-form label.choice input{width:20px;min-height:20px;margin-top:2px;flex:0 0 auto}
+#preis-ergebnis{white-space:pre-line;color:var(--paper);font-size:1.02rem;max-width:68ch;margin:8px 0}
 .daten a { color: var(--acc); }

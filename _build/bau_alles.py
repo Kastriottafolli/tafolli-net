@@ -10,7 +10,7 @@ WURZEL = HIER.parent
 
 from icons import iconize
 
-import seiten_a, seiten_b, seiten_c, seiten_d, kern, experience, artwork, services
+import seiten_a, seiten_b, seiten_c, seiten_d, kern, pakete, experience, artwork, services
 
 SEITEN = {
     'ueber-mich.html': seiten_a.ueber_mich,
@@ -19,6 +19,11 @@ SEITEN = {
     'fb-beratung.html': seiten_b.fb_beratung,
     'ki-automatisierung-kleine-unternehmen.html': kern.ki_kleine,
     'landingpage-erstellen-lassen.html': kern.landingpage,
+    'website-pflege.html': pakete.website_pflege,
+    'onlineshop.html': pakete.onlineshop,
+    'web-apps.html': pakete.web_apps,
+    'firmenprofile.html': pakete.firmenprofile,
+    'preisrechner.html': pakete.preisrechner,
     'online-marketing.html': seiten_b.online_marketing,
     'teamo-ki.html': seiten_b.teamo,
     'rechner.html': seiten_c.rechner,

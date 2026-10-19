@@ -36,7 +36,12 @@ SERVICE_META={
  'suchmaschinenoptimierung':('Suchmaschinenoptimierung | Kastriot Tafolli','Technische SEO, hilfreiche Angebotsseiten und lokale Sichtbarkeit für Unternehmen. Suchmaschinenoptimierung in DACH und Kosovo. Website prüfen lassen.'),
  'domain-hosting-email':('Domain, Hosting & E-Mail für Betriebe | Tafolli','Domains, Hosting und professionelle E-Mail strukturiert einrichten oder umziehen. Dokumentierte Zugänge und Betreuung für DACH und Kosovo. Bedarf besprechen.'),
  'social-media':('Social Media & Content | Kastriot Tafolli','Redaktionsplanung, Beiträge und Reels mit klarem Weg zur Anfrage. Social-Media-Betreuung für Unternehmen in DACH und Kosovo. Inhalte gemeinsam planen.'),
- 'foto-video':('Foto & Video | Kastriot Tafolli','Menschen, Produkte und Räume in Bildern zeigen. Foto- und Videoinhalte für Websites und Social Media in DACH und Kosovo. Aufnahmeumfang und Termine besprechen.')}
+ 'foto-video':('Foto & Video | Kastriot Tafolli','Menschen, Produkte und Räume in Bildern zeigen. Foto- und Videoinhalte für Websites und Social Media in DACH und Kosovo. Aufnahmeumfang und Termine besprechen.'),
+ 'website-pflege':('Website-Pflege im Monatsabo | Kastriot Tafolli','Website-Pflege in drei Stufen: 99, 199 oder 299 € im Monat. Updates, Backups und kleine Änderungen, monatlich kündbar.'),
+ 'onlineshop':('Onlineshop Start | Kastriot Tafolli','Kleinen Onlineshop einrichten und einweisen: Festpreis 990 oder 1.990 €. Hosting und Shop-Software laufen beim Kunden oder beim Anbieter.'),
+ 'web-apps':('Web-App oder Tool nach Maß | Kastriot Tafolli','Kleine Web-App oder ein Tool nach Maß ab 390 €. Ein Ablauf im Browser. Größere Projekte zum Festpreis nach Angebot.'),
+ 'firmenprofile':('Firmenprofile im Netz einrichten | Kastriot Tafolli','Google-Unternehmensprofil und Verzeichnisse mit einheitlichen Angaben. Festpreis 399 oder 899 €. Die Bestätigung bei Google machen Sie selbst.'),
+ 'preisrechner':('Preisrechner | Kastriot Tafolli','Unverbindliche Preisschätzung für Website, Shop, Web-App, Pflege-Abo, Firmenprofile und Texte. Die Rechnung bleibt im Browser.')}
 PAGE_META={
  'leistungen.html':('Leistungsübersicht: KI, Software, Web und Texte | Tafolli','Übersicht der Angebote: KI-Automatisierung, Software, Webdesign, Online-Marketing und Übersetzungen für Unternehmen in Deutschland, Österreich, Schweiz und Kosovo.'),
  'ueber-mich.html':('Kastriot Tafolli: KI, Software und Web','Lernen Sie Kastriot Tafolli kennen: Softwareentwicklung, KI, Websites und Texte auf Deutsch, Englisch und Albanisch. TB Solutions in Ostseebad Binz.'),

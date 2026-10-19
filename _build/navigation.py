@@ -9,11 +9,14 @@ SERVICE_GROUPS = [
  ('KI & Technologie', [
   ('ki-automatisierung.html','AI Automation as a Service'), ('ki-entwicklung.html','KI-Entwicklung & Assistenten'),
   ('teamo-ki.html','TeamO · digitaler KI-Mitarbeiter'), ('digitalisierung.html','Digitalisierung'),
-  ('softwareentwicklung.html','Softwareentwicklung'), ('app-entwicklung.html','App- & Web-App-Entwicklung'), ('cybersecurity.html','Cybersecurity & IT-Sicherheit')]),
+  ('softwareentwicklung.html','Softwareentwicklung'), ('app-entwicklung.html','App- & Web-App-Entwicklung'),
+  ('web-apps.html','Web-App oder Tool nach Maß'), ('cybersecurity.html','Cybersecurity & IT-Sicherheit')]),
  ('Web & Sichtbarkeit', [
   ('online-marketing.html','Online-Marketing & Digitalstrategie'), ('webdesign.html','Webdesign & Webentwicklung'),
-  ('social-media.html','Social Media & Content'), ('suchmaschinenoptimierung.html','Suchmaschinenoptimierung'),
-  ('domain-hosting-email.html','Domain, Hosting & E-Mail'), ('foto-video.html','Foto & Video')])]
+  ('website-pflege.html','Website-Pflege im Monatsabo'), ('onlineshop.html','Onlineshop Start'),
+  ('firmenprofile.html','Firmenprofile im Netz'), ('social-media.html','Social Media & Content'),
+  ('suchmaschinenoptimierung.html','Suchmaschinenoptimierung'), ('domain-hosting-email.html','Domain, Hosting & E-Mail'),
+  ('foto-video.html','Foto & Video')])]
 SECTIONS = [
  ('leistungen','Leistungen','leistungen.html','Alle Leistungsbereiche',SERVICE_GROUPS),
  ('profil','Über mich','ueber-mich.html','Kastriot Tafolli kennenlernen',[
@@ -22,7 +25,7 @@ SECTIONS = [
   ('Startseiten & Sprachen',[('index.html','Deutsch'),('en/','English'),('sq/','Shqip')])]),
  ('wissen','Wissen','wissen.html','Ratgeber & Werkzeuge',[
   ('Wissen für Ihr Projekt',[('wissen.html','Wissen · Übersicht'),('ki-automatisierung-kleine-unternehmen.html','KI Automatisierung für kleine Unternehmen'),('landingpage-erstellen-lassen.html','Landingpage erstellen lassen'),('angebot/','Texte und Übersetzungen')]),
-  ('Potenzial berechnen',[('rechner.html','Alle Potenzialrechner'),('rechner.html#ki','KI: Zeit & Arbeitsaufwand'),('rechner.html#social','Social Media & Sichtbarkeit')])]),
+  ('Potenzial berechnen',[('rechner.html','Alle Potenzialrechner'),('rechner.html#ki','KI: Zeit & Arbeitsaufwand'),('rechner.html#social','Social Media & Sichtbarkeit'),('preisrechner.html','Preisrechner')])]),
  ('kontakt','Kontakt','kontakt.html','Ein Projekt besprechen',[
   ('Zusammenarbeit',[('kontakt.html','Kontakt & Erstgespräch'),('kontakt.html#einsatzgebiet','Deutschland · Österreich · Schweiz · Kosovo'),('mailto:info@tafolli.net','E-Mail schreiben'),('tel:+4917664616146','+49 176 64616146')]),
   ('Rechtliches & Orientierung',[('impressum.html','Impressum'),('datenschutz.html','Datenschutz'),('404.html','Seite nicht gefunden · 404')])])]
