@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Gemeinsame Bausteine fuer alle Unterseiten. Kopf- und Fusszeile sind
 identisch zur Startseite, damit die Seite wie aus einem Guss wirkt."""
-import hashlib, pathlib, html
+import hashlib, pathlib
 from brand import lockup, intro
 from navigation import nav as site_nav, toggle as nav_toggle, breadcrumbs, TITLES
-from seo import metadata, structured, region, SERVICE_META, NOINDEX_PATHS
+from seo import region, SERVICE_META, NOINDEX_PATHS
 from explore import explore, HUBS
 
 WURZEL = pathlib.Path(__file__).resolve().parent.parent
@@ -68,42 +68,30 @@ def _anfrage_seite(pfad):
     return pfad.removesuffix('.html') in SERVICE_META or pfad in {'leistungen.html'} or pfad.startswith('sq/')
 
 
-def seiten_kopf(titel, beschreibung, kanonisch_pfad, faq=None, base='', lang='de', alternates=None):
+def asset_hints(base=''):
+    """Preload the header logo (LCP candidate) and the three above-the-fold fonts."""
+    return f'''<link rel="preload" as="image" href="{base}assets/brand/logo-mark-84.webp" fetchpriority="high">
+<link rel="preload" as="font" type="font/woff2" href="{base}assets/schriften/space-grotesk-var.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{base}assets/schriften/ibm-plex-sans-400.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{base}assets/schriften/bodoni-moda-400-italic.woff2" crossorigin>'''
+
+
+def seiten_kopf(titel, beschreibung, kanonisch_pfad, faq=None, base='', lang='de', alternates=None, home_label='Startseite', home_url=None):
     """<head>-Block. kanonisch_pfad z.B. 'ueber-mich.html'."""
-    titel, beschreibung = metadata(kanonisch_pfad, titel, beschreibung)
-    schema = structured(kanonisch_pfad, titel, beschreibung, lang, faq)
-    titel, beschreibung = html.escape(titel), html.escape(beschreibung)
-    kanonisch = f"https://tafolli.net/{'' if kanonisch_pfad == 'index.html' else kanonisch_pfad}"
+    from seo import meta_block
     robots = '<meta name="robots" content="noindex">\n' if kanonisch_pfad in NOINDEX_PATHS else ''
-    locale = {'de': 'de_DE', 'en': 'en_US', 'sq': 'sq_AL'}[lang]
-    alt = ''.join(f'<link rel="alternate" hreflang="{code}" href="{href}">\n' for code, href in (alternates or []))
+    # alternates are owned by seo.ALTERNATES so de/en/sq pairs stay reciprocal.
+    block = meta_block(kanonisch_pfad, titel, beschreibung, lang, faq, home_label, home_url)
     return f'''<!doctype html>
 <html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{robots}
-<title>{titel}</title>
-<meta name="description" content="{beschreibung}">
-<meta name="author" content="Kastriot Tafolli">
-<link rel="canonical" href="{kanonisch}">
-{alt}<meta property="og:type" content="website">
-<meta property="og:site_name" content="Kastriot Tafolli">
-<meta property="og:locale" content="{locale}">
-<meta property="og:title" content="{titel}">
-<meta property="og:description" content="{beschreibung}">
-<meta property="og:url" content="{kanonisch}">
-<meta property="og:image" content="https://tafolli.net/assets/social-preview.png">
-<meta name="twitter:card" content="summary_large_image">
-{schema}
+{robots}{block}
 <meta name="theme-color" content="#f3f1e9">
 <link rel="icon" type="image/svg+xml" href="{base}assets/brand/favicon.svg">
 <link rel="apple-touch-icon" href="{base}assets/brand/apple-touch-icon.png">
-<link rel="preload" as="image" href="{base}assets/brand/logo-mark-84.webp" fetchpriority="high">
-<link rel="preload" as="image" href="{base}assets/brand/logo-mark.webp">
-<link rel="preload" as="font" type="font/woff2" href="{base}assets/schriften/space-grotesk-var.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="{base}assets/schriften/ibm-plex-sans-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="{base}assets/schriften/bodoni-moda-400-italic.woff2" crossorigin>
+{asset_hints(base)}
 <link rel="stylesheet" href="{base}assets/schriften.css?v={VER}">
 <link rel="stylesheet" href="{base}assets/kt.css?v={VER}">
 <link rel="stylesheet" href="{base}assets/experience.css?v={VER}">
@@ -112,7 +100,7 @@ def seiten_kopf(titel, beschreibung, kanonisch_pfad, faq=None, base='', lang='de
 
 def kopfzeile(aktiv, base=""):
     sprachwahl = '<a href="/" hreflang="de" lang="de" title="Deutsch">DE</a><a href="/en/" hreflang="en" lang="en" title="English">EN</a><a href="/sq/" hreflang="sq" lang="sq" title="Shqip">SQ</a>'
-    return f'''<header class="bar site-header"><div class="shell bar-in"><a class="tafolli-brand-link" href="{base}index.html" aria-label="Kastriot Tafolli · Startseite">{lockup(base, 'assets/brand/logo-mark-84.webp')}</a>{site_nav(aktiv, base)}<div class="site-header-controls"><nav class="lang" aria-label="Sprache / Language / Gjuha">{sprachwahl}</nav><a href="{base}kontakt.html" class="btn btn-1 site-talk">Gespräch ↗</a>{nav_toggle()}</div></div></header>'''
+    return f'''<header class="bar site-header"><div class="shell bar-in"><a class="tafolli-brand-link" href="{base}index.html" aria-label="Kastriot Tafolli · Startseite">{lockup(base, 'assets/brand/logo-mark-84.webp', loading='eager', priority=True)}</a>{site_nav(aktiv, base)}<div class="site-header-controls"><nav class="lang" aria-label="Sprache / Language / Gjuha">{sprachwahl}</nav><a href="{base}kontakt.html" class="btn btn-1 site-talk">Gespräch ↗</a>{nav_toggle()}</div></div></header>'''
 
 
 def fusszeile(base=""):
@@ -133,9 +121,10 @@ def fusszeile(base=""):
       {sp("Schwerpunkte", FOOT_L2)}
       <div>
         <p class="tag" style="color:var(--paper);margin-bottom:17px">Kontakt</p>
+        <p style="color:var(--paper-dim);font-size:.9rem;padding:5px 0">Kastriot Tafolli</p>
+        <p style="color:var(--paper-dim);font-size:.9rem;padding:5px 0">Hauptstraße 1<br>18609 Ostseebad Binz</p>
         <a href="tel:+4917664616146" class="lnk" style="display:block;color:var(--paper-dim);font-size:.9rem;padding:5px 0">0176 64616146</a>
         <a href="mailto:info@tafolli.net" class="lnk" style="display:block;color:var(--paper-dim);font-size:.9rem;padding:5px 0">info@tafolli.net</a>
-        <p style="color:var(--paper-dim);font-size:.9rem;padding:5px 0">Hauptstraße 1, 18609 Ostseebad Binz</p>
       </div>
     </div>
     <div class="rule" style="padding-top:26px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center">
@@ -161,7 +150,8 @@ def seite_rahmen(aktiv, titel, beschreibung, kanonisch_pfad, inhalt, faq=None, b
     dock = anfrage_dock(base, lang) if _anfrage_seite(kanonisch_pfad) else ''
     body = ' class="has-anfrage-dock"' if dock else ''
     skip = {'de': 'Zum Inhalt springen', 'en': 'Skip to content', 'sq': 'Shko te përmbajtja'}[lang]
-    return f'''{seiten_kopf(titel, beschreibung, kanonisch_pfad, faq, base, lang, alternates)}
+    home_url = 'https://tafolli.net/sq/' if kanonisch_pfad.startswith('sq/') else 'https://tafolli.net/'
+    return f'''{seiten_kopf(titel, beschreibung, kanonisch_pfad, faq, base, lang, alternates, home_label, home_url)}
 <body{body}>
 {intro(lang, base)}
 <div class="grain" aria-hidden="true"></div>

@@ -2,6 +2,7 @@
 <urlset xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://tafolli.net/</loc>
+    <lastmod>2026-10-19</lastmod>
     <xhtml:link rel="alternate" hreflang="de" href="https://tafolli.net/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tafolli.net/en/"/>
     <xhtml:link rel="alternate" hreflang="sq" href="https://tafolli.net/sq/"/>
@@ -9,27 +10,34 @@
   </url>
   <url>
     <loc>https://tafolli.net/angebot/</loc>
+    <lastmod>2026-10-19</lastmod>
     <xhtml:link rel="alternate" hreflang="de" href="https://tafolli.net/angebot/"/>
     <xhtml:link rel="alternate" hreflang="sq" href="https://tafolli.net/sq/faqe-dhe-perkthime.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tafolli.net/angebot/"/>
   </url>
   <url>
     <loc>https://tafolli.net/app-entwicklung.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/cybersecurity.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/datenschutz.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/digitalisierung.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/domain-hosting-email.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/en/</loc>
+    <lastmod>2026-10-19</lastmod>
     <xhtml:link rel="alternate" hreflang="de" href="https://tafolli.net/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tafolli.net/en/"/>
     <xhtml:link rel="alternate" hreflang="sq" href="https://tafolli.net/sq/"/>
@@ -37,63 +45,82 @@
   </url>
   <url>
     <loc>https://tafolli.net/firmenprofile.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/foto-video.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/impressum.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/ki-automatisierung-arztpraxen.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/ki-automatisierung-kleine-unternehmen.html</loc>
+    <lastmod>2026-10-19</lastmod>
     <xhtml:link rel="alternate" hreflang="de" href="https://tafolli.net/ki-automatisierung-kleine-unternehmen.html"/>
     <xhtml:link rel="alternate" hreflang="sq" href="https://tafolli.net/sq/automatizim-ia.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tafolli.net/ki-automatisierung-kleine-unternehmen.html"/>
   </url>
   <url>
     <loc>https://tafolli.net/ki-automatisierung.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/ki-entwicklung.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/kontakt.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/landingpage-erstellen-lassen.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/leistungen.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/online-marketing.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/onlineshop-kleine-haendler.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/onlineshop.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/preisrechner.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/rechner.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/referenzen.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/social-media.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/softwareentwicklung.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/sq/</loc>
+    <lastmod>2026-10-19</lastmod>
     <xhtml:link rel="alternate" hreflang="de" href="https://tafolli.net/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://tafolli.net/en/"/>
     <xhtml:link rel="alternate" hreflang="sq" href="https://tafolli.net/sq/"/>
@@ -101,47 +128,60 @@
   </url>
   <url>
     <loc>https://tafolli.net/sq/automatizim-ia.html</loc>
+    <lastmod>2026-10-19</lastmod>
     <xhtml:link rel="alternate" hreflang="de" href="https://tafolli.net/ki-automatisierung-kleine-unternehmen.html"/>
     <xhtml:link rel="alternate" hreflang="sq" href="https://tafolli.net/sq/automatizim-ia.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tafolli.net/ki-automatisierung-kleine-unternehmen.html"/>
   </url>
   <url>
     <loc>https://tafolli.net/sq/faqe-dhe-perkthime.html</loc>
+    <lastmod>2026-10-19</lastmod>
     <xhtml:link rel="alternate" hreflang="de" href="https://tafolli.net/angebot/"/>
     <xhtml:link rel="alternate" hreflang="sq" href="https://tafolli.net/sq/faqe-dhe-perkthime.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tafolli.net/angebot/"/>
   </url>
   <url>
     <loc>https://tafolli.net/suchmaschinenoptimierung.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/teamo-ki.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/ueber-mich.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/web-apps.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/webdesign.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/website-fuer-handwerker.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/website-fuer-vereine.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/website-pflege-kleine-betriebe.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/website-pflege.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/werdegang.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
   <url>
     <loc>https://tafolli.net/wissen.html</loc>
+    <lastmod>2026-10-19</lastmod>
   </url>
 </urlset>
