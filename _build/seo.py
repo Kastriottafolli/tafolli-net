@@ -61,10 +61,10 @@ def metadata(path,title,description):return PAGE_META.get(path,(title,descriptio
 
 def texte_angebot():
  """Fixed text prices. Extra language and rush work have no published amount."""
- return {'@type':'Service','@id':ORIGIN+'angebot/#texte','name':'Texte und Übersetzungen','url':ORIGIN+'angebot/','description':'Weitere Sprache und Eilauftrag: Aufpreis nach Absprache. Mindestauftrag 30 €.','provider':{'@id':ORIGIN+'#business'},'areaServed':COUNTRIES,'offers':[
-  {'@type':'Offer','name':'Übersetzung Dokument/Prospekt','price':'49','priceCurrency':'EUR'},
-  {'@type':'Offer','name':'Website-Text','price':'59','priceCurrency':'EUR'},
-  {'@type':'Offer','name':'Content-Paket','price':'99','priceCurrency':'EUR'}]}
+ return {'@type':'Service','@id':ORIGIN+'angebot/#texte','name':'Texte und Übersetzungen','url':ORIGIN+'angebot/','description':'Weitere Sprache und Eilauftrag: Aufpreis nach Absprache.','provider':{'@id':ORIGIN+'#business'},'areaServed':COUNTRIES,'offers':[
+  {'@type':'Offer','name':'Übersetzung Dokument/Prospekt','price':'99','priceCurrency':'EUR'},
+  {'@type':'Offer','name':'Website-Text','price':'199','priceCurrency':'EUR'},
+  {'@type':'Offer','name':'Content-Paket','price':'299','priceCurrency':'EUR'}]}
 
 def structured(path,title,description,lang='de'):
  url=ORIGIN+('' if path=='index.html' else path)

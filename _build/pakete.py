@@ -218,9 +218,9 @@ def preisrechner():
       <div data-panel="texte" hidden>
         <fieldset>
           <legend>Textart</legend>
-          <label class="choice"><input type="radio" name="text" value="dokument" checked> Dokument oder Prospekt, 49 €</label>
-          <label class="choice"><input type="radio" name="text" value="website"> Website-Text, 59 €</label>
-          <label class="choice"><input type="radio" name="text" value="content"> Content-Paket, 99 €</label>
+          <label class="choice"><input type="radio" name="text" value="dokument" checked> Dokument oder Prospekt, 99 €</label>
+          <label class="choice"><input type="radio" name="text" value="website"> Website-Text, 199 €</label>
+          <label class="choice"><input type="radio" name="text" value="content"> Content-Paket, 299 €</label>
           <label class="choice"><input type="checkbox" data-weitere> Weitere Sprache</label>
           <label class="choice"><input type="checkbox" data-eil> Eilauftrag</label>
           <p>Weitere Sprache und Eilauftrag: Aufpreis nach Absprache. Der Paketpreis bleibt gleich.</p>

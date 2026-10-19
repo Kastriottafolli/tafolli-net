@@ -237,7 +237,7 @@ def leistungen():
     <div class="g3 pop-wrap">
       {schwerpunkt(0, "Künstliche Intelligenz", "KI Automatisierung für kleine Unternehmen", "Die erste Automatisierung zum Festpreis, zum Beispiel für E-Mail, Angebote oder Termine. Nichts geht ohne Ihre Freigabe hinaus.", ["E-Mail, Angebote oder Termine", "Freigabe bleibt bei Ihnen", "Festpreis-Angebot auf Anfrage", "Ein Ablauf zum Start"], "ki-automatisierung-kleine-unternehmen.html", "Angebot ansehen")}
       {schwerpunkt(1, "Website", "Landingpage erstellen lassen", "Website oder Landingpage zum Festpreis, inklusive Pflege und einem technischen Check. Keine Rechtsberatung.", ["Eine Seite mit Weg zur Anfrage", "Pflege nach Vereinbarung", "Technischer Website-Check", "Festpreis-Angebot auf Anfrage"], "landingpage-erstellen-lassen.html", "Angebot ansehen")}
-      {schwerpunkt(2, "Sprache", "Texte und Übersetzungen", "Deutsch, Englisch und Albanisch. Ich nutze KI für den ersten Entwurf und prüfe jeden Text selbst.", ["Website-Text, Dokument oder Content-Paket", "Drei Sprachen, jede Richtung", "Festpreise 49, 59 und 99 €", "Eine Korrekturrunde"], "angebot/", "Zum Übersetzungsangebot")}
+      {schwerpunkt(2, "Sprache", "Texte und Übersetzungen", "Deutsch, Englisch und Albanisch. Ich nutze KI für den ersten Entwurf und prüfe jeden Text selbst.", ["Website-Text, Dokument oder Content-Paket", "Drei Sprachen, jede Richtung", "Festpreise 99, 199 und 299 €", "Eine Korrekturrunde"], "angebot/", "Zum Übersetzungsangebot")}
     </div>
   </div>
 </section>

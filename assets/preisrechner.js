@@ -9,9 +9,9 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   var STUFEN = { '99': 'Basis', '199': 'Laufend', '299': 'Intensiv' };
   var TEXTE = {
-    dokument: [49, 'Dokument oder Prospekt'],
-    website: [59, 'Website-Text'],
-    content: [99, 'Content-Paket']
+    dokument: [99, 'Dokument oder Prospekt'],
+    website: [199, 'Website-Text'],
+    content: [299, 'Content-Paket']
   };
   var RECHT = 'Endpreis. Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.';
 
@@ -50,7 +50,7 @@
       var teile = [paket[1]];
       if (s.weitere) teile.push('weitere Sprache');
       if (s.eil) teile.push('Eilauftrag');
-      var satz = 'Einmalig: ' + teile.join(', ') + '. Ihre Auswahl: ' + euro(paket[0]) + '. Spanne: 49–99 €.';
+      var satz = 'Einmalig: ' + teile.join(', ') + '. Ihre Auswahl: ' + euro(paket[0]) + '. Spanne: 99–299 €.';
       if (s.weitere || s.eil) satz += ' Aufpreis nach Absprache.';
       lines.push(satz + ' Unverbindlich.');
     }
