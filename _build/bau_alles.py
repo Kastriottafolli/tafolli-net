@@ -40,10 +40,24 @@ SEITEN = {
 
 def angebot_auffrischen():
     """angebot/index.html is hand-authored. Refresh shared chrome so it matches the build."""
+    import json
     from bausteine import VER, fusszeile, kopfzeile
     from brand import intro
+    from seo import texte_angebot
     pfad = WURZEL / 'angebot' / 'index.html'
     text = pfad.read_text()
+    mark = '<script type="application/ld+json">'
+    begin = text.find(mark)
+    end = text.find('</script>', begin)
+    if begin < 0 or end < 0:
+        raise SystemExit('angebot/index.html: missing structured data')
+    data = json.loads(text[begin+len(mark):end])
+    angebot = texte_angebot()
+    data['@graph'] = [node for node in data['@graph'] if node.get('@id') != angebot['@id']]
+    place = next(i for i,node in enumerate(data['@graph']) if node.get('@type') == 'BreadcrumbList')
+    data['@graph'].insert(place, angebot)
+    blob = json.dumps(data, ensure_ascii=False).replace('<', '\\u003c')
+    text = text[:begin+len(mark)] + blob + text[end:]
     start = text.find('<div class="brand-intro"')
     grain = text.find('<div class="grain"')
     header = text.find('<header')

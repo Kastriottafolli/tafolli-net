@@ -9,9 +9,9 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   var STUFEN = { '99': 'Basis', '199': 'Laufend', '299': 'Intensiv' };
   var TEXTE = {
-    dokument: [49, 35, 'Dokument oder Prospekt'],
-    website: [59, 40, 'Website-Text'],
-    content: [99, 79, 'Content-Paket']
+    dokument: [49, 'Dokument oder Prospekt'],
+    website: [59, 'Website-Text'],
+    content: [99, 'Content-Paket']
   };
   var RECHT = 'Endpreis. Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.';
 
@@ -47,17 +47,12 @@
       lines.push(einheit('Einmalig', euro(komplett ? 899 : 399), '399–899 €').replace('Ihre Auswahl:', 'Firmenprofile ' + (komplett ? 'Komplett' : 'Basis') + '. Ihre Auswahl:'));
     } else if (leistung === 'texte') {
       var paket = TEXTE[s.text] || TEXTE.dokument;
-      var summe = paket[0];
-      var teile = [paket[2]];
-      if (s.weitere) {
-        summe += paket[1];
-        teile.push('weitere Sprache +' + euro(paket[1]));
-      }
-      if (s.eil) {
-        summe = Math.round(summe * 1.3);
-        teile.push('Eilauftrag +30 %');
-      }
-      lines.push(einheit('Einmalig', euro(summe), '49–99 €').replace('Ihre Auswahl:', teile.join(', ') + '. Ihre Auswahl:'));
+      var teile = [paket[1]];
+      if (s.weitere) teile.push('weitere Sprache');
+      if (s.eil) teile.push('Eilauftrag');
+      var satz = 'Einmalig: ' + teile.join(', ') + '. Ihre Auswahl: ' + euro(paket[0]) + '. Spanne: 49–99 €.';
+      if (s.weitere || s.eil) satz += ' Aufpreis nach Absprache.';
+      lines.push(satz + ' Unverbindlich.');
     }
     return lines;
   }

@@ -59,6 +59,13 @@ PAGE_META.update({slug+'.html':meta for slug,meta in SERVICE_META.items()})
 
 def metadata(path,title,description):return PAGE_META.get(path,(title,description))
 
+def texte_angebot():
+ """Fixed text prices. Extra language and rush work have no published amount."""
+ return {'@type':'Service','@id':ORIGIN+'angebot/#texte','name':'Texte und Übersetzungen','url':ORIGIN+'angebot/','description':'Weitere Sprache und Eilauftrag: Aufpreis nach Absprache. Mindestauftrag 30 €.','provider':{'@id':ORIGIN+'#business'},'areaServed':COUNTRIES,'offers':[
+  {'@type':'Offer','name':'Übersetzung Dokument/Prospekt','price':'49','priceCurrency':'EUR'},
+  {'@type':'Offer','name':'Website-Text','price':'59','priceCurrency':'EUR'},
+  {'@type':'Offer','name':'Content-Paket','price':'99','priceCurrency':'EUR'}]}
+
 def structured(path,title,description,lang='de'):
  url=ORIGIN+('' if path=='index.html' else path)
  identity=[
@@ -73,6 +80,8 @@ def structured(path,title,description,lang='de'):
  slug=path.removesuffix('.html')
  if path=='preisrechner.html':
   graph.append({'@type':'WebApplication','@id':url+'#app','name':'Preisrechner','url':url,'description':description,'applicationCategory':'BusinessApplication','offers':{'@type':'Offer','price':'0','priceCurrency':'EUR'},'provider':{'@id':ORIGIN+'#business'}})
+ elif path in ('angebot/','angebot/index.html'):
+  graph.append(texte_angebot())
  elif slug in SERVICE_META:
   service_name=TITLES.get(path) or title.split(' | ')[0]
   graph.append({'@type':'Service','@id':url+'#service','name':service_name,'serviceType':service_name,'url':url,'description':description,'provider':{'@id':ORIGIN+'#business'},'areaServed':COUNTRIES})

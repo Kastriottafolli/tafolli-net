@@ -222,7 +222,8 @@ def preisrechner():
           <label class="choice"><input type="radio" name="text" value="website"> Website-Text, 59 €</label>
           <label class="choice"><input type="radio" name="text" value="content"> Content-Paket, 99 €</label>
           <label class="choice"><input type="checkbox" data-weitere> Weitere Sprache</label>
-          <label class="choice"><input type="checkbox" data-eil> Eilauftrag, plus 30 %</label>
+          <label class="choice"><input type="checkbox" data-eil> Eilauftrag</label>
+          <p>Weitere Sprache und Eilauftrag: Aufpreis nach Absprache. Der Paketpreis bleibt gleich.</p>
         </fieldset>
       </div>
       <p id="preis-ergebnis" aria-live="polite" aria-atomic="true"></p>
