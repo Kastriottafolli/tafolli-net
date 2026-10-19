@@ -186,15 +186,15 @@ OFFERS={
  'de':[
   ('01','KI-AUTOMATISIERUNG','KI Automatisierung für kleine Unternehmen.','Die erste Automatisierung zum Festpreis: E-Mail, Angebote oder Termine. Nichts geht ohne Ihre Freigabe hinaus.','ki-automatisierung-kleine-unternehmen.html','Angebot ansehen'),
   ('02','WEBSITE & LANDINGPAGE','Landingpage erstellen lassen.','Website oder Landingpage zum Festpreis, inklusive Pflege und einem technischen Check.','landingpage-erstellen-lassen.html','Angebot ansehen'),
-  ('03','TEXTE & ÜBERSETZUNGEN','Deutsch, Englisch, Albanisch.','Texte und Übersetzungen in diesen drei Sprachen. Die Festpreise stehen auf der Angebotsseite.','angebot/','Preise ansehen')],
+  ('03','TEXTE & ÜBERSETZUNGEN','Deutsch, Englisch, Albanisch.','Texte und Übersetzungen in diesen drei Sprachen. Festpreise: 99, 199 und 299 €.','angebot/','Preise ansehen')],
  'en':[
   ('01','AI AUTOMATION','AI automation for small businesses.','A first automation at a fixed price: email, quotes or appointments. Nothing goes out without your approval.','ki-automatisierung-kleine-unternehmen.html','View the offer'),
   ('02','WEBSITE & LANDING PAGE','A landing page, built for you.','A website or landing page at a fixed price, including care and a technical check.','landingpage-erstellen-lassen.html','View the offer'),
-  ('03','TEXTS & TRANSLATION','German, English, Albanian.','Texts and translations in these three languages. The fixed prices are on the offer page.','angebot/','View the prices')],
+  ('03','TEXTS & TRANSLATION','German, English, Albanian.','Texts and translations in these three languages. Fixed prices: €99, €199 and €299.','angebot/','View the prices')],
  'sq':[
   ('01','AUTOMATIZIM ME IA','Automatizim me IA për biznese të vogla.','Automatizimi i parë me çmim fiks: email, oferta ose takime. Asgjë nuk del pa miratimin tuaj.','ki-automatisierung-kleine-unternehmen.html','Shikoni ofertën'),
   ('02','FAQE WEB & LANDINGPAGE','Një faqe që të çon te kontakti.','Faqe web ose landingpage me çmim fiks, me mirëmbajtje dhe një kontroll teknik.','landingpage-erstellen-lassen.html','Shikoni ofertën'),
-  ('03','TEKSTE & PËRKTHIME','Gjermanisht, anglisht, shqip.','Tekste dhe përkthime në këto tri gjuhë. Çmimet fikse janë në faqen e ofertës.','angebot/','Shikoni çmimet')]}
+  ('03','TEKSTE & PËRKTHIME','Gjermanisht, anglisht, shqip.','Tekste dhe përkthime në këto tri gjuhë. Çmime fikse: 99, 199 dhe 299 €.','angebot/','Shikoni çmimet')]}
 POSITIONING={
 'de':dict(title='KI, Websites und Texte für kleine Unternehmen | Kastriot Tafolli',description='Drei Angebote von Kastriot Tafolli: KI Automatisierung für kleine Unternehmen, Landingpage erstellen lassen und Texte auf Deutsch, Englisch und Albanisch. Festpreis nach Umfang.',hero=['KI, WEBSITES','UND TEXTE.','Für kleine Unternehmen.'],hero_text='Drei Angebote: die erste KI-Automatisierung, eine Website oder Landingpage, und Texte auf Deutsch, Englisch und Albanisch.',hero_cta='Anfrage senden',offers_link='Angebote ansehen',manifesto=['Ein Ablauf.','Eine Seite.','Ein Text.'],manifesto_text='Ein Ablauf kann Arbeit vorbereiten. Eine Seite kann den Weg zur Anfrage kurz machen. Ein Text kann auf Deutsch, Englisch oder Albanisch ankommen.',manifesto_small='Die erste Automatisierung, eine Website oder Landingpage und Übersetzungen. Den Festpreis nenne ich nach dem Umfang.',services_label='DIE ANGEBOTE',services_title=['Drei Angebote.','Klar getrennt.'],portfolio_link='Weitere Leistungen ansehen',about_title=['Code, Web und Texte.','Aus einer Hand.'],about_text='Ich bin Kastriot Tafolli, Inhaber von TB Solutions in Ostseebad Binz. Ich richte eine erste Automatisierung ein, baue Websites und Landingpages und prüfe Texte auf Deutsch, Englisch und Albanisch selbst.',cta_text='KI-Automatisierung, eine Landingpage oder eine Übersetzung: Schreiben Sie mir, worum es geht.',ask='Anfragen',credentials=[('TB Solutions','Sitz in Ostseebad Binz'),('DE · EN · SQ','Texte und Übersetzungen'),('KI & Code','Automatisierung und Websites')]),
 'en':dict(title='AI, websites and texts for small businesses | Kastriot Tafolli',description='Three offers from Kastriot Tafolli: a first AI automation, a website or landing page, and texts in German, English and Albanian. The fixed price follows the scope.',hero=['AI, WEBSITES','AND TEXTS.','For small businesses.'],hero_text='Three offers: a first AI automation, a website or landing page, and texts in German, English and Albanian.',hero_cta='Send a request',offers_link='View the offers',manifesto=['One workflow.','One page.','One text.'],manifesto_text='A workflow can prepare the work. A page can make the enquiry short. A text can arrive in German, English or Albanian.',manifesto_small='The first automation, a website or landing page, and translations. I name the fixed price after the scope is clear.',services_label='THE OFFERS',services_title=['Three offers.','Clearly separated.'],portfolio_link='See further services',about_title=['Code, web and texts.','From one person.'],about_text='I’m Kastriot Tafolli, owner of TB Solutions in Ostseebad Binz. I set up a first automation, build websites and landing pages, and review texts in German, English and Albanian myself.',cta_text='AI automation, a landing page or a translation: tell me what you need.',ask='Get in touch',credentials=[('TB Solutions','Based in Ostseebad Binz'),('DE · EN · SQ','Texts and translations'),('AI & code','Automation and websites')]),
@@ -205,6 +205,28 @@ for language,values in POSITIONING.items():
     COPY[language]['automation_cta']=COPY[language]['hero_cta']
     COPY[language].update(values)
     COPY[language]['services']=OFFERS[language]
+
+EXTRA={
+ 'de':dict(extra_label='WEITERE FESTPREISE',extra_title=['Weitere Festpreise.','Kurz gesagt.'],extra_text='Pflege, ein kleiner Shop, ein Werkzeug und Firmenprofile. Die Schätzung im Preisrechner ist unverbindlich.',extra_items=[
+  ('Website-Pflege','Updates, Backups, kleine Änderungen. Monatlich kündbar.','99 / 199 / 299 € im Monat','website-pflege.html'),
+  ('Onlineshop','Einrichtung und Einweisung. Stufen Start und Erweitert.','ab 990 €','onlineshop.html'),
+  ('Web-App oder Tool','Ein kleiner Ablauf. Größeres nach Angebot.','ab 390 €','web-apps.html'),
+  ('Firmenprofile im Netz','Google-Profil und Verzeichnisse, gleiche Angaben.','399–899 €','firmenprofile.html'),
+  ('Preisrechner','Unverbindliche Schätzung, kein Angebot.','kostenlos','preisrechner.html')]),
+ 'en':dict(extra_label='MORE FIXED PRICES',extra_title=['More fixed prices.','In short.'],extra_text='Care, a small shop, a tool and business profiles. The estimate in the price calculator is non-binding. Detail pages are in German.',extra_items=[
+  ('Website care','Updates, backups, small edits. Cancel any month.','€99 / €199 / €299 per month','website-pflege.html'),
+  ('Online shop','Setup and a walkthrough. Stages Start and Extended.','from €990','onlineshop.html'),
+  ('Web app or tool','One small workflow. Larger work by quote.','from €390','web-apps.html'),
+  ('Business profiles','Google profile and directories, the same details.','€399–€899','firmenprofile.html'),
+  ('Price calculator','A non-binding estimate, not a quote.','free','preisrechner.html')]),
+ 'sq':dict(extra_label='ÇMIME TË TJERA FIKSE',extra_title=['Çmime të tjera fikse.','Shkurt.'],extra_text='Mirëmbajtje, një dyqan i vogël, një mjet dhe profile biznesi. Vlerësimi në kalkulator është i paobliguar. Faqet e detajuara janë në gjermanisht.',extra_items=[
+  ('Mirëmbajtje e faqes','Përditësime, kopje rezervë, ndryshime të vogla. Anulohet çdo muaj.','99 / 199 / 299 € në muaj','website-pflege.html'),
+  ('Dyqan online','Ngritje dhe udhëzim. Hosting mbetet te ju ose te ofruesi.','nga 990 €','onlineshop.html'),
+  ('Aplikacion ose mjet','Një proces i vogël. Më i madh me ofertë.','nga 390 €','web-apps.html'),
+  ('Profile biznesi','Profili në Google dhe direktori, të njëjtat të dhëna.','399–899 €','firmenprofile.html'),
+  ('Kalkulator çmimesh','Vlerësim i paobliguar, jo ofertë.','falas','preisrechner.html')])}
+for code,values in EXTRA.items():
+    COPY[code].update(values)
 
 AUTOMATION={
  'de':dict(description='KI-Automatisierung als Service: Workflows, Systemanbindung und laufende Betreuung von Kastriot Tafolli. Für Unternehmen in Deutschland, Österreich, der Schweiz und Kosovo.',hero_text='Ich baue KI-Systeme, die Arbeit übernehmen. Damit Ihr Team wieder Zeit für das hat, was Menschen am besten können.',hero_cta='Automation entdecken'),

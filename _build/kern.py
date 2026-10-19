@@ -32,6 +32,7 @@ def ki_kleine():
         ("03", "Termine", "Terminanfragen werden gesammelt und ein Vorschlag vorbereitet. Bestätigt wird der Termin erst von Ihnen."),
     ])}
     <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:28px">Welche Systeme angebunden werden, hängt von dem ab, was Sie schon nutzen. Das steht im Festpreis-Angebot, nicht als pauschales Versprechen.</p>
+    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch">Ein einzelnes Werkzeug oder eine kleine Web-App ist ein anderes Angebot und beginnt bei 390 €. <a href="web-apps.html">Web-App oder Tool nach Maß</a></p>
   </div>
 </section>
 <section class="pad" style="background:var(--ink-2)">
@@ -72,6 +73,7 @@ def landingpage():
         ("02", "Pflege und Wartung", "Nach dem Start kann ich Texte, Technik und kleine Änderungen betreuen. Der Umfang steht im Festpreis-Angebot, nicht als offene Pauschale."),
         ("03", "Technischer Website-Check", "Ich prüfe, ob die Seite auf dem Telefon bedienbar ist, ob Titel und Beschreibungen da sind und ob der Kontaktweg funktioniert."),
     ])}
+    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:28px">Die laufende Pflege gibt es auch als Monatsabo: 99, 199 oder 299 €. <a href="website-pflege.html">Website-Pflege im Monatsabo</a></p>
   </div>
 </section>
 <section class="pad" style="background:var(--ink-2)">
@@ -85,7 +87,7 @@ def landingpage():
   </div>
 </section>''' + faq_block("04", "Häufige Fragen", [["Vor dem"], ["Festpreis."]], (faq := [
         ("Was kostet eine Landingpage?", "Festpreis-Angebot auf Anfrage. Der Preis hängt davon ab, ob es eine einzelne Seite oder eine kleine Website ist und ob Texte schon vorliegen."),
-        ("Ist die Pflege im ersten Preis enthalten?", "Nur, wenn wir sie in den Umfang schreiben. Sonst ist die Pflege ein eigener, vorher beschriebener Auftrag."),
+        ("Ist die Pflege im ersten Preis enthalten?", "Nur, wenn wir sie in den Umfang schreiben. Sonst ist die Pflege ein eigener Auftrag. Das Monatsabo steht unter <a href=\"website-pflege.html\">Website-Pflege</a>: 99, 199 oder 299 €."),
         ("Prüfen Sie die Seite rechtlich?", "Nein. Barrierefreiheit und Datenschutz prüfe ich als Technik: Bedienung, Beschriftung, Kontrast und ob Daten auf der Website gespeichert werden. Eine rechtliche Aussage mache ich nicht."),
         ("Kann eine vorhandene Seite überarbeitet werden?", "Ja, wenn die Zugänge da sind. Was bleibt und was neu wird, steht vor dem Start im Angebot."),
     ])) + cta_block(

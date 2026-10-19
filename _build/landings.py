@@ -26,10 +26,10 @@ for _path in ('sq/faqe-dhe-perkthime.html', 'sq/automatizim-ia.html'):
         raise SystemExit(f'{_path}: title {len(_title)}, description {len(_desc)}')
 
 
-def _aktionen(anfrage='Anfragen', rechner='Zum Rechner', base=''):
+def _aktionen(anfrage='Anfragen', rechner='Zum Preisrechner', base=''):
     return f'''<div class="rise" style="display:flex;flex-wrap:wrap;gap:13px;margin-top:22px">
       <a class="btn btn-1" href="{base}kontakt.html">{anfrage}</a>
-      <a class="btn btn-2" href="{base}rechner.html">{rechner}</a>
+      <a class="btn btn-2" href="{base}preisrechner.html">{rechner}</a>
     </div>'''
 
 
@@ -45,16 +45,16 @@ def _seite(pfad, inhalt, faq, **kwargs):
 def handwerker():
     faq = [
         ('Was kostet eine Website für einen Handwerksbetrieb?', 'Den Preis für die Website nenne ich, wenn der Umfang klar ist. Das ist ein Festpreis-Angebot auf Anfrage. Einen Betrag vor diesem Gespräch nenne ich nicht.'),
-        ('Was kostet ein Text für die Seite?', 'Ein Website-Text kostet 59 €. Das sind bis etwa 500 Wörter, zum Beispiel die Startseite. Mehrere Seiten zusammen sind das Content-Paket für 99 €, bis etwa 1.000 Wörter.'),
+        ('Was kostet ein Text für die Seite?', 'Ein Website-Text kostet 199 €. Das sind etwa 1.500 Wörter, inklusive Title und Meta. Lieferzeit: 5 Werktage. Mehrere Seiten zusammen sind das Content-Paket für 299 €, etwa 3.000 Wörter inklusive Glossar, in 7 Werktagen.'),
         ('Kann die Seite auf dem Telefon bedient werden?', 'Ja. Nummer, Leistungen und Einsatzgebiet müssen auf dem Telefon sofort zu finden sein. Das prüfe ich vor dem Start.'),
-        ('Wer ändert später einen Satz?', 'Sie können mich dafür beauftragen. Die Pflege ist ein eigener Auftrag. Was dazu gehört und was es kostet, schreibe ich vorher auf.'),
+        ('Wer ändert später einen Satz?', 'Dafür gibt es die Website-Pflege im Monatsabo. Die Stufen heißen Basis, Laufend und Intensiv. Sie kosten 99, 199 oder 299 € im Monat.'),
         ('Bauen Sie auch einen Shop für Ersatzteile?', 'Ein kleiner Shop ist ein eigenes Angebot. Schauen Sie auf die Seite für kleine Händler, wenn Sie Waren verkaufen wollen.'),
     ]
     inhalt = hero_klein(
         '01', 'Für Handwerker',
         [['Website'], ['für Handwerker.']],
         'Kunden suchen Ihren Betrieb auf dem Telefon. Sie wollen sehen, was Sie machen, wo Sie hinfahren und wie sie Sie erreichen.',
-        ['Festpreis nach Umfang', 'Texte 59 € und 99 €', 'Anfrage auf dem Telefon'],
+        ['Festpreis nach Umfang', 'Texte 199 € und 299 €', 'Anfrage auf dem Telefon'],
     ) + _aktionen() + f'''
 <section class="pad" id="probleme" style="scroll-margin-top:110px">
   <div class="shell">
@@ -73,10 +73,10 @@ def handwerker():
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([['Was es kostet.'], ['Nur die Preise, die schon gelten.']])}</h2>
     {karten_grid([
         ('01', 'Kleine Website', 'Seiten für Leistungen, Einsatzgebiet und Kontakt. Den Festpreis schreibe ich auf, wenn klar ist, wie viele Seiten es sind und ob die Texte schon da sind.'),
-        ('02', 'Website-Text · 59 €', 'Bis etwa 500 Wörter. Zum Beispiel die Startseite: was Sie tun, für wen, und wie man Sie ruft. Eine Korrekturrunde. Lieferzeit: 3 Werktage.'),
-        ('03', 'Content-Paket · 99 €', 'Bis etwa 1.000 Wörter, mehrere Seiten zusammen. Eine Korrekturrunde. Lieferzeit: 5 Werktage. Eine weitere Sprache kostet 79 € dazu.'),
+        ('02', 'Website-Text · 199 €', 'Etwa 1.500 Wörter. Zum Beispiel die Startseite: was Sie tun, für wen, und wie man Sie ruft. Title und Meta sind enthalten. Eine Korrekturrunde. Lieferzeit: 5 Werktage.'),
+        ('03', 'Content-Paket · 299 €', 'Etwa 3.000 Wörter, mehrere Seiten zusammen, inklusive Glossar. Eine Korrekturrunde. Lieferzeit: 7 Werktage. Eine weitere Sprache ist ein Aufpreis nach Absprache.'),
     ])}
-    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:22px">Die Pflege danach ist kein Teil dieser Preise. Den Umfang der Pflege nenne ich extra, bevor Sie zusagen.</p>
+    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:22px">Ein Dokument oder Prospekt kostet 99 €, etwa 1.200 Wörter, in 3 Werktagen. Die Pflege danach ist das Monatsabo: Basis 99 €, Laufend 199 €, Intensiv 299 €.</p>
   </div>
 </section>
 <section class="pad" id="leistung" style="scroll-margin-top:110px">
@@ -98,10 +98,10 @@ def handwerker():
         ('angebot/', 'Texte und Übersetzungen'),
         ('website-pflege-kleine-betriebe.html', 'Website-Pflege für kleine Betriebe'),
         ('onlineshop-kleine-haendler.html', 'Onlineshop für kleine Händler'),
-        ('rechner.html', 'Rechner'),
+        ('preisrechner.html', 'Preisrechner'),
     ]) + cta_block('// nächster schritt', [['Welche Leistung'], ['soll auf der Seite stehen?']],
         'Schreiben Sie mir Ihren Beruf und Ihren Ort. Danach bekommen Sie ein Festpreis-Angebot.',
-        'Anfragen', 'kontakt.html', 'Zum Rechner', 'rechner.html')
+        'Anfragen', 'kontakt.html', 'Zum Preisrechner', 'preisrechner.html')
     return _seite('website-fuer-handwerker.html', inhalt, faq)
 
 
@@ -140,7 +140,7 @@ def praxen():
         ('02', 'Termin vorbereiten', 'Eine Terminanfrage wird gesammelt. Ein Vorschlag steht da. Gebucht wird der Termin erst, wenn Sie ihn freigeben.'),
         ('03', 'Festpreis-Angebot auf Anfrage', 'Es gibt hier keinen Listenpreis. Ich schreibe den Umfang und den Preis auf, nachdem der Ablauf und die Anbindung klar sind.'),
     ], 'g3')}
-    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:22px">Texte für die Praxis-Website sind ein anderes Angebot: 59 € für einen Website-Text, 99 € für ein Content-Paket. Die stehen auf der Angebotsseite.</p>
+    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:22px">Texte für die Praxis-Website sind ein anderes Angebot: 199 € für einen Website-Text, etwa 1.500 Wörter inklusive Title und Meta. Das Content-Paket kostet 299 €, etwa 3.000 Wörter inklusive Glossar.</p>
   </div>
 </section>
 <section class="pad" id="leistung" style="scroll-margin-top:110px">
@@ -161,26 +161,26 @@ def praxen():
         ('ki-automatisierung.html', 'KI-Automatisierung'),
         ('sq/automatizim-ia.html', 'Automatizim me IA auf Albanisch'),
         ('angebot/', 'Texte und Übersetzungen'),
-        ('rechner.html', 'Rechner'),
+        ('preisrechner.html', 'Preisrechner'),
     ]) + cta_block('// nächster schritt', [['E-Mail oder Termin.'], ['Was soll der erste Schritt sein?']],
         'Schreiben Sie mir, welches Programm Sie für Mail und Kalender nutzen. Patientendaten brauchen Sie mir nicht zu schicken.',
-        'Anfragen', 'kontakt.html', 'Zum Rechner', 'rechner.html')
+        'Anfragen', 'kontakt.html', 'Zum Preisrechner', 'preisrechner.html')
     return _seite('ki-automatisierung-arztpraxen.html', inhalt, faq)
 
 
 def vereine():
     faq = [
         ('Was kostet eine Website für einen Verein?', 'Festpreis-Angebot auf Anfrage. Der Preis hängt davon ab, wie viele Seiten es sind und ob Texte schon vorliegen.'),
-        ('Was kostet der Text für die Startseite?', '59 €. Das ist ein Website-Text bis etwa 500 Wörter, mit einer Korrekturrunde. Lieferzeit: 3 Werktage.'),
-        ('Wir haben mehrere Seiten: Vorstand, Termine, Mitgliedschaft.', 'Dafür gibt es das Content-Paket für 99 €, bis etwa 1.000 Wörter. Eine weitere Sprache kostet 79 € dazu.'),
-        ('Kann der Vorstand später selbst einen Termin ändern?', 'Ja, wenn wir das so einrichten. Sonst übernehme ich die Änderung als Pflege. Den Umfang schreibe ich vorher auf.'),
+        ('Was kostet der Text für die Startseite?', '199 €. Das ist ein Website-Text mit etwa 1.500 Wörtern, inklusive Title und Meta. Eine Korrekturrunde. Lieferzeit: 5 Werktage.'),
+        ('Wir haben mehrere Seiten: Vorstand, Termine, Mitgliedschaft.', 'Dafür gibt es das Content-Paket für 299 €, etwa 3.000 Wörter inklusive Glossar. Eine weitere Sprache ist ein Aufpreis nach Absprache.'),
+        ('Kann der Vorstand später selbst einen Termin ändern?', 'Ja, wenn wir das so einrichten. Sonst übernimmt das die Website-Pflege. Die Stufen heißen Basis, Laufend und Intensiv: 99, 199 oder 299 € im Monat.'),
         ('Müssen wir ein großes System kaufen?', 'Nein. Für viele Vereine reicht eine kleine Seite mit Kontakt und den nächsten Terminen.'),
     ]
     inhalt = hero_klein(
         '03', 'Für Vereine',
         [['Website'], ['für Vereine.']],
         'Mitglieder und Gäste des Vereins suchen Termine, den Vorstand und einen Weg zur Mitgliedschaft. Oft steht das nur in einer alten PDF.',
-        ['Festpreis nach Umfang', 'Texte 59 € und 99 €', 'kleine Seite reicht oft'],
+        ['Festpreis nach Umfang', 'Texte 199 € und 299 €', 'kleine Seite reicht oft'],
     ) + _aktionen() + f'''
 <section class="pad" id="probleme" style="scroll-margin-top:110px">
   <div class="shell">
@@ -199,10 +199,10 @@ def vereine():
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([['Klein starten.'], ['Preise bleiben.']])}</h2>
     {karten_grid([
         ('01', 'Vereinsseite', 'Start, Termine, Kontakt, Mitgliedschaft. Den Festpreis nenne ich, wenn die Seitenzahl klar ist. Es gibt keinen Preis von der Stange für die ganze Seite.'),
-        ('02', 'Website-Text · 59 €', 'Ein Text bis etwa 500 Wörter. Zum Beispiel „Über den Verein“ oder die Startseite. Eine Korrekturrunde. 3 Werktage.'),
-        ('03', 'Content-Paket · 99 €', 'Mehrere Texte zusammen, bis etwa 1.000 Wörter. Eine Korrekturrunde. 5 Werktage.'),
+        ('02', 'Website-Text · 199 €', 'Etwa 1.500 Wörter. Zum Beispiel „Über den Verein“ oder die Startseite, inklusive Title und Meta. Eine Korrekturrunde. 5 Werktage.'),
+        ('03', 'Content-Paket · 299 €', 'Mehrere Texte zusammen, etwa 3.000 Wörter, inklusive Glossar. Eine Korrekturrunde. 7 Werktage.'),
     ])}
-    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:22px">Ein kurzes Dokument, zum Beispiel ein Hinweisblatt, ist die Übersetzung für 49 €. Das gilt, wenn der Text schon da ist und nur in eine andere Sprache soll.</p>
+    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:22px">Ein Dokument oder Prospekt, zum Beispiel ein Hinweisblatt, kostet 99 €. Etwa 1.200 Wörter, 3 Werktage. Eine weitere Sprache ist ein Aufpreis nach Absprache.</p>
   </div>
 </section>
 <section class="pad" id="leistung" style="scroll-margin-top:110px">
@@ -226,24 +226,24 @@ def vereine():
         ('domain-hosting-email.html', 'Domain, Hosting und E-Mail'),
     ]) + cta_block('// nächster schritt', [['Wie viele Seiten'], ['braucht der Verein?']],
         'Schreiben Sie mir den Namen des Vereins und was heute schon online ist. Den Festpreis bekommen Sie danach.',
-        'Anfragen', 'kontakt.html', 'Zum Rechner', 'rechner.html')
+        'Anfragen', 'kontakt.html', 'Zum Preisrechner', 'preisrechner.html')
     return _seite('website-fuer-vereine.html', inhalt, faq)
 
 
 def pflege():
     faq = [
-        ('Gibt es einen festen Monatspreis für die Pflege?', 'Nein. Auf dieser Seite steht keiner, weil keiner vereinbart ist. Ich schreibe den Umfang und den Preis auf, bevor die Pflege startet.'),
-        ('Was kann ein einzelner Text kosten?', 'Ein Website-Text kostet 59 €. Das ist ein Text bis etwa 500 Wörter, mit einer Korrekturrunde. Nicht die ganze Betreuung der Seite.'),
+        ('Gibt es einen festen Monatspreis für die Pflege?', 'Ja. Drei Stufen: Basis 99 €, Laufend 199 €, Intensiv 299 € im Monat. Monatlich kündbar.'),
+        ('Was kann ein einzelner Text kosten?', 'Ein Website-Text kostet 199 €. Etwa 1.500 Wörter, inklusive Title und Meta, eine Korrekturrunde, 5 Werktage. Das ist nicht die ganze Betreuung der Seite.'),
         ('Prüfen Sie, ob das Formular noch geht?', 'Ja, wenn das im Auftrag steht. Dazu gehören der Kontaktweg, die Ansicht auf dem Telefon und ob Titel und Beschreibung da sind.'),
         ('Ist das eine rechtliche Prüfung?', 'Nein. Ich prüfe die Technik. Ob eine Seite eine Pflicht erfüllt, sage ich nicht.'),
         ('Können Sie auch die Domain und die E-Mail mit betreuen?', 'Ja, als eigener Punkt im Auftrag. Zugänge und Anbieter klären wir vorher.'),
-        ('Wie kündigen wir die Pflege?', 'Das steht im Angebot, zusammen mit dem Umfang. Einen offenen Vertrag ohne Ende gibt es bei mir nicht als Standard.'),
+        ('Wie kündigen wir die Pflege?', 'Monatlich, zum Ende des laufenden Monats. Es gibt keine Mindestlaufzeit.'),
     ]
     inhalt = hero_klein(
         '04', 'Pflege',
         [['Website-Pflege'], ['für kleine Betriebe.']],
         'Die Seite ist online. Danach ändert sich der Preis, die Öffnungszeit oder ein Satz. Oft bleibt der alte Stand stehen.',
-        ['Umfang vor dem Start', 'kein Listenpreis pro Monat', 'Texte einzeln 59 €'],
+        ['Basis 99 €', 'Laufend 199 €', 'Intensiv 299 €'],
     ) + _aktionen() + f'''
 <section class="pad" id="probleme" style="scroll-margin-top:110px">
   <div class="shell">
@@ -261,10 +261,11 @@ def pflege():
     {kicker('03', 'Pakete')}
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([['Pflege ist ein Auftrag.'], ['Kein offener Topf.']])}</h2>
     {karten_grid([
-        ('01', 'Pflege-Auftrag', 'Zum Beispiel Texte tauschen, ein Formular prüfen, Titel und Kontaktweg ansehen. Den Preis nenne ich, wenn die Liste feststeht. Einen Monatspreis erfinde ich hier nicht.'),
-        ('02', 'Website-Text · 59 €', 'Wenn nur ein Text neu soll: bis etwa 500 Wörter, eine Korrekturrunde, 3 Werktage. Das ist der bestehende Textpreis, nicht die ganze Pflege.'),
-        ('03', 'Technischer Check', 'Telefon-Ansicht, Tastatur, Alternativtexte, ob ein Formular Daten auf der Website speichert. Das ist Technik, keine Rechtsberatung und kein Zertifikat.'),
+        ('99 €', 'Basis', 'Updates, soweit ich Zugang habe. Einmal im Monat prüfe ich das Backup. Eine kleine Änderung im Monat. Antwort innerhalb von fünf Werktagen.'),
+        ('199 €', 'Laufend', 'Alles aus Basis. Bis zu vier kleine Änderungen im Monat. Antwort innerhalb von drei Werktagen. Ich prüfe Startseite und Kontaktweg.'),
+        ('299 €', 'Intensiv', 'Alles aus Laufend. Bis zu acht kleine Änderungen im Monat. Eine davon ist ein neuer Abschnitt auf einer bestehenden Seite. Antwort innerhalb von zwei Werktagen.'),
     ])}
+    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:22px">Ein neuer Website-Text kostet 199 €: etwa 1.500 Wörter, inklusive Title und Meta, 5 Werktage. Das ist nicht das Monatsabo. Hosting zahlen Sie an Ihren Anbieter.</p>
   </div>
 </section>
 <section class="pad" id="leistung" style="scroll-margin-top:110px">
@@ -288,14 +289,14 @@ def pflege():
         ('website-fuer-vereine.html', 'Website für Vereine'),
     ]) + cta_block('// nächster schritt', [['Was soll sich'], ['auf der Seite ändern?']],
         'Schicken Sie mir die Adresse der Seite und einen Satz, was nicht mehr stimmt. Den Preis nenne ich danach.',
-        'Anfragen', 'kontakt.html', 'Zum Rechner', 'rechner.html')
+        'Anfragen', 'kontakt.html', 'Zum Preisrechner', 'preisrechner.html')
     return _seite('website-pflege-kleine-betriebe.html', inhalt, faq)
 
 
 def haendler():
     faq = [
-        ('Was kostet ein kleiner Onlineshop?', 'Festpreis-Angebot auf Anfrage. Der Preis hängt von der Zahl der Produkte, der Zahlung und dem Versand ab. Einen Betrag vor diesem Gespräch nenne ich nicht.'),
-        ('Was kosten die Produkttexte?', 'Ein Website-Text kostet 59 €, bis etwa 500 Wörter. Mehrere Produkttexte zusammen sind das Content-Paket für 99 €, bis etwa 1.000 Wörter.'),
+        ('Was kostet ein kleiner Onlineshop?', 'Stufe Start kostet 990 €. Stufe Erweitert kostet 1.990 €. Beides sind Endpreise. Hosting und Shop-Software zahlen Sie an den Anbieter.'),
+        ('Was kosten die Produkttexte?', 'Ein Website-Text kostet 199 €, etwa 1.500 Wörter inklusive Title und Meta. Mehrere Produkttexte zusammen sind das Content-Paket für 299 €, etwa 3.000 Wörter inklusive Glossar.'),
         ('Brauchen wir ein großes Shopsystem?', 'Oft nein. Ein kleines Sortiment braucht eine klare Liste, einen Preis und einen Weg zur Bestellung oder zur Anfrage.'),
         ('Richten Sie Zahlung und Versand ein?', 'Nur, was wir vorher aufschreiben. Welche Anbieter dazukommen, steht im Festpreis-Angebot, nicht als pauschales Versprechen.'),
         ('Können Leute auch nur anfragen, statt sofort zu zahlen?', 'Ja. Für manche Waren ist eine Anfrage der bessere Weg. Das legen wir vor dem Bau fest.'),
@@ -304,7 +305,7 @@ def haendler():
         '05', 'Für Händler',
         [['Onlineshop'], ['für kleine Händler.']],
         'Sie verkaufen ein überschaubares Sortiment. Die Ware steht auf Fotos in einem Messenger. Ein eigener Shop fehlt, oder er ist zu groß für den Alltag.',
-        ['Festpreis nach Umfang', 'Produkttexte 59 € und 99 €', 'kleines Sortiment'],
+        ['Start 990 €', 'Erweitert 1.990 €', 'Produkttexte ab 199 €'],
     ) + _aktionen() + f'''
 <section class="pad" id="probleme" style="scroll-margin-top:110px">
   <div class="shell">
@@ -322,9 +323,9 @@ def haendler():
     {kicker('03', 'Pakete')}
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([['Shop und Texte'], ['getrennt rechnen.']])}</h2>
     {karten_grid([
-        ('01', 'Kleiner Shop', 'Produktliste, Preis, Versand oder Anfrage. Den Festpreis nenne ich, wenn die Produktzahl und die Zahlung klar sind.'),
-        ('02', 'Website-Text · 59 €', 'Ein Text bis etwa 500 Wörter. Zum Beispiel eine Warengruppe oder die Seite zum Versand. Eine Korrekturrunde. 3 Werktage.'),
-        ('03', 'Content-Paket · 99 €', 'Mehrere Produkttexte zusammen, bis etwa 1.000 Wörter. Eine Korrekturrunde. 5 Werktage.'),
+        ('990 €', 'Start', 'Kleiner Shop bei dem Anbieter, den wir vorher festlegen. Kategorien und Produkte aus einer Liste, die Sie liefern. Ein Zahlungsweg. Eine Einweisung.'),
+        ('1.990 €', 'Erweitert', 'Alles aus Start. Mehrere Kategorien. Mehr als ein Zahlungsweg, soweit der Anbieter das hergibt. Produktdaten aus einer Datei. Einweisung plus eine kurze schriftliche Übergabe.'),
+        ('199 €', 'Produkttexte', 'Ein Website-Text kostet 199 €, etwa 1.500 Wörter inklusive Title und Meta, in 5 Werktagen. Das Content-Paket kostet 299 €, etwa 3.000 Wörter inklusive Glossar, in 7 Werktagen.'),
     ])}
     <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:22px">Zahlung, Versand und Steuer richten sich nach Ihrem Fall. Was davon im Auftrag liegt, steht im Angebot. Eine Rechtsberatung ist das nicht.</p>
   </div>
@@ -348,17 +349,17 @@ def haendler():
         ('angebot/', 'Texte und Übersetzungen'),
         ('website-fuer-handwerker.html', 'Website für Handwerker'),
         ('landingpage-erstellen-lassen.html', 'Landingpage erstellen lassen'),
-        ('rechner.html', 'Rechner'),
+        ('preisrechner.html', 'Preisrechner'),
     ]) + cta_block('// nächster schritt', [['Wie viele Produkte'], ['sollen in den Shop?']],
         'Schreiben Sie mir, was Sie verkaufen und ob Leute direkt zahlen oder erst anfragen sollen.',
-        'Anfragen', 'kontakt.html', 'Zum Rechner', 'rechner.html')
+        'Anfragen', 'kontakt.html', 'Zum Preisrechner', 'preisrechner.html')
     return _seite('onlineshop-kleine-haendler.html', inhalt, faq)
 
 
 def faqe_dhe_perkthime():
     faq = [
-        ('Sa kushton një tekst?', 'Teksti i faqes kushton 59 €, deri në rreth 500 fjalë, me një raund korrigjimi. Paketa e përmbajtjes kushton 99 €, deri në rreth 1.000 fjalë. Një dokument i shkurtër kushton 49 €.'),
-        ('A janë çmimet për një gjuhë?', 'Po. Gjuhët janë gjermanisht, anglisht dhe shqip, në çdo drejtim. Një gjuhë tjetër kushton shtesë: 35 €, 40 € ose 79 €, sipas paketës.'),
+        ('Sa kushton një tekst?', 'Dokumenti ose prospekti kushton 99 €, rreth 1.200 fjalë, për 3 ditë pune. Teksti i faqes kushton 199 €, rreth 1.500 fjalë, me titull dhe meta, për 5 ditë pune. Paketa e përmbajtjes kushton 299 €, rreth 3.000 fjalë, me një fjalorth të shkurtër, për 7 ditë pune.'),
+        ('A janë çmimet për një gjuhë?', 'Po. Gjuhët janë gjermanisht, anglisht dhe shqip, në çdo drejtim. Një gjuhë tjetër dhe porosia urgjente janë shtesë sipas marrëveshjes.'),
         ('A i bëni përkthime të noterizuara?', 'Jo. Nuk përkthej dokumente zyrtare si certifikata. Nuk shkruaj as tekste juridike apo mjekësore.'),
         ('Sa kushton vetë faqja e internetit?', 'Çmimin fiks e them pasi të di sa faqe duhen dhe a i keni tekstet gati. Nuk kam një çmim të gatshëm për çdo faqe.'),
         ('Kush e lexon tekstin para se të ma dërgoni?', 'Unë. IA mund të bëjë draftin e parë. Tekstin e lexoj dhe e korrigjoj vetë, para se të vijë te ju.'),
@@ -368,7 +369,7 @@ def faqe_dhe_perkthime():
         '01', 'Shqip · DE · EN',
         [['Faqe web.'], ['Tekste në tri gjuhë.']],
         'Klienti në Gjermani lexon gjermanisht. Partneri në Kosovë lexon shqip. Një faqe me një gjuhë të vetme i lë të dy jashtë.',
-        ['49 €, 59 €, 99 €', 'gjermanisht, anglisht, shqip', 'çmimi i faqes pas vëllimit'],
+        ['99 €, 199 €, 299 €', 'gjermanisht, anglisht, shqip', 'çmimi i faqes pas vëllimit'],
     ) + _aktionen('Na shkruani', 'Te kalkulatori', '../') + f'''
 <section class="pad" id="probleme" style="scroll-margin-top:110px">
   <div class="shell">
@@ -386,11 +387,11 @@ def faqe_dhe_perkthime():
     {kicker('03', 'Paketat')}
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([['Çmimet që janë tashmë.'], ['Asnjë shifër e re.']])}</h2>
     {karten_grid([
-        ('01', 'Dokument · 49 €', 'Deri në rreth 600 fjalë. Një dokument i shkurtër ose një fletëpalosje. Një raund korrigjimi. 2 ditë pune. Gjuhë tjetër: +35 €.'),
-        ('02', 'Tekst faqeje · 59 €', 'Deri në rreth 500 fjalë. Për shembull faqja e fillimit. Përkthim ose tekst i ri. 3 ditë pune. Gjuhë tjetër: +40 €.'),
-        ('03', 'Paketë përmbajtjeje · 99 €', 'Deri në rreth 1.000 fjalë, disa tekste që shkojnë bashkë. 5 ditë pune. Gjuhë tjetër: +79 €.'),
+        ('01', 'Dokument · 99 €', 'Rreth 1.200 fjalë. Një dokument ose një fletëpalosje. Një raund korrigjimi. 3 ditë pune.'),
+        ('02', 'Tekst faqeje · 199 €', 'Rreth 1.500 fjalë, me titull dhe përshkrim meta. Për shembull faqja e fillimit. Përkthim ose tekst i ri. 5 ditë pune.'),
+        ('03', 'Paketë përmbajtjeje · 299 €', 'Rreth 3.000 fjalë, disa tekste që shkojnë bashkë, me një fjalorth të shkurtër. 7 ditë pune.'),
     ])}
-    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:22px">Faqen e internetit e ndërtoj veç. Çmimin fiks e them pasi të qartësohet vëllimi. Porosia minimale për tekste është 30 €. Nën 24 orë: +30 %.</p>
+    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:22px">Faqen e internetit e ndërtoj veç. Çmimin fiks e them pasi të qartësohet vëllimi. Një gjuhë tjetër dhe porosia urgjente janë shtesë sipas marrëveshjes.</p>
   </div>
 </section>
 <section class="pad" id="leistung" style="scroll-margin-top:110px">
@@ -414,7 +415,7 @@ def faqe_dhe_perkthime():
         ('../kontakt.html', 'Kontakt'),
     ]) + cta_block('// hapi tjetër', [['Çfarë duhet'], ['të lexohet?']],
         'Më shkruani gjuhën që keni dhe gjuhën që doni. Çmimin e tekstit e dini që këtu. Çmimin e faqes e them pasi të shoh vëllimin.',
-        'Na shkruani', '../kontakt.html', 'Te kalkulatori', '../rechner.html')
+        'Na shkruani', '../kontakt.html', 'Te çmimet', '../preisrechner.html')
     return _seite(
         'sq/faqe-dhe-perkthime.html', inhalt, faq, base='../', lang='sq', alternates=TEXT_ALT,
         home_href='index.html', home_label='Kreu')
@@ -455,7 +456,7 @@ def automatizim():
         ('02', 'Ofertë ose takim', 'Nga kërkesa del një draft oferte, ose një propozim takimi. Çmimi dhe data konfirmohen nga ju.'),
         ('03', 'Çmim fiks pas bisedës', 'Nuk ka çmim liste. E shkruaj vëllimin dhe çmimin pasi të jetë e qartë lidhja me programin që përdorni.'),
     ])}
-    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:22px">Nëse doni edhe tekstin e faqes, çmimet janë të njëjtat: 59 € për një tekst faqeje, 99 € për paketën e përmbajtjes.</p>
+    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:22px">Nëse doni edhe tekstin e faqes, çmimet janë të njëjtat: 199 € për një tekst faqeje, rreth 1.500 fjalë, dhe 299 € për paketën e përmbajtjes, rreth 3.000 fjalë.</p>
   </div>
 </section>
 <section class="pad" id="leistung" style="scroll-margin-top:110px">
@@ -475,11 +476,11 @@ def automatizim():
         ('../ki-automatisierung-kleine-unternehmen.html', 'Oferta në gjermanisht'),
         ('../ki-automatisierung-arztpraxen.html', 'IA për ordinanca, në gjermanisht'),
         ('../sq/faqe-dhe-perkthime.html', 'Faqe web dhe përkthime'),
-        ('../rechner.html', 'Kalkulatori'),
+        ('../preisrechner.html', 'Kalkulatori i çmimeve'),
         ('../kontakt.html', 'Kontakt'),
     ]) + cta_block('// hapi tjetër', [['Email, ofertë'], ['apo takim?']],
         'Më shkruani cilin nga të tre e doni të parin. Çmimin fiks e merrni pasi ta shohim bashkë.',
-        'Na shkruani', '../kontakt.html', 'Te kalkulatori', '../rechner.html')
+        'Na shkruani', '../kontakt.html', 'Te çmimet', '../preisrechner.html')
     return _seite(
         'sq/automatizim-ia.html', inhalt, faq, base='../', lang='sq', alternates=KI_ALT,
         home_href='index.html', home_label='Kreu')

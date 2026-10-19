@@ -36,6 +36,9 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tafolli.net/"/>
   </url>
   <url>
+    <loc>https://tafolli.net/firmenprofile.html</loc>
+  </url>
+  <url>
     <loc>https://tafolli.net/foto-video.html</loc>
   </url>
   <url>
@@ -70,6 +73,12 @@
   </url>
   <url>
     <loc>https://tafolli.net/onlineshop-kleine-haendler.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/onlineshop.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/preisrechner.html</loc>
   </url>
   <url>
     <loc>https://tafolli.net/rechner.html</loc>
@@ -112,6 +121,9 @@
     <loc>https://tafolli.net/ueber-mich.html</loc>
   </url>
   <url>
+    <loc>https://tafolli.net/web-apps.html</loc>
+  </url>
+  <url>
     <loc>https://tafolli.net/webdesign.html</loc>
   </url>
   <url>
@@ -122,6 +134,9 @@
   </url>
   <url>
     <loc>https://tafolli.net/website-pflege-kleine-betriebe.html</loc>
+  </url>
+  <url>
+    <loc>https://tafolli.net/website-pflege.html</loc>
   </url>
   <url>
     <loc>https://tafolli.net/werdegang.html</loc>

@@ -10,7 +10,7 @@ WURZEL = HIER.parent
 
 from icons import iconize
 
-import seiten_a, seiten_b, seiten_c, seiten_d, kern, experience, artwork, services, landings
+import seiten_a, seiten_b, seiten_c, seiten_d, kern, pakete, experience, artwork, services, landings
 
 SEITEN = {
     'ueber-mich.html': seiten_a.ueber_mich,
@@ -19,6 +19,11 @@ SEITEN = {
     'fb-beratung.html': seiten_b.fb_beratung,
     'ki-automatisierung-kleine-unternehmen.html': kern.ki_kleine,
     'landingpage-erstellen-lassen.html': kern.landingpage,
+    'website-pflege.html': pakete.website_pflege,
+    'onlineshop.html': pakete.onlineshop,
+    'web-apps.html': pakete.web_apps,
+    'firmenprofile.html': pakete.firmenprofile,
+    'preisrechner.html': pakete.preisrechner,
     'online-marketing.html': seiten_b.online_marketing,
     'teamo-ki.html': seiten_b.teamo,
     'rechner.html': seiten_c.rechner,
@@ -84,10 +89,24 @@ def sitemap_schreiben():
 
 def angebot_auffrischen():
     """angebot/index.html is hand-authored. Refresh shared chrome so it matches the build."""
+    import json
     from bausteine import VER, fusszeile, kopfzeile
     from brand import intro
+    from seo import texte_angebot
     pfad = WURZEL / 'angebot' / 'index.html'
     text = pfad.read_text()
+    mark = '<script type="application/ld+json">'
+    begin = text.find(mark)
+    end = text.find('</script>', begin)
+    if begin < 0 or end < 0:
+        raise SystemExit('angebot/index.html: missing structured data')
+    data = json.loads(text[begin+len(mark):end])
+    angebot = texte_angebot()
+    data['@graph'] = [node for node in data['@graph'] if node.get('@id') != angebot['@id']]
+    place = next(i for i,node in enumerate(data['@graph']) if node.get('@type') == 'BreadcrumbList')
+    data['@graph'].insert(place, angebot)
+    blob = json.dumps(data, ensure_ascii=False).replace('<', '\\u003c')
+    text = text[:begin+len(mark)] + blob + text[end:]
     start = text.find('<div class="brand-intro"')
     grain = text.find('<div class="grain"')
     header = text.find('<header')

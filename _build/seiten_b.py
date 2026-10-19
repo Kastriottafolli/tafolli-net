@@ -160,7 +160,7 @@ def online_marketing():
 </section>''' + cta_block("// nächster schritt", [["Wie sichtbar ist"], ["Ihre Website?"]],
         "Ich sehe mir Ihre Seite und Ihre Sichtbarkeit an und sage Ihnen konkret, wo die größten Lücken sind.",
         "Beratungsgespräch vereinbaren", "kontakt.html", "Social Media einordnen", "rechner.html#social")
-    inhalt += '<section class="service-section"><div class="shell"><p class="tag">EINZELNE LEISTUNGEN IM DETAIL</p><h2 class="d2">Vertiefen Sie Ihr Thema.</h2><div class="portfolio-links">' + "".join(link(slug) for slug in ['webdesign', 'suchmaschinenoptimierung', 'domain-hosting-email', 'social-media', 'foto-video']) + '</div></div></section>'
+    inhalt += '<section class="service-section"><div class="shell"><p class="tag">EINZELNE LEISTUNGEN IM DETAIL</p><h2 class="d2">Vertiefen Sie Ihr Thema.</h2><div class="portfolio-links">' + "".join(link(slug) for slug in ['webdesign', 'suchmaschinenoptimierung', 'domain-hosting-email', 'social-media', 'foto-video', 'firmenprofile', 'preisrechner']) + '</div></div></section>'
 
     faq = [
         ("Was kostet Online-Marketing?", "Festpreis-Angebot auf Anfrage. Der Preis hängt davon ab, ob es um eine Website, um Kampagnen oder um laufende Betreuung geht. Einen Betrag vor diesem Gespräch nenne ich nicht."),
