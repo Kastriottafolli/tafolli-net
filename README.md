@@ -2,7 +2,7 @@
 
 Lokaler Unternehmensauftritt mit vier gleichwertigen Bereichen: Marketing, Technology, Consulting und AI Automation. Die Domain und alle bestehenden Seitenadressen bleiben erhalten. Hotellerie und Gastronomie sind eine besondere Kompetenz; die Leistungen für Technologie und Marketing sprechen Unternehmen branchenübergreifend an.
 
-Stand 27. Oktober 2026: Der Unternehmensauftritt umfasst 53 Seiten einschließlich der erhaltenen Angebots- und Zielgruppenseiten. Die drei Startseiten verwenden eine neue, an Apple angelehnte Unternehmensgestaltung mit einer pausierbaren CSS-3D-Szene und gezielten Einblendungen. Die Darstellung berücksichtigt reduzierte Bewegung. Eine kurze, sofort überspringbare Logoanimation begleitet Seitenaufrufe und interne Seitenwechsel. Marketing umfasst Strategie, Marke, Inhalte, Kampagnen und digitale sowie gedruckte Materialien. Technology umfasst individuelle Software, Web-Apps, iOS-/Android-Apps, Schnittstellen und Cybersecurity. Der über Runway erzeugte Logoentwurf entwickelt das vorhandene Gehirnsymbol mit Codeklammern und einem orangefarbenen Impulspunkt weiter. Er ist lokal in Kopfzeilen, im Einstieg der Startseiten, in Icons und der Linkvorschau eingebaut und ist mit dem abgestimmten Unternehmensauftritt verbunden. Anbieterangaben der bereits gegründeten Kosovo-Gesellschaft müssen vor Veröffentlichung ergänzt werden; Impressum und Datenschutzerklärung enthalten die bisherige Bestandsfassung.
+Stand 27. Oktober 2026: Der Unternehmensauftritt umfasst 53 Seiten einschließlich der erhaltenen Angebots- und Zielgruppenseiten. Die drei Startseiten verwenden eine neue, an Apple angelehnte Unternehmensgestaltung mit einer pausierbaren CSS-3D-Szene und gezielten Einblendungen. Die Darstellung berücksichtigt reduzierte Bewegung. Eine kurze, sofort überspringbare Logoanimation begleitet Seitenaufrufe und interne Seitenwechsel. Marketing umfasst Strategie, Marke, Inhalte, Kampagnen und digitale sowie gedruckte Materialien. Technology umfasst individuelle Software, Web-Apps, iOS-/Android-Apps, Schnittstellen und Cybersecurity. Der über Runway erzeugte Logoentwurf entwickelt das vorhandene Gehirnsymbol mit Codeklammern und einem orangefarbenen Impulspunkt weiter. Er ist lokal in Kopfzeilen, im Einstieg der Startseiten, in Icons und der Linkvorschau eingebaut und ist mit dem abgestimmten Unternehmensauftritt verbunden. Impressum und Datenschutzerklärung enthalten die bisherige deutsche Anbieteridentität. Konkrete Angaben zur genannten Kosovo-Gesellschaft wurden nicht geliefert und nicht ergänzt.
 
 Gestaltungsauftrag, Dateien, Prüfungen und offene Angaben: `../artifacts/tafolli-co/gestaltung-und-uebergabe.md`. Der verwendete Runway-Auftrag liegt daneben als JSON. Die Erzeugung erfolgte im angemeldeten Runway-Browser, da die Plugin-Verbindung weiterhin eine gesonderte erneute Autorisierung verlangte.
 
@@ -44,7 +44,7 @@ Für eine lokale Vorschau:
 python3 -m http.server 8765 --bind 127.0.0.1
 ```
 
-Dann `http://127.0.0.1:8765/` öffnen. Es wurde nichts veröffentlicht oder auf einen Hostingserver übertragen.
+Dann `http://127.0.0.1:8765/` öffnen. Die lokale Vorschau ist unabhängig von der Veröffentlichung über den GitHub-Pages-Workflow auf `main`.
 
 ## Interaktionen und inhaltliche Grenzen
 
@@ -100,3 +100,9 @@ Register verwenden `tablist`, `tab`, `tabpanel` und wechselseitige ARIA-Verweise
 `loading.py` ergänzt alle 53 Dokumente einschließlich EN, SQ und verschachtelter Angebotsseiten. Das vorhandene Gehirnsymbol setzt sich aus zwei Hälften zusammen, die Verbindungslinien zeichnen sich und das Symbol wandert in die gemeinsame Kopfzeile. Hintergrund, Systemtypografie, Blau und orangefarbener Impuls entsprechen der aktuellen Gestaltung.
 
 `brand.js` wird früh im Kopf geladen, damit der Bildschirm vor dem Seiteninhalt erscheint. Die normale Animation endet nach etwa einer Sekunde. Native Links, Browsernavigation und Formulare werden nicht umgeleitet oder verzögert. Ankersprünge innerhalb derselben Seite, externe Links, Downloads und neue Tabs lösen keine ausgehende Abdeckung aus. Zurück-/Vorwärts-Wiederherstellung wird ebenfalls behandelt. Der Loader bleibt ohne JavaScript verborgen, berücksichtigt reduzierte Bewegung sowie die Animationspause und benötigt weder Speicherzugriff noch externe Verbindungen. JavaScript- und CSS-Zeitgrenzen sowie Nutzereingaben räumen die Abdeckung unabhängig auf.
+
+## Veröffentlichung · 27. Oktober 2026
+
+Der Inhaber hat die Veröffentlichung der Vorschaufassung freigegeben. PR 8 wurde als `d87a2cb6575bfb6ac9c09612878ee45fa067c253` zusammengeführt; die automatische Prüfung und der Pages-Workflow sind erfolgreich. HTTPS wird für `tafolli.net` erzwungen. Die vorhandenen deutschen Anbieterangaben bleiben erhalten. Frühere Hinweise in dieser Dokumentation beschreiben den damaligen Entwurfsstand.
+
+Die Fehlerseite verwendet für den gemeinsamen Loader absolute Assetpfade. Damit werden Logo, Stylesheet und Skript auch bei verschachtelten unbekannten Seitenadressen von der Domainwurzel geladen.
