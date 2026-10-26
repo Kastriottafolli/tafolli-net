@@ -2,23 +2,40 @@
 """Gemeinsame Bausteine fuer alle Unterseiten. Kopf- und Fusszeile sind
 identisch zur Startseite, damit die Seite wie aus einem Guss wirkt."""
 import hashlib, pathlib, html
-from brand import lockup, intro
+from brand import lockup, MARK, FAVICON, TOUCH_ICON
 from navigation import nav as site_nav, toggle as nav_toggle, breadcrumbs, TITLES
 from seo import metadata, structured, region, SERVICE_META
 from explore import explore, HUBS
+from visuals import enrich
+from work import dialog as work_dialog
+from boosty import widget as boosty_widget
 
 WURZEL = pathlib.Path(__file__).resolve().parent.parent
 LOGO = lockup()
+
+def intro(*args, **kwargs):
+    """Legacy standalone pages no longer display an animated brand entrance."""
+    return ''
+
 VER = hashlib.sha256(
     (WURZEL / 'assets/kt.css').read_bytes() + (WURZEL / 'assets/kt.js').read_bytes()
     + (WURZEL / 'assets/experience.css').read_bytes()
-    + (WURZEL / 'assets/brand.js').read_bytes()
+    + (WURZEL / 'assets/corporate.css').read_bytes()
+    + (WURZEL / 'assets/motion.css').read_bytes()
+    + (WURZEL / 'assets/motion.js').read_bytes()
+    + (WURZEL / 'assets/creative.css').read_bytes()
+    + (WURZEL / 'assets/agency.css').read_bytes()
+    + (WURZEL / 'assets/boosty.css').read_bytes()
+    + (WURZEL / 'assets/boosty.js').read_bytes()
+    + (WURZEL / 'assets/creative.js').read_bytes()
     + (WURZEL / 'assets/navigation.js').read_bytes()
+    + (WURZEL / 'assets/contact.js').read_bytes()
+    + (WURZEL / 'assets/form-delivery.mjs').read_bytes()
 ).hexdigest()[:8]
 
 NAV = [
     ("ki-automatisierung.html", "AI Automation"),
-    ("ueber-mich.html", "Über mich"),
+    ("ueber-mich.html", "Unternehmen"),
     ("leistungen.html", "Leistungen"),
     ("teamo-ki.html", "TeamO KI"),
     ("rechner.html", "Rechner"),
@@ -65,83 +82,81 @@ def seiten_kopf(titel, beschreibung, kanonisch_pfad):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{titel}</title>
 <meta name="description" content="{beschreibung}">
-<meta name="author" content="Kastriot Tafolli">
+<meta name="author" content="Tafolli &amp; Co.">
 <link rel="canonical" href="{kanonisch}">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Kastriot Tafolli">
+<meta property="og:site_name" content="Tafolli &amp; Co.">
 <meta property="og:locale" content="de_DE">
 <meta property="og:title" content="{titel}">
 <meta property="og:description" content="{beschreibung}">
 <meta property="og:url" content="{kanonisch}">
 <meta property="og:image" content="https://tafolli.net/assets/social-preview.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{titel}">
 <meta name="twitter:card" content="summary_large_image">
 {schema}
-<meta name="theme-color" content="#f3f1e9">
-<link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
-<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
-<link rel="preload" as="image" href="assets/brand/logo-mark.webp" fetchpriority="high">
+<meta name="theme-color" content="#f7f8f5">
+<link rel="icon" type="image/svg+xml" href="{FAVICON}">
+<link rel="apple-touch-icon" href="{TOUCH_ICON}">
+<link rel="preload" as="image" href="{MARK}" fetchpriority="high">
 <link rel="preload" as="font" type="font/woff2" href="assets/schriften/space-grotesk-var.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/schriften/ibm-plex-sans-400.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="assets/schriften/bodoni-moda-400-italic.woff2" crossorigin>
 <link rel="stylesheet" href="assets/schriften.css?v={VER}">
 <link rel="stylesheet" href="assets/kt.css?v={VER}">
 <link rel="stylesheet" href="assets/experience.css?v={VER}">
+<link rel="stylesheet" href="assets/corporate.css?v={VER}">
+<link rel="stylesheet" href="assets/motion.css?v={VER}">
+<link rel="stylesheet" href="assets/creative.css?v={VER}">
+<link rel="stylesheet" href="assets/agency.css?v={VER}">
+<link rel="stylesheet" href="assets/boosty.css?v={VER}">
 </head>'''
 
 
 def kopfzeile(aktiv, base=""):
     sprachwahl = '<a href="/" hreflang="de" lang="de" title="Deutsch">DE</a><a href="/en/" hreflang="en" lang="en" title="English">EN</a><a href="/sq/" hreflang="sq" lang="sq" title="Shqip">SQ</a>'
-    return f'''<header class="bar site-header"><div class="shell bar-in"><a class="tafolli-brand-link" href="{base}index.html" aria-label="Kastriot Tafolli · Startseite">{lockup(base)}</a>{site_nav(aktiv, base)}<div class="site-header-controls"><nav class="lang" aria-label="Sprache / Language / Gjuha">{sprachwahl}</nav><a href="{base}kontakt.html" class="btn btn-1 site-talk">Gespräch ↗</a>{nav_toggle()}</div></div></header>'''
+    return f'''<header class="bar site-header"><div class="shell bar-in"><a class="tafolli-brand-link" href="{base}index.html" aria-label="Tafolli &amp; Co. · Startseite">{lockup(base)}</a>{site_nav(aktiv, base)}<div class="site-header-controls"><nav class="lang" aria-label="Sprache / Language / Gjuha">{sprachwahl}</nav><a href="{base}kontakt.html" class="btn btn-1 site-talk">Gespräch ↗</a>{nav_toggle()}</div></div></header>'''
 
 
 def fusszeile():
-    sp = lambda titel, links: (
-        f'<div><p class="tag" style="color:var(--paper);margin-bottom:17px">{titel}</p>' +
-        "".join(f'<a href="{h}" class="lnk" style="display:block;color:var(--paper-dim);'
-                f'font-size:.9rem;padding:5px 0">{t}</a>' for h, t in links) + '</div>')
-    return f'''<footer class="rule" style="background:var(--ink-2);padding-block:clamp(52px,6vw,82px) 30px">
-  <div class="shell">
-    <div class="foot-grid">
-      <div>
-        <div style="color:var(--paper);margin-bottom:18px">{LOGO}</div>
-        <p style="color:var(--paper-dim);font-size:.9rem;max-width:34ch;margin-bottom:18px">Gastronomische Führung, Digitalisierung und KI-Lösungen für Hotellerie und Unternehmen in Deutschland, Österreich, der Schweiz und Kosovo.</p>
-        <p class="tag" style="color:var(--acc);display:flex;align-items:center;gap:9px">
-          <span class="dot"></span> TB SOLUTIONS · ONLINE</p>
+    def links(items):
+        return ''.join(f'<a href="{href}">{label}</a>' for href,label in items)
+    services = links([
+        ('online-marketing.html','Marketing'),
+        ('softwareentwicklung.html','Technology'),
+        ('fb-beratung.html','Consulting'),
+        ('ki-automatisierung.html','AI Automation'),
+    ])
+    company = links([
+        ('ueber-mich.html','Unternehmen'),
+        ('referenzen.html','Projekte & Referenzen'),
+        ('wissen.html','Wissen'),
+        ('kontakt.html','Kontakt'),
+    ])
+    return f'''<footer class="company-footer"><div class="shell">
+      <div class="company-footer-grid">
+        <div><a class="tafolli-brand-link" href="index.html" aria-label="Tafolli &amp; Co. · Startseite">{LOGO}</a>
+          <p>Marketing, Technologie, Beratung und KI-Automatisierung. Von der Planung bis zur Umsetzung für Ihr Unternehmen.</p></div>
+        <div><h2>Leistungen</h2>{services}</div>
+        <div><h2>Unternehmen</h2>{company}</div>
+        <div><h2>Kontakt</h2><a href="mailto:info@tafolli.net">info@tafolli.net</a><a href="tel:+4917664616146">+49 176 64616146</a><p>Deutschland · Österreich · Schweiz · Kosovo</p></div>
       </div>
-      {sp("Seiten", FOOT_L1)}
-      {sp("Schwerpunkte", FOOT_L2)}
-      <div>
-        <p class="tag" style="color:var(--paper);margin-bottom:17px">Kontakt</p>
-        <a href="tel:+4917664616146" class="lnk" style="display:block;color:var(--paper-dim);font-size:.9rem;padding:5px 0">0176 64616146</a>
-        <a href="mailto:info@tafolli.net" class="lnk" style="display:block;color:var(--paper-dim);font-size:.9rem;padding:5px 0">info@tafolli.net</a>
-        <p style="color:var(--paper-dim);font-size:.9rem;padding:5px 0">Hauptstraße 1, 18609 Ostseebad Binz</p>
-        <p style="color:var(--paper-dim);font-size:.9rem;padding:5px 0">Schluchsee, Hochschwarzwald</p>
-      </div>
-    </div>
-    <div class="rule" style="padding-top:26px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center">
-      <span style="font-size:.84rem;color:var(--paper-mute)">© 2026 Kastriot Tafolli · tafolli.net · Ostseebad Rügen / Schluchsee</span>
-      <span style="display:flex;gap:22px">
-        <a href="impressum.html" style="font-size:.84rem;color:var(--paper-mute)">Impressum</a>
-        <a href="datenschutz.html" style="font-size:.84rem;color:var(--paper-mute)">Datenschutz</a>
-      </span>
-      <span class="mono" style="font-size:.72rem;color:var(--paper-mute)">HOTELLERIE · GASTRONOMIE · TECHNOLOGIE</span>
-    </div>
-  </div>
-</footer>'''
+      <div class="company-footer-bottom"><span>© 2026 Tafolli &amp; Co.</span><div><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div><span>tafolli.net</span></div>
+    </div></footer>'''
 
 
 def seite_rahmen(aktiv, titel, beschreibung, kanonisch_pfad, inhalt):
-    extra = explore(kanonisch_pfad) if kanonisch_pfad in HUBS else ''
+    extra = explore(kanonisch_pfad) if kanonisch_pfad in HUBS and kanonisch_pfad != 'online-marketing.html' else ''
     if kanonisch_pfad.removesuffix('.html') in SERVICE_META and 'class="region-section"' not in inhalt:
         extra += region(service=TITLES[kanonisch_pfad])
     if extra:
         position = inhalt.rfind('<section class="pad" style="overflow:hidden">')
         if position < 0: position = len(inhalt)
         inhalt = inhalt[:position] + extra + inhalt[position:]
+    inhalt = enrich(kanonisch_pfad, inhalt)
+    # Keep the technical example readable without replaying a terminal animation.
+    inhalt = inhalt.replace('id="term"', '')
+    contact_script=f'<script type="module" src="assets/contact.js?v={VER}"></script>' if aktiv=='kontakt.html' else ''
     return f'''{seiten_kopf(titel, beschreibung, kanonisch_pfad)}
-<body>
-{intro()}
-<div class="grain" aria-hidden="true"></div>
+<body class="corporate-pages">
 
 <a href="#inhalt" class="btn btn-1" style="position:absolute;left:-9999px;top:0;z-index:200"
    onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Zum Inhalt springen</a>
@@ -149,10 +164,14 @@ def seite_rahmen(aktiv, titel, beschreibung, kanonisch_pfad, inhalt):
 {kopfzeile(kanonisch_pfad)}
 
 <main id="inhalt">{breadcrumbs(kanonisch_pfad)}{inhalt}</main>
-{fusszeile()}
+{fusszeile()}{work_dialog() if 'data-work-open' in inhalt else ''}
+{boosty_widget(path=kanonisch_pfad)}
 <script src="assets/navigation.js?v={VER}" defer></script>
-<script src="assets/brand.js?v={VER}" defer></script>
 <script src="assets/kt.js?v={VER}" defer></script>
+<script src="assets/motion.js?v={VER}" defer></script>
+<script src="assets/creative.js?v={VER}" defer></script>
+<script src="assets/boosty.js?v={VER}" defer></script>
+{contact_script}
 </body>
 </html>
 '''
@@ -164,8 +183,6 @@ def hero_klein(nummer, tag, zeilen, text, chips):
     chip_html = "".join(f'<span class="chip">{c}</span>' for c in chips)
     return f'''
 <section class="hero" style="padding-block:clamp(40px,6vw,84px) clamp(32px,4vw,56px)">
-  <div class="floor"></div>
-  <div class="glow" style="width:520px;height:520px;background:rgba(0,224,140,.09);top:-240px;left:-160px"></div>
   <div class="shell" style="position:relative;z-index:1">
     {kicker(nummer, tag)}
     <h1 class="d1 wipe-3d recede-exit" style="margin:20px 0 26px;font-size:clamp(2.6rem,6.4vw,5.6rem)">{wipe(zeilen)}</h1>
@@ -223,8 +240,6 @@ def zitat_block(text, quelle):
 def cta_block(tag, zeilen, text, cta1_label, cta1_href, cta2_label, cta2_href):
     return f'''
 <section class="pad" style="overflow:hidden">
-  <div class="floor"></div>
-  <div class="glow" style="width:520px;height:520px;background:rgba(0,224,140,.1);bottom:-240px;right:-150px"></div>
   <div class="shell" style="position:relative;z-index:1">
     <p class="tag rise">{tag}</p>
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 26px;max-width:20ch">{wipe(zeilen)}</h2>

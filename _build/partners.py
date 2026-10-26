@@ -7,13 +7,10 @@ SOURCES=json.loads((ROOT/'assets/partners/sources.json').read_text())
 def brand(key,name,url,field,mono=False):
     return dict(key=key,name=name,url=url,field=field,mono=mono)
 PROJECTS=[
- brand('tafolli-glass','Tafolli Glass','https://www.tafolliglass.net/','Glas & Gestaltung',True),
- brand('ab-bau','A&B Bau','https://www.ab-bau23.de/','Bau & Sanierung'),
- brand('wochenmarkt','Restaurant Wochenmarkt','https://www.restaurant-wochenmarkt.de/','Gastronomie · Binz'),
- brand('mel-maler','MEL · wir renovieren','https://www.mel-maler.de/','Malerarbeiten & Renovierung'),
+ brand('tafolli-boost','Tafolli Boost','https://tafolliboost.com/','Eigenes KI-Produkt'),
  brand('panorama','Panorama Hotel Lohme','https://www.panorama-hotel-lohme.de/','Hotellerie · Rügen'),
- brand('tafolli','Kastriot Tafolli','https://www.tafolli.net/','Eigener digitaler Auftritt'),
 ]
+
 GASTRO=[
  brand('krombacher','Krombacher','https://www.krombacher.de/','Bier & Brauereien'),
  brand('bitburger','Bitburger','https://www.bitburger.de/','Bier & Brauereien'),
@@ -67,10 +64,15 @@ def tiles(items,projects=False):
 
 def strip(lang,base=''):
     copy={
-      'de':['REFERENZEN & PARTNER','Gute Arbeit verbindet.','Einblicke in mein Netzwerk aus Betrieben, Gastronomie und Technologie.','Alle Referenzen & Partner','Logo-Slider pausieren','Logo-Slider abspielen'],
-      'en':['REFERENCES & PARTNERS','Good work connects.','A glimpse of my network across businesses, hospitality and technology.','All references & partners','Pause logo slider','Play logo slider'],
-      'sq':['REFERENCA & PARTNERË','Puna e mirë na lidh.','Një vështrim në rrjetin tim të bizneseve, gastronomisë dhe teknologjisë.','Të gjitha referencat & partnerët','Ndaloni rrëshqitjen e logove','Luani rrëshqitjen e logove'],
+      'de':['REFERENZEN & PARTNER','Referenzen & Zusammenarbeit.','Verbindungen aus Projekten, operativer Verantwortung und der Zusammenarbeit mit Marken und Technologieunternehmen.','Alle Referenzen & Partner','Logo-Slider pausieren','Logo-Slider abspielen'],
+      'en':['REFERENCES & PARTNERS','References & collaboration.','Explore previous projects and connections across businesses, hospitality and technology.','All references & partners','Pause logo slider','Play logo slider'],
+      'sq':['REFERENCA & PARTNERË','Referenca & bashkëpunim.','Një vështrim në projektet e mëparshme dhe lidhjet me biznese, gastronomi dhe teknologji.','Të gjitha referencat & partnerët','Ndaloni rrëshqitjen e logove','Luani rrëshqitjen e logove'],
     }[lang]
-    keys=['tafolli-glass','ab-bau','wochenmarkt','panorama','krombacher','nordmann','chefs-culinar','openai','anthropic','google','microsoft','mel-maler']
-    cards=''.join(f'<li><a href="{html.escape(ALL[key]["url"])}" target="_blank" rel="noopener noreferrer" aria-label="{html.escape(ALL[key]["name"])}">{logo(ALL[key],base)}<span class="partner-slider-name">{html.escape(ALL[key]["name"])}</span></a></li>' for key in keys)
-    return f'''<section class="partner-strip" id="partner" data-partner-slider aria-label="{copy[0]}" data-pause-label="{copy[4]}" data-play-label="{copy[5]}"><div class="x-shell"><div class="partner-strip-heading"><div><p class="x-label">{copy[0]}</p><h2>{copy[1]}</h2><p>{copy[2]}</p></div><div class="partner-strip-actions"><a href="{base}referenzen.html">{copy[3]} ↗</a><button type="button" class="partner-slider-pause" aria-pressed="false" aria-label="{copy[4]}" hidden><span aria-hidden="true">Ⅱ</span></button></div></div><div class="partner-slider-viewport"><ul class="partner-slider-track">{cards}</ul></div></div></section>'''
+    from hotels import HOTELS
+    first=[ALL['krombacher'],ALL['nordmann'],ALL['panorama'],ALL['heineken'],ALL['chefs-culinar'],*[p for p in GASTRO if p['key'] not in {'krombacher','nordmann','heineken','chefs-culinar'}]]
+    second=[ALL['google'],ALL['microsoft'],ALL['openai'],ALL['meta'],*HOTELS,*[p for p in TECH if p['key'] not in {'google','microsoft','openai','meta'}]]
+    rails=''
+    for entries in [first,second]:
+        cards=''.join(f'<li><a href="{html.escape(p["url"])}" target="_blank" rel="noopener noreferrer" aria-label="{html.escape(p["name"])}">{logo(p,base)}<span class="partner-slider-name">{html.escape(p["name"])}</span></a></li>' for p in entries)
+        rails+='<div class="partner-rail"><div class="partner-slider-viewport"><ul class="partner-slider-track">'+cards+'</ul></div></div>'
+    return f'''<section class="partner-strip" id="partner" data-partner-slider aria-label="{copy[0]}" data-pause-label="{copy[4]}" data-play-label="{copy[5]}"><div class="x-shell"><div class="partner-strip-heading"><div><p class="x-label">{copy[0]}</p><h2>{copy[1]}</h2><p>{copy[2]}</p></div><div class="partner-strip-actions"><a href="{base}referenzen.html">{copy[3]} ↗</a><button type="button" class="partner-slider-pause" aria-pressed="false" aria-label="{copy[4]}" hidden><span aria-hidden="true">Ⅱ</span></button></div></div>{rails}</div></section>'''

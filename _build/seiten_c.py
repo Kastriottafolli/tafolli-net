@@ -59,7 +59,7 @@ def rechner():
       <input id="r-einkauf" class="range" type="range" min="10000" max="1000000" step="5000" value="180000" data-in="einkauf">
     </div>''', _regler("aktuell", "Aktueller Rückvergütungssatz", 0, 15, 0.5, 3, " %"), _regler("ziel", "Verhandelbarer Satz", 0, 15, 0.5, 8, " %")],
         "Rückvergütung heute", "rvHeute", "Zusätzlich pro Jahr", "rvPlus", "Heute", "rBar1", "Verhandelt", "rBar2",
-        "Die erreichbaren Sätze hängen von Abnahmemenge, Laufzeit und Sortiment ab. Was in Ihrem Fall realistisch ist, sehe ich beim Blick in den Vertrag.", "F&amp;B-Beratung", "fb-beratung.html")
+        "Die erreichbaren Sätze hängen von Abnahmemenge, Laufzeit und Sortiment ab. Was in Ihrem Fall realistisch ist, klären wir anhand Ihres Vertrags.", "F&amp;B-Beratung", "fb-beratung.html")
     r4 = _rechner("social", "04 · Sichtbarkeit", "Was bringt regelmäßiges Posten?",
         "Social Media wirkt nicht über einzelne Beiträge, sondern über Frequenz. Der Rechner zeigt, wie sich Reichweite, Profilbesuche und daraus entstehende Anfragen entwickeln, wenn regelmäßig gepostet wird.",
         [_regler("posts", "Beiträge pro Woche", 0, 14, 1, 3), '''<div class="calc-feld">
@@ -78,8 +78,8 @@ def rechner():
 <section class="pad" style="padding-top:clamp(32px,4vw,56px)">
   <div class="shell">
     {kicker("01", "Zahlen statt Versprechen")}
-    <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([["Rechnen Sie selbst nach,"], ["bevor Sie mit mir sprechen."]])}</h2>
-    <p class="lede rise" style="--i:1;margin-bottom:clamp(40px,5vw,64px)">Vier Rechner aus meiner täglichen Praxis. Sie laufen direkt hier im Browser, es wird nichts gespeichert und nichts verschickt. Die Annahmen dahinter stehen jeweils darunter, damit Sie nachvollziehen können, wie gerechnet wird.</p>
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([["Rechnen Sie selbst nach,"], ["bevor wir gemeinsam planen."]])}</h2>
+    <p class="lede rise" style="--i:1;margin-bottom:clamp(40px,5vw,64px)">Vier Rechner für typische betriebliche Fragen. Sie laufen direkt hier im Browser, es wird nichts gespeichert und nichts verschickt. Die Annahmen dahinter stehen jeweils darunter, damit Sie nachvollziehen können, wie gerechnet wird.</p>
     <div class="pop-wrap" data-rechner>{r1}{r2}{r3}{r4}</div>
   </div>
 </section>
@@ -88,12 +88,12 @@ def rechner():
   <div class="shell">
     {kicker("02", "Einordnung")}
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([["Rechner ersetzen"], ["kein Gespräch."]])}</h2>
-    <p class="lede rise" style="--i:1">Die Zahlen hier oben sind Modellrechnungen mit offen gelegten Annahmen. Sie zeigen Größenordnungen, keine Garantien. Was in Ihrem Haus tatsächlich möglich ist, hängt von Verträgen, Auslastung, Team und Region ab. Genau das sehe ich mir im Erstgespräch an, und wenn nichts zu holen ist, sage ich Ihnen das.</p>
+    <p class="lede rise" style="--i:1">Die Zahlen hier oben sind Modellrechnungen mit offen gelegten Annahmen. Sie zeigen Größenordnungen, keine Garantien. Was in Ihrem Haus tatsächlich möglich ist, hängt von Verträgen, Auslastung, Team und Region ab. Diese Voraussetzungen betrachten wir im Erstgespräch und ordnen ein, ob eine Zusammenarbeit sinnvoll ist.</p>
   </div>
 </section>''' + cta_block("// nächster schritt", [["Prüfen wir Ihre"], ["echten Zahlen."]],
         "Bringen Sie Ihre Werte mit, dann rechnen wir im Gespräch mit echten Verträgen statt mit Annahmen.",
         "Beratungsgespräch vereinbaren", "kontakt.html", "Leistungen ansehen", "leistungen.html")
-    return seite_rahmen("rechner.html", "Rechner: KI-Ersparnis, Portalprovision, Rückvergütung · Kastriot Tafolli",
+    return seite_rahmen("rechner.html", "Rechner: KI, Einkauf und Sichtbarkeit · Tafolli & Co.",
         "Vier Rechner im Browser: Was kostet Sie das Telefon, wie viel Portalprovision zahlen Sie, was liegt im Getränkevertrag und was bringt Social Media.",
         "rechner.html", inhalt)
 
@@ -115,22 +115,22 @@ def wissen():
           <p style="color:var(--paper-dim);font-size:.92rem;flex:1">{b}</p>
           <span style="color:var(--acc);font-size:.9rem;font-weight:600">Artikel lesen <span class="arrow">&rarr;</span></span>
         </a>''' for i, (h, k, z, t, b) in enumerate(ARTIKEL))
-    inhalt = hero_klein("07", "Wissen", [["Aufgeschrieben,"], ["weil ich es ständig erkläre."]],
+    inhalt = hero_klein("07", "Wissen", [["Wissen, das hilft."], ["Im Alltag und im Gespräch."]],
         "Fachtexte aus der Praxis zu Künstlicher Intelligenz im Hotel, zum Getränkevertrag und zur Frage, warum Gäste über Portale buchen statt direkt.",
         ["3 Artikel", "offene Rechenwege", "aus der Praxis"]) + f'''
 <section class="pad">
   <div class="shell">
     {kicker("01", "Artikel")}
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([["Drei Themen, die in fast jedem"], ["Haus Geld kosten."]])}</h2>
-    <p class="lede rise" style="--i:1;margin-bottom:clamp(40px,5vw,64px)">Kein Blog mit Neuigkeiten, sondern ausgearbeitete Texte zu Fragen, die mir in Gesprächen immer wieder begegnen. Mit offenen Rechnungen und ohne Marketingfloskeln.</p>
+    <p class="lede rise" style="--i:1;margin-bottom:clamp(40px,5vw,64px)">Ausgearbeitete Texte von Gründer Kastriot Tafolli zu wiederkehrenden Fragen aus dem Betriebsalltag. Mit nachvollziehbaren Beispielen und offen gelegten Annahmen.</p>
     <div class="g3 pop-wrap">{karten}</div>
   </div>
 </section>
 
 ''' + cta_block("// nächster schritt", [["Ein Thema,"], ["das hier fehlt?"]],
-        "Schreiben Sie mir, worüber Sie mehr wissen wollen. Oft ist die Antwort schneller als ein Artikel.",
+        "Schreiben Sie uns, welches Thema Sie beschäftigt. Gemeinsam klären wir die konkrete Frage.",
         "Beratungsgespräch vereinbaren", "kontakt.html", "Rechner öffnen", "rechner.html")
-    return seite_rahmen("wissen.html", "Wissen · Kastriot Tafolli",
+    return seite_rahmen("wissen.html", "Wissen · Tafolli & Co.",
         "Fachtexte aus der Praxis: KI-Mitarbeiter im Hotel, der Getränkevertrag und warum Gäste über Portale buchen statt direkt.",
         "wissen.html", inhalt)
 
@@ -144,7 +144,7 @@ def _artikel(datei, nummer, rubrik, zeilen, lede, chips, koerper, cta_tag, cta_z
 <section class="pad" style="padding-top:clamp(28px,4vw,52px)">
   <div class="shell">
     <article class="prose rise">{koerper}
-      <p style="margin-top:2.6em;padding-top:1.4em;border-top:1px solid var(--line);font-size:.92rem">Kastriot Tafolli · F&amp;B Manager und Digitalberater · <a href="kontakt.html">Fragen dazu? Schreiben Sie mir.</a></p>
+      <p style="margin-top:2.6em;padding-top:1.4em;border-top:1px solid var(--line);font-size:.92rem">Kastriot Tafolli · F&amp;B Manager und Digitalberater · <a href="kontakt.html">Fragen dazu? Kontakt aufnehmen.</a></p>
     </article>
   </div>
 </section>
@@ -247,7 +247,7 @@ def wissen_getraenke():
         [["Der Getränkevertrag,"], ["den niemand liest"]],
         "Rückvergütungen, Boni, Marketingzuschüsse und Verkaufsförderung. Wie diese Systeme funktionieren und warum die meisten Betriebe Geld liegen lassen.",
         ["Lesezeit 7 Minuten", "Einkauf", "Verhandlung"], k, "// nächster schritt", [["Was steht in Ihrem Vertrag?"]],
-        "Schicken Sie mir Ihren aktuellen Getränkevertrag, und ich sage Ihnen, wo Spielraum liegt.", "F&amp;B-Beratung ansehen", "fb-beratung.html", "Rückvergütung berechnen", "rechner.html#einkauf",
+        "Schicken Sie uns Ihren aktuellen Getränkevertrag. Wir betrachten Konditionen, Pflichten und mögliche Verbesserungen gemeinsam.", "F&amp;B-Beratung ansehen", "fb-beratung.html", "Rückvergütung berechnen", "rechner.html#einkauf",
         "Der Getränkevertrag, den niemand liest · Kastriot Tafolli",
         "Rückvergütungen, Boni und Marketingzuschüsse im Getränkevertrag: die vier Hebel, was ein Prozentpunkt bedeutet und der häufigste Fehler.")
 
@@ -292,6 +292,6 @@ def wissen_direkt():
         [["Warum Ihre Gäste"], ["über ein Portal buchen"]],
         "Fünfzehn Prozent Provision sind kein Naturgesetz. Was eine eigene Website leisten muss, damit Gäste direkt bei Ihnen landen.",
         ["Lesezeit 6 Minuten", "Web", "Direktbuchung"], k, "// nächster schritt", [["Wie sichtbar ist"], ["Ihr Haus wirklich?"]],
-        "Ich sehe mir Ihre Seite an und sage Ihnen konkret, wo die größten Lücken sind.", "Web und Marketing", "online-marketing.html", "Provision berechnen", "rechner.html#direkt",
+        "Wir betrachten Ihre Website und besprechen die nächsten sinnvollen Verbesserungen.", "Web und Marketing", "online-marketing.html", "Provision berechnen", "rechner.html#direkt",
         "Warum Ihre Gäste über ein Portal buchen · Kastriot Tafolli",
         "Portalprovision gegen Direktbuchung: gefunden werden, schneller zum Ziel, einen Grund liefern. Mit Beispielrechnung für ein Hotel.")

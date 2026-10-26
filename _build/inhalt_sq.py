@@ -4,7 +4,7 @@ SQ = {
 "titel": "Kastriot Tafolli · Hoteleri, digjitalizim dhe inteligjencë artificiale",
 "beschreibung": "Pesëmbëdhjetë vjet drejtim në hotelerinë me pesë yje, i kombinuar me formimin si inxhinier softueri. Konsulencë F&B, marketing online, automatizim me IA dhe sisteme IA për hotele dhe restorante.",
 
-"nav": [("../ueber-mich.html","Rreth meje"),("../werdegang.html","Karriera"),("../leistungen.html","Shërbimet"),("../teamo-ki.html","TeamO IA"),("../rechner.html","Llogaritësit"),("../wissen.html","Njohuri"),("../kontakt.html","Kontakt")],
+"nav": [("../ueber-mich.html","Kompania"),("../werdegang.html","Karriera"),("../leistungen.html","Shërbimet"),("../teamo-ki.html","TeamO IA"),("../rechner.html","Llogaritësit"),("../wissen.html","Njohuri"),("../kontakt.html","Kontakt")],
 "cta_nav": "Bisedë",
 "skip": "Kalo te përmbajtja",
 "menu_auf": "Hap menynë",
@@ -154,25 +154,30 @@ SQ = {
 
 "faq_tag": "Pyetje",
 "faq_h2": [["Çfarë pyetet"],["zakonisht e para."]],
-"faq": [
-  ("Sa kushton një automatizim?",
-   "Kjo varet nga sa sisteme duhen lidhur dhe sa kontroll kërkon një proces. Një proces i vetëm, i përcaktuar qartë, kushton dukshëm më pak se një automatizim që përshkon disa departamente. Pas bisedës së parë jap një interval, jo një shifër të trilluar."),
-  ("Sa kohë deri sa diçka të funksionojë?",
-   "Versioni i parë i përdorshëm vjen brenda javësh, jo muajsh. Ndërtoj qëllimisht së pari pjesën më të vogël që tashmë heq punë nga duart tuaja, dhe zgjerohem nga aty — jo gjashtë muaj zhvillim pa asnjë rezultat të ndërmjetëm."),
-  ("A qëndrojnë të dhënat brenda shtëpisë?",
-   "Ku është e mundur, po. Çfarë mund të përpunohet lokalisht, përpunohet lokalisht. Nëse nevojitet një model gjuhësor i një ofruesi, them hapur më parë çfarë të dhënash sheh, dhe përpunimi rregullohet sipas GDPR-së."),
-  ("Çfarë ndodh kur IA gabon?",
-   "Kjo ndërtohet që në fillim, jo më vonë. Çdo dalje që shkon jashtë ose shkruan në një sistem merr një kontroll më parë. Çfarë është e pasigurt përfundon te një person, jo te klienti — kjo është thelbi i menaxhimit të IA-s."),
-  ("Çfarë ndodh pasi një sistem fillon punën?",
-   "Vëzhgohet. Kontrolloj rregullisht nëse përgjigjet janë ende të sakta, nëse kërkesat kanë ndryshuar, dhe e përmirësoj para se një devijim i vogël të bëhet problem i vërtetë."),
-  ("A më duhet ekip i vetin për këtë?",
-   "Jo. Pikërisht kjo është kuptimi i menaxhimit të IA-s si shërbim: merrni një sistem në punë pa pasur nevojë që dikush brenda biznesit tuaj ta kontrollojë çdo ditë."),
-  ("A punoni edhe me kod ekzistues?",
-   "Po. Zgjerimi i një aplikacioni ekzistues, ndërtimi i një funksioni IA brenda një sistemi në punë, ose bërja gati për prodhim e një prototipi — kjo ndodh më shpesh se një projekt nga zero."),
-],
+"faq": [('Sa kushton automatizimi?',
+  'Kostoja varet nga sistemet e lidhura, përmbajtja dhe kontrollet e nevojshme. Pas një vlerësimi fillestar '
+  'përcaktohen qartë shërbimet dhe oferta.'),
+ ('Sa kohë duhet deri te versioni i parë i përdorshëm?',
+  'Kjo varet nga procesi dhe integrimet ekzistuese. Një proces fillestar i kufizuar e lehtëson nisjen. '
+  'Afatet dhe hapat ndërmjetës dakordohen në ofertë.'),
+ ('Ku përpunohen të dhënat?',
+  'Kjo përcaktohet para zbatimit. Përpunimi lokal dhe shërbimet e jashtme vlerësohen sipas nevojës; '
+  'ofruesit, rrjedhat e të dhënave dhe të drejtat e qasjes diskutohen qartë.'),
+ ('Çfarë ndodh nëse IA gabon?',
+  'Kontrollet dhe miratimet njerëzore përfshihen në planifikim. Për procesin konkret përcaktohet cilat '
+  'rezultate përpunohen automatikisht dhe cilat kërkojnë kontroll.'),
+ ('Çfarë ndodh pas nisjes?',
+  'Mbështetja mund të përfshijë kontrollin e përgjigjeve, ndjekjen e kostove dhe gabimeve, si dhe zhvillimin '
+  'e procesit. Përmbajtja dhe mënyrat e reagimit dakordohen paraprakisht.'),
+ ('A na duhet ekip i brendshëm për IA?',
+  'Një ekip i veçantë për IA nuk është domosdoshmëri. Biznesit i duhen kontakte për pyetje profesionale, '
+  'miratime dhe ndryshime. Mbështetja teknike mund të ofrohet si shërbim.'),
+ ('A mund të zgjerohen aplikacionet ekzistuese?',
+  'Po. Një vlerësim teknik përcakton mundësitë e zgjerimit, integrimeve ose funksioneve me IA. Mundësia '
+  'varet nga sistemi konkret.')],
 
 "zitat": "Këshillim, jo imponim. Jam gjithmonë i hapur për një bisedë pa detyrim.",
-"zitat_quelle": "Kastriot Tafolli · TB Solutions",
+"zitat_quelle": "Kastriot Tafolli · Themelues",
 
 "cta_tag": "// hapi tjetër",
 "cta_h2": [["Le të flasim për biznesin tuaj."]],
@@ -180,9 +185,9 @@ SQ = {
 "cta_1": "Cakto një bisedë", "cta_2": "Hap llogaritësit",
 
 "foot_text": "Drejtim gastronomie, digjitalizim, automatizim me IA dhe sisteme IA për hoteleri dhe gastronomi.",
-"foot_status": "TB SOLUTIONS · ONLINE",
+"foot_status": "TAFOLLI & CO. · ONLINE",
 "foot_sp1": "Faqet",
-"foot_l1": [("../ueber-mich.html","Rreth meje"),("../werdegang.html","Karriera"),("../leistungen.html","Shërbimet"),
+"foot_l1": [("../ueber-mich.html","Kompania"),("../werdegang.html","Karriera"),("../leistungen.html","Shërbimet"),
             ("../teamo-ki.html","TeamO IA"),("../rechner.html","Llogaritësit"),("../wissen.html","Njohuri"),
             ("../referenzen.html","Referenca"),("../kontakt.html","Kontakt")],
 "foot_sp2": "Fushat",

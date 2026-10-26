@@ -8,6 +8,7 @@ from companies import COMPANIES
 from hotels import HOTELS
 from partners import PROJECTS, GASTRO, TECH, SOURCES
 from pathlib import Path
+from delivery import ACTION, ENDPOINT, RECIPIENT
 from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
 
@@ -20,19 +21,30 @@ class Page(HTMLParser):
         self.lang, self.meta, self.config = '', {}, ''
         self.in_config = False
         self.in_nav=False; self.nav_links=[]; self.canonical=''; self.title=''; self.in_title=False
+        self.in_head=False; self.title_count=0; self.images=[]
+        self.planners=[]; self.in_planner=False; self.planner_text=''
+        self.forms=[]; self.active_form=None
         self.schemas=[]; self.schema_text=''; self.in_schema=False
         self.breadcrumbs=0; self.intros=0
         self.visible_text=''; self.hidden_text=[]; self.icon_count=0
         self.feed(path.read_text())
     def handle_starttag(self, tag, attrs):
         attrs=dict(attrs)
+        if tag=='head': self.in_head=True
         if tag in ['head','script','style']: self.hidden_text.append(tag)
         if tag=='svg' and 'site-icon' in attrs.get('class','').split():
             self.icon_count+=1
             assert attrs.get('aria-hidden')=='true' and attrs.get('focusable')=='false', f'{self.path}: decorative icon must not be announced'
         if tag == 'html': self.lang=attrs.get('lang','')
         if tag == 'h1': self.h1+=1
-        if tag == 'title': self.in_title=True
+        if tag == 'title' and self.in_head: self.in_title=True; self.title_count+=1
+        if tag=='img': self.images.append(attrs)
+        if tag=='script' and 'data-planner-config' in attrs: self.in_planner=True; self.planner_text=''
+        if tag=='form' and ('data-plan-form' in attrs or 'data-project-brief' in attrs):
+            self.active_form={'kind':'planner' if 'data-plan-form' in attrs else 'contact','attributes':attrs,'fields':{}}
+            self.forms.append(self.active_form)
+        if tag in ['input','textarea','select'] and self.active_form and attrs.get('name'):
+            self.active_form['fields'][attrs['name']]=attrs
         if tag == 'nav' and attrs.get('id')=='site-navigation': self.in_nav=True
         if tag == 'nav' and attrs.get('aria-label')=='Brotkrumennavigation': self.breadcrumbs+=1
         if tag == 'a' and self.in_nav: self.nav_links.append(attrs.get('href',''))
@@ -48,12 +60,16 @@ class Page(HTMLParser):
         if not self.hidden_text: self.visible_text+=data
         if self.in_config: self.config+=data
         if self.in_title: self.title+=data
+        if self.in_planner: self.planner_text+=data
         if self.in_schema: self.schema_text+=data
     def handle_endtag(self,tag):
         if self.hidden_text and tag==self.hidden_text[-1]: self.hidden_text.pop()
         if tag=='title': self.in_title=False
+        if tag=='head': self.in_head=False
+        if tag=='form': self.active_form=None
         if tag=='nav': self.in_nav=False
         if tag == 'script':
+            if self.in_planner: self.planners.append(json.loads(self.planner_text)); self.in_planner=False
             self.in_config=False
             if self.in_schema: self.schemas.append(json.loads(self.schema_text));self.in_schema=False
 
@@ -70,9 +86,11 @@ def verify():
         if not page.lang: errors.append(f'{relative}: missing language')
         if not page.meta.get('description'): errors.append(f'{relative}: missing description')
         if not page.title.strip(): errors.append(f'{relative}: missing title')
+        if page.title_count!=1: errors.append(f'{relative}: expected one document title in head')
+        if any('alt' not in image for image in page.images):errors.append(f'{relative}: image without alt attribute')
         expected_canonical='https://tafolli.net/'+('' if str(relative)=='index.html' else str(relative).replace('/index.html','/'))
         if page.canonical!=expected_canonical: errors.append(f'{relative}: incorrect canonical')
-        if page.intros!=1: errors.append(f'{relative}: expected one brand intro')
+        if page.intros: errors.append(f'{relative}: decorative brand intro must be removed')
         nav_targets=set()
         for href in page.nav_links:
             parsed=urlsplit(href)
@@ -86,6 +104,20 @@ def verify():
         types={node.get('@type') for node in graph}
         if not {'Organization','Person','WebSite'}<=types: errors.append(f'{relative}: missing identity schema')
         is_home=str(relative) in ['index.html','en/index.html','sq/index.html']
+        if is_home:
+            if len(page.planners)!=1: errors.append(f'{relative}: missing planner configuration')
+            elif page.planners[0].get('recipient')!=RECIPIENT or page.planners[0].get('endpoint')!=ENDPOINT or page.planners[0].get('lang')!=page.lang:
+                errors.append(f'{relative}: planner delivery or language configuration mismatch')
+        if is_home or str(relative)=='kontakt.html':
+            if len(page.forms)!=1: errors.append(f'{relative}: expected one enquiry form')
+            for form in page.forms:
+                attrs,fields=form['attributes'],form['fields']
+                if attrs.get('action')!=ACTION or attrs.get('method','').lower()!='post': errors.append(f'{relative}: unconfirmed form destination')
+                required={'name','email','_honey','_subject','_template','_url'}|({'Planung'} if is_home else {'message','thema','zeitraum'})
+                if not required<=set(fields): errors.append(f'{relative}: incomplete enquiry fields')
+                if fields.get('email',{}).get('type')!='email' or 'required' not in fields.get('email',{}):errors.append(f'{relative}: required reply address missing')
+                if fields.get('_url',{}).get('value')!='https://tafolli.net/':errors.append(f'{relative}: incorrect public form URL')
+                if not is_home and attrs.get('data-delivery-endpoint')!=ENDPOINT:errors.append(f'{relative}: contact endpoint mismatch')
         if not is_home and str(relative)!='404.html':
             if page.breadcrumbs!=1 or 'BreadcrumbList' not in types:errors.append(f'{relative}: missing or duplicate breadcrumbs')
         if str(relative)=='404.html' and page.meta.get('robots')!='noindex':errors.append('404 must remain noindex')
@@ -129,9 +161,9 @@ def verify():
         path=(ROOT/(service['slug']+'.html')).resolve()
         assert path in pages and 'https://tafolli.net/'+path.name in urls
         assert {'ausgangslage','umfang','praxis','ergebnisse','fragen'} <= set(pages[path].ids)
-    homepage=pages[(ROOT/'index.html').resolve()]
+    career=pages[(ROOT/'werdegang.html').resolve()]
     for name,url in COMPANIES:
-        assert url in homepage.links, f'Missing official station link: {name}'
+        assert url in career.links, f'Missing official station link: {name}'
     references=pages[(ROOT/'referenzen.html').resolve()]
     for partner in PROJECTS+GASTRO+TECH+HOTELS:
         assert partner['url'] in references.links, f"Missing partner link: {partner['name']}"
@@ -140,6 +172,6 @@ def verify():
     for location in ['index.html','en/index.html','sq/index.html']:
         assert 'partner' in pages[(ROOT/location).resolve()].ids
     if errors: raise SystemExit('\n'.join(errors))
-    print(f'PASS: {len(pages)} pages; local links, anchors, assets, metadata, all-page menu coverage, structured data, breadcrumbs, localized demos and sitemap.')
+    print(f'PASS: {len(pages)} pages; local links, anchors, assets, metadata, all-page menu coverage, structured data, breadcrumbs, workflow demo data and sitemap.')
 
 if __name__=='__main__':verify()

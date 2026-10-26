@@ -1,44 +1,11 @@
-/* Original motion and interactive explanations. Everything runs locally. */
+/* Interactive workflow example and transparent time estimate. No decorative animation. */
 (() => {
   'use strict';
-  const root = document.documentElement;
   const configEl = document.getElementById('experience-config');
   if (!configEl) return;
   const config = JSON.parse(configEl.textContent);
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  let userPaused = null;
-  let paused = reduced.matches;
   const $ = id => document.getElementById(id);
-
-  const reveals = [...document.querySelectorAll('[data-reveal]')];
-  const motionButton = document.querySelector('.x-motion');
-  let revealObserver;
-  if ('IntersectionObserver' in window && !paused) {
-    root.classList.add('x-ready');
-    revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0, rootMargin: '0px 0px -30px 0px' });
-    reveals.forEach(el => { el.classList.add('will-reveal'); revealObserver.observe(el); });
-  }
-  function syncMotion() {
-    paused = userPaused === null ? reduced.matches : userPaused;
-    root.classList.toggle('motion-paused', paused);
-    motionButton.setAttribute('aria-pressed', String(paused));
-    const controlIcon = motionButton.querySelector('use');
-    controlIcon.setAttribute('href', controlIcon.getAttribute('href').split('#')[0] + (paused ? '#play' : '#pause'));
-    if (paused) reveals.forEach(el => el.classList.add('is-visible'));
-    if (paused && running) completeDemo();
-    requestDraw();
-    updateScroll();
-  }
-  motionButton.addEventListener('click', () => { userPaused = !paused; syncMotion(); });
-  reduced.addEventListener('change', () => { userPaused = null; syncMotion(); });
-
   // A deterministic demonstration, never a live booking or a model request.
   const tabs = [...document.querySelectorAll('[data-scenario]')];
   const stages = [...document.querySelectorAll('[data-stage]')];
@@ -109,7 +76,7 @@
   }
   runButton.addEventListener('click', () => {
     selectScenario(selected);
-    if (paused) { completeDemo(); return; }
+    if (reduced.matches) { completeDemo(); return; }
     running = true;
     lab.setAttribute('data-running','');
     runButton.disabled = true;
@@ -140,101 +107,7 @@
   roiInputs.forEach(input => input.addEventListener('input',calculate));
   if(roiInputs.length) calculate();
 
-  // A neural brain with travelling impulses; static SVG remains the fallback.
-  const canvas = $('intelligence');
-  const art = document.querySelector('.x-art');
-  const ctx = canvas.getContext('2d');
-  let pointerX=0, pointerY=0, rotationX=0, rotationY=0;
-  let artVisible=true, frame=0, lastFrame=0, elapsed=0;
-  let dpr=Math.min(devicePixelRatio || 1,1.5);
-  const brain=new Image();
-  brain.src=document.querySelector('.x-bloom-fallback').src;
-  brain.addEventListener('load',requestDraw);
-  function resizeCanvas() {
-    canvas.width=Math.round(640*dpr); canvas.height=Math.round(640*dpr);
-    if(ctx) ctx.setTransform(dpr,0,0,dpr,0,0);
-    requestDraw();
-  }
-  if(matchMedia('(hover:hover) and (pointer:fine)').matches) {
-    document.querySelector('.x-hero').addEventListener('pointermove',e=> {
-      const b=art.getBoundingClientRect();
-      pointerX=Math.max(-1,Math.min(1,(e.clientX-b.left-b.width/2)/b.width));
-      pointerY=Math.max(-1,Math.min(1,(e.clientY-b.top-b.height/2)/b.height));
-      requestDraw();
-    },{passive:true});
-    document.querySelector('.x-hero').addEventListener('pointerleave',()=>{pointerX=0;pointerY=0;});
-  }
-  function draw(time) {
-    if(!ctx || !brain.complete || !brain.naturalWidth) return;
-    ctx.clearRect(0,0,640,640);
-    ctx.save();ctx.translate(320+rotationX*12,320+rotationY*9);
-    ctx.rotate(rotationX*.035);const scale=1+(paused?0:Math.sin(time*.0007)*.008);ctx.scale(scale,scale);ctx.translate(-320,-320);
-    ctx.drawImage(brain,0,0,640,640);
-    for(let side=0;side<2;side++) for(let row=0;row<7;row++) for(let col=0;col<5;col++) {
-      if(col===0 && (row===0 || row===6)) continue;
-      let x=151+col*31+9*Math.sin(row*2+col),y=173+row*40+8*Math.cos(col*2+row);
-      if(side) x=640-x;
-      const pulse=paused?.3:Math.pow(Math.max(0,Math.sin(time*.003-row*.8-col*.5-side)),8);
-      if(pulse<.05) continue;
-      ctx.beginPath();ctx.arc(x,y,4+pulse*8,0,Math.PI*2);ctx.strokeStyle='rgba(242,136,87,'+pulse*.9+')';ctx.lineWidth=1.5;ctx.stroke();
-      ctx.beginPath();ctx.arc(x,y,2.5,0,Math.PI*2);ctx.fillStyle='#f28857';ctx.fill();
-    }
-    ctx.restore();art.classList.add('is-rendered');
-  }
-  function tick(now) {
-    frame=0;
-    if (document.hidden || !artVisible) return;
-    if (now-lastFrame>32 || paused) {
-      if (!paused) elapsed += Math.min(now-lastFrame,50);
-      lastFrame=now;
-      rotationX+=(pointerX-rotationX)*.07;
-      rotationY+=(pointerY-rotationY)*.07;
-      draw(elapsed);
-    }
-    if (!paused) frame=requestAnimationFrame(tick);
-  }
-  function requestDraw() {
-    if (!frame && ctx && artVisible && !document.hidden) frame=requestAnimationFrame(tick);
-  }
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(entries => {
-      artVisible=entries[0].isIntersecting;
-      if (artVisible) { lastFrame=performance.now();requestDraw(); }
-      else if (frame) { cancelAnimationFrame(frame);frame=0; }
-    },{rootMargin:'60px'}).observe(art);
-  }
-  document.addEventListener('visibilitychange',() => {
-    if (document.hidden) { cancelAnimationFrame(frame);frame=0; }
-    else { lastFrame=performance.now();requestDraw(); }
-  });
-  const progress=document.querySelector('.x-progress');
-  const story=document.querySelector('.x-story');
-  const scenes=[...document.querySelectorAll('[data-scene]')];
-  const indicators=[...document.querySelectorAll('.x-story-indicators i')];
-  const storyMedia=matchMedia('(min-width:801px) and (min-height:600px)');
-  let storyStage=-1;
-  let scrollFrame=0;
-  function updateScroll() {
-    scrollFrame=0;
-    const total=document.documentElement.scrollHeight-innerHeight;
-    progress.style.transform='scaleX('+(total>0?scrollY/total:0)+')';
-    if(story) {
-      const rect=story.getBoundingClientRect();
-      const fraction=Math.max(0,Math.min(1,(87-rect.top)/(rect.height-innerHeight+87)));
-      const stage=paused||!storyMedia.matches?0:Math.min(2,Math.floor(fraction*3));
-      if(stage!==storyStage) {
-        storyStage=stage;
-        scenes.forEach((scene,i)=>scene.classList.toggle('is-active',i===stage));
-        indicators.forEach((el,i)=>el.classList.toggle('is-active',i===stage));
-        story.classList.toggle('is-connected',stage>0);
-        story.classList.toggle('is-free',stage===2);
-        story.querySelector('.x-story-art').style.setProperty('--connect',stage===1?'1':'0');
-        story.querySelector('.x-story-art').style.setProperty('--freedom',stage===2?'1':'0');
-      }
-    }
-  }
-  addEventListener('scroll',() => { if(!scrollFrame)scrollFrame=requestAnimationFrame(updateScroll); },{passive:true});
-  addEventListener('resize',() => { dpr=Math.min(devicePixelRatio||1,1.5);resizeCanvas();updateScroll(); },{passive:true});
-  resizeCanvas();
-  syncMotion();
+
+  reduced.addEventListener('change', () => { if (reduced.matches && running) completeDemo(); });
+  window.addEventListener('pagehide', clearDemoTimers);
 })();

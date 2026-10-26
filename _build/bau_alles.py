@@ -11,6 +11,7 @@ WURZEL = HIER.parent
 from icons import iconize
 
 import seiten_a, seiten_b, seiten_c, seiten_d, experience, artwork, services
+from seo import write_sitemap
 
 SEITEN = {
     'ueber-mich.html': seiten_a.ueber_mich,
@@ -39,3 +40,4 @@ if __name__ == '__main__':
         html = iconize(fn())
         (WURZEL / datei).write_text(html)
         print(f"  {datei:30} {len(html):>7} Zeichen")
+    write_sitemap(WURZEL)

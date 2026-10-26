@@ -1,10 +1,31 @@
 {
-  "created": "2026-10-04",
-  "method": "Original generated TAFOLLI neural brain symbol, with transparent margin trimmed and responsive assets resized.",
-  "source": "tafolli-logo-original.png",
-  "colors": [
-    "#20231f",
-    "#f28857"
+  "created": "2026-10-25",
+  "identity": "Tafolli & Co.",
+  "direction": "Neural Code",
+  "status": "local integrated design for user review",
+  "provider": "Runway",
+  "access_method": "Runway website in the user-authorized Chrome session; connector separately required reauthentication",
+  "session_url": "https://app.runwayml.com/video-tools/teams/kastrioti92/ai-tools/generate?mode=tools&tool=image&sessionId=84e46602-fc3d-45fb-9ffe-52f29efe2f33",
+  "model": "gpt-image-2.5-flare",
+  "reference": "logo-mark.webp",
+  "source": "../../../artifacts/tafolli-co/tafolli-co-neural-code-runway-original.png",
+  "source_size": [
+    2560,
+    2560
   ],
-  "identity": "TAFOLLI / Kastriot Tafolli"
+  "has_alpha": true,
+  "method": "Reference-based Runway evolution of the existing neural brain identity: integrated coding braces and slash, one orange automation node. Transparent margins trimmed, centered and resized without changing the generated design. Live wordmark uses the local Space Grotesk font. The SVG favicon embeds raster artwork and is not a vector master.",
+  "requested_colors": [
+    "#20231F",
+    "#F28857"
+  ],
+  "settings": {
+    "ratio": "1:1",
+    "resolution": "2K",
+    "quality": "High",
+    "transparent_background": true,
+    "count": 1
+  },
+  "credits_used_observed": 17,
+  "rejected_direction": "Geometric T, archived under artifacts/tafolli-co/rejected-t-monogram/."
 }

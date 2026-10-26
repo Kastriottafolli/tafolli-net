@@ -16,11 +16,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: python3 _build/bau_alles.py
-      - run: python3 _build/verify.py
-      - run: node --check assets/experience.js
-      - run: node --check assets/kt.js
-      - run: node --check assets/partners.js
-      - run: node --check assets/brand.js
-      - run: node --check assets/navigation.js
+      - run: python3 _build/check.py
       - run: git diff --exit-code
+      - run: python3 _build/release.py --output _site

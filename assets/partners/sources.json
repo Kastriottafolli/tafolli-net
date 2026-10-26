@@ -239,5 +239,11 @@
     "bytes": 24682,
     "retrieved": "2026-10-04",
     "extraction": "Inline header SVG from official website"
+  },
+  "tafolli-boost": {
+    "file": "tafolli-boost.webp",
+    "source": "https://tafolliboost.com/static/boosty-3d.png",
+    "retrieved": "2026-10-25",
+    "bytes": 78230
   }
 }

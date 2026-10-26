@@ -181,26 +181,137 @@ COPY = {
     },
 }
 
-# The homepage introduces the whole portfolio; automation has a dedicated page.
-POSITIONING={
-'de':dict(title='Kastriot Tafolli · Hotellerie, Gastronomie, KI & Technologie',description='Hotellerie und Gastronomie treffen KI und Softwareentwicklung: Kastriot Tafolli verbindet F&B-Beratung, Einkauf, Digitalisierung und AI Automation as a Service.',nav=['Leistungen','Über mich','Wissen','Kontakt'],hero_text='Hotellerie. Gastronomie. KI. Technologie. Ich bin Kastriot Tafolli und verbinde operative Führung mit digitalem Handwerk – vom Restaurantalltag bis zum intelligenten System.',hero_cta='Mein Portfolio entdecken',manifesto=['Gastgeber.','Entwickler.','Ein Mensch.'],manifesto_text='Ich kenne den Service am Gast, die Verantwortung für Teams und die Zahlen hinter einem Betrieb. Und ich entwickle Software und KI. Diese seltene Verbindung macht meine Arbeit aus.',manifesto_small='F&B-Beratung, Lieferantenvereinbarungen und Kalkulation gehören für mich ebenso dazu wie Digitalisierung, Cybersecurity und intelligente Automatisierung. Ich verstehe den Betrieb und kann die passende Technik umsetzen.',services_label='DAS PORTFOLIO / PRAXIS × TECHNOLOGIE',services_title=['Viele Kompetenzen.','Eine Handschrift.'],portfolio_link='Alle 22 Leistungsbereiche entdecken',about_text='Ich bin Kastriot Tafolli. Vom klassischen Service über die Führung mehrerer Hotel-Outlets bis zu Softwareentwicklung und KI Engineering: Meine Erfahrung verbindet Menschen, Betrieb und Technologie. Ich berate nicht nur über Abläufe – ich kenne die Arbeit, die dahintersteckt.',cta_text='Ob F&B, Einkauf, Digitalisierung oder KI: Erzählen Sie mir, was Sie in Ihrem Betrieb bewegen möchten.'),
-'en':dict(title='Kastriot Tafolli · Hospitality, gastronomy, AI & technology',description='Hospitality meets AI and software development. Kastriot Tafolli connects F&B consulting, purchasing, digital transformation and AI Automation as a Service.',nav=['Services','About me','Insights','Contact'],hero_text='Hospitality. Gastronomy. AI. Technology. I’m Kastriot Tafolli, bringing operational leadership and digital craft together – from restaurant service to intelligent systems.',hero_cta='Explore my portfolio',manifesto=['A host.','A developer.','One person.'],manifesto_text='I know guest service, the responsibility of leading teams and the numbers behind a business. I also build software and AI. That rare combination shapes my work.',manifesto_small='F&B consulting, supplier agreements and costing sit alongside digital transformation, cybersecurity and intelligent automation. I understand the business and can build the technology it needs.',services_label='THE PORTFOLIO / PRACTICE × TECHNOLOGY',services_title=['Many capabilities.','One perspective.'],portfolio_link='Explore all 22 service areas',about_text='I’m Kastriot Tafolli. From traditional service and leading multiple hotel outlets to software development and AI engineering: my experience connects people, operations and technology. I understand the work behind the processes I improve.',cta_text='F&B, purchasing, digital transformation or AI: tell me what you want to move forward in your business.'),
-'sq':dict(title='Kastriot Tafolli · Hoteleri, gastronomi, IA & teknologji',description='Hoteleria dhe gastronomia takojnë IA dhe zhvillimin e softuerit: këshillim F&B, blerje, digjitalizim dhe AI Automation as a Service nga Kastriot Tafolli.',nav=['Shërbimet','Rreth meje','Njohuri','Kontakt'],hero_text='Hoteleri. Gastronomi. IA. Teknologji. Jam Kastriot Tafolli dhe lidh drejtimin operacional me zhvillimin digjital – nga puna në restorant te sistemet inteligjente.',hero_cta='Zbuloni portofolin tim',manifesto=['Mikpritës.','Zhvillues.','Një person.'],manifesto_text='Njoh shërbimin ndaj mysafirëve, përgjegjësinë për ekipet dhe shifrat pas një biznesi. Gjithashtu zhvilloj softuer dhe IA. Ky kombinim i rrallë përcakton punën time.',manifesto_small='Këshillimi F&B, marrëveshjet me furnitorët dhe kalkulimi lidhen me digjitalizimin, sigurinë kibernetike dhe automatizimin inteligjent. E kuptoj biznesin dhe ndërtoj teknologjinë që i nevojitet.',services_label='PORTOFOLI / PRAKTIKË × TEKNOLOGJI',services_title=['Shumë aftësi.','Një këndvështrim.'],portfolio_link='Zbuloni të 22 fushat e shërbimit',about_text='Jam Kastriot Tafolli. Nga shërbimi klasik dhe drejtimi i disa njësive hoteliere te zhvillimi i softuerit dhe inxhinieria e IA: përvoja ime lidh njerëzit, operacionet dhe teknologjinë. E njoh punën që qëndron pas proceseve.',cta_text='F&B, blerje, digjitalizim apo IA: më tregoni çfarë dëshironi të përmirësoni në biznesin tuaj.')}
-for language,values in POSITIONING.items():
-    COPY[language]['automation_description']=COPY[language]['description']
-    COPY[language]['automation_hero_text']=COPY[language]['hero_text']
-    COPY[language]['automation_cta']=COPY[language]['hero_cta']
-    COPY[language].update(values)
-
-COPY['de']['services'][1]=('02','F&B & HOSPITALITY','Bessere Abläufe. Bessere Zahlen.','Einkauf, Lieferantenvereinbarungen, Rückvergütungen, Kalkulation und operative Führung.','fb-beratung.html','F&B entdecken')
-COPY['de']['services'][2]=('03','TECHNOLOGIE & DIGITAL','Der Betrieb. Weitergedacht.','Digitalisierung, Softwareentwicklung, Cybersecurity und ein digitaler Auftritt mit Persönlichkeit.','digitalisierung.html','Technologie entdecken')
-COPY['en']['services'][2]=('03','TECHNOLOGY & DIGITAL','Your business. Reimagined.','Digital transformation, software development, cybersecurity and a distinctive online presence.','digitalisierung.html','Explore technology')
-COPY['sq']['services'][2]=('03','TEKNOLOGJI & DIGJITAL','Biznesi juaj. I rimenduar.','Digjitalizim, zhvillim softueri, siguri kibernetike dhe një prezencë digjitale me karakter.','digitalisierung.html','Zbuloni teknologjinë')
-
-# Service geography confirmed by the owner; the content stays language-specific.
-for code, values in {
- 'de': dict(title='KI-Automatisierung, F&B & Software | Kastriot Tafolli',description='KI-Automatisierung, F&B-Beratung, Software und Webdesign für Hotels und Unternehmen. Persönlich begleitet in Deutschland, Österreich, Schweiz und Kosovo.',location='DEUTSCHLAND · ÖSTERREICH · SCHWEIZ · KOSOVO',hero_text='Hotellerie. Gastronomie. KI. Technologie. Ich bin Kastriot Tafolli: F&B-Beratung, Softwareentwicklung und KI-Automatisierung aus einer Hand – für Betriebe in Deutschland, Österreich, der Schweiz und Kosovo.'),
- 'en': dict(title='AI automation, hospitality & software | Kastriot Tafolli',description='AI automation, F&B consulting, software and web design for hotels and businesses in Germany, Austria, Switzerland and Kosovo. Work with Kastriot Tafolli.',location='GERMANY · AUSTRIA · SWITZERLAND · KOSOVO',hero_text='Hospitality. Gastronomy. AI. Technology. I’m Kastriot Tafolli, connecting F&B consulting, software development and AI automation for businesses in Germany, Austria, Switzerland and Kosovo.'),
- 'sq': dict(title='Automatizim me IA, hoteleri & softuer | Kastriot Tafolli',description='Automatizim me IA, këshillim F&B, softuer dhe web për hotele e biznese në Gjermani, Austri, Zvicër dhe Kosovë. Bashkëpunoni me Kastriot Tafolli.',location='GJERMANI · AUSTRI · ZVICËR · KOSOVË',hero_text='Hoteleri. Gastronomi. IA. Teknologji. Jam Kastriot Tafolli: këshillim F&B, zhvillim softueri dhe automatizim me IA për biznese në Gjermani, Austri, Zvicër dhe Kosovë.')
-}.items():
- COPY[code].update(values)
+# The company brand spans technology, marketing and consulting. Credentials refer
+# exclusively to the founder, not to the size or history of the new company.
+COMPANY = {
+    'de': dict(
+        title='Tafolli & Co. | KI, Software, Online-Marketing & Beratung',
+        description='Tafolli & Co. verbindet KI-Automatisierung, Software, Online-Marketing und Unternehmensberatung. Für Unternehmen in Deutschland, Österreich, Schweiz und Kosovo.',
+        nav=['Leistungen', 'Unternehmen', 'Wissen', 'Kontakt'],
+        status='OFFEN FÜR NEUE PROJEKTE', location='DEUTSCHLAND · ÖSTERREICH · SCHWEIZ · KOSOVO',
+        hero=['IDEEN.', 'SYSTEME.', 'Mehr Wirkung.'],
+        hero_text='Tafolli &amp; Co. verbindet KI, Software, Online-Marketing und Beratung. Für Unternehmen, die Abläufe vereinfachen, digital sichtbar werden und ihre nächsten Schritte klar angehen möchten.',
+        hero_cta='Leistungen entdecken', hero_link='Projekt besprechen',
+        intro='TECHNOLOGY · MARKETING · CONSULTING',
+        manifesto=['Verstehen.', 'Verbinden.', 'Umsetzen.'],
+        manifesto_text='Technologie, Marketing und betriebliche Abläufe greifen ineinander. Deshalb beginnt jedes Projekt mit einem Blick auf Ihr Geschäft: Was soll leichter werden, wer soll erreicht werden und welche Lösung passt in den Alltag?',
+        manifesto_small='Aus dieser Grundlage entstehen KI-Workflows, individuelle Software, Websites und Kampagnen. Operative Erfahrung in Hotellerie und Gastronomie ergänzt die digitale Umsetzung – von der Analyse bis zur laufenden Betreuung.',
+        service_text='Für Ihr Unternehmen entwickelt, in bestehende Systeme eingebunden und nach dem Start begleitet. Vom ersten klar umrissenen Workflow bis zur laufenden Weiterentwicklung.',
+        care_text='Automation as a Service umfasst die Begleitung nach dem Start. Wenn sich Ihr Betrieb verändert, werden Abläufe, Regeln und Anbindungen gemeinsam weiterentwickelt.',
+        care_items=[('Verbinden', 'Bestehende Tools sinnvoll verbinden: Posteingang, Dokumente, Reservierung und Ihr Team.'), ('Betreuen', 'Antworten prüfen, Fehler erkennen, Kosten beobachten und bei Bedarf eingreifen.'), ('Weiterentwickeln', 'Neue Abläufe ergänzen, Regeln anpassen und aus echten Rückmeldungen lernen.')],
+        services_label='VIER BEREICHE. EIN GEMEINSAMER ANSATZ.',
+        services_title=['Was Ihr Unternehmen', 'weiterbringt.'],
+        services=[
+            ('01', 'KI & AUTOMATISIERUNG', 'Mehr Freiraum im Alltag.', 'KI-Assistenten, verbundene Workflows und TeamO für wiederkehrende Aufgaben – mit klaren Regeln und menschlicher Kontrolle.', 'ki-automatisierung.html', 'KI entdecken'),
+            ('02', 'SOFTWARE & WEB', 'Technik, die zu Ihnen passt.', 'Individuelle Anwendungen, Websites und Schnittstellen. An Ihren Abläufen ausgerichtet und verständlich übergeben.', 'softwareentwicklung.html', 'Software & Web entdecken'),
+            ('03', 'ONLINE-MARKETING', 'Sichtbar für die Richtigen.', 'Suchmaschinenoptimierung, Social Media, Content und digitale Kampagnen mit einem klaren Weg zur Anfrage.', 'online-marketing.html', 'Marketing entdecken'),
+            ('04', 'BERATUNG & BETRIEB', 'Aus Erfahrung weiterdenken.', 'Prozesse, Einkauf und Wirtschaftlichkeit verbessern. Mit besonderer Praxiserfahrung in Hotellerie und Gastronomie.', 'fb-beratung.html', 'Beratung entdecken')],
+        portfolio_link='Alle 22 Leistungsbereiche entdecken',
+        about_label='DER GRÜNDER / ERFAHRUNG ALS GRUNDLAGE',
+        about_title=['Betrieb verstehen.', 'Technik gestalten.'],
+        about_text='Gründer Kastriot Tafolli verbindet operative Führung in der 5-Sterne-Hotellerie mit Softwareentwicklung und KI Engineering. Diese persönliche Erfahrung prägt den Ansatz von Tafolli &amp; Co.: zuerst die Aufgabe verstehen, dann die passende Lösung entwickeln.',
+        about_link='Unternehmen & Gründer kennenlernen', about_caption='KASTRIOT TAFOLLI / GRÜNDER',
+        credentials_label='PERSÖNLICHE BERUFSERFAHRUNG DES GRÜNDERS',
+        credentials=[('15+', 'Jahre 5-Sterne-Hotellerie'), ('200+', 'Mitarbeitende in früheren Führungsrollen gleichzeitig geführt'), ('50+', 'Nachwuchskräfte ausgebildet')],
+        experience_label='BERUFLICHE STATIONEN DES GRÜNDERS',
+        process=[('Verstehen.', 'Ziele, Ausgangslage und Prioritäten gemeinsam klären. Daraus entsteht ein sinnvoll abgegrenzter Auftrag.'), ('Umsetzen.', 'Lösung, Inhalte oder Kampagne entwickeln. Zwischenergebnisse werden mit Ihnen abgestimmt und geprüft.'), ('Begleiten.', 'Nach dem Start Ergebnisse besprechen, Verbesserungen priorisieren und die weitere Betreuung vereinbaren.')],
+        cta_title=['Ihre nächste Idee.', 'Gemeinsam', 'weitergedacht.'],
+        cta_text='Eine neue Website, bessere Sichtbarkeit, individuelle Software oder ein einfacherer Ablauf: Erzählen Sie uns, was Ihr Unternehmen voranbringen soll.',
+        footer_tag='TECHNOLOGY · MARKETING · CONSULTING',
+        automation_description='KI-Automatisierung von Tafolli & Co.: individuelle Workflows, Integration und laufende Betreuung für Hotels, Gastronomie und Unternehmen in DACH und Kosovo.',
+        automation_hero_text='KI-Workflows, die zu Ihrem Betrieb passen. Tafolli &amp; Co. verbindet bestehende Systeme, klare Regeln und menschliche Kontrolle – damit wiederkehrende Aufgaben weniger Aufmerksamkeit brauchen.',
+        automation_cta='Automation entdecken',
+        faq=[
+            ('Welche Leistungen können wir kombinieren?', 'KI-Automatisierung, Software und Web, Online-Marketing und Beratung lassen sich einzeln oder im abgestimmten Projekt verbinden. Ausgangspunkt sind Ihre Ziele und die vorhandenen Systeme.'),
+            ('Arbeiten Sie nur für Hotels und Restaurants?', 'Hotellerie und Gastronomie sind eine besondere Kompetenz. Digitale Lösungen und Online-Marketing richten sich auch an Unternehmen anderer Branchen. Im Erstgespräch wird geprüft, ob Aufgabe und Angebot zusammenpassen.'),
+            ('Wie beginnt die Zusammenarbeit?', 'Mit einem unverbindlichen Gespräch zu Bedarf, Ausgangslage und Budgetrahmen. Danach werden Umfang, Zuständigkeiten, Zeitplan und Angebot abgestimmt.'),
+            ('Ist eine laufende Betreuung möglich?', 'Ja. Für Websites, Marketing und KI-Workflows kann eine laufende Betreuung mit klar vereinbartem Umfang eingerichtet werden.'),
+            ('In welchen Ländern ist die Zusammenarbeit möglich?', 'Das Angebot richtet sich an Unternehmen in Deutschland, Österreich, der Schweiz und Kosovo. Digitale Abstimmung ist ortsunabhängig möglich; Termine vor Ort werden projektbezogen vereinbart.'),
+            ('Wer ist mein Ansprechpartner?', 'Kastriot Tafolli ist Ihr zentraler Ansprechpartner. Zuständigkeiten für die konkrete Umsetzung und beteiligte Partner werden im jeweiligen Angebot transparent benannt.')]),
+    'en': dict(
+        title='Tafolli & Co. | AI, Software, Online Marketing & Consulting',
+        description='Tafolli & Co. connects AI automation, software, online marketing and business consulting for companies in Germany, Austria, Switzerland and Kosovo.',
+        nav=['Services', 'Company', 'Insights', 'Contact'],
+        status='OPEN FOR NEW PROJECTS', location='GERMANY · AUSTRIA · SWITZERLAND · KOSOVO',
+        hero=['IDEAS.', 'SYSTEMS.', 'More impact.'],
+        hero_text='Tafolli &amp; Co. connects AI, software, online marketing and consulting. For businesses looking to simplify operations, build their digital presence and take their next steps with a clear direction.',
+        hero_cta='Explore services', hero_link='Discuss a project',
+        intro='TECHNOLOGY · MARKETING · CONSULTING',
+        manifesto=['Understand.', 'Connect.', 'Deliver.'],
+        manifesto_text='Technology, marketing and business operations work together. Each project starts with your business: what should become easier, who do you want to reach and what will work in everyday use?',
+        manifesto_small='That understanding shapes AI workflows, custom software, websites and campaigns. Hands-on hospitality experience supports the digital work, from analysis to ongoing care.',
+        service_text='Developed for your business, connected to your existing systems and supported after launch. From the first focused workflow to continued improvement.',
+        care_text='Automation as a Service includes support after launch. As your business changes, workflows, rules and connections are developed with it.',
+        care_items=[('Connect', 'Connect the tools you use: inbox, documents, reservations and your team.'), ('Manage', 'Review responses, detect errors, monitor costs and step in when needed.'), ('Evolve', 'Add workflows, adapt rules and learn from real feedback.')],
+        services_label='FOUR AREAS. ONE CONNECTED APPROACH.', services_title=['What moves', 'your business forward.'],
+        services=[
+            ('01', 'AI & AUTOMATION', 'More room for everyday work.', 'AI assistants, connected workflows and TeamO for recurring tasks, with clear rules and human oversight.', 'ki-automatisierung.html', 'Explore AI'),
+            ('02', 'SOFTWARE & WEB', 'Technology that fits.', 'Custom applications, websites and integrations, built around your operations and handed over clearly.', 'softwareentwicklung.html', 'Explore software & web'),
+            ('03', 'ONLINE MARKETING', 'Visible to the right people.', 'Search engine optimisation, social media, content and digital campaigns with a clear path to an enquiry.', 'online-marketing.html', 'Explore marketing'),
+            ('04', 'CONSULTING & OPERATIONS', 'Experience put to work.', 'Improve processes, purchasing and business performance, with particular hands-on expertise in hospitality.', 'fb-beratung.html', 'Explore consulting')],
+        portfolio_link='Explore all 22 service areas',
+        about_label='THE FOUNDER / EXPERIENCE AS A FOUNDATION', about_title=['Understand operations.', 'Build the technology.'],
+        about_text='Founder Kastriot Tafolli combines operational leadership in five-star hospitality with software development and AI engineering. His personal experience shapes the approach at Tafolli &amp; Co.: understand the task first, then develop the right solution.',
+        about_link='Meet the company & founder', about_caption='KASTRIOT TAFOLLI / FOUNDER',
+        credentials_label='THE FOUNDER’S PERSONAL CAREER EXPERIENCE',
+        credentials=[('15+', 'years in five-star hospitality'), ('200+', 'employees led simultaneously in previous management roles'), ('50+', 'young professionals trained')],
+        experience_label='THE FOUNDER’S CAREER STATIONS',
+        process=[('Understand.', 'Agree on goals, starting points and priorities to define a focused scope.'), ('Deliver.', 'Develop the solution, content or campaign, with agreed milestones and checks.'), ('Support.', 'Review outcomes after launch, prioritise improvements and agree on ongoing care.')],
+        cta_title=['Your next idea.', 'A clear', 'way forward.'],
+        cta_text='A new website, better visibility, custom software or an easier workflow: tell us what you want to move forward in your business.',
+        footer_tag='TECHNOLOGY · MARKETING · CONSULTING',
+        automation_description='AI automation by Tafolli & Co.: custom workflows, integration and ongoing care for hospitality and businesses in Germany, Austria, Switzerland and Kosovo.',
+        automation_hero_text='AI workflows that fit your business. Tafolli &amp; Co. connects existing systems, clear rules and human oversight, so recurring tasks need less of your attention.',
+        automation_cta='Explore automation',
+        faq=[
+            ('Which services can we combine?', 'AI automation, software and web, online marketing and consulting can be booked individually or as a coordinated project. Your goals and existing systems determine the scope.'),
+            ('Do you only work with hotels and restaurants?', 'Hospitality is a particular area of expertise. Digital solutions and online marketing are also available to businesses in other sectors. The first conversation establishes whether your needs match the offer.'),
+            ('How does a project begin?', 'With a conversation about your needs, starting point and budget. Scope, responsibilities, schedule and a proposal are then agreed.'),
+            ('Is ongoing support available?', 'Yes. Ongoing support for websites, marketing and AI workflows can be arranged with a clearly defined scope.'),
+            ('Which countries do you serve?', 'Services are available to companies in Germany, Austria, Switzerland and Kosovo. Digital collaboration can take place remotely; on-site meetings are agreed for each project.'),
+            ('Who will be my contact?', 'Kastriot Tafolli is your central contact. Delivery responsibilities and any partners involved are transparently identified in the project proposal.')]),
+    'sq': dict(
+        title='Tafolli & Co. | IA, Softuer, Marketing Online & Konsulencë',
+        description='Tafolli & Co. lidh automatizimin me IA, softuerin, marketingun online dhe konsulencën për biznese në Gjermani, Austri, Zvicër dhe Kosovë.',
+        nav=['Shërbimet', 'Kompania', 'Njohuri', 'Kontakt'],
+        status='TË HAPUR PËR PROJEKTE TË REJA', location='GJERMANI · AUSTRI · ZVICËR · KOSOVË',
+        hero=['IDE.', 'SISTEME.', 'Më shumë ndikim.'],
+        hero_text='Tafolli &amp; Co. lidh IA-në, softuerin, marketingun online dhe konsulencën. Për biznese që duan procese më të thjeshta, dukshmëri digjitale dhe hapa të qartë drejt zhvillimit.',
+        hero_cta='Zbuloni shërbimet', hero_link='Diskutoni projektin',
+        intro='TECHNOLOGY · MARKETING · CONSULTING',
+        manifesto=['Kuptojmë.', 'Lidhim.', 'Zbatojmë.'],
+        manifesto_text='Teknologjia, marketingu dhe proceset e biznesit janë të lidhura. Çdo projekt nis me biznesin tuaj: çfarë duhet të bëhet më e lehtë, kë dëshironi të arrini dhe çfarë zgjidhjeje funksionon në përditshmëri?',
+        manifesto_small='Nga kjo bazë lindin procese me IA, softuer i personalizuar, faqe web dhe fushata. Përvoja praktike në hoteleri dhe gastronomi plotëson punën digjitale – nga analiza te mbështetja e vazhdueshme.',
+        service_text='Zhvilluar për biznesin tuaj, lidhur me sistemet ekzistuese dhe mbështetur pas nisjes. Nga procesi i parë i përcaktuar qartë te përmirësimi i vazhdueshëm.',
+        care_text='Automation as a Service përfshin mbështetjen edhe pas nisjes. Me ndryshimet e biznesit, zhvillohen bashkërisht proceset, rregullat dhe lidhjet me sistemet.',
+        care_items=[('Lidhja', 'Lidhja e mjeteve ekzistuese: posta, dokumentet, rezervimet dhe ekipi juaj.'), ('Mirëmbajtja', 'Kontrolli i përgjigjeve, identifikimi i gabimeve, ndjekja e kostove dhe ndërhyrja sipas nevojës.'), ('Zhvillimi', 'Shtimi i proceseve, përshtatja e rregullave dhe mësimi nga reagimet reale.')],
+        services_label='KATËR FUSHA. NJË QASJE E PËRBASHKËT.', services_title=['Çfarë e çon', 'biznesin tuaj përpara.'],
+        services=[
+            ('01', 'IA & AUTOMATIZIM', 'Më shumë hapësirë në përditshmëri.', 'Asistentë me IA, procese të lidhura dhe TeamO për detyra të përsëritura, me rregulla të qarta dhe kontroll njerëzor.', 'ki-automatisierung.html', 'Zbuloni IA-në'),
+            ('02', 'SOFTUER & WEB', 'Teknologji që ju përshtatet.', 'Aplikacione, faqe web dhe integrime të personalizuara, të ndërtuara sipas proceseve tuaja dhe të dorëzuara qartë.', 'softwareentwicklung.html', 'Zbuloni softuerin & web'),
+            ('03', 'MARKETING ONLINE', 'Të dukshëm për njerëzit e duhur.', 'Optimizim për motorët e kërkimit, rrjete sociale, përmbajtje dhe fushata digjitale me rrugë të qartë drejt kërkesës.', 'online-marketing.html', 'Zbuloni marketingun'),
+            ('04', 'KONSULENCË & OPERACIONE', 'Përvojë që ndihmon zhvillimin.', 'Përmirësim i proceseve, blerjeve dhe rezultateve të biznesit, me përvojë të veçantë praktike në hoteleri dhe gastronomi.', 'fb-beratung.html', 'Zbuloni konsulencën')],
+        portfolio_link='Zbuloni të 22 fushat e shërbimit',
+        about_label='THEMELUESI / PËRVOJA SI BAZË', about_title=['Kuptimi i biznesit.', 'Zhvillimi i teknologjisë.'],
+        about_text='Themeluesi Kastriot Tafolli lidh drejtimin operacional në hotelerinë me pesë yje me zhvillimin e softuerit dhe inxhinierinë e IA-së. Përvoja e tij personale përcakton qasjen e Tafolli &amp; Co.: fillimisht kuptohet detyra, më pas zhvillohet zgjidhja e duhur.',
+        about_link='Njihuni me kompaninë & themeluesin', about_caption='KASTRIOT TAFOLLI / THEMELUES',
+        credentials_label='PËRVOJA PERSONALE PROFESIONALE E THEMELUESIT',
+        credentials=[('15+', 'vjet hoteleri me pesë yje'), ('200+', 'punonjës të drejtuar njëkohësisht në role të mëparshme'), ('50+', 'profesionistë të rinj të trajnuar')],
+        experience_label='ETAPAT PROFESIONALE TË THEMELUESIT',
+        process=[('Kuptojmë.', 'Sqarimi i synimeve, gjendjes fillestare dhe prioriteteve për një projekt të përcaktuar qartë.'), ('Zbatojmë.', 'Zhvillimi i zgjidhjes, përmbajtjes ose fushatës, me hapa dhe kontrolle të dakorduara.'), ('Mbështesim.', 'Vlerësimi i rezultateve pas nisjes, prioritizimi i përmirësimeve dhe dakordimi i mbështetjes së vazhdueshme.')],
+        cta_title=['Ideja juaj e radhës.', 'Një drejtim', 'i qartë.'],
+        cta_text='Një faqe e re web, më shumë dukshmëri, softuer i personalizuar ose një proces më i thjeshtë: na tregoni çfarë dëshironi të zhvilloni në biznesin tuaj.',
+        footer_tag='TECHNOLOGY · MARKETING · CONSULTING',
+        automation_description='Automatizim me IA nga Tafolli & Co.: procese të personalizuara, integrim dhe mbështetje për hotele e biznese në Gjermani, Austri, Zvicër dhe Kosovë.',
+        automation_hero_text='Procese me IA që i përshtaten biznesit tuaj. Tafolli &amp; Co. lidh sistemet ekzistuese, rregullat e qarta dhe kontrollin njerëzor, që detyrat e përsëritura të kërkojnë më pak vëmendje.',
+        automation_cta='Zbuloni automatizimin',
+        faq=[
+            ('Cilat shërbime mund të kombinohen?', 'Automatizimi me IA, softueri dhe web, marketingu online dhe konsulenca mund të porositen veçmas ose në një projekt të përbashkët. Synimet dhe sistemet ekzistuese përcaktojnë përmbajtjen.'),
+            ('Punoni vetëm me hotele dhe restorante?', 'Hoteleria dhe gastronomia janë një fushë e veçantë përvoje. Zgjidhjet digjitale dhe marketingu online ofrohen edhe për biznese të sektorëve të tjerë. Biseda e parë sqaron nëse nevoja dhe oferta përputhen.'),
+            ('Si nis bashkëpunimi?', 'Me një bisedë pa detyrim për nevojën, gjendjen fillestare dhe buxhetin. Më pas dakordohen përmbajtja, përgjegjësitë, afatet dhe oferta.'),
+            ('A ofrohet mbështetje e vazhdueshme?', 'Po. Për faqet web, marketingun dhe proceset me IA mund të dakordohet mbështetje e vazhdueshme me përmbajtje të qartë.'),
+            ('Në cilat vende ofrohet bashkëpunimi?', 'Shërbimet u drejtohen bizneseve në Gjermani, Austri, Zvicër dhe Kosovë. Bashkëpunimi digjital mund të bëhet në distancë; takimet në vend dakordohen për projektin konkret.'),
+            ('Kush është kontakti im?', 'Kastriot Tafolli është kontakti juaj kryesor. Përgjegjësitë e zbatimit dhe partnerët e përfshirë përcaktohen qartë në ofertën përkatëse.')]),
+}
+for code, values in COMPANY.items():
+    COPY[code].update(values)

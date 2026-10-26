@@ -1,0 +1,372 @@
+/* Tafolli & Co. — quiet product-led presentation, system typography and clear interactions. */
+:root,
+body:not(.experience) {
+  --corp-font: -apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+  --display: var(--corp-font);
+  --text: var(--corp-font);
+  --mono: var(--corp-font);
+  --corp-bg: #fff;
+  --corp-surface: #fff;
+  --corp-ink: #1d1d1f;
+  --corp-muted: #6e6e73;
+  --corp-line: #d2d2d7;
+  --corp-accent: #0071e3;
+  --ink: var(--corp-bg);
+  --ink-2: #f5f5f7;
+  --ink-3: #ebebed;
+  --paper: var(--corp-ink);
+  --paper-dim: var(--corp-muted);
+  --paper-mute: #6e6e73;
+  --line: var(--corp-line);
+  --line-soft: #e8e8ed;
+  --acc: #0066cc;
+  --acc-dim: #0071e312;
+  --x-paper: var(--corp-bg);
+  --x-ink: var(--corp-ink);
+  --x-muted: var(--corp-muted);
+  --x-lime: #0071e3;
+  --x-dark: #1d1d1f;
+  --x-orange: var(--corp-accent);
+  --x-line: var(--corp-line);
+  --shell: min(1240px, calc(100% - 96px));
+}
+html { scroll-behavior: auto; scroll-padding-top: 80px; }
+body, body.experience { background: var(--corp-bg); color: var(--corp-ink); font-family: var(--corp-font); line-height: 1.65; }
+body { overflow-wrap: break-word; }
+::selection { background: #0071e3; color: #1d1d1f; }
+a { text-underline-offset: 4px; }
+:focus-visible { outline: 2px solid #0066cc; outline-offset: 4px; }
+.shell,.x-shell { width: var(--shell); margin-inline: auto; }
+body .d1,body .hero h1,body .service-hero h1 { font-size: clamp(2.45rem,4.9vw,4.4rem)!important; line-height: 1.12; letter-spacing: -.045em; font-weight: 600; }
+body .d2,body .service-section h2,body .hub-explore h2,body .region-section h2 { font-size: clamp(1.9rem,3.1vw,2.9rem); line-height: 1.18; letter-spacing: -.035em; font-weight: 500; }
+body .d3 { font-size: clamp(1.25rem,2vw,1.65rem); line-height: 1.25; letter-spacing: -.025em; }
+body h1,body h2,body h3,body h4 { font-family: var(--corp-font); }
+body .lede { font-size: 1.1rem; line-height: 1.75; max-width: 65ch; }
+body .tag,body .region-kicker { font-family: var(--corp-font); font-size: .75rem; line-height: 1.5; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--corp-muted); }
+body .tag .n { color: #0066cc; }
+body .mono { font-family: var(--corp-font); }
+body .pad,body .service-section,body .region-section,body .hub-explore { padding-block: clamp(56px,6.5vw,88px); }
+body .hero { background: #fff; border-bottom: 1px solid var(--corp-line); }
+body .hero .shell>h1 { max-width: 24ch; }
+body .hero .lede { max-width: 67ch; }
+body .btn,body .x-button { min-height: 44px; border-radius: 999px; padding: 12px 22px; font-size: .875rem; font-weight: 500; line-height: 1.4; transition: background-color .18s,border-color .18s,color .18s; white-space: normal; }
+body .btn-1,body .x-button-dark { background: #0071e3!important; color: #fff!important; border: 1px solid #0071e3; }
+body .btn-1:hover,body .x-button-dark:hover { background: #0077ed!important; transform: none; box-shadow: none; }
+body .btn-2 { background: transparent; border-color: #d2d2d7; color: #1d1d1f; }
+body .btn-2:hover { color: #1d1d1f; border-color: #1d1d1f; transform: none; }
+body .x-button:hover,body .x-button:hover>span,body .btn:active { transform: none; box-shadow: none; }
+body .card,body .dash { background: #fff; border: 1px solid var(--corp-line); border-radius: 22px; box-shadow: none; }
+body a.card:hover { background: #fff; border-color: #bdbdc2; }
+body .chip { background: transparent; border-color: var(--corp-line); font-family: var(--corp-font); letter-spacing: 0; font-size: .8rem; }
+body .split { gap: clamp(36px,6vw,80px); }
+body .prose { color: var(--corp-muted); }
+body .prose h2,body .prose h3 { color: var(--corp-ink); }
+body .prose a { color: #0066cc; }
+body .prose p { font-size: 1rem; line-height: 1.8; }
+body .daten dt { color: var(--corp-muted); }
+body .daten dd { color: var(--corp-ink); }
+body .ticks::before,body .ticks::after,body .floor,body .glow,body .grain,body .cur,body .cursor,body .intro,body .brand-intro,body .brand-intro-flight,body .x-progress,body .x-spark,body .x-ticker-wrap,body .x-faq-star,body .pipe-particle { display: none!important; }
+html.cur-on,html.cur-on a,html.cur-on button,html.cur-on .lnk { cursor: auto!important; }
+body .rise,body .pop,body .recede-exit,body .wipe>span>span,body .wipe-3d>span>span,body [data-reveal],body .x-line>span { opacity: 1!important; visibility: visible!important; transform: none!important; filter: none!important; animation: none!important; transition: none!important; }
+body .stack-item { min-height: 0!important; padding-bottom: 20px; }
+body .stack-pin { position: static!important; }
+body .stack-pin>.card { animation: none!important; opacity: 1!important; transform: none!important; filter: none!important; }
+body .blink,body .pulse,body .marq-track,body .portrait-signal,body .x-orbit-core,body .x-satellite,body .x-orbit-particle { animation: none!important; }
+body .odo-strip { animation: none!important; transform: translateY(calc(var(--t) * -1em))!important; }
+body .dash-bar { display: none; }
+body .thread::after { display: none; }
+body .term { font-family: var(--corp-font); line-height: 1.8; }
+body .term [data-z] { opacity: 1!important; }
+/* Every page has the same compact company header. */
+body .bar,body .x-header,body .site-header { position: sticky; top: 0; background: rgba(255,255,255,.82); color: var(--corp-ink); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--corp-line); }
+body .site-header .bar-in,body .site-header .x-header-inner { min-height: 60px; height: 60px; padding-block: 0; gap: 24px; display: flex; justify-content: space-between; align-items: center; }
+body .tafolli-brand { gap: 10px; }
+body .tafolli-brand-mark { width: 29px; height: 29px; }
+body .tafolli-brand-name { color: #1d1d1f; font-size: 21px; letter-spacing: -.055em; }
+body .tafolli-brand-company { font-size: .57em; }
+body .tafolli-brand-link:hover .tafolli-brand-mark { transform: none; }
+body .site-header-controls { gap: 16px; }
+body .site-talk { padding: 8px 15px!important; min-height: 34px; font-size: .75rem!important; }
+body .lang,body .x-languages { border: 0; display: flex; gap: 0; }
+body .lang a,body .x-languages a { color: var(--corp-muted); border: 0; font: 500 11px/1.5 var(--corp-font); padding: 12px 5px; min-width: 24px; min-height: 40px; }
+body .lang a[aria-current],body .x-languages a[aria-current] { background: transparent; color: var(--corp-ink); text-decoration: underline; text-underline-offset: 5px; }
+body .site-navigation { gap: 23px; color: var(--corp-ink); }
+body .site-nav-section>summary { padding-block: 20px; font-size: 12px; }
+body .site-nav-section>summary[data-current],body .site-nav-section[open]>summary { color: #0066cc; }
+body .site-nav-section[open]>summary { box-shadow: inset 0 -2px #0071e3; }
+body .site-nav-panel { background: #fff; border-color: var(--corp-line); box-shadow: 0 18px 30px #1d1d1f0a; padding: 28px max(48px,calc((100vw - 1240px)/2)); animation: none; max-height: calc(100dvh - 60px); }
+body .site-nav-panel-top,body .site-nav-panel-bottom { border-color: var(--corp-line); }
+body .site-nav-panel-top>span,body .site-nav-panel-bottom { font: 500 11px/1.6 var(--corp-font); letter-spacing: .03em; color: var(--corp-muted); }
+body .site-nav-panel a { color: var(--corp-ink)!important; font-family: var(--corp-font); border-color: #e8e8ed; }
+body .site-nav-panel a>span { color: #0066cc; }
+body .site-nav-panel a:hover,body .site-nav-panel a[aria-current=page] { color: #0066cc!important; padding-left: 0; }
+body .site-nav-panel .site-nav-overview { background: #f5f5f7; color: #1d1d1f!important; }
+body .site-nav-columns { gap: 30px; }
+body .site-nav-section[data-section=leistungen] .site-nav-columns { grid-template-columns: repeat(4,minmax(0,1fr)); }
+body .site-nav-column>p { color: #1d1d1f!important; font-size: 17px!important; }
+body .site-nav-toggle { color: #1d1d1f; }
+body .site-breadcrumb { color: var(--corp-muted); font-size: 12px; padding-top: 23px; }
+body .site-breadcrumb a { color: var(--corp-muted); }
+/* Services, references, and other existing editorial content. */
+body .service-hero { background: #fff; padding-top: 48px; }
+body .service-hero-grid { grid-template-columns: minmax(0,1fr); gap: 0; padding-bottom: 48px; }
+body .service-visual { display: none; }
+body .service-hero h1 { max-width: 23ch; margin-top: 18px; }
+body .service-toc { gap: 12px 26px; font-family: var(--corp-font); font-size: .8rem; padding-block: 20px; }
+body .service-tint,body .region-section { background: #f5f5f7; }
+body .service-editorial { grid-template-columns: .85fr 1.15fr; gap: 80px; }
+body .service-section p { font-size: 1rem; line-height: 1.85; }
+body .service-modules { gap: 34px; }
+body .service-modules h3 { font-size: 1.4rem; line-height: 1.25; letter-spacing: -.025em; }
+body .service-example { padding-left: 25px; border-color: var(--corp-accent); }
+body .service-example>span { display: none; }
+body .service-outputs li { font-size: 1rem; }
+body .service-outputs li::before { background: #0066cc; }
+body .service-faq summary { font-size: 1rem; }
+body .service-related { border-color: var(--corp-line); }
+body .portfolio-groups { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 40px; }
+body .portfolio-groups>section { border-top: 1px solid #bdbdc2; }
+body .portfolio-groups h3 { font-size: 1.55rem; letter-spacing: -.025em; line-height: 1.25; }
+body .portfolio-links a { font-size: .95rem; }
+body .region-section h2 { max-width: 26ch; }
+body .region-grid { gap: 65px; }
+body .region-countries>span { border-color: #d2d2d7; color: var(--corp-ink); }
+body .region-countries i,body .region-link { color: #0066cc; }
+body .region-grid>div>p:not(.region-kicker),body .hub-explore p { color: var(--corp-muted); }
+body .hub-explore article { border-top: 1px solid var(--corp-line); }
+body .hub-explore h3 { font-size: 1.35rem; line-height: 1.25; }
+body .hub-explore a { color: #0066cc; }
+body .portrait-circuit,body .portrait-signature { display: none; }
+body .identity-portrait { border-radius: 22px; }
+body .portrait-name { font-size: clamp(30px,3vw,44px); line-height: 1.08; }
+body .career-card,body .partner-card,body .partner-reference-card { background: #fff; border-color: var(--corp-line); border-radius: 22px; box-shadow: none; }
+body .career-transfer { background: #f5f5f7; border-color: var(--corp-line); }
+body .career-transfer h3 { font-size: clamp(25px,2.7vw,34px); line-height: 1.2; }
+body .career-benefit { border-color: #0071e3; }
+body .career-benefit h4,body .career-website { color: #0066cc; }
+/* The dedicated automation page retains its useful demo, without decorative motion. */
+body.experience .x-section { padding-block: clamp(56px,6.5vw,88px); }
+body.experience h2,body.experience .x-product h2,body.experience .x-care h2 { font-size: clamp(30px,3.3vw,46px); line-height: 1.2; letter-spacing: -.035em; }
+body.experience h3 { font-size: clamp(25px,2.7vw,36px); line-height: 1.2; letter-spacing: -.03em; }
+body.experience .x-hero { background: #fff; padding: 42px 0 58px; border-bottom: 1px solid var(--corp-line); }
+body.experience .x-hero-stage { min-height: 0; margin-top: 28px; display: block; }
+body.experience .x-hero h1,body.service-detail .x-hero h1 { font-size: clamp(42px,5vw,68px); line-height: 1.1; letter-spacing: -.045em; max-width: 22ch; }
+body.experience .x-hero .x-serif { font: inherit; letter-spacing: inherit; padding-bottom: 5px; white-space: normal; }
+body.experience .x-line { padding-bottom: 5px; margin: 0; overflow: visible; }
+body.experience .x-art,body.experience .x-scroll,body.experience .x-story-art,body.experience .x-story-bottom,body.experience .x-care-art,body.experience .x-closing-arrow,body.experience .x-service-art { display: none; }
+body.experience .x-hero-bottom { margin-top: 22px; }
+body.experience .x-hero-bottom>div,body.experience .x-hero-bottom p { max-width: 65ch; }
+body.experience .x-label { font: 500 12px/1.5 var(--corp-font); letter-spacing: 0; color: var(--corp-muted); }
+body.experience .x-hero-meta { font: 500 11px/1.6 var(--corp-font); letter-spacing: .025em; }
+body.experience .x-dot { box-shadow: none; background: #0066cc; }
+body.experience .x-story { height: auto; min-height: 0; padding-block: 60px; background: #f5f5f7; }
+body.experience .x-story-pin { position: static; height: auto; }
+body.experience .x-story-grid { display: block; }
+body.experience .x-story-scenes { height: auto; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 40px; }
+body.experience .x-story-scene { position: static; opacity: 1!important; transform: none!important; padding-block: 0; }
+body.experience .x-story-scene h2 { font-size: 26px; line-height: 1.2; margin-bottom: 20px; }
+body.experience .x-story-scene p { font-size: 15px; }
+body.experience .x-care { background: #f5f5f7; }
+body.experience .x-care-grid { grid-template-columns: 1fr; }
+body.experience .x-care h2>span:last-child { font: inherit; }
+body.experience .x-care-items { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 35px; }
+body.experience .x-care-copy { max-width: 65ch; }
+body.experience .x-product { gap: 50px; padding-bottom: 45px; margin-bottom: 60px; }
+body.experience .x-product>div>p { font-size: 1rem; }
+body.experience .x-lab { background: #f5f5f7; border-radius: 22px; }
+body.experience .x-lab .x-label { color: #424245; font-size: 10px; }
+body.experience .x-lab-top>span:first-child { color: #0071e3; }
+body.experience .x-input-card,body.experience .x-output-card { background: #fff; border: 1px solid #d2d2d7; border-radius: 22px; }
+body.experience .x-input-card h4,body.experience .x-output-card h4 { color: #fff; }
+body.experience .x-input-card>p:last-child,body.experience .x-output-card p:not(.x-label) { color: #424245; }
+body.experience .x-tab[aria-selected=true],body.experience .x-button-lime { background: #0071e3!important; border-color: #0071e3!important; color: #1d1d1f!important; }
+body.experience .x-output-idle>span,body.experience .x-output-idle p { color: #0071e3!important; }
+body.experience .x-engine-ring,body.experience .x-engine>span>span { display: none; }
+body.experience .x-engine>span { font-size: 35px; color: #0071e3; }
+body.experience .x-engine small { color: #424245; }
+body.experience .x-engine::before,body.experience .x-engine::after { background: #d2d2d7; }
+body.experience .x-service { background: #fff; color: #1d1d1f!important; border: 1px solid var(--corp-line); border-radius: 22px; }
+body.experience .x-service h3 { font-size: 29px; margin-top: 32px; }
+body.experience .x-service p { color: var(--corp-muted); }
+body.experience .x-process-number { font-size: 50px; }
+body.experience .x-process h3 { font-size: 28px; }
+body.experience .x-closing { background: #f5f5f7; }
+body.experience .x-closing h2 { font-size: clamp(35px,4vw,54px); line-height: 1.15; }
+body.experience .x-footer { background: #f5f5f7; }
+body.experience .x-footer-bottom>span:last-child { display: none; }
+body .company-footer { background: #f5f5f7; border-top: 1px solid var(--corp-line); padding: 64px 0 26px; }
+.company-footer-grid { display: grid; grid-template-columns: 1.55fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; }
+.company-footer-grid>div>p { font-size: .9rem; color: var(--corp-muted); max-width: 33ch; margin-top: 20px; }
+.company-footer-grid h2 { font: 500 .85rem/1.4 var(--corp-font); letter-spacing: 0; margin: 5px 0 18px; }
+.company-footer-grid a:not(.tafolli-brand-link) { display: block; color: var(--corp-muted); font-size: .875rem; line-height: 1.6; padding: 5px 0; }
+.company-footer-grid a:hover { color: #0066cc; }
+.company-footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 18px; padding-top: 24px; border-top: 1px solid var(--corp-line); font-size: .75rem; color: var(--corp-muted); }
+.company-footer-bottom>div { display: flex; gap: 24px; }
+@media (max-width:1100px) {
+  :root,body:not(.experience) { --shell: min(1240px,calc(100% - 64px)); }
+  body .site-header .bar-in,body .site-header .x-header-inner { min-height: 56px; height: 56px; gap: 18px; }
+  body .site-nav-panel { max-height: none; padding: 20px 0; }
+  body .site-navigation.is-open { background: #fff; max-height: calc(100dvh - 56px); border-color: var(--corp-line); box-shadow: 0 18px 30px #1d1d1f0a; }
+  body .site-nav-section>summary { padding-block: 18px; font-size: 20px; }
+  body .site-nav-section[open]>summary { box-shadow: none; }
+  body .site-nav-section[data-section=leistungen] .site-nav-columns { grid-template-columns: repeat(2,minmax(0,1fr))!important; }
+  body .service-editorial,body .region-grid { gap: 45px; }
+  .company-footer-grid { gap: 28px; grid-template-columns: 1.5fr 1fr 1fr; }
+  .company-footer-grid>div:first-child { grid-column: 1/-1; }
+  .company-footer-grid>div:first-child>p { max-width: 60ch; }
+}
+@media (max-width:700px) {
+  :root,body:not(.experience) { --shell: calc(100% - 40px); }
+  body .site-header .bar-in,body .site-header .x-header-inner { min-height: 56px; height: 56px; gap: 10px; }
+  body .site-header .tafolli-brand { gap: 7px; }
+  body .site-header .tafolli-brand-mark { width: 27px; height: 27px; }
+  body .site-header .tafolli-brand-name { font-size: 20px; gap: 5px; }
+  body .site-header .tafolli-brand-company { font-size: 12px; }
+  body .site-header-controls { gap: 6px; }
+  body .lang a,body .x-languages a { padding: 12px 4px; min-width: 23px; }
+  body .site-nav-toggle { min-width: 32px; }
+  body .site-navigation.is-open { padding-inline: 20px; max-height: calc(100dvh - 56px); }
+  body .site-nav-section[data-section=leistungen] .site-nav-columns { grid-template-columns: 1fr!important; }
+  body .service-editorial,body .region-grid,body .portfolio-groups { grid-template-columns: 1fr; gap: 32px; }
+  body .service-hero { padding-top: 30px; }
+  body .service-toc { gap: 10px 20px; }
+  body .service-modules { grid-template-columns: 1fr; }
+  body .service-modules h3 { margin: 14px 0; }
+  body .hero { padding-block: 38px!important; }
+  body .hero h1 { font-size: clamp(2.2rem,9vw,3rem)!important; }
+  body .lede { font-size: 1rem; }
+  body .service-example { padding-left: 20px; }
+  body .site-breadcrumb { font-size: 11px; padding-top: 18px; }
+  body.experience .x-story-scenes,body.experience .x-care-items { grid-template-columns: 1fr; gap: 30px; }
+  body.experience .x-hero h1,body.service-detail .x-hero h1 { font-size: clamp(38px,9vw,54px); }
+  body.experience .x-product { gap: 20px; }
+  body.experience .x-demo-control { gap: 15px; }
+  .company-footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; padding-bottom: 36px; }
+  .company-footer-grid>div:first-child,.company-footer-grid>div:last-child { grid-column: 1/-1; }
+  body .company-footer { padding-top: 46px; }
+}
+@media (max-width:360px) {
+  body .site-header .tafolli-brand-name { font-size: 19px; gap: 4px; }
+  body .site-header .tafolli-brand-company { font-size: 10px; }
+  body .site-header .tafolli-brand-mark { width: 27px; height: 27px; }
+  body .site-header .lang a,body .site-header .x-languages a { padding-inline: 2px; min-width: 21px; font-size: 10px; }
+}
+
+/* The shared header uses one plain surface on every page. */
+body .bar::before{background:transparent;backdrop-filter:none}
+/* Dedicated service pages share the same quiet neutral surfaces. */
+body.experience .x-automation{background:#fff;color:#1d1d1f}
+body.experience .x-product{border-color:#d2d2d7}
+body.experience .x-product h2{color:#1d1d1f}
+body.experience .x-product>div>p,body.experience .x-section-heading>p{color:#6e6e73}
+body.experience .x-product li{color:#6e6e73;border-color:#d2d2d7}
+body.experience .x-lab{color:#1d1d1f}
+body.experience .x-services{background:#f5f5f7}
+
+/* Product-led refinements shared with every existing service page. */
+body .bar::before,body .bar::after,body .x-header::before,body .x-header::after { content: none!important; background: none!important; backdrop-filter: none!important; }
+body .site-header { border-bottom-color: #0000000d; }
+body .site-header .tafolli-brand-name { font-family: 'Space Grotesk',sans-serif; font-size: 21px; }
+body .site-header .tafolli-brand-mark { width: 29px; height: 29px; }
+body .site-header .site-navigation,body .site-nav-section>summary,body .site-nav-toggle,body .site-nav-column>p { font-family: var(--corp-font)!important; }
+body .site-header .site-navigation { gap: 27px; }
+body .site-nav-panel { background: rgba(255,255,255,.98); box-shadow: 0 22px 32px #00000008; border-color: #d2d2d7; }
+body .site-nav-section[open]>summary { color: #1d1d1f; box-shadow: none; }
+body .site-nav-section>summary[data-current] { color: #1d1d1f; }
+body .site-nav-panel .site-nav-overview { border-radius: 999px; background: #f5f5f7; }
+body .site-nav-column>p { font-size: 18px!important; letter-spacing: -.02em; }
+body .site-nav-panel-top>span,body .site-nav-panel-bottom { letter-spacing: 0; }
+body .site-navigation :focus-visible,body .site-nav-toggle:focus-visible { outline-color: #0071e3!important; }
+body .lang a:hover,body .x-languages a:hover { color: #1d1d1f; }
+body .hero .shell { text-align: center; }
+body .hero .shell>h1,body .hero .lede { margin-inline: auto; }
+body .hero .shell>div[style*="display:flex"] { justify-content: center; }
+body .service-hero-grid { text-align: center; padding-top: 18px; padding-bottom: 60px; }
+body .service-hero h1,body .service-hero .lede { margin-inline: auto; }
+body .service-hero .lede { color: #6e6e73; font-size: clamp(18px,1.7vw,23px); line-height: 1.45; max-width: 50ch; }
+body .service-hero h1,body .hero h1 { font-family: var(--corp-font)!important; font-weight: 600; letter-spacing: -.045em; }
+body .service-section h2,body .hub-explore h2,body .region-section h2,body .portfolio-groups h3,body .service-modules h3,body .career-card h3,body .career-transfer h3 { font-family: var(--corp-font)!important; font-weight: 600; }
+body .service-toc { justify-content: center; color: #6e6e73; border-color: #e8e8ed; }
+body .service-toc a:hover,body .service-related a:hover { color: #0066cc; }
+body .card,body .dash { background: #f5f5f7; border: 0; border-radius: 22px; padding: clamp(24px,3.4vw,44px); }
+body a.card:hover { background: #ededf0; border: 0; }
+body .chip { border-radius: 999px; background: #f5f5f7; border-color: transparent; color: #6e6e73; font-size: 12px; }
+body .btn-2 { background: transparent; color: #0071e3; border: 1px solid #0071e3; }
+body .btn-2:hover { background: #0071e3; color: #fff; border-color: #0071e3; }
+body .region-countries>span { background: #fff; border: 0; border-radius: 999px; padding: 10px 16px; }
+body .career-card,body .partner-card,body .partner-reference-card { border-radius: 22px; overflow: hidden; background: #f5f5f7; border: 0; }
+body .career-benefit { border-color: #d2d2d7; }
+body .career-benefit h4 { color: #6e6e73; }
+body .career-transfer { border: 0; border-radius: 22px; padding: 36px; }
+body .career-logo-stage { background: #fff; border-radius: 12px; }
+body .region-link { color: #0066cc; border-color: transparent; }
+body .hub-explore a { color: #0066cc; }
+body .service-example { border-left-color: #d2d2d7; }
+body .portfolio-groups>section { border-top-color: #d2d2d7; }
+body .tl-jahr,body .tl-ort,body .tag .n { color: #6e6e73; }
+body .tl-item::before { background: #d2d2d7; box-shadow: none; }
+body input[type=range] { accent-color: #0071e3; }
+body input[type=range]::-webkit-slider-thumb { background: #0071e3; box-shadow: none; }
+body input[type=range]::-moz-range-thumb { background: #0071e3; box-shadow: none; }
+body .calc-bar i,body .pipe-node i { background: #0071e3; }
+body .identity-portrait { overflow: hidden; border-radius: 22px; }
+body.experience .x-hero { text-align: center; padding-top: 48px; }
+body.experience .x-hero-stage,body.experience .x-hero-bottom,body.experience .x-hero h1,body.experience .x-hero-bottom>div { margin-inline: auto; }
+body.experience .x-hero h1 { font-family: var(--corp-font); font-weight: 600; }
+body.experience .x-hero-bottom { justify-content: center; }
+body.experience .x-actions { justify-content: center; }
+body.experience .x-product h2,body.experience .x-care h2,body.experience h2,body.experience h3 { font-family: var(--corp-font)!important; font-weight: 600; }
+body.experience .x-lab { background: #f5f5f7; color: #1d1d1f; border: 0; border-radius: 22px; }
+body.experience .x-lab-top { border-bottom: 1px solid #d2d2d7; }
+body.experience .x-lab-top>span:first-child,body.experience .x-lab-top>span:last-child { color: #6e6e73; }
+body.experience .x-lab .x-label { color: #6e6e73; }
+body.experience .x-tab { border: 1px solid #d2d2d7!important; color: #1d1d1f!important; border-radius: 999px; }
+body.experience .x-tab[aria-selected=true],body.experience .x-button-lime { background: #0071e3!important; color: #fff!important; border-color: #0071e3!important; }
+body.experience .x-tab:not([aria-selected=true]):hover { background: #e8e8ed!important; }
+body.experience .x-input-card,body.experience .x-output-card { background: #fff; border: 0; border-radius: 18px; }
+body.experience .x-input-card h4,body.experience .x-output-card h4 { color: #1d1d1f; font: 600 24px/1.2 var(--corp-font); letter-spacing: -.02em; }
+body.experience .x-input-card>p:last-child,body.experience .x-output-card p:not(.x-label) { color: #6e6e73; }
+body.experience .x-output-idle p,body.experience .x-output-idle>span { color: #6e6e73!important; }
+body.experience .x-engine>span,body.experience .x-engine small { color: #6e6e73; }
+body.experience .x-output-card li { color: #0066cc; background: #0071e30a; border: 0; font-family: var(--corp-font); }
+body.experience .x-receipt { color: #6e6e73!important; border-color: #d2d2d7; }
+body.experience .x-mail-icon { background: #0071e30d; color: #0071e3; border-radius: 8px; }
+body.experience .x-stages li { color: #6e6e73; border-color: #d2d2d7; }
+body.experience .x-stages .is-active,body.experience .x-stages .is-done { color: #0066cc; border-color: #0071e3; }
+body.experience .x-stages i { background: #d2d2d7; }
+body.experience .x-stages .is-active i,body.experience .x-stages .is-done i { background: #0071e3; box-shadow: none; }
+body.experience .x-demo-control>p,body.experience .x-demo-hint { color: #6e6e73; }
+body.experience .x-demo-hint { border-color: #d2d2d7; font: 11px/1.5 var(--corp-font); }
+body.experience .x-roi-result { background: #f5f5f7; border: 0; border-radius: 22px; }
+body.experience .x-roi-result .x-label,body.experience .x-roi-money { color: #6e6e73; }
+body.experience .x-roi-result .x-hour-value { color: #1d1d1f; }
+body.experience .x-service { background: #f5f5f7; border: 0; }
+body.experience .x-faq-star { display: none; }
+body .company-footer { border-top: 0; }
+.company-footer-grid>div>p,.company-footer-grid a:not(.tafolli-brand-link) { font-size: 12px; line-height: 1.6; }
+.company-footer-grid h2 { font: 600 12px/1.5 var(--corp-font); }
+.company-footer-bottom { color: #6e6e73; font-size: 11px; }
+@media (max-width:1100px) {
+  body .site-header .site-navigation { gap: 0; }
+  body .site-nav-section>summary { padding-block: 17px; font-size: 22px; }
+  body .site-nav-toggle { min-height: 44px; }
+}
+@media (max-width:700px) {
+  body .site-header .tafolli-brand-name { font-size: 20px; }
+  body .site-header .tafolli-brand-mark { width: 27px; height: 27px; }
+  body .site-nav-panel { padding-top: 15px; }
+  body .service-hero-grid { padding-top: 8px; padding-bottom: 42px; }
+  body .service-hero .lede { font-size: 19px; line-height: 1.5; }
+  body.experience .x-hero { padding-top: 34px; }
+  body.experience .x-actions { align-items: center; }
+  body .career-transfer { padding: 26px; }
+}
+@media (prefers-reduced-transparency:reduce) {
+  body .bar,body .x-header,body .site-header { background: #fff; backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+
+/* Override the retained warm header and editorial serif accents. */
+body:not(.experience) .bar.site-header,body.experience .x-header.site-header{background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px)}
+body.experience h2>span,body.experience .x-product h2>span:last-child,body.experience .x-closing h2>span:last-child{font-family:var(--corp-font)!important;font-style:normal!important;font-weight:inherit;letter-spacing:inherit;color:inherit}
+::selection{background:#c7e1ff;color:#1d1d1f}
+@media(prefers-reduced-transparency:reduce){body:not(.experience) .bar.site-header,body.experience .x-header.site-header{background:#fff;backdrop-filter:none;-webkit-backdrop-filter:none}}
