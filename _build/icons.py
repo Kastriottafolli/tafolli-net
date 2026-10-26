@@ -5,6 +5,8 @@ Scripts, metadata and existing artwork remain untouched.
 """
 import hashlib
 import html
+import re
+from html.entities import name2codepoint
 from html.parser import HTMLParser
 from pathlib import Path
 
@@ -74,8 +76,20 @@ class IconMarkup(HTMLParser):
     def handle_comment(self, data):
         self.parts.append(f'<!--{data}-->')
 
+# HTMLParser treats "&B" in "F&B," as an entity and handle_entityref
+# rewrites it as "&B;". Keep real entities; escape every other ampersand.
+_BARE_AMP = re.compile(r'&([a-zA-Z][-.a-zA-Z0-9]*)(;?)')
+
+def _escape_bare_amps(markup):
+    def repl(match):
+        name, semi = match.group(1), match.group(2)
+        if name in name2codepoint and semi == ';':
+            return match.group(0)
+        return '&amp;' + name + semi
+    return _BARE_AMP.sub(repl, markup)
+
 def iconize(markup):
     parser = IconMarkup()
-    parser.feed(markup)
+    parser.feed(_escape_bare_amps(markup))
     parser.close()
     return ''.join(parser.parts)

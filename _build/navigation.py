@@ -24,13 +24,27 @@ SERVICE_GROUPS = [
   ('interim-fb-management.html','Interim F&B-Management'),
   ('revenue-controlling.html','Revenue & F&B-Controlling'),
   ('personal-recruiting.html','Recruiting & Teamentwicklung')]),
+ ('Angebote & Pakete', [
+  ('ki-automatisierung-kleine-unternehmen.html','KI für kleine Unternehmen'),
+  ('landingpage-erstellen-lassen.html','Landingpage erstellen lassen'),
+  ('website-pflege.html','Website-Pflege'),('onlineshop.html','Onlineshop'),
+  ('web-apps.html','Web-Apps & Werkzeuge'),('firmenprofile.html','Firmenprofile & lokale Einträge'),
+  ('angebot/','Texte & Übersetzungen'),('preisrechner.html','Paketpreise berechnen')]),
+ ('Für Ihr Unternehmen', [
+  ('website-fuer-handwerker.html','Websites für Handwerksbetriebe'),
+  ('ki-automatisierung-arztpraxen.html','KI für Arztpraxen & Therapeuten'),
+  ('website-fuer-vereine.html','Websites für Vereine'),
+  ('website-pflege-kleine-betriebe.html','Website-Pflege für kleine Betriebe'),
+  ('onlineshop-kleine-haendler.html','Onlineshops für kleine Händler'),
+  ('sq/faqe-dhe-perkthime.html','Faqe web dhe përkthime'),
+  ('sq/automatizim-ia.html','Automatizim me IA')]),
  ('AI Automation', [
   ('ki-automatisierung.html','KI-Automatisierung & Workflows'),
   ('ki-entwicklung.html','KI-Entwicklung & Assistenten'),
   ('teamo-ki.html','TeamO · KI-Assistent für Hospitality')])]
 
 SECTIONS = [
- ('leistungen','Leistungen','leistungen.html','Alle 22 Leistungsbereiche',SERVICE_GROUPS),
+ ('leistungen','Leistungen','leistungen.html','Leistungen & Pakete',SERVICE_GROUPS),
  ('profil','Unternehmen','ueber-mich.html','Tafolli & Co. kennenlernen',[
   ('Unternehmen & Gründer',[('ueber-mich.html','Unternehmen & Arbeitsweise'),('werdegang.html','Werdegang des Gründers'),('referenzen.html','Referenzen & Partner'),('referenzen.html#stationen','Berufliche Stationen')]),
   ('Netzwerk',[('referenzen.html#betriebe','Betriebe & Referenz-Websites'),('referenzen.html#gastronomie','Gastronomiepartner'),('referenzen.html#technologie','Technologiepartner')]),
@@ -49,7 +63,7 @@ def nav( current='index.html', base='', lang='de'):
  def link(url,label,cls=''):
   href=url if ':' in url else base+url
   active=' aria-current="page"' if url==current else ''
-  language=' lang="de"' if lang!='de' and url.endswith('.html') and url!='index.html' else ''
+  language=' lang="sq"' if url.startswith('sq/') else (' lang="de"' if lang!='de' and url.endswith('.html') and url!='index.html' else '')
   return f'<a href="{escape(href,quote=True)}" class="{cls}"{active}{language}>{escape(label)}<span aria-hidden="true">↗</span></a>'
  sections=[]
  for i,(key,label,url,overview,groups) in enumerate(SECTIONS):

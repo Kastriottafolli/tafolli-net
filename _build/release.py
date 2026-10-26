@@ -8,6 +8,7 @@ import json
 import re
 import shutil
 import zipfile
+from pages import generated_pages
 
 ROOT=Path(__file__).resolve().parent.parent
 CSS_URL=re.compile(r'url\(\s*[\'"]?([^\'"\)]+)')
@@ -46,7 +47,7 @@ def dependencies(path):
 def package(output,archive=None):
     if output.exists():raise FileExistsError(f'Refusing to overwrite existing output: {output}')
     output.mkdir(parents=True)
-    pending=[*ROOT.glob('*.html'),ROOT/'en/index.html',ROOT/'sq/index.html']
+    pending=generated_pages(ROOT)
     included=set()
     while pending:
         path=pending.pop().resolve()

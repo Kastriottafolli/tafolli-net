@@ -46,7 +46,7 @@ def ueber_mich():
   <div class="split" style="align-items:start;gap:clamp(36px,5vw,90px);margin-top:28px">
     <div><h2 class="d2" style="margin-bottom:24px">Kastriot Tafolli.</h2>
     <div class="prose rise"><p>Die Verbindung von Betrieb und Technologie geht auf den beruflichen Weg von Kastriot Tafolli zurück: vom klassischen Service im Grand Hotel Prishtina über Führungsaufgaben in der gehobenen Hotellerie bis zur Softwareentwicklung und KI.</p>
-    <p>Zu seinen Stationen gehören Grand Hotel Binz, Cerês am Meer, die Vier Jahreszeiten in Binz, Rösing Touristik und die Raulff-Hotels. Seit Juni 2026 ist er F&amp;B Manager im Hotel Vier Jahreszeiten am Schluchsee. Diese Stationen beschreiben seine persönliche Berufserfahrung.</p>
+    <p>Zu seinen Stationen gehören Grand Hotel Binz, Cerês am Meer, Rösing Touristik und die Raulff-Hotels. Diese Stationen beschreiben seine persönliche Berufserfahrung.</p>
     <p>Eine Ausbildung zum Softwareingenieur, die abgeschlossene sechsmonatige Spezialisierung auf KI Engineering und eine dreimonatige Schulung zum Prompt Engineer ergänzen die operative Erfahrung. Im Online-Marketing gehören SEO, Google Ads, Social Media und digitale Sichtbarkeit zu seinem Hintergrund.</p>
     <p>Mit Boriss Bockans hat Kastriot unter dem Namen TB Solutions digitale Projekte aufgebaut. Diese Erfahrung in digitalen Projekten fließt in die Weiterentwicklung des Angebots unter Tafolli &amp; Co. ein.</p></div>
     <a href="werdegang.html" class="btn btn-2" style="margin-top:18px">Beruflichen Werdegang ansehen ↗</a></div>
@@ -71,19 +71,13 @@ def werdegang():
         ("2026", "Weiterbildung KI Engineering", "Master School Institute of Technology · Berlin",
          "Abgeschlossene sechsmonatige Spezialisierung auf KI Engineering mit Fokus auf die Automatisierung allgemeiner Geschäftsprozesse, ergänzt durch eine dreimonatige Schulung zum Prompt Engineer. Grundlage für die Entwicklung von TeamO.",
          ["Prozessautomatisierung", "Prompt Engineering", "Systemintegration"]),
-        ("seit 2026", "F&B Manager", "Hotel Vier Jahreszeiten am Schluchsee · Schwarzwald",
-         "Verantwortung für mehrere F&B-Outlets eines 5-Sterne-Plus-Wellness- und Familienresorts: Panorama, Lucia, Gugelhupf, Kachelofen und Bar, mit 100+ Mitarbeitenden. Halbpension, à la carte, Bankett und Bar unter einem Dach.",
-         ["5 Outlets", "100+ Mitarbeitende", "5 Sterne Plus"]),
-        ("2025", "Gastronomischer Direktor", "Raulff-Hotels OHG · Sassnitz",
+                ("2025", "Gastronomischer Direktor", "Raulff-Hotels OHG · Sassnitz",
          "Leitung von zwei Hotels mit 267 Zimmern und sechs F&B-Outlets, Führung von 120+ Mitarbeitenden, Steigerung der Gästezufriedenheit um 70 Prozent. Zusätzlich verantwortlich für die gesamte Hotelgruppe mit Hotel Badehaus Goor, Schlosshotel Ralswiek, Kurhotel Sassnitz, Rügen-Hotel und Rosencafé Putbus, inklusive Preisgestaltung, Einkauf und Vertragsverhandlungen.",
          ["267 Zimmer", "6 Outlets", "Gruppenverantwortung", "+70 % Zufriedenheit"]),
         ("2024", "Director of Operations", "Rösing Touristik GmbH · Sassnitz",
          "Gesamtverantwortung für drei Hotels sowie ein Resort mit fünf Restaurants, Führung eines Teams von 150+ Mitarbeitenden. Schwerpunkt auf Vereinheitlichung von Standards, Einkauf und Personalplanung über mehrere Häuser hinweg.",
          ["3 Hotels", "5 Restaurants", "150+ Mitarbeitende"]),
-        ("2023 bis 2024", "Gastronomischer Direktor / Director of Operations", "Vier Jahreszeiten / Meersinn / Suite Hotel · Ostseebad Binz",
-         "Verantwortung für drei Hotels und sieben F&B-Outlets, darunter ein mehrfach ausgezeichnetes Sterne-Restaurant, Führung von 180+ Mitarbeitenden. Konzeptarbeit, Qualitätssicherung und Aufbau von Führungsstrukturen in den einzelnen Häusern.",
-         ["3 Hotels", "7 Outlets", "Sterne-Restaurant", "180+ Mitarbeitende"]),
-        ("2022 bis 2023", "F&B Manager", "Cerês am Meer · Ostseebad Binz",
+                ("2022 bis 2023", "F&B Manager", "Cerês am Meer · Ostseebad Binz",
          "Operatives Management im F&B-Bereich eines 5-Sterne-Superior Designhotels mit Michelin-Stern-Restaurant, Führung von 30+ Mitarbeitenden. Höchste Ansprüche an Service, Ablauf und Detailgenauigkeit.",
          ["5 Sterne Superior", "Michelin-Stern", "30+ Mitarbeitende"]),
         ("2018 bis 2022", "F&B Manager", "Grand Hotel Binz · Ostseebad Binz",

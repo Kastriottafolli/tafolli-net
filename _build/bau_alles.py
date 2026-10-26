@@ -11,9 +11,17 @@ WURZEL = HIER.parent
 from icons import iconize
 
 import seiten_a, seiten_b, seiten_c, seiten_d, experience, artwork, services
+import kern, pakete, landings, translation_offer
 from seo import write_sitemap
 
 SEITEN = {
+    'ki-automatisierung-kleine-unternehmen.html': kern.ki_kleine,
+    'landingpage-erstellen-lassen.html': kern.landingpage,
+    'website-pflege.html': pakete.website_pflege,
+    'onlineshop.html': pakete.onlineshop,
+    'web-apps.html': pakete.web_apps,
+    'firmenprofile.html': pakete.firmenprofile,
+    'preisrechner.html': pakete.preisrechner,
     'ueber-mich.html': seiten_a.ueber_mich,
     'werdegang.html': seiten_a.werdegang,
     'leistungen.html': seiten_a.leistungen,
@@ -40,4 +48,6 @@ if __name__ == '__main__':
         html = iconize(fn())
         (WURZEL / datei).write_text(html)
         print(f"  {datei:30} {len(html):>7} Zeichen")
+    translation_offer.build(WURZEL)
+    landings.build(WURZEL)
     write_sitemap(WURZEL)

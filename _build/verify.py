@@ -3,12 +3,15 @@ from collections import Counter
 from html.parser import HTMLParser
 from icons import GLYPHS
 import json
+import re
+from html import unescape
 from services import SERVICES
 from companies import COMPANIES
 from hotels import HOTELS
 from partners import PROJECTS, GASTRO, TECH, SOURCES
 from pathlib import Path
 from delivery import ACTION, ENDPOINT, RECIPIENT
+from pages import generated_pages
 from urllib.parse import unquote, urlsplit
 import xml.etree.ElementTree as ET
 
@@ -22,6 +25,7 @@ class Page(HTMLParser):
         self.in_config = False
         self.in_nav=False; self.nav_links=[]; self.canonical=''; self.title=''; self.in_title=False
         self.in_head=False; self.title_count=0; self.images=[]
+        self.alternates=[]
         self.planners=[]; self.in_planner=False; self.planner_text=''
         self.forms=[]; self.active_form=None
         self.schemas=[]; self.schema_text=''; self.in_schema=False
@@ -49,6 +53,7 @@ class Page(HTMLParser):
         if tag == 'nav' and attrs.get('aria-label')=='Brotkrumennavigation': self.breadcrumbs+=1
         if tag == 'a' and self.in_nav: self.nav_links.append(attrs.get('href',''))
         if tag == 'link' and attrs.get('rel')=='canonical': self.canonical=attrs.get('href','')
+        if tag=='link' and attrs.get('rel')=='alternate' and attrs.get('hreflang'):self.alternates.append((attrs['hreflang'],attrs.get('href','')))
         if 'brand-intro' in attrs.get('class','').split(): self.intros+=1
         if tag == 'script' and attrs.get('type')=='application/ld+json': self.in_schema=True;self.schema_text=''
         if 'id' in attrs: self.ids.append(attrs['id'])
@@ -74,7 +79,7 @@ class Page(HTMLParser):
             if self.in_schema: self.schemas.append(json.loads(self.schema_text));self.in_schema=False
 
 def verify():
-    pages={p.resolve():Page(p) for p in [*ROOT.glob('*.html'),ROOT/'en/index.html',ROOT/'sq/index.html']}
+    pages={p.resolve():Page(p) for p in generated_pages(ROOT)}
     errors=[]
     svg_ids={path.resolve():{node.get('id') for node in ET.parse(path).iter() if node.get('id')} for path in ROOT.rglob('*.svg')}
     for path,page in pages.items():
@@ -122,6 +127,14 @@ def verify():
             if page.breadcrumbs!=1 or 'BreadcrumbList' not in types:errors.append(f'{relative}: missing or duplicate breadcrumbs')
         if str(relative)=='404.html' and page.meta.get('robots')!='noindex':errors.append('404 must remain noindex')
         for node in graph:
+            if node.get('@type') in ['WebPage','AboutPage','ContactPage','CollectionPage'] and node.get('inLanguage')!=page.lang:
+                errors.append(f'{relative}: structured page language mismatch')
+            if node.get('@type')=='FAQPage':
+                clean=lambda value:re.sub(r'\s+','',unescape(re.sub(r'<[^>]+>','',value)))
+                visible=clean(page.visible_text)
+                for question in node.get('mainEntity',[]):
+                    if clean(question.get('name','')) not in visible or clean(question.get('acceptedAnswer',{}).get('text','')) not in visible:
+                        errors.append(f'{relative}: FAQ schema does not match the page content')
             if node.get('@type') in ['Organization','Service']:
                 if {country['name'] for country in node.get('areaServed',[])}!={'Germany','Austria','Switzerland','Kosovo'}:errors.append(f'{relative}: incorrect service coverage')
             for asset in ['logo','image']:
@@ -149,6 +162,11 @@ def verify():
     for attribute in ['title','description']:
         values=[page.title if attribute=='title' else page.meta.get('description') for page in pages.values()]
         if len(set(values))!=len(values):errors.append(f'Duplicate {attribute}')
+    canonical_pages={page.canonical:page for page in pages.values()}
+    for page in pages.values():
+        for code,url in page.alternates:
+            if url not in canonical_pages:errors.append(f'{page.path.name}: alternate points to a missing canonical page')
+            elif code!='x-default' and not any(href==page.canonical for _,href in canonical_pages[url].alternates):errors.append(f'{page.path.name}: missing reciprocal language alternate')
     for code,location in [('de','index.html'),('en','en/index.html'),('sq','sq/index.html')]:
         assert pages[(ROOT/location).resolve()].lang==code
     assert (ROOT/'assets/social-preview.png').exists(), 'Missing sharing image'

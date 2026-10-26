@@ -44,8 +44,19 @@ PAGE_META={
  'impressum.html':('Impressum | Tafolli & Co.','Anbieterinformationen und Kontaktdaten für tafolli.net: Kastriot Tafolli, Hauptstraße 1, 18609 Ostseebad Binz. Telefon, E-Mail und Verantwortlichkeit für die Inhalte.'),
  'datenschutz.html':('Datenschutz | Tafolli & Co.','Informationen zur Datenverarbeitung auf tafolli.net: Hosting, Kontakt, lokale Schriftarten, interaktive Beispiele und Rechner. Hinweise und Kontakt zum Anbieter.')}
 PAGE_META.update({slug+'.html':meta for slug,meta in SERVICE_META.items()})
+from extended_meta import SERVICE_META as EXTENDED_SERVICES, PAGE_META as EXTENDED_PAGES
+SERVICE_META.update(EXTENDED_SERVICES)
+PAGE_META.update(EXTENDED_PAGES)
 
 def metadata(path,title,description):return PAGE_META.get(path,(title,description))
+
+def language_alternates(path):
+ groups=[
+  [('de',ORIGIN+'ki-automatisierung-kleine-unternehmen.html'),('sq',ORIGIN+'sq/automatizim-ia.html'),('x-default',ORIGIN+'ki-automatisierung-kleine-unternehmen.html')],
+  [('de',ORIGIN+'angebot/'),('sq',ORIGIN+'sq/faqe-dhe-perkthime.html'),('x-default',ORIGIN+'angebot/')]
+ ]
+ url=ORIGIN+('angebot/' if path=='angebot/index.html' else path)
+ return next((group for group in groups if any(href==url for _,href in group)),[])
 
 def write_sitemap(root):
  """Use the actual canonical pages; dates record content work, not build times."""
@@ -61,16 +72,20 @@ def write_sitemap(root):
    if tag=='link' and a.get('rel')=='canonical':self.url=a.get('href','')
    if tag=='meta' and a.get('name')=='robots' and 'noindex' in a.get('content',''):self.noindex=True
  tree=ET.Element('{'+ns+'}urlset')
- files=[root/'index.html',root/'en/index.html',root/'sq/index.html',*sorted(p for p in root.glob('*.html') if p.name!='index.html')]
+ from pages import generated_pages
+ files=generated_pages(root)
  for path in files:
   page=Canonical(path.read_text())
   if page.noindex or not page.url:continue
   url=ET.SubElement(tree,'{'+ns+'}url');ET.SubElement(url,'{'+ns+'}loc').text=page.url
   relative=path.relative_to(root).as_posix()
-  ET.SubElement(url,'{'+ns+'}lastmod').text=updated.get(relative,'2026-10-25')
+  ET.SubElement(url,'{'+ns+'}lastmod').text=updated.get(relative,'2026-10-26' if relative in EXTENDED_PAGES or relative=='angebot/index.html' else '2026-10-25')
   if relative in {'index.html','en/index.html','sq/index.html'}:
    for lang,target in [('de',''),('en','en/'),('sq','sq/'),('x-default','')]:
     ET.SubElement(url,'{'+xhtml+'}link',{'rel':'alternate','hreflang':lang,'href':ORIGIN+target})
+  else:
+   for lang,target in language_alternates(relative):
+    ET.SubElement(url,'{'+xhtml+'}link',{'rel':'alternate','hreflang':lang,'href':target})
  ET.indent(tree,space='  ')
  ET.ElementTree(tree).write(root/'sitemap.xml',encoding='UTF-8',xml_declaration=True)
 

@@ -2,7 +2,7 @@
 
 Lokaler Unternehmensauftritt mit vier gleichwertigen Bereichen: Marketing, Technology, Consulting und AI Automation. Die Domain und alle bestehenden Seitenadressen bleiben erhalten. Hotellerie und Gastronomie sind eine besondere Kompetenz; die Leistungen für Technologie und Marketing sprechen Unternehmen branchenübergreifend an.
 
-Stand 25. Oktober 2026: Der Unternehmensauftritt ist auf allen 38 Seiten überarbeitet. Die drei Startseiten verwenden eine neue, an Apple angelehnte Unternehmensgestaltung mit einer pausierbaren CSS-3D-Szene und gezielten Einblendungen. Die Darstellung berücksichtigt reduzierte Bewegung und enthält weiterhin keine blockierende Startanimation. Marketing umfasst Strategie, Marke, Inhalte, Kampagnen und digitale sowie gedruckte Materialien. Technology umfasst individuelle Software, Web-Apps, iOS-/Android-Apps, Schnittstellen und Cybersecurity. Der über Runway erzeugte Logoentwurf entwickelt das vorhandene Gehirnsymbol mit Codeklammern und einem orangefarbenen Impulspunkt weiter. Er ist lokal in Kopfzeilen, im Einstieg der Startseiten, in Icons und der Linkvorschau eingebaut und steht zur Beurteilung durch den Inhaber bereit. Anbieterangaben der bereits gegründeten Kosovo-Gesellschaft müssen vor Veröffentlichung ergänzt werden; Impressum und Datenschutzerklärung enthalten die bisherige Bestandsfassung.
+Stand 26. Oktober 2026: Der Unternehmensauftritt umfasst 53 Seiten einschließlich der erhaltenen Angebots- und Zielgruppenseiten. Die drei Startseiten verwenden eine neue, an Apple angelehnte Unternehmensgestaltung mit einer pausierbaren CSS-3D-Szene und gezielten Einblendungen. Die Darstellung berücksichtigt reduzierte Bewegung und enthält weiterhin keine blockierende Startanimation. Marketing umfasst Strategie, Marke, Inhalte, Kampagnen und digitale sowie gedruckte Materialien. Technology umfasst individuelle Software, Web-Apps, iOS-/Android-Apps, Schnittstellen und Cybersecurity. Der über Runway erzeugte Logoentwurf entwickelt das vorhandene Gehirnsymbol mit Codeklammern und einem orangefarbenen Impulspunkt weiter. Er ist lokal in Kopfzeilen, im Einstieg der Startseiten, in Icons und der Linkvorschau eingebaut und ist mit dem abgestimmten Unternehmensauftritt verbunden. Anbieterangaben der bereits gegründeten Kosovo-Gesellschaft müssen vor Veröffentlichung ergänzt werden; Impressum und Datenschutzerklärung enthalten die bisherige Bestandsfassung.
 
 Gestaltungsauftrag, Dateien, Prüfungen und offene Angaben: `../artifacts/tafolli-co/gestaltung-und-uebergabe.md`. Der verwendete Runway-Auftrag liegt daneben als JSON. Die Erzeugung erfolgte im angemeldeten Runway-Browser, da die Plugin-Verbindung weiterhin eine gesonderte erneute Autorisierung verlangte.
 
@@ -33,16 +33,10 @@ Die HTML-Seiten werden aus `_build/` erzeugt. Änderungen an Inhalten dort pfleg
 Im Ordner `website/` ausführen:
 
 ```sh
-python3 _build/bau_alles.py
-python3 _build/verify.py
-node --check assets/experience.js
-node --check assets/partners.js
-node --check assets/brand.js
-node --check assets/navigation.js
-node --check assets/kt.js
+python3 _build/check.py
 ```
 
-Der bestehende Prüflauf kontrolliert alle 38 Seiten: lokale Links und Anker, Dateien, individuelle Titel und Beschreibungen, Sprachkonfiguration, vollständige Menüabdeckung, strukturierte Daten, SVG-Symbole und Sitemap.
+Der bestehende Prüflauf kontrolliert alle 53 Seiten: lokale Links und Anker, Dateien, individuelle Titel und Beschreibungen, Sprachkonfiguration, vollständige Menüabdeckung, strukturierte Daten, SVG-Symbole und Sitemap.
 
 Für eine lokale Vorschau:
 
@@ -71,3 +65,19 @@ Der lange Leistungskatalog unter Tafolli Boost wurde durch den Budgetplaner erse
 Anfragen gehen über die bestätigte FormSubmit-Formularadresse an `info@tafolli.net`. Die Aktivierungen für `https://tafolli.net/` und die lokale Vorschau `http://127.0.0.1:8765/` wurden im Geschäftspostfach geprüft und auf den Anbieter-Seiten jeweils mit „Form Activated“ bestätigt. Am 26.10.2026 wurde die Testanfrage `BP-261026-A` direkt aus dem Budgetplaner erfolgreich gesendet und im Posteingang einschließlich vollständiger Planung, Budgets, Annahmen und Ergebnisse geprüft. Empfänger und Reply-To wurden ebenfalls geprüft. Die Anbindung ist in allen drei Sprachversionen hinterlegt; die Website ist weiterhin nur lokal geändert. Keine API-Schlüssel oder Postfachzugänge stehen im Frontend.
 
 `seo_content.py` ergänzt die vertieften Texte und Kaufentscheidungsfragen für Website-Erstellung, Social-Media-Betreuung und SEO. `search_faq.py` enthält die Startseitenfragen in drei Sprachen. `seo.write_sitemap()` schreibt die tatsächlichen kanonischen Seiten einschließlich Sprachalternativen und dokumentierter Inhaltsdaten. Diese Daten werden bei zukünftigen Inhaltsänderungen bewusst gepflegt, nicht bei jedem Build auf das Tagesdatum gesetzt.
+
+## Abschließende Integration und Übergabe · 26. Oktober 2026
+
+Die fünf neueren Änderungen aus `origin/main` wurden in den Unternehmensauftritt integriert. Die zusätzlichen 15 Angebots- und Zielgruppenseiten behalten ihre Adressen; vorhandene Preise wurden übernommen. Der neue Budgetplaner verwendet weiterhin ausdrücklich veränderbare Beispielbudgets. Bereits aus dem öffentlichen Profil entfernte Hotelstationen wurden nicht wieder eingefügt. FAQ-Daten werden gegen die tatsächlichen Seiteninhalte geprüft; Sprachalternativen sind wechselseitig verlinkt.
+
+Das allgemeine Kontaktformular sendet jetzt ebenfalls direkt an info@tafolli.net. `delivery.py` enthält die gemeinsame bestätigte öffentliche Formularadresse. `assets/form-delivery.mjs` verarbeitet Versand, Fehler und Zeitüberschreitungen; `contact.js` übernimmt Themenvorbelegung, Kontaktformular und E-Mail-Alternative. Der reale Kontakttest `KT-261026-B` ist im Posteingang mit Thema, Zeitraum, Nachricht und korrekter Antwortadresse bestätigt. Sechs zusätzliche Transporttests prüfen Erfolgs- und Fehlerfälle, ohne echte Nachrichten zu senden.
+
+`check.py` baut alle Seiten, prüft alle 53 Seiten und die JavaScript-Syntax und führt die 13 Modell- und Versandtests aus. Die GitHub-Workflows verwenden dieselben Prüfungen vor dem Veröffentlichen. `release.py` erzeugt aus den HTML-Seiten und ihren tatsächlich benötigten lokalen Abhängigkeiten ein sauberes Veröffentlichungspaket. Interne Vorlagen, Bauprogramme, Dokumentation und unbenutzte Kundenscreenshots werden nicht ausgeliefert.
+
+```sh
+python3 _build/release.py --output _site --archive ../tafolli-net.zip
+```
+
+Das Zielverzeichnis darf noch nicht existieren. Das zugehörige Manifest enthält Dateigrößen und SHA-256-Prüfsummen. `.nojekyll` und die unveränderte Domainkonfiguration sind enthalten.
+
+Die Texte zur Anbieteridentität enthalten weiter die bisherigen deutschen Gewerbeangaben. Für die neue Kosovo-Gesellschaft fehlen die vom Inhaber angekündigten konkreten Gesellschaftsdaten. Deshalb wird die neue Fassung als fertige Vorschau und Änderungsvorschlag übergeben und nicht ungeprüft nach `main` veröffentlicht. Es wurden keine Rechtsform, Registerdaten, Steuerdaten, Mitarbeiter oder Büros erfunden.

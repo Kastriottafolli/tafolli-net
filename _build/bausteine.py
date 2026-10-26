@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Gemeinsame Bausteine fuer alle Unterseiten. Kopf- und Fusszeile sind
 identisch zur Startseite, damit die Seite wie aus einem Guss wirkt."""
-import hashlib, pathlib, html
+import hashlib, pathlib, html, json, re
 from brand import lockup, MARK, FAVICON, TOUCH_ICON
 from navigation import nav as site_nav, toggle as nav_toggle, breadcrumbs, TITLES
-from seo import metadata, structured, region, SERVICE_META
+from seo import metadata, structured, region, SERVICE_META, language_alternates
 from explore import explore, HUBS
 from visuals import enrich
 from work import dialog as work_dialog
@@ -69,14 +69,18 @@ def kicker(nummer, text):
     return f'<p class="tag rise"><span class="n">// {nummer}</span>&nbsp;&nbsp;{text}</p>'
 
 
-def seiten_kopf(titel, beschreibung, kanonisch_pfad):
+def seiten_kopf(titel, beschreibung, kanonisch_pfad, lang='de', faq=None, alternates=None):
     """<head>-Block. kanonisch_pfad z.B. 'ueber-mich.html'."""
     titel, beschreibung = metadata(kanonisch_pfad, titel, beschreibung)
-    schema = structured(kanonisch_pfad, titel, beschreibung)
+    schema = structured(kanonisch_pfad, titel, beschreibung, lang)
+    if faq:
+        faq_data={'@context':'https://schema.org','@type':'FAQPage','mainEntity':[{'@type':'Question','name':q,'acceptedAnswer':{'@type':'Answer','text':answer}} for q,answer in faq]}
+        schema+='<script type="application/ld+json">'+json.dumps(faq_data,ensure_ascii=False).replace('<','\\u003c')+'</script>'
+    alternate_links=''.join(f'<link rel="alternate" hreflang="{code}" href="{html.escape(url,quote=True)}">' for code,url in (alternates or language_alternates(kanonisch_pfad)))
     titel, beschreibung = html.escape(titel), html.escape(beschreibung)
     kanonisch = f"https://tafolli.net/{kanonisch_pfad}"
     return f'''<!doctype html>
-<html lang="de">
+<html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -84,9 +88,10 @@ def seiten_kopf(titel, beschreibung, kanonisch_pfad):
 <meta name="description" content="{beschreibung}">
 <meta name="author" content="Tafolli &amp; Co.">
 <link rel="canonical" href="{kanonisch}">
+{alternate_links}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Tafolli &amp; Co.">
-<meta property="og:locale" content="de_DE">
+<meta property="og:locale" content="{'sq_AL' if lang=='sq' else 'de_DE'}">
 <meta property="og:title" content="{titel}">
 <meta property="og:description" content="{beschreibung}">
 <meta property="og:url" content="{kanonisch}">
@@ -111,9 +116,10 @@ def seiten_kopf(titel, beschreibung, kanonisch_pfad):
 </head>'''
 
 
-def kopfzeile(aktiv, base=""):
+def kopfzeile(aktiv, base="", lang='de'):
     sprachwahl = '<a href="/" hreflang="de" lang="de" title="Deutsch">DE</a><a href="/en/" hreflang="en" lang="en" title="English">EN</a><a href="/sq/" hreflang="sq" lang="sq" title="Shqip">SQ</a>'
-    return f'''<header class="bar site-header"><div class="shell bar-in"><a class="tafolli-brand-link" href="{base}index.html" aria-label="Tafolli &amp; Co. · Startseite">{lockup(base)}</a>{site_nav(aktiv, base)}<div class="site-header-controls"><nav class="lang" aria-label="Sprache / Language / Gjuha">{sprachwahl}</nav><a href="{base}kontakt.html" class="btn btn-1 site-talk">Gespräch ↗</a>{nav_toggle()}</div></div></header>'''
+    talk={'de':'Gespräch','en':'Discuss','sq':'Bisedojmë'}[lang]
+    return f'''<header class="bar site-header"><div class="shell bar-in"><a class="tafolli-brand-link" href="{base}index.html" aria-label="Tafolli &amp; Co. · Startseite">{lockup(base)}</a>{site_nav(aktiv, base, lang)}<div class="site-header-controls"><nav class="lang" aria-label="Sprache / Language / Gjuha">{sprachwahl}</nav><a href="{base}kontakt.html" class="btn btn-1 site-talk">{talk} ↗</a>{nav_toggle(lang)}</div></div></header>'''
 
 
 def fusszeile():
@@ -143,7 +149,7 @@ def fusszeile():
     </div></footer>'''
 
 
-def seite_rahmen(aktiv, titel, beschreibung, kanonisch_pfad, inhalt):
+def seite_rahmen(aktiv, titel, beschreibung, kanonisch_pfad, inhalt, *, faq=None, base='', lang='de', alternates=None, home_href=None, home_label=None):
     extra = explore(kanonisch_pfad) if kanonisch_pfad in HUBS and kanonisch_pfad != 'online-marketing.html' else ''
     if kanonisch_pfad.removesuffix('.html') in SERVICE_META and 'class="region-section"' not in inhalt:
         extra += region(service=TITLES[kanonisch_pfad])
@@ -155,17 +161,17 @@ def seite_rahmen(aktiv, titel, beschreibung, kanonisch_pfad, inhalt):
     # Keep the technical example readable without replaying a terminal animation.
     inhalt = inhalt.replace('id="term"', '')
     contact_script=f'<script type="module" src="assets/contact.js?v={VER}"></script>' if aktiv=='kontakt.html' else ''
-    return f'''{seiten_kopf(titel, beschreibung, kanonisch_pfad)}
+    output=f'''{seiten_kopf(titel, beschreibung, kanonisch_pfad, lang, faq, alternates)}
 <body class="corporate-pages">
 
 <a href="#inhalt" class="btn btn-1" style="position:absolute;left:-9999px;top:0;z-index:200"
    onfocus="this.style.left='12px';this.style.top='12px'" onblur="this.style.left='-9999px'">Zum Inhalt springen</a>
 
-{kopfzeile(kanonisch_pfad)}
+{kopfzeile(kanonisch_pfad,lang=lang)}
 
 <main id="inhalt">{breadcrumbs(kanonisch_pfad)}{inhalt}</main>
 {fusszeile()}{work_dialog() if 'data-work-open' in inhalt else ''}
-{boosty_widget(path=kanonisch_pfad)}
+{boosty_widget(lang=lang,base=base,path=kanonisch_pfad)}
 <script src="assets/navigation.js?v={VER}" defer></script>
 <script src="assets/kt.js?v={VER}" defer></script>
 <script src="assets/motion.js?v={VER}" defer></script>
@@ -175,6 +181,16 @@ def seite_rahmen(aktiv, titel, beschreibung, kanonisch_pfad, inhalt):
 </body>
 </html>
 '''
+    if base:
+        def prefix(match):
+            value=match.group(2)
+            if value.startswith(('#','/','../')) or ':' in value:return match.group(0)
+            return match.group(1)+'="'+base+value+'"'
+        output=re.sub(r'(href|src|poster|action)="([^"]+)"',prefix,output)
+    if home_href and home_label:
+        output=output.replace('<a href="'+base+'index.html">Startseite</a>','<a href="'+home_href+'">'+html.escape(home_label)+'</a>',1)
+    if lang!='de':output=output.replace('<footer class="company-footer">','<footer class="company-footer" lang="de">')
+    return output
 
 
 # ── Wiederverwendbare Inhalts-Bausteine ──────────────────────────────────

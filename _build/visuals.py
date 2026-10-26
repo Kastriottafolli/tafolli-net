@@ -3,16 +3,16 @@ from html import escape as e
 from agency import art
 from work import image
 from conversion import brief, TOPICS
-TECH={'softwareentwicklung','app-entwicklung','digitalisierung','domain-hosting-email'}
-MARKETING={'webdesign','suchmaschinenoptimierung','social-media','foto-video','online-marketing'}
-AI={'ki-entwicklung','ki-automatisierung','teamo-ki'}
+TECH={'softwareentwicklung','app-entwicklung','digitalisierung','domain-hosting-email','web-apps','onlineshop','onlineshop-kleine-haendler'}
+MARKETING={'webdesign','suchmaschinenoptimierung','social-media','foto-video','online-marketing','website-pflege','firmenprofile','landingpage-erstellen-lassen','website-fuer-handwerker','website-fuer-vereine','website-pflege-kleine-betriebe','angebot/','sq/faqe-dhe-perkthime'}
+AI={'ki-entwicklung','ki-automatisierung','teamo-ki','ki-automatisierung-kleine-unternehmen','ki-automatisierung-arztpraxen','sq/automatizim-ia'}
 CONSULT={'lieferantenvereinbarungen','rueckverguetungen','getraenkevertraege','wareneinsatz-kalkulation','inventur-warenwirtschaft','interim-fb-management','revenue-controlling','personal-recruiting','fb-beratung'}
 def family(slug):
  return 'security' if slug=='cybersecurity' else 'technology' if slug in TECH else 'marketing' if slug in MARKETING else 'ai' if slug in AI else 'consulting'
 def hero_visual(slug):
  if slug=='softwareentwicklung':
   return '<div class="service-visual v-hero v-technology"><div class="v-media-topline"><span class="v-kicker">UNSER EIGENES PRODUKT / TAFOLLI BOOST</span></div><div class="v-hero-screen">'+image('tafolli-boost-desktop.webp','Tafolli Boost – unsere eigene Webanwendung',eager=True)+'</div><div class="v-media-bottom"><strong>Eine Idee wird zur Anwendung.</strong><a class="v-product-link" href="https://tafolliboost.com/" target="_blank" rel="noopener noreferrer">Tafolli Boost ansehen ↗</a></div></div>'
- kind={'suchmaschinenoptimierung':'seo','social-media':'social','foto-video':'social','webdesign':'web','wissen-direktbuchungen':'web'}.get(slug,family(slug))
+ kind={'website-fuer-handwerker':'web','website-fuer-vereine':'web','landingpage-erstellen-lassen':'web','website-pflege':'web','website-pflege-kleine-betriebe':'web','onlineshop':'web','onlineshop-kleine-haendler':'web','firmenprofile':'seo','suchmaschinenoptimierung':'seo','social-media':'social','foto-video':'social','webdesign':'web','wissen-direktbuchungen':'web'}.get(slug,family(slug))
  return '<div class="service-visual v-hero v-owned-art">'+art(kind)+'</div>'
 
 FLOWS={
