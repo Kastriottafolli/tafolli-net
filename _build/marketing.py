@@ -13,9 +13,11 @@ SERVICES=[
 ]
 
 def formats():
+ from detail_art import scene
+ from detail_catalog import PAGES
  variants=[('card','Visitenkarten'),('flyer','Flyer & Print'),('social','Social Media')]
  buttons=''.join(f'<button type="button" data-format-choice="{key}" aria-pressed="{str(i==0).lower()}" aria-controls="format-{key}">{name}</button>' for i,(key,name) in enumerate(variants))
- panels=''.join(f'<div id="format-{key}" data-format-panel="{key}"{(" hidden" if i else "")}>{art("social" if key=="social" else "marketing",variant=key)}</div>' for i,(key,name) in enumerate(variants))
+ panels=''.join(f'<div id="format-{key}" data-detail-static-scene data-format-panel="{key}"{(" hidden" if i else "")}>{scene(dict(PAGES["online-marketing.html"],kind={"card":"brand","flyer":"print","social":"social"}[key]))}</div>' for i,(key,name) in enumerate(variants))
  return f'<section class="marketing-formats" data-format-viewer><div class="shell marketing-formats-grid"><div><p class="v-kicker">EINE MARKE. PASSENDE FORMATE.</p><h2>Auf dem Bildschirm.<br>Und auf Papier.</h2><p>Eine Visitenkarte braucht andere Schwerpunkte als ein Flyer oder ein Social-Media-Beitrag. Ihre Marke bleibt dabei wiedererkennbar.</p><div class="format-options" role="group" aria-label="Gestaltungsformat auswählen">{buttons}</div><p class="format-note">Gestaltungsbeispiele mit der eigenen Marke Tafolli &amp; Co.</p><a class="lnk" href="kontakt.html?thema=marketing#projektanfrage">Ihre Materialien gestalten lassen ↗</a></div><div class="format-stage">{panels}</div></div></section>'
 
 def page():

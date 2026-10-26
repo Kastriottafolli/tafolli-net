@@ -14,6 +14,7 @@ def run(*args,quiet=False):
 if __name__=='__main__':
     run(sys.executable,'_build/bau_alles.py',quiet=True)
     run(sys.executable,'_build/verify.py')
+    run(sys.executable,'_build/check_detail.py')
     scripts=sorted([*ROOT.joinpath('assets').glob('*.js'),*ROOT.joinpath('assets').glob('*.mjs')])
     for script in scripts:run('node','--check',str(script.relative_to(ROOT)))
     print(f'PASS: syntax checked for {len(scripts)} JavaScript modules and scripts.',flush=True)

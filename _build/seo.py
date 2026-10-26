@@ -65,6 +65,8 @@ def write_sitemap(root):
  ns='http://www.sitemaps.org/schemas/sitemap/0.9';xhtml='http://www.w3.org/1999/xhtml'
  ET.register_namespace('',ns);ET.register_namespace('xhtml',xhtml)
  updated={p:'2026-10-26' for p in ['index.html','en/index.html','sq/index.html','webdesign.html','social-media.html','suchmaschinenoptimierung.html','online-marketing.html','datenschutz.html']}
+ from detail_catalog import PAGES as DESIGNED_PAGES
+ updated.update({p+'index.html' if p.endswith('/') else p:'2026-10-27' for p in DESIGNED_PAGES})
  class Canonical(HTMLParser):
   def __init__(self,text):super().__init__();self.url='';self.noindex=False;self.feed(text)
   def handle_starttag(self,tag,attributes):

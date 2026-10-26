@@ -216,7 +216,7 @@ refresh_search_content(SERVICES)
 for service in SERVICES:
     if service['slug']=='webdesign':
         service['lead']+=' Landingpages planen wir mit ca. 990 €, Mini-Pages mit ca. 1.800 €. Umfang, Design und Funktionen bestimmen das Angebot.'
-        service['faq'].append(('Was kostet eine neue Website?', 'Als unverbindliche Richtpreise planen wir ca. 990 € für eine Landingpage, 1.200 € für eine One-Page, 1.800 € für eine Mini-Page, 3.500 € für eine Smart-Page und 6.500 € für einen Onlineshop. Größere Onlineshops beginnen bei 15.000 €, Websites mit integrierter Web-App bei 6.000 €. Der konkrete Umfang bestimmt das Angebot.'))
+        service['faq'][0]=('Was kostet es, eine Website erstellen zu lassen?', 'Als unverbindliche Richtpreise planen wir ca. 990 € für eine Landingpage, 1.200 € für eine One-Page, 1.800 € für eine Mini-Page, 3.500 € für eine Smart-Page und 6.500 € für einen Onlineshop. Größere Onlineshops beginnen bei 15.000 €, Websites mit integrierter Web-App bei 6.000 €. Der konkrete Umfang bestimmt das Angebot.')
     elif service['slug']=='suchmaschinenoptimierung':
         service['lead']+=' SEO und Inhalte planen wir ab 450 € im Monat, die laufende Betreuung lokaler Einträge ab 550 € im Monat.'
         service['faq'].append(('Welche Budgets sollte ich für SEO und lokale Einträge planen?', 'SEO und Inhalte beginnen bei 450 € monatlich. Für die laufende Betreuung lokaler Einträge planen wir mindestens 550 € monatlich. Die einmalige Profileinrichtung beginnt ebenfalls bei 550 € und wird gesondert vereinbart. Maßnahmen, Standorte und Umfang stehen im konkreten Angebot.'))

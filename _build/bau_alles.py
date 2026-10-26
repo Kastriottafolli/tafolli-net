@@ -53,4 +53,6 @@ if __name__ == '__main__':
         print(f"  {datei:30} {len(html):>7} Zeichen")
     translation_offer.build(WURZEL)
     landings.build(WURZEL)
+    from detail_design import build as build_detail_design
+    build_detail_design(WURZEL)
     write_sitemap(WURZEL)
