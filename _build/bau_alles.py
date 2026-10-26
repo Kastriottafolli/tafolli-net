@@ -8,6 +8,9 @@ HIER = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(HIER))
 WURZEL = HIER.parent
 
+from pricing import build as build_pricing
+build_pricing(WURZEL)
+
 from icons import iconize
 
 import seiten_a, seiten_b, seiten_c, seiten_d, experience, artwork, services

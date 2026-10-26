@@ -29,8 +29,8 @@ def page(lang):
     canonical='https://tafolli.net/'+(folder+'/' if folder else '')
     e=escape
     a=lambda path:base+path
-    css=['kt.css','experience.css','corporate.css','company.css','motion.css','creative.css','agency.css','boosty.css','planner.css']
-    assets=css+['navigation.js','motion.js','creative.js','partners.js','boosty.js','planner.js','planner-model.mjs','form-delivery.mjs']
+    css=['kt.css','experience.css','corporate.css','company.css','motion.css','creative.css','agency.css','boosty.css','planner.css','planner-studio.css']
+    assets=css+['navigation.js','motion.js','creative.js','partners.js','boosty.js','planner.js','planner-model.mjs','planner-catalog.mjs','form-delivery.mjs']
     version=hashlib.sha256(b''.join((ROOT/'assets'/name).read_bytes() for name in assets)).hexdigest()[:10]
     styles=''.join(f'<link rel="stylesheet" href="{a("assets/"+name)}?v={version}">' for name in ['schriften.css',*css])
     alternates=''.join(f'<link rel="alternate" hreflang="{code}" href="https://tafolli.net/{directory+"/" if directory else ""}">' for code,directory,_,_ in LANGUAGES)

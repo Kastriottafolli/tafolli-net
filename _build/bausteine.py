@@ -157,7 +157,8 @@ def seite_rahmen(aktiv, titel, beschreibung, kanonisch_pfad, inhalt, *, faq=None
         position = inhalt.rfind('<section class="pad" style="overflow:hidden">')
         if position < 0: position = len(inhalt)
         inhalt = inhalt[:position] + extra + inhalt[position:]
-    inhalt = enrich(kanonisch_pfad, inhalt)
+    if 'data-planner ' not in inhalt:
+        inhalt = enrich(kanonisch_pfad, inhalt)
     # Keep the technical example readable without replaying a terminal animation.
     inhalt = inhalt.replace('id="term"', '')
     contact_script=f'<script type="module" src="assets/contact.js?v={VER}"></script>' if aktiv=='kontakt.html' else ''
@@ -181,6 +182,12 @@ def seite_rahmen(aktiv, titel, beschreibung, kanonisch_pfad, inhalt, *, faq=None
 </body>
 </html>
 '''
+    if 'data-planner ' in inhalt:
+        planner_files=['planner.css','planner-studio.css','planner.js','planner-model.mjs','planner-catalog.mjs','form-delivery.mjs']
+        planner_version=hashlib.sha256(b''.join((WURZEL/'assets'/name).read_bytes() for name in planner_files)).hexdigest()[:8]
+        styles=''.join(f'<link rel="stylesheet" href="assets/{name}?v={planner_version}">' for name in planner_files if name.endswith('.css'))
+        output=output.replace('</head>',styles+'</head>')
+        output=output.replace('</body>',f'<script type="module" src="assets/planner.js?v={planner_version}"></script></body>')
     if base:
         def prefix(match):
             value=match.group(2)

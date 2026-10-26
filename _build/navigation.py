@@ -29,7 +29,7 @@ SERVICE_GROUPS = [
   ('landingpage-erstellen-lassen.html','Landingpage erstellen lassen'),
   ('website-pflege.html','Website-Pflege'),('onlineshop.html','Onlineshop'),
   ('web-apps.html','Web-Apps & Werkzeuge'),('firmenprofile.html','Firmenprofile & lokale Einträge'),
-  ('angebot/','Texte & Übersetzungen'),('preisrechner.html','Paketpreise berechnen')]),
+  ('angebot/','Texte & Übersetzungen'),('preisrechner.html','Projekt & Budget planen')]),
  ('Für Ihr Unternehmen', [
   ('website-fuer-handwerker.html','Websites für Handwerksbetriebe'),
   ('ki-automatisierung-arztpraxen.html','KI für Arztpraxen & Therapeuten'),

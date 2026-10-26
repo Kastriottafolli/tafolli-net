@@ -283,7 +283,7 @@ def pflege():
 
 def haendler():
     faq = [
-        ('Was kostet ein kleiner Onlineshop?', 'Stufe Start kostet 990 €. Stufe Erweitert kostet 1.990 €. Beides sind Endpreise. Hosting und Shop-Software zahlen Sie an den Anbieter.'),
+        ('Was kostet ein kleiner Onlineshop?', 'Ein individueller Onlineshop beginnt bei 6.500 €. Für größere Shops mit Schnittstellen planen wir ab 15.000 €. Die unverbindlichen Rahmen liegen bei 6.500–15.000 € beziehungsweise 15.000–40.000 €; den konkreten Preis erhalten Sie im Angebot. Hosting und Software werden gesondert abgestimmt.'),
         ('Was kosten die Produkttexte?', 'Ein Website-Text kostet 199 €, etwa 1.500 Wörter inklusive Title und Meta. Mehrere Produkttexte zusammen sind das Content-Paket für 299 €, etwa 3.000 Wörter inklusive Glossar.'),
         ('Brauchen wir ein großes Shopsystem?', 'Oft nein. Ein kleines Sortiment braucht eine klare Liste, einen Preis und einen Weg zur Bestellung oder zur Anfrage.'),
         ('Richten Sie Zahlung und Versand ein?', 'Nur, was wir vorher aufschreiben. Welche Anbieter dazukommen, steht im Festpreis-Angebot, nicht als pauschales Versprechen.'),
@@ -293,7 +293,7 @@ def haendler():
         '05', 'Für Händler',
         [['Onlineshop'], ['für kleine Händler.']],
         'Sie verkaufen ein überschaubares Sortiment. Die Ware steht auf Fotos in einem Messenger. Ein eigener Shop fehlt, oder er ist zu groß für den Alltag.',
-        ['Start 990 €', 'Erweitert 1.990 €', 'Produkttexte ab 199 €'],
+        ['Onlineshop ab 6.500 €', 'größere Shops ab 15.000 €', 'Produkttexte ab 199 €'],
     ) + _aktionen() + f'''
 <section class="pad" id="probleme" style="scroll-margin-top:110px">
   <div class="shell">
@@ -311,8 +311,8 @@ def haendler():
     {kicker('03', 'Pakete')}
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([['Shop und Texte'], ['getrennt rechnen.']])}</h2>
     {karten_grid([
-        ('990 €', 'Start', 'Kleiner Shop bei dem Anbieter, den wir vorher festlegen. Kategorien und Produkte aus einer Liste, die Sie liefern. Ein Zahlungsweg. Eine Einweisung.'),
-        ('1.990 €', 'Erweitert', 'Alles aus Start. Mehrere Kategorien. Mehr als ein Zahlungsweg, soweit der Anbieter das hergibt. Produktdaten aus einer Datei. Einweisung plus eine kurze schriftliche Übergabe.'),
+        ('ab 6.500 €', 'Onlineshop', 'Kleiner Shop bei dem Anbieter, den wir vorher festlegen. Kategorien und Produkte aus einer Liste, die Sie liefern. Ein Zahlungsweg. Eine Einweisung.'),
+        ('ab 15.000 €', 'Größerer Onlineshop', 'Ein erweiterter Shop mit abgestimmtem Umfang. Mehrere Kategorien. Mehr als ein Zahlungsweg, soweit der Anbieter das hergibt. Produktdaten aus einer Datei. Einweisung plus eine kurze schriftliche Übergabe.'),
         ('199 €', 'Produkttexte', 'Ein Website-Text kostet 199 €, etwa 1.500 Wörter inklusive Title und Meta, in 5 Werktagen. Das Content-Paket kostet 299 €, etwa 3.000 Wörter inklusive Glossar, in 7 Werktagen.'),
     ])}
     <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:22px">Zahlung, Versand und Steuer richten sich nach Ihrem Fall. Was davon im Auftrag liegt, steht im Angebot. Eine Rechtsberatung ist das nicht.</p>

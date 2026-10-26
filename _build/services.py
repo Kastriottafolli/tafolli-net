@@ -213,6 +213,14 @@ for item in SERVICES:
 from seo_content import apply as refresh_search_content
 refresh_search_content(SERVICES)
 
+for service in SERVICES:
+    if service['slug']=='webdesign':
+        service['lead']+=' Landingpages und Mini-Websites beginnen bei 1.500 €. Umfang, Design und Funktionen bestimmen das Angebot.'
+        service['faq'].append(('Was kostet eine neue Website?', 'Landingpages und Mini-Websites beginnen bei 1.500 €, One-Pager bei 2.500 € und Smart-Pages mit mehreren Unterseiten bei 4.500 €. Onlineshops planen wir ab 6.500 €; größere Shops und integrierte Web-Apps nach Umfang. Die Spannen im Projektplaner sind unverbindliche Orientierungswerte.'))
+    elif service['slug']=='suchmaschinenoptimierung':
+        service['lead']+=' SEO und Inhalte planen wir ab 450 € im Monat, die laufende Betreuung lokaler Einträge ab 550 € im Monat.'
+        service['faq'].append(('Welche Budgets sollte ich für SEO und lokale Einträge planen?', 'SEO und Inhalte beginnen bei 450 € monatlich. Für die laufende Betreuung lokaler Einträge planen wir mindestens 550 € monatlich. Die einmalige Profileinrichtung beginnt ebenfalls bei 550 € und wird gesondert vereinbart. Maßnahmen, Standorte und Umfang stehen im konkreten Angebot.'))
+
 LOOKUP={s['slug']:s for s in SERVICES}
 EXISTING={'ki-automatisierung':'AI Automation','teamo-ki':'TeamO · KI-Assistent für Hospitality','fb-beratung':'Consulting & F&B-Beratung','online-marketing':'Marketingstrategie, Branding & Kampagnen','rechner':'Potenzialrechner','wissen-getraenkevertrag':'Wissen: Getränkeverträge','werdegang':'Werdegang des Gründers'}
 
@@ -247,6 +255,8 @@ def page(s):
     if s['slug']=='suchmaschinenoptimierung':
         content=content.replace('<section class="service-section" id="praxis">',local_listings()+'<section class="service-section" id="praxis">')
         content=content.replace('<a href="#fragen">05 Fragen</a>','<a href="#fragen">05 Fragen</a><a href="#lokale-eintraege">Lokale Einträge</a>')
+    if s['slug'] in {'webdesign','suchmaschinenoptimierung'}:
+        content=content.replace('<a href="#fragen">05 Fragen</a>','<a href="#fragen">05 Fragen</a><a href="preisrechner.html#budgetplaner">Budget planen ↗</a>')
     for old,new in zip(['Ausgangslage<br>und Vorgehen.','Leistungsumfang.','Anwendungsbeispiel.','Ergebnisse und<br>Zusammenarbeit.','Häufige Fragen.'],s.get('headings',[])):
         content=content.replace('<h2>'+old+'</h2>','<h2>'+new+'</h2>')
     content+=region(service=s['title'])

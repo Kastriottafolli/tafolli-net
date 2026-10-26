@@ -66,43 +66,35 @@ def website_pflege():
 
 def onlineshop():
     fragen = [
-        ("Liegt der Shop bei Ihnen?", "Nein. Konto, Hosting und Software bleiben bei Ihnen oder beim Anbieter. Wir richten ein und zeige Ihnen den Umgang."),
-        ("Schreiben Sie die Rechtstexte?", "Nein. AGB, Widerruf und Datenschutz kommen von Ihnen oder von einer Stelle, die das darf. Wir bauen sie nicht."),
-        ("Was ist ein kleiner Shop?", "Ein überschaubares Sortiment, das Sie als Liste oder Datei liefern. Ein großes Warenwirtschaftssystem ist ein eigener Auftrag."),
-        ("Ist 990 € der Endpreis?", "Ja, für die Stufe Start. Die Stufe Erweitert kostet 1.990 €. Beides sind Endpreise."),
+        ("Was kostet ein Onlineshop?", "Für einen individuell gestalteten Onlineshop liegt der unverbindliche Planungsrahmen bei 6.500 bis 15.000 €. Größere Shops mit mehreren Märkten und Schnittstellen planen wir ab 15.000 €, häufig bis 40.000 € oder darüber. Das konkrete Angebot richtet sich nach dem Umfang."),
+        ("Wo wird der Shop betrieben?", "Konten, Domain und Zugänge bleiben bei Ihnen. Shop-System, Hosting, Zahlungsanbieter und laufende Kosten stimmen wir vor dem Start ab."),
+        ("Schreiben Sie die Rechtstexte?", "Die Rechtstexte liefern Sie oder Ihre dafür beauftragte Stelle. Wir binden die abgestimmten Texte ein."),
+        ("Welche Anbindungen sind möglich?", "Zum Beispiel Zahlung, Versand, Warenwirtschaft und Produktdaten. Wir prüfen die Schnittstellen und legen den vereinbarten Umfang im Angebot fest."),
     ]
     inhalt = hero_klein(
-        "01", "Onlineshop",
-        [["Onlineshop."], ["Ab 990 €."]],
-        "Ein kleiner Shop: Einrichtung und eine Einweisung. Festpreis 990 oder 1.990 €. Hosting und Shop-Software laufen bei Ihnen oder beim Anbieter.",
-        ["ab 990 €", "bis 1.990 €", "Einweisung"],
+        "01", "E-Commerce",
+        [["Ihr Sortiment."], ["Ein starker Onlineshop."]],
+        "Vom überschaubaren Sortiment bis zum größeren Commerce-Projekt: Wir gestalten und entwickeln Shops mit klarer Produktführung, mobilem Checkout und den passenden Anbindungen.",
+        ["ab 6.500 €", "größere Shops ab 15.000 €", "nach Ihrem Bedarf"],
     ) + f'''
-<section class="pad" id="umfang">
-  <div class="shell">
-    {kicker("02", "Zwei Festpreise")}
-    <h2 class="d2 wipe recede-exit" style="margin:20px 0 clamp(40px,5vw,64px)">{wipe([["Einrichten."], ["Zeigen. Übergeben."]])}</h2>
+<section class="pad" id="umfang"><div class="shell">
+    {kicker("02", "Passender Umfang")}
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 40px">{wipe([["Ein Shop, der heute passt."], ["Und morgen mitwächst."]])}</h2>
     {karten_grid([
-        ("990 €", "Start", "Kleiner Shop bei dem Anbieter, den wir vorher festlegen. Kategorien und Produkte aus einer Liste, die Sie liefern. Ein Zahlungsweg, den der Anbieter unterstützt. Versand nach Ihren Angaben. Eine Einweisung. Hosting und Software zahlen Sie an den Anbieter, nicht an mich."),
-        ("1.990 €", "Erweitert", "Alles aus Start. Mehrere Kategorien. Mehr als ein Zahlungsweg, soweit der Anbieter das hergibt. Produktdaten aus einer Datei, die Sie liefern. Einweisung plus eine kurze schriftliche Übergabe."),
+        ("6.500–15.000 €", "Onlineshop", "Individuelle Gestaltung, Produktstruktur, Produktseiten, Warenkorb und Checkout. Zahlungs- und Versandwege stimmen wir auf Ihr Sortiment ab. Dazu gehören eine Einweisung und die geordnete Übergabe."),
+        ("ab 15.000 €", "Größerer Onlineshop", "Mehr Produkte, mehrere Märkte oder Sprachen und Anbindungen an Warenwirtschaft oder andere Systeme. Als ersten Planungsrahmen sehen wir 15.000 bis 40.000 € vor; komplexere Projekte kalkulieren wir individuell."),
     ])}
-    {hinweis()}
-    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch">Nicht im Preis: Rechtstexte, Produktfotos, Bestellungen und Werbung. Umsätze können wir nicht zusichern.</p>
-  </div>
-</section>''' + faq_block("03", "Häufige Fragen", [["Vor dem"], ["Shop."]], fragen) + dazu([
-        ('webdesign.html', 'Webdesign'),
-        ('website-pflege.html', 'Website-Pflege'),
-        ('firmenprofile.html', 'Firmenprofile'),
-        ('preisrechner.html', 'Preisrechner'),
-        ('kontakt.html', 'Kontakt'),
-    ]) + cta_block(
-        "// nächster schritt", [["Welcher Shop"], ["soll entstehen?"]],
-        "Schreiben Sie uns, wo der Shop liegen soll und wie viele Produkte Sie mitbringen. Die Schätzung im Preisrechner ist unverbindlich.",
-        "Anfrage senden", "kontakt.html#projektanfrage", "Preisrechner", "preisrechner.html")
-    return seite_rahmen(
-        "onlineshop.html",
-        "Onlineshop | Kastriot Tafolli",
-        "Onlineshop einrichten und einweisen. Stufe Start 990 €, Stufe Erweitert 1.990 €. Hosting und Shop-Software laufen beim Kunden oder beim Anbieter.",
+    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:28px">Unverbindliche Planungsspannen. Den konkreten Leistungsumfang und Preis erhalten Sie im Angebot. Hosting, Softwarelizenzen, Zahlungsgebühren und laufende Betreuung werden gesondert abgestimmt.</p>
+</div></section>''' + faq_block("03", "Häufige Fragen", [["Vor Ihrem"], ["Shop-Projekt."]], fragen) + dazu([
+        ('webdesign.html', 'Webdesign'), ('website-pflege.html', 'Website-Pflege'),
+        ('preisrechner.html#budgetplaner', 'Projekt kalkulieren'), ('kontakt.html', 'Kontakt'),
+    ]) + cta_block("// nächster schritt", [["Was möchten Sie"], ["online verkaufen?"]],
+        "Erzählen Sie uns von Sortiment, Märkten und vorhandenen Systemen. Wir planen mit Ihnen den passenden Shop.",
+        "Shop-Projekt besprechen", "kontakt.html?leistung=Onlineshop#projektanfrage", "Budget planen", "preisrechner.html#budgetplaner")
+    return seite_rahmen("onlineshop.html", "Onlineshop erstellen lassen | Tafolli & Co.",
+        "Individuelle Onlineshops ab 6.500 €. Größere Commerce-Projekte mit Schnittstellen ab 15.000 €. Planung, Design, Entwicklung und Übergabe.",
         "onlineshop.html", inhalt, faq=fragen)
+
 
 
 def web_apps():
@@ -147,141 +139,41 @@ def web_apps():
 
 def firmenprofile():
     fragen = [
-        ("Geht das Google-Profil ohne mich online?", "Nein. Google prüft das Profil mit Ihnen. Ohne echten Standort geht es nicht online."),
-        ("Legen Sie neue Social-Media-Kanäle an?", "Nein. In der Stufe Komplett gleichen wir Profile an, die Sie schon haben. Neue Kanäle und laufende Beiträge sind ein anderer Auftrag."),
-        ("Warum 399 und 899 €?", "399 € deckt das Datenblatt, das Google-Profil und bis zu fünf Verzeichnisse. 899 € erweitert das auf bis zu fünfzehn Verzeichnisse, vorhandene Social-Profile und die Liste zur Übergabe."),
-        ("Wer behält die Zugänge?", "Sie. Konten und Passwörter bleiben bei Ihnen."),
+        ("Was kostet die Einrichtung lokaler Einträge?", "Die Einrichtung und Vereinheitlichung der vereinbarten Profile beginnt bei 550 € einmalig. Umfang, Standorte und Verzeichnisse werden im Angebot festgelegt."),
+        ("Was kostet die laufende Betreuung?", "Für die laufende Betreuung lokaler Einträge planen Sie ab 550 € pro Monat. Welche Profile, Aktualisierungen und Auswertungen enthalten sind, vereinbaren wir vorab."),
+        ("Wer bestätigt das Unternehmensprofil?", "Sie bestätigen die Angaben und führen die vom jeweiligen Anbieter verlangte Verifizierung durch. Wir begleiten die Einrichtung und verwenden tatsächliche Unternehmensdaten."),
+        ("Wer behält die Zugänge?", "Sie behalten die Inhaberschaft und die Zugänge. Wir arbeiten mit den vereinbarten Berechtigungen."),
     ]
-    inhalt = hero_klein(
-        "01", "Firmenprofile",
-        [["Firmenprofile"], ["im Netz."]],
-        "Dieselben Angaben an den Stellen, die wir vorher festlegen. Basis 399 €, Komplett 899 €. Sie bestätigen das Google-Profil selbst.",
-        ["399 €", "899 €", "einheitliche Angaben"],
+    inhalt = hero_klein("01", "Lokale Sichtbarkeit",
+        [["Ihr Unternehmen."], ["Am richtigen Ort gefunden."]],
+        "Google-Unternehmensprofil, Apple Maps, Bing Places und passende Verzeichnisse: Wir bringen Ihre Unternehmensdaten zusammen und halten Ihren lokalen Auftritt aktuell.",
+        ["Einrichtung ab 550 €", "Betreuung ab 550 € / Monat", "echte Unternehmensdaten"],
     ) + f'''
-<section class="pad" id="umfang">
-  <div class="shell">
-    {kicker("02", "Basis bis Komplett")}
-    <h2 class="d2 wipe recede-exit" style="margin:20px 0 clamp(40px,5vw,64px)">{wipe([["Gleiche Daten."], ["Klare Liste."]])}</h2>
+<section class="pad" id="umfang"><div class="shell">
+    {kicker("02", "Einrichten und betreuen")}
+    <h2 class="d2 wipe recede-exit" style="margin:20px 0 40px">{wipe([["Korrekte Daten."], ["Ein stimmiger Auftritt."]])}</h2>
     {karten_grid([
-        ("399 €", "Basis", "Sie liefern Name, Adresse, Telefon, Website, Öffnungszeiten und eine kurze Beschreibung. Wir legen das Google-Unternehmensprofil an oder gleiche es an. Google prüft das Profil mit Ihnen. Ohne echten Standort geht es nicht online. Dieselben Angaben in bis zu fünf Verzeichnissen."),
-        ("899 €", "Komplett", "Alles aus Basis. Bis zu fünfzehn Verzeichnisse. Vorhandene Social-Profile auf denselben Namen, dieselbe Website und dieselbe Kurzbeschreibung bringen. Keine neuen Kanäle und keine laufenden Beiträge. Am Ende eine Liste der Profile. Die Zugänge bleiben bei Ihnen."),
+        ("ab 550 € einmalig", "Profile einrichten", "Bestand prüfen, Unternehmensdaten abstimmen und die vereinbarten Profile anlegen oder korrigieren. Name, Adresse, Kontakt, Öffnungszeiten, Kategorien und Website werden einheitlich aufbereitet. Die Verifizierung erfolgt mit Ihnen."),
+        ("ab 550 € / Monat", "Lokal präsent bleiben", "Laufende Pflege der vereinbarten Profile, Aktualisierung von Öffnungszeiten und Unternehmensangaben sowie abgestimmte Inhalte. Wir werten verfügbare Profilkennzahlen aus und besprechen die nächsten Schritte."),
     ])}
-    {hinweis()}
-    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch">Jedes Verzeichnis entscheidet selbst. Bewertungen, ein Ranking oder ein erfundener Standort gehören nicht dazu.</p>
-  </div>
-</section>''' + faq_block("03", "Häufige Fragen", [["Vor den"], ["Profilen."]], fragen) + dazu([
-        ('webdesign.html', 'Webdesign'),
-        ('website-pflege.html', 'Website-Pflege'),
-        ('preisrechner.html', 'Preisrechner'),
-        ('kontakt.html', 'Kontakt'),
-    ]) + cta_block(
-        "// nächster schritt", [["Welche Profile"], ["fehlen?"]],
-        "Schreiben Sie uns den Firmennamen und ob es schon ein Google-Profil gibt. Die Schätzung im Preisrechner ist unverbindlich.",
-        "Anfrage senden", "kontakt.html#projektanfrage", "Preisrechner", "preisrechner.html")
-    return seite_rahmen(
-        "firmenprofile.html",
-        "Firmenprofile im Netz einrichten | Kastriot Tafolli",
-        "Google-Unternehmensprofil und Verzeichnisse mit einheitlichen Angaben. Festpreis 399 oder 899 €. Die Bestätigung bei Google machen Sie selbst.",
+    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:28px">Unverbindliche Einstiegspreise. Anzahl der Standorte, Profilbestand und Betreuungsumfang bestimmen das Angebot. Anbieter entscheiden über die Freigabe; ein Ranking oder eine bestimmte Zahl neuer Kunden wird nicht zugesagt.</p>
+</div></section>''' + faq_block("03", "Häufige Fragen", [["Vor Ihrem"], ["lokalen Auftritt."]], fragen) + dazu([
+        ('suchmaschinenoptimierung.html#lokale-eintraege', 'Lokales SEO'), ('social-media.html', 'Social Media'),
+        ('preisrechner.html#budgetplaner', 'Budget planen'), ('kontakt.html', 'Kontakt'),
+    ]) + cta_block("// nächster schritt", [["Wie sichtbar ist"], ["Ihr Unternehmen vor Ort?"]],
+        "Schicken Sie uns Ihren Unternehmensnamen und die vorhandenen Profile. Wir prüfen, wo sich Ihr Auftritt verbessern lässt.",
+        "Lokale Einträge besprechen", "kontakt.html?leistung=Lokale%20Eintr%C3%A4ge#projektanfrage", "Budget planen", "preisrechner.html#budgetplaner")
+    return seite_rahmen("firmenprofile.html", "Lokale Einträge ab 550 € | Tafolli & Co.",
+        "Google-Unternehmensprofil und lokale Verzeichnisse einrichten ab 550 €. Laufende Betreuung ab 550 € im Monat. Einheitliche Daten und klare Zuständigkeiten.",
         "firmenprofile.html", inhalt, faq=fragen)
 
 
+
 def preisrechner():
-    inhalt = hero_klein(
-        "01", "Preisrechner",
-        [["Unverbindliche"], ["Preisschätzung."]],
-        "Wählen Sie eine Leistung. Der Rechner zeigt eine Spanne aus den veröffentlichten Preisen. Es ist kein Angebot.",
-        ["im Browser", "keine Speicherung", "E-Mail auf Wunsch"],
-    ) + f'''
-<section class="pad" id="rechner">
-  <div class="shell">
-    {kicker("02", "Schätzen")}
-    <h2 class="d2 wipe recede-exit" style="margin:20px 0 22px">{wipe([["Leistung wählen."], ["Spanne sehen."]])}</h2>
-    <form id="preisrechner" class="anfrage-form preis-form">
-      <fieldset>
-        <legend>Leistung</legend>
-        <label class="choice"><input type="radio" name="leistung" value="ki"> KI-Automatisierung</label>
-        <label class="choice"><input type="radio" name="leistung" value="website" checked> Website oder Landingpage</label>
-        <label class="choice"><input type="radio" name="leistung" value="shop"> Onlineshop</label>
-        <label class="choice"><input type="radio" name="leistung" value="app"> Web-App oder Tool</label>
-        <label class="choice"><input type="radio" name="leistung" value="pflege"> Website-Pflege im Monatsabo</label>
-        <label class="choice"><input type="radio" name="leistung" value="profile"> Firmenprofile im Netz</label>
-        <label class="choice"><input type="radio" name="leistung" value="texte"> Texte und Übersetzungen</label>
-      </fieldset>
-      <div data-panel="ki" hidden>
-        <p>KI-Automatisierung ist ein eigenes Angebot. Preis auf Anfrage.</p>
-      </div>
-      <div data-panel="website">
-        <p>Für eine neue Website oder Landingpage gibt es hier keinen Betrag. Den Festpreis nennen wir nach dem Umfang.</p>
-        <label class="choice"><input type="checkbox" data-mit-pflege> Pflege-Abo in derselben Schätzung</label>
-        <label>Pflege-Stufe
-          <select data-pflege disabled>
-            <option value="99">Basis, 99 € pro Monat</option>
-            <option value="199">Laufend, 199 € pro Monat</option>
-            <option value="299">Intensiv, 299 € pro Monat</option>
-          </select>
-        </label>
-      </div>
-      <div data-panel="shop" hidden>
-        <fieldset>
-          <legend>Shop-Stufe</legend>
-          <label class="choice"><input type="radio" name="shop" value="start" checked> Start, 990 €</label>
-          <label class="choice"><input type="radio" name="shop" value="erweitert"> Erweitert, 1.990 €</label>
-        </fieldset>
-      </div>
-      <div data-panel="app" hidden>
-        <fieldset>
-          <legend>Umfang</legend>
-          <label class="choice"><input type="radio" name="app" value="klein" checked> Kleines Werkzeug, ab 390 €</label>
-          <label class="choice"><input type="radio" name="app" value="gross"> Größeres Projekt, Festpreis nach Angebot</label>
-        </fieldset>
-      </div>
-      <div data-panel="pflege" hidden>
-        <label>Pflege-Stufe
-          <select data-pflege>
-            <option value="99">Basis, 99 € pro Monat</option>
-            <option value="199">Laufend, 199 € pro Monat</option>
-            <option value="299">Intensiv, 299 € pro Monat</option>
-          </select>
-        </label>
-      </div>
-      <div data-panel="profile" hidden>
-        <fieldset>
-          <legend>Profil-Stufe</legend>
-          <label class="choice"><input type="radio" name="profil" value="basis" checked> Basis, 399 €</label>
-          <label class="choice"><input type="radio" name="profil" value="komplett"> Komplett, 899 €</label>
-        </fieldset>
-      </div>
-      <div data-panel="texte" hidden>
-        <fieldset>
-          <legend>Textart</legend>
-          <label class="choice"><input type="radio" name="text" value="dokument" checked> Dokument oder Prospekt, 99 €</label>
-          <label class="choice"><input type="radio" name="text" value="website"> Website-Text, 199 €</label>
-          <label class="choice"><input type="radio" name="text" value="content"> Content-Paket, 299 €</label>
-          <label class="choice"><input type="checkbox" data-weitere> Weitere Sprache</label>
-          <label class="choice"><input type="checkbox" data-eil> Eilauftrag</label>
-          <p>Weitere Sprache und Eilauftrag: Aufpreis nach Absprache. Der Paketpreis bleibt gleich.</p>
-        </fieldset>
-      </div>
-      <p id="preis-ergebnis" aria-live="polite" aria-atomic="true"></p>
-      <a class="btn btn-1" id="preis-mail" href="mailto:info@tafolli.net?subject=Preissch%C3%A4tzung%20von%20tafolli.net">Schätzung per E-Mail senden</a>
-    </form>
-    <noscript><p>Ohne JavaScript gibt es hier keine Schätzung. Die Preise stehen auf den Angebotsseiten.</p></noscript>
-    <div class="portfolio-links">
-      <a href="website-pflege.html">Website-Pflege <span aria-hidden="true">↗</span></a>
-      <a href="onlineshop.html">Onlineshop <span aria-hidden="true">↗</span></a>
-      <a href="web-apps.html">Web-App oder Tool <span aria-hidden="true">↗</span></a>
-      <a href="firmenprofile.html">Firmenprofile <span aria-hidden="true">↗</span></a>
-      <a href="angebot/">Texte und Übersetzungen <span aria-hidden="true">↗</span></a>
-      <a href="landingpage-erstellen-lassen.html">Landingpage <span aria-hidden="true">↗</span></a>
-    </div>
-  </div>
-</section>
-<script src="assets/preisrechner.js?v={VER}" defer></script>''' + cta_block(
-        "// nächster schritt", [["Lieber direkt"], ["schreiben?"]],
-        "Die Schätzung ersetzt kein Gespräch. Wenn der Umfang klarer ist, nennen wir den Festpreis.",
-        "Anfrage senden", "kontakt.html#projektanfrage", "Alle Angebote", "leistungen.html")
+    from planner import section
+    inhalt = section(heading='h1')
     return seite_rahmen(
         "preisrechner.html",
-        "Preisrechner | Kastriot Tafolli",
-        "Unverbindliche Preisschätzung für KI, Website, Shop, Web-App, Pflege-Abo, Firmenprofile und Texte. Die Rechnung bleibt im Browser.",
+        "Website- und Marketing-Budget planen | Tafolli & Co.",
+        "Website-Typen ab 1.500 €, Marketingbudgets und Kundenpotenzial interaktiv planen. Unverbindlich kalkulieren und direkt ein Beratungsgespräch anfragen.",
         "preisrechner.html", inhalt)

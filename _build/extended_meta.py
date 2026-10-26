@@ -12,22 +12,22 @@ PAGE_META = {'index.html': ('Webdesign, Websites und KI-Automatisierung | Tafoll
                                                 'Erste KI-Automatisierung für kleine Betriebe, etwa für '
                                                 'E-Mail, Angebot oder Termin. Nichts geht ohne Ihre '
                                                 'Freigabe. Festpreis auf Anfrage. Ohne Ergebniszusage.'),
- 'landingpage-erstellen-lassen.html': ('Landingpage erstellen lassen in Binz | Tafolli & Co.',
-                                       'Landingpage oder kleine Website zum Festpreis nach Umfang. Pflege '
-                                       'als Monatsabo: 99, 199 oder 299 €. Barrierefreiheit nur als '
-                                       'technische Prüfung. Sitz: Binz.'),
+ 'landingpage-erstellen-lassen.html': ('Landingpage ab 1.500 € erstellen lassen | Tafolli & Co.',
+                                       'Landingpages und Mini-Websites ab 1.500 €. Individuelles Design, '
+                                       'passende Inhalte und klare Anfragewege. Umfang und Funktionen '
+                                       'bestimmen Ihr konkretes Angebot.'),
  'website-pflege.html': ('Website-Pflege ab 99 € im Monat | Tafolli & Co.',
                          'Website-Pflege in drei Stufen: Basis 99 €, Laufend 199 €, Intensiv 299 € im Monat. '
                          'Updates, Backup, kleine Änderungen. Monatlich kündbar. Ohne Ergebniszusage.'),
- 'onlineshop.html': ('Onlineshop einrichten, 990 oder 1.990 € | Tafolli & Co.',
-                     'Onlineshop einrichten und einweisen. Stufe Start 990 €, Stufe Erweitert 1.990 €. '
-                     'Hosting und Shop-Software zahlen Sie an den Anbieter. Das ist der Endpreis.'),
+ 'onlineshop.html': ('Onlineshop ab 6.500 € erstellen lassen | Tafolli & Co.',
+                     'Individuelle Onlineshops ab 6.500 €. Größere Commerce-Projekte mit Schnittstellen ab '
+                     '15.000 €. Planung, Design, Entwicklung und Übergabe.'),
  'web-apps.html': ('Web-App oder Tool ab 390 € in Binz | Tafolli & Co.',
                    'Kleine Web-App oder ein Tool ab 390 €: ein Ablauf im Browser. Größere Projekte zum '
                    'Festpreis, wenn Ablauf und Anbindung klar sind. Kein Nacht-Betrieb.'),
- 'firmenprofile.html': ('Firmenprofile einrichten, 399 oder 899 € | Tafolli',
-                        'Google-Unternehmensprofil und Verzeichnisse mit denselben Angaben. Basis 399 €, '
-                        'Komplett 899 €. Die Bestätigung bei Google machen Sie selbst. Sitz: Binz.'),
+ 'firmenprofile.html': ('Lokale Einträge ab 550 € | Tafolli & Co.',
+                        'Google-Unternehmensprofil und lokale Verzeichnisse einrichten ab 550 €. Laufende '
+                        'Betreuung ab 550 € im Monat. Einheitliche Daten und klare Zuständigkeiten.'),
  'website-fuer-handwerker.html': ('Website für Handwerker erstellen lassen | Tafolli & Co.',
                                   'Website für Handwerker: Leistungen, Einsatzgebiet und Anfrage auf dem '
                                   'Telefon. Festpreis nach Umfang. Texte 99, 199 oder 299 €. Pflege ab 99 € '
@@ -43,13 +43,13 @@ PAGE_META = {'index.html': ('Webdesign, Websites und KI-Automatisierung | Tafoll
                                          'Website-Pflege für kleine Betriebe: Basis 99 €, Laufend 199 €, '
                                          'Intensiv 299 € im Monat. Monatlich kündbar. Ein Website-Text '
                                          'kostet 199 € extra. Sitz: Binz.'),
- 'onlineshop-kleine-haendler.html': ('Onlineshop für kleine Händler in Binz | Tafolli & Co.',
-                                     'Onlineshop für kleine Händler: Start 990 €, Erweitert 1.990 €. '
-                                     'Produkttexte 199 oder 299 €. Hosting und Software bleiben bei Ihnen. '
-                                     'Rechtstexte nicht inklusive.'),
- 'preisrechner.html': ('Preisrechner für Web, Shop und Texte | Tafolli & Co.',
-                       'Unverbindliche Preisschätzung für KI, Website, Onlineshop, Web-App, Pflege-Abo, '
-                       'Firmenprofile und Texte. Die Rechnung bleibt im Browser. Ohne Ergebniszusage.'),
+ 'onlineshop-kleine-haendler.html': ('Onlineshop für kleine Händler | Tafolli & Co.',
+                                     'Onlineshops für kleine Händler ab 6.500 €. Produktstruktur, mobile '
+                                     'Bedienung und passende Zahlungswege. Größere Shops mit Schnittstellen '
+                                     'nach individuellem Angebot.'),
+ 'preisrechner.html': ('Website- und Marketing-Budget planen | Tafolli & Co.',
+                       'Website-Typen ab 1.500 €, Marketingbudgets und Kundenpotenzial interaktiv planen. '
+                       'Unverbindlich kalkulieren und direkt ein Beratungsgespräch anfragen.'),
  'sq/faqe-dhe-perkthime.html': ('Faqe web dhe përkthime DE, EN, SQ | Tafolli & Co.',
                                 'Faqe web dhe përkthime për biznese që flasin shqip. Tekste në gjermanisht, '
                                 'anglisht dhe shqip: 99, 199 dhe 299 €. Çmimi i faqes pas vëllimit. Pa çmim '
@@ -68,22 +68,22 @@ SERVICE_META = {'ki-automatisierung-kleine-unternehmen': ('KI-Automatisierung f�
                                            'Erste KI-Automatisierung für kleine Betriebe, etwa für E-Mail, '
                                            'Angebot oder Termin. Nichts geht ohne Ihre Freigabe. Festpreis '
                                            'auf Anfrage. Ohne Ergebniszusage.'),
- 'landingpage-erstellen-lassen': ('Landingpage erstellen lassen in Binz | Tafolli & Co.',
-                                  'Landingpage oder kleine Website zum Festpreis nach Umfang. Pflege als '
-                                  'Monatsabo: 99, 199 oder 299 €. Barrierefreiheit nur als technische '
-                                  'Prüfung. Sitz: Binz.'),
+ 'landingpage-erstellen-lassen': ('Landingpage ab 1.500 € erstellen lassen | Tafolli & Co.',
+                                  'Landingpages und Mini-Websites ab 1.500 €. Individuelles Design, passende '
+                                  'Inhalte und klare Anfragewege. Umfang und Funktionen bestimmen Ihr '
+                                  'konkretes Angebot.'),
  'website-pflege': ('Website-Pflege ab 99 € im Monat | Tafolli & Co.',
                     'Website-Pflege in drei Stufen: Basis 99 €, Laufend 199 €, Intensiv 299 € im Monat. '
                     'Updates, Backup, kleine Änderungen. Monatlich kündbar. Ohne Ergebniszusage.'),
- 'onlineshop': ('Onlineshop einrichten, 990 oder 1.990 € | Tafolli & Co.',
-                'Onlineshop einrichten und einweisen. Stufe Start 990 €, Stufe Erweitert 1.990 €. Hosting '
-                'und Shop-Software zahlen Sie an den Anbieter. Das ist der Endpreis.'),
+ 'onlineshop': ('Onlineshop ab 6.500 € erstellen lassen | Tafolli & Co.',
+                'Individuelle Onlineshops ab 6.500 €. Größere Commerce-Projekte mit Schnittstellen ab 15.000 '
+                '€. Planung, Design, Entwicklung und Übergabe.'),
  'web-apps': ('Web-App oder Tool ab 390 € in Binz | Tafolli & Co.',
               'Kleine Web-App oder ein Tool ab 390 €: ein Ablauf im Browser. Größere Projekte zum Festpreis, '
               'wenn Ablauf und Anbindung klar sind. Kein Nacht-Betrieb.'),
- 'firmenprofile': ('Firmenprofile einrichten, 399 oder 899 € | Tafolli',
-                   'Google-Unternehmensprofil und Verzeichnisse mit denselben Angaben. Basis 399 €, Komplett '
-                   '899 €. Die Bestätigung bei Google machen Sie selbst. Sitz: Binz.'),
+ 'firmenprofile': ('Lokale Einträge ab 550 € | Tafolli & Co.',
+                   'Google-Unternehmensprofil und lokale Verzeichnisse einrichten ab 550 €. Laufende '
+                   'Betreuung ab 550 € im Monat. Einheitliche Daten und klare Zuständigkeiten.'),
  'website-fuer-handwerker': ('Website für Handwerker erstellen lassen | Tafolli & Co.',
                              'Website für Handwerker: Leistungen, Einsatzgebiet und Anfrage auf dem Telefon. '
                              'Festpreis nach Umfang. Texte 99, 199 oder 299 €. Pflege ab 99 € im Monat.'),
@@ -98,10 +98,10 @@ SERVICE_META = {'ki-automatisierung-kleine-unternehmen': ('KI-Automatisierung f�
                                     'Website-Pflege für kleine Betriebe: Basis 99 €, Laufend 199 €, Intensiv '
                                     '299 € im Monat. Monatlich kündbar. Ein Website-Text kostet 199 € extra. '
                                     'Sitz: Binz.'),
- 'onlineshop-kleine-haendler': ('Onlineshop für kleine Händler in Binz | Tafolli & Co.',
-                                'Onlineshop für kleine Händler: Start 990 €, Erweitert 1.990 €. Produkttexte '
-                                '199 oder 299 €. Hosting und Software bleiben bei Ihnen. Rechtstexte nicht '
-                                'inklusive.')}
+ 'onlineshop-kleine-haendler': ('Onlineshop für kleine Händler | Tafolli & Co.',
+                                'Onlineshops für kleine Händler ab 6.500 €. Produktstruktur, mobile '
+                                'Bedienung und passende Zahlungswege. Größere Shops mit Schnittstellen nach '
+                                'individuellem Angebot.')}
 
 ANGEBOT_FAQ = [('Was kosten die drei Pakete?',
   'Dokument oder Prospekt: 99 €, etwa 1.200 Wörter, 3 Werktage. Website-Text: 199 €, etwa 1.500 Wörter '
