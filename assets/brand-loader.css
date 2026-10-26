@@ -1,0 +1,36 @@
+/* A brief return of the original neural signature, in the current company design. */
+.page-loader[hidden]{display:none!important}
+html[data-brand-loading] body .page-loader[hidden]{display:flex!important;position:fixed;inset:0;z-index:1000;align-items:center;justify-content:center;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 50% 45%,#fff 10%,#f0f5fc 75%,#eaf1fa);color:#192c46;pointer-events:auto;animation:page-loader-failsafe .01s 1.8s forwards}
+.page-loader:before{content:'';position:absolute;inset:0;z-index:-1;background-image:linear-gradient(#4772af08 1px,transparent 1px),linear-gradient(90deg,#4772af08 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse,#000,transparent 65%)}
+.page-loader-center{position:relative;text-align:center;width:min(530px,calc(100% - 40px));transform:translateY(-12px);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif}
+body .page-loader-label{font:500 9px/1.8 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;letter-spacing:.15em;color:#60799a;margin:0!important;animation:page-loader-copy .35s .06s both}
+.page-loader-art{position:relative;display:grid;place-items:center;width:360px;height:280px;max-width:100%;margin:3px auto 0}
+.page-loader-network{position:absolute;width:350px;height:350px;max-width:none;overflow:visible}
+.page-loader-network path{stroke:#658abc;stroke-width:1;stroke-dasharray:1;stroke-dashoffset:1;animation:page-loader-connect .55s calc(var(--branch)*.025s) both}
+.page-loader-nodes{fill:#6c92c4;animation:page-loader-copy .35s .1s both}
+.page-loader-symbol{width:154px;height:154px;position:relative;z-index:2;filter:drop-shadow(0 12px 28px #294c7b15)}
+.page-loader-symbol img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:contain}
+.page-loader-left{clip-path:inset(0 50% 0 0);animation:page-loader-left .55s cubic-bezier(.2,.7,.2,1) both}
+.page-loader-right{clip-path:inset(0 0 0 50%);animation:page-loader-right .55s .04s cubic-bezier(.2,.7,.2,1) both}
+.page-loader-halo{position:absolute;width:205px;height:205px;border:1px solid #b5c9e74d;border-radius:50%;box-shadow:0 0 0 24px #c7d7ef0d;animation:page-loader-halo .65s cubic-bezier(.2,.7,.2,1) both}
+.page-loader-name{font:600 clamp(35px,5vw,53px)/1.05 -apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;letter-spacing:-.06em;color:#192c46;white-space:nowrap;animation:page-loader-copy .4s .12s both}
+.page-loader-name>span{font-size:.47em;letter-spacing:-.035em;font-weight:500}
+body .page-loader-tagline{font:400 13px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#60728c;margin:17px 0 0!important;animation:page-loader-copy .4s .18s both}
+.page-loader-line{display:block;position:relative;width:96px;height:2px;margin:26px auto 0;background:#dce6f4;border-radius:2px;overflow:hidden}
+.page-loader-line>i{position:absolute;inset:0;background:linear-gradient(90deg,#326dc9 80%,#e99266);transform-origin:left;animation:page-loader-line .75s cubic-bezier(.2,.7,.2,1) both}
+.page-loader-flight{position:fixed;z-index:1001;pointer-events:none;object-fit:contain;max-width:none!important;transform-origin:0 0;will-change:transform}
+html[data-brand-loading="handoff"] .page-loader-symbol{visibility:hidden}
+html[data-brand-loading="leave"] body .page-loader[hidden]{animation:page-loader-leave .1s ease-out both,page-loader-failsafe .01s 4s forwards}
+html[data-brand-loading="leave"] .page-loader-center *{animation:none}
+html[data-brand-loading="leave"] .page-loader-network path{stroke-dashoffset:0}
+@keyframes page-loader-connect{from{stroke-dashoffset:1;opacity:0}to{stroke-dashoffset:0;opacity:1}}
+@keyframes page-loader-left{from{opacity:0;transform:translate3d(-22px,3px,0) rotate(-7deg)}to{opacity:1;transform:none}}
+@keyframes page-loader-right{from{opacity:0;transform:translate3d(22px,-3px,0) rotate(7deg)}to{opacity:1;transform:none}}
+@keyframes page-loader-copy{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes page-loader-halo{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+@keyframes page-loader-line{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes page-loader-leave{from{opacity:0}to{opacity:1}}
+@keyframes page-loader-failsafe{to{opacity:0;visibility:hidden;pointer-events:none}}
+@media(max-width:600px){.page-loader-center{width:calc(100% - 32px)}body .page-loader-label{font-size:7px;letter-spacing:.09em}.page-loader-art{width:285px;height:245px}.page-loader-network{width:285px;height:285px}.page-loader-symbol{width:138px;height:138px}.page-loader-halo{width:178px;height:178px}.page-loader-name{font-size:39px}body .page-loader-tagline{font-size:12px;margin-top:15px!important}.page-loader-line{margin-top:23px}}
+@media(prefers-reduced-motion:reduce){html[data-brand-loading] body .page-loader[hidden],.page-loader-flight{display:none!important}}
+html[data-motion="paused"][data-brand-loading] body .page-loader[hidden]{display:none!important}

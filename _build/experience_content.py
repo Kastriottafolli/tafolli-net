@@ -10,7 +10,7 @@ COPY = {
         'description': 'AI Automation as a Service: individuelle KI-Workflows, Integration und laufende Betreuung von Kastriot Tafolli. Für Hotellerie, Gastronomie und Unternehmen.',
         'nav': ['Automation', 'Leistungen', 'Über mich', 'Kontakt'],
         'talk': 'Projekt besprechen', 'menu': 'Menü', 'motion': 'Bewegung',
-        'status': 'OFFEN FÜR NEUE PROJEKTE', 'location': 'OSTSEEBAD BINZ',
+        'status': 'OFFEN FÜR NEUE PROJEKTE', 'location': 'RÜGEN × SCHLUCHSEE',
         'hero': ['WENIGER', 'ROUTINE.', 'Mehr möglich.'],
         'hero_text': 'Ich baue KI-Systeme, die Arbeit übernehmen. Damit Ihr Team wieder Zeit für das hat, was Menschen am besten können.',
         'hero_cta': 'Entdecken Sie Automation', 'hero_link': 'Lernen wir uns kennen',
@@ -25,7 +25,7 @@ COPY = {
         'lab_label': '01 / AUTOMATION ZUM AUSPROBIEREN', 'lab_title': ['Keine Blackbox.', 'Ein Aha-Moment.'],
         'lab_text': 'Wählen Sie einen Ablauf und schicken Sie ihn durch die Demo. So wird aus einer kleinen Routine ein intelligenter Workflow.',
         'demo_label': 'INTERAKTIVE DEMO · FIKTIVE BEISPIELDATEN',
-        'scenarios': ['Kundenanfrage', 'Rechnung', 'E-Mail'],
+        'scenarios': ['Gästeanfrage', 'Rechnung', 'E-Mail'],
         'stages': ['Eingang', 'Verstehen', 'Handeln', 'Prüfen', 'Ergebnis'],
         'stage_notes': [
             'Eine neue Anfrage kommt an. Ihr Team muss noch nichts tun.',
@@ -38,13 +38,13 @@ COPY = {
         'run': 'Workflow starten', 'running': 'Workflow läuft', 'replay': 'Noch einmal abspielen',
         'demo_hint': 'Eine Simulation zur Erklärung. Es werden keine Nachrichten versendet oder Buchungen vorgenommen.',
         'demos': [
-            {'source': 'KUNDENANFRAGE / 23:48', 'subject': 'Ein Gespräch nächste Woche?', 'message': 'Guten Abend! Haben Sie am 16. oder 17. Oktober Zeit für ein kurzes Gespräch? Es geht um eine Website und einen Ablauf, den wir automatisieren wollen.', 'fields': ['Absicht: Terminanfrage', 'Zeitraum: 16.–17. Oktober', 'Thema: Website und Automatisierung'], 'result_title': 'Persönliche Antwort vorbereitet.', 'result': 'Terminanfrage und Thema erkannt. Offene Punkte zur Prüfung an Ihr Team übergeben. Antwortentwurf liegt bereit.', 'receipt': 'ANFRAGE STRUKTURIERT · FREIGABE DURCH IHR TEAM'},
+            {'source': 'GÄSTEANFRAGE / 23:48', 'subject': 'Ein Wochenende am Meer?', 'message': 'Guten Abend! Haben Sie vom 16.–18. Oktober ein Doppelzimmer? Wir reisen mit unserem Hund. Gibt es Frühstück?', 'fields': ['Absicht: Zimmeranfrage', 'Aufenthalt: 16.–18. Oktober', 'Wunsch: Hund + Frühstück'], 'result_title': 'Persönliche Antwort vorbereitet.', 'result': 'Zimmerwunsch und Zusatzfragen erkannt. Verfügbarkeit und Haustierregeln zur Prüfung an die Rezeption übergeben. Antwortentwurf liegt bereit.', 'receipt': 'ANFRAGE STRUKTURIERT · FREIGABE DURCH REZEPTION'},
             {'source': 'BUCHHALTUNG / 09:12', 'subject': 'Eine Rechnung. Kein Abtippen.', 'message': 'Rechnung #2026-1042 · Musterlieferant GmbH · 840,00 € netto + 159,60 € USt. · Gesamt: 999,60 € · Fällig: 30. Oktober.', 'fields': ['Beleg: Rechnung #2026-1042', 'Gesamtbetrag: 999,60 €', 'Fälligkeit: 30. Oktober'], 'result_title': 'Beleg erfasst. Zahlen geprüft.', 'result': 'Lieferant, Positionen und Beträge ausgelesen. Nettobetrag und Umsatzsteuer abgeglichen. Buchungsvorschlag zur Freigabe vorbereitet.', 'receipt': 'BELEG STRUKTURIERT · FREIGABE DURCH BUCHHALTUNG'},
-            {'source': 'POSTEINGANG / 14:06', 'subject': 'Die richtige Nachricht. Beim richtigen Team.', 'message': 'Hallo, wir planen ein internes Projekt mit 40 Personen. Könnten Sie uns ein Angebot für Einführung und Schulung schicken?', 'fields': ['Absicht: Projektanfrage', 'Teilnehmende: 40 Personen', 'Ziel: Ihr Team'], 'result_title': 'Anfrage sortiert. Team informiert.', 'result': 'Projektanfrage erkannt und dem richtigen Team zugeordnet. Fehlende Angaben markiert. Rückfrage zu Datum und Umfang als Entwurf vorbereitet.', 'receipt': 'ANFRAGE ZUGEORDNET · ANTWORTENTWURF BEREIT'}
+            {'source': 'POSTEINGANG / 14:06', 'subject': 'Die richtige Nachricht. Beim richtigen Team.', 'message': 'Hallo, wir planen ein Firmenevent mit 40 Personen. Könnten Sie uns ein Angebot für einen Abend mit Dinner und Getränken schicken?', 'fields': ['Absicht: Veranstaltungsanfrage', 'Teilnehmende: 40 Personen', 'Ziel: Event-Team'], 'result_title': 'Anfrage sortiert. Team informiert.', 'result': 'Event-Anfrage erkannt und dem richtigen Team zugeordnet. Fehlende Angaben markiert. Rückfrage zu Datum und Budget als Entwurf vorbereitet.', 'receipt': 'ANFRAGE ZUGEORDNET · ANTWORTENTWURF BEREIT'}
         ],
         'care_label': '02 / MEHR ALS EIN EINMALIGES SETUP', 'care_title': ['Läuft.', 'Und wird besser.'],
         'care_text': 'Automation as a Service heißt: Ich begleite Ihr System auch nach dem Start. Wenn sich Ihr Betrieb verändert, entwickelt sich Ihr Workflow mit.',
-        'care_items': [('Verbinden', 'Ihre Tools bleiben. Ich baue die Verbindung zwischen Posteingang, Dokumenten und Team.'), ('Betreuen', 'Antworten prüfen, Fehler erkennen, Kosten beobachten und bei Bedarf eingreifen.'), ('Weiterentwickeln', 'Neue Abläufe ergänzen, Regeln anpassen und aus echten Rückmeldungen lernen.')],
+        'care_items': [('Verbinden', 'Ihre Tools bleiben. Ich baue die Verbindung zwischen Posteingang, Dokumenten, Reservierung und Team.'), ('Betreuen', 'Antworten prüfen, Fehler erkennen, Kosten beobachten und bei Bedarf eingreifen.'), ('Weiterentwickeln', 'Neue Abläufe ergänzen, Regeln anpassen und aus echten Rückmeldungen lernen.')],
         'care_note': 'IHR TEAM BEHÄLT DAS LETZTE WORT.', 'care_orbit': ['TOOLS', 'KI', 'TEAM', 'BETREUUNG'],
         'roi_label': '03 / IHR POTENZIAL', 'roi_title': ['Zeit ist wertvoll.', 'Holen Sie sie zurück.'],
         'roi_text': 'Was könnte ein automatisierter Ablauf freimachen? Verändern Sie die Werte und entdecken Sie eine mögliche Größenordnung.',
@@ -69,7 +69,7 @@ COPY = {
         'detail_hero': ['INTELLIGENTE', 'ABLÄUFE.', 'Mehr Freiraum.'],
         'story_label': 'VOM DURCHEINANDER ZUM ZUSAMMENSPIEL',
         'story_titles': ['Zu viele Handgriffe.', 'Ein verbundenes System.', 'Mehr Zeit für Menschen.'],
-        'story_copies': ['Posteingang, Belege, Anrufe. Jede kleine Aufgabe zieht Aufmerksamkeit vom Wesentlichen ab.', 'Ihre Informationen finden ihren Weg. Die KI strukturiert, Regeln prüfen, Ihr Team entscheidet.', 'Weniger hin und her. Mehr Raum für Kunden, Ideen und die Arbeit, die Sie voranbringt.'],
+        'story_copies': ['Posteingang, Belege, Anrufe. Jede kleine Aufgabe zieht Aufmerksamkeit vom Wesentlichen ab.', 'Ihre Informationen finden ihren Weg. Die KI strukturiert, Regeln prüfen, Ihr Team entscheidet.', 'Weniger hin und her. Mehr Raum für Gäste, Ideen und die Arbeit, die Sie voranbringt.'],
         'story_tasks': ['E-MAIL', 'RECHNUNG', 'ANRUF', 'BERICHT', 'ANFRAGE', 'DATEN'],
         'story_outcome': 'FREIRAUM',
     },
@@ -77,7 +77,7 @@ COPY = {
         'title': 'Kastriot Tafolli · AI automation that makes room for more',
         'description': 'AI Automation as a Service: custom AI workflows, integration and ongoing care by Kastriot Tafolli. For hospitality, restaurants and businesses.',
         'nav': ['Automation', 'Services', 'About me', 'Contact'], 'talk': 'Let’s talk', 'menu': 'Menu', 'motion': 'Motion',
-        'status': 'OPEN FOR NEW PROJECTS', 'location': 'OSTSEEBAD BINZ',
+        'status': 'OPEN FOR NEW PROJECTS', 'location': 'RÜGEN × SCHLUCHSEE',
         'hero': ['LESS', 'ROUTINE.', 'More possible.'],
         'hero_text': 'I build AI systems that take work off your hands. So your team can get back to what people do best.',
         'hero_cta': 'Discover automation', 'hero_link': 'Let’s get to know each other', 'art_label': 'HUMAN IDEAS. INTELLIGENT SYSTEMS.',
@@ -90,19 +90,19 @@ COPY = {
         'service_tags': ['Custom workflows', 'Human oversight', 'Ongoing care'],
         'lab_label': '01 / EXPERIENCE AUTOMATION', 'lab_title': ['No black box.', 'A lightbulb moment.'],
         'lab_text': 'Choose a process and run it through the demo. See an everyday task become an intelligent workflow.',
-        'demo_label': 'INTERACTIVE DEMO · FICTIONAL SAMPLE DATA', 'scenarios': ['Customer enquiry', 'Invoice', 'Email'],
+        'demo_label': 'INTERACTIVE DEMO · FICTIONAL SAMPLE DATA', 'scenarios': ['Guest enquiry', 'Invoice', 'Email'],
         'stages': ['Receive', 'Understand', 'Act', 'Check', 'Result'],
         'stage_notes': ['A new request arrives. Your team doesn’t need to act yet.', 'AI identifies intent, language and key information.', 'The workflow prepares the right action in your system.', 'Rules check the result. Unclear cases go to your team.', 'The request is structured, documented and ready for approval.'],
         'incoming': 'INPUT', 'outgoing': 'OUTPUT', 'ready': 'Ready for a test run', 'run': 'Run workflow', 'running': 'Workflow running', 'replay': 'Play again',
         'demo_hint': 'An explanatory simulation. No messages are sent and no bookings are made.',
         'demos': [
-            {'source': 'CUSTOMER ENQUIRY / 23:48', 'subject': 'A call next week?', 'message': 'Good evening! Do you have time on 16 or 17 October for a short call? It is about a website and a workflow we want to automate.', 'fields': ['Intent: meeting request', 'Dates: 16–17 October', 'Topic: website and automation'], 'result_title': 'A personal response, prepared.', 'result': 'Meeting request and topic identified. Open points passed to your team for checking. A response draft is ready.', 'receipt': 'REQUEST STRUCTURED · YOUR TEAM APPROVES'},
+            {'source': 'GUEST ENQUIRY / 23:48', 'subject': 'A weekend by the sea?', 'message': 'Good evening! Do you have a double room for 16–18 October? We’re travelling with our dog. Is breakfast available?', 'fields': ['Intent: room enquiry', 'Stay: 16–18 October', 'Request: dog + breakfast'], 'result_title': 'A personal response, prepared.', 'result': 'Room request and additional questions identified. Availability and pet policy passed to reception for checking. A response draft is ready.', 'receipt': 'REQUEST STRUCTURED · RECEPTION APPROVAL REQUIRED'},
             {'source': 'ACCOUNTING / 09:12', 'subject': 'An invoice. Without the typing.', 'message': 'Invoice #2026-1042 · Example Supplier Ltd. · €840.00 net + €159.60 VAT · Total: €999.60 · Due: 30 October.', 'fields': ['Document: invoice #2026-1042', 'Total: €999.60', 'Due: 30 October'], 'result_title': 'Captured. Numbers checked.', 'result': 'Supplier, items and amounts extracted. Net amount and VAT reconciled. An accounting entry is prepared for approval.', 'receipt': 'DOCUMENT STRUCTURED · ACCOUNTING APPROVAL REQUIRED'},
-            {'source': 'INBOX / 14:06', 'subject': 'The right message. The right team.', 'message': 'Hello, we are planning an internal project for 40 people. Could you send us a quote for onboarding and training?', 'fields': ['Intent: project enquiry', 'People: 40', 'Destination: your team'], 'result_title': 'Sorted. Team notified.', 'result': 'Project enquiry identified and assigned to the right team. Missing details highlighted. A question about date and scope is drafted.', 'receipt': 'REQUEST ASSIGNED · RESPONSE DRAFT READY'}
+            {'source': 'INBOX / 14:06', 'subject': 'The right message. The right team.', 'message': 'Hello, we’re planning a company event for 40 people. Could you send us a quote for an evening with dinner and drinks?', 'fields': ['Intent: event enquiry', 'Guests: 40 people', 'Destination: events team'], 'result_title': 'Sorted. Team notified.', 'result': 'Event enquiry identified and assigned to the right team. Missing details highlighted. A question about date and budget is drafted.', 'receipt': 'REQUEST ASSIGNED · RESPONSE DRAFT READY'}
         ],
         'care_label': '02 / BEYOND THE INITIAL SETUP', 'care_title': ['It works.', 'And gets better.'],
         'care_text': 'Automation as a Service means I stay with your system after launch. As your business changes, your workflows evolve with it.',
-        'care_items': [('Connect', 'Keep your tools. I connect your inbox, documents and team.'), ('Manage', 'Review responses, detect errors, monitor costs and step in when needed.'), ('Evolve', 'Add workflows, adapt rules and learn from real feedback.')],
+        'care_items': [('Connect', 'Keep your tools. I connect your inbox, documents, reservations and team.'), ('Manage', 'Review responses, detect errors, monitor costs and step in when needed.'), ('Evolve', 'Add workflows, adapt rules and learn from real feedback.')],
         'care_note': 'YOUR TEAM HAS THE FINAL SAY.', 'care_orbit': ['TOOLS', 'AI', 'TEAM', 'CARE'],
         'roi_label': '03 / YOUR POTENTIAL', 'roi_title': ['Time is valuable.', 'Take it back.'],
         'roi_text': 'How much time could an automated process free up? Adjust the inputs to explore a possible outcome.',
@@ -124,14 +124,14 @@ COPY = {
         'footer_tag': 'THINK HUMAN. ACT INTELLIGENT.', 'top': 'Back to top', 'detail_hero': ['INTELLIGENT', 'WORKFLOWS.', 'More freedom.'],
         'story_label': 'FROM SCATTERED TASKS TO CONNECTED WORK',
         'story_titles': ['Too many little tasks.', 'One connected system.', 'More time for people.'],
-        'story_copies': ['Emails, invoices, phone calls. Each small task pulls your attention away from what matters.', 'Your information finds its way. AI structures it, rules check it, your team decides.', 'Less back and forth. More room for customers, ideas and work that moves you forward.'],
+        'story_copies': ['Emails, invoices, phone calls. Each small task pulls your attention away from what matters.', 'Your information finds its way. AI structures it, rules check it, your team decides.', 'Less back and forth. More room for guests, ideas and work that moves you forward.'],
         'story_tasks': ['EMAIL', 'INVOICE', 'CALL', 'REPORT', 'ENQUIRY', 'DATA'], 'story_outcome': 'FREEDOM',
     },
     'sq': {
         'title': 'Kastriot Tafolli · Automatizim me AI për më shumë kohë',
         'description': 'AI Automation as a Service: procese të personalizuara me AI, integrim dhe mirëmbajtje nga Kastriot Tafolli. Për hotele, restorante dhe biznese.',
         'nav': ['Automatizimi', 'Shërbimet', 'Rreth meje', 'Kontakti'], 'talk': 'Të flasim', 'menu': 'Menu', 'motion': 'Lëvizja',
-        'status': 'I HAPUR PËR PROJEKTE TË REJA', 'location': 'OSTSEEBAD BINZ',
+        'status': 'I HAPUR PËR PROJEKTE TË REJA', 'location': 'RÜGEN × SCHLUCHSEE',
         'hero': ['MË PAK', 'RUTINË.', 'Më shumë mundësi.'],
         'hero_text': 'Ndërtoj sisteme me AI që marrin përsipër punën. Që ekipi juaj të ketë kohë për atë që njerëzit bëjnë më mirë.',
         'hero_cta': 'Zbuloni automatizimin', 'hero_link': 'Të njihemi', 'art_label': 'IDE NJERËZORE. SISTEME INTELIGJENTE.',
@@ -144,19 +144,19 @@ COPY = {
         'service_tags': ['Procese të personalizuara', 'Kontroll njerëzor', 'Mirëmbajtje e vazhdueshme'],
         'lab_label': '01 / PROVONI AUTOMATIZIMIN', 'lab_title': ['Pa mistere.', 'Gjithçka bëhet e qartë.'],
         'lab_text': 'Zgjidhni një proces dhe nisni demonstrimin. Shihni si një detyrë rutinë bëhet një proces inteligjent.',
-        'demo_label': 'DEMONSTRIM INTERAKTIV · TË DHËNA FIKTIVE', 'scenarios': ['Kërkesë klienti', 'Faturë', 'Email'],
+        'demo_label': 'DEMONSTRIM INTERAKTIV · TË DHËNA FIKTIVE', 'scenarios': ['Kërkesë mysafiri', 'Faturë', 'Email'],
         'stages': ['Marrja', 'Kuptimi', 'Veprimi', 'Kontrolli', 'Rezultati'],
         'stage_notes': ['Mbërrin një kërkesë e re. Ekipi ende nuk ka nevojë të veprojë.', 'AI identifikon qëllimin, gjuhën dhe informacionin e rëndësishëm.', 'Procesi përgatit veprimin e duhur në sistemin tuaj.', 'Rregullat kontrollojnë rezultatin. Rastet e paqarta i kalojnë ekipit.', 'Kërkesa është e strukturuar, e dokumentuar dhe gati për miratim.'],
         'incoming': 'HYRJA', 'outgoing': 'REZULTATI', 'ready': 'Gati për provë', 'run': 'Nisni procesin', 'running': 'Procesi po punon', 'replay': 'Luajeni përsëri',
         'demo_hint': 'Një simulim shpjegues. Nuk dërgohen mesazhe dhe nuk bëhen rezervime.',
         'demos': [
-            {'source': 'KËRKESË KLIENTI / 23:48', 'subject': 'Një bisedë javën tjetër?', 'message': 'Mirëmbrëma! A keni kohë më 16 ose 17 tetor për një bisedë të shkurtër? Bëhet fjalë për një faqe web dhe një proces që duam ta automatizojmë.', 'fields': ['Qëllimi: kërkesë takimi', 'Data: 16–17 tetor', 'Tema: faqe web dhe automatizim'], 'result_title': 'Përgjigje personale e përgatitur.', 'result': 'Kërkesa për takim dhe tema u identifikuan. Pikat e hapura i kalojnë ekipit tuaj për kontroll. Drafti i përgjigjes është gati.', 'receipt': 'KËRKESË E STRUKTURUAR · MIRATIM NGA EKIPI JUAJ'},
+            {'source': 'KËRKESË MYSAFIRI / 23:48', 'subject': 'Një fundjavë pranë detit?', 'message': 'Mirëmbrëma! A keni dhomë dyshe për 16–18 tetor? Udhëtojmë me qenin tonë. A ka mëngjes?', 'fields': ['Qëllimi: kërkesë dhome', 'Qëndrimi: 16–18 tetor', 'Dëshira: qen + mëngjes'], 'result_title': 'Përgjigje personale e përgatitur.', 'result': 'Kërkesa dhe pyetjet u identifikuan. Disponueshmëria dhe rregullat për kafshët i kalojnë recepsionit për kontroll. Drafti i përgjigjes është gati.', 'receipt': 'KËRKESË E STRUKTURUAR · MIRATIM NGA RECEPSIONI'},
             {'source': 'KONTABILITET / 09:12', 'subject': 'Një faturë. Pa shkrim manual.', 'message': 'Fatura #2026-1042 · Furnitori Shembull · 840,00 € neto + 159,60 € TVSH · Gjithsej: 999,60 € · Afati: 30 tetor.', 'fields': ['Dokumenti: fatura #2026-1042', 'Gjithsej: 999,60 €', 'Afati: 30 tetor'], 'result_title': 'Regjistruar. Shifrat u kontrolluan.', 'result': 'Furnitori, artikujt dhe shumat u nxorën. Shuma neto dhe TVSH u krahasuan. Regjistrimi kontabël është gati për miratim.', 'receipt': 'DOKUMENT I STRUKTURUAR · MIRATIM NGA KONTABILITETI'},
-            {'source': 'POSTA / 14:06', 'subject': 'Mesazhi i duhur. Ekipi i duhur.', 'message': 'Përshëndetje, planifikojmë një projekt të brendshëm me 40 persona. Mund të na dërgoni ofertë për prezantim dhe trajnim?', 'fields': ['Qëllimi: kërkesë projekti', 'Pjesëmarrës: 40 persona', 'Destinacioni: ekipi juaj'], 'result_title': 'Sistemuar. Ekipi u njoftua.', 'result': 'Kërkesa u identifikua dhe iu caktua ekipit të duhur. U shënuan të dhënat që mungojnë. U përgatit pyetja për datën dhe vëllimin.', 'receipt': 'KËRKESË E CAKTUAR · DRAFT PËRGJIGJEJE GATI'}
+            {'source': 'POSTA / 14:06', 'subject': 'Mesazhi i duhur. Ekipi i duhur.', 'message': 'Përshëndetje, planifikojmë një event kompanie me 40 persona. Mund të na dërgoni ofertë për darkë dhe pije?', 'fields': ['Qëllimi: kërkesë eventi', 'Pjesëmarrës: 40 persona', 'Destinacioni: ekipi i eventeve'], 'result_title': 'Sistemuar. Ekipi u njoftua.', 'result': 'Kërkesa u identifikua dhe iu caktua ekipit të duhur. U shënuan të dhënat që mungojnë. U përgatit pyetja për datën dhe buxhetin.', 'receipt': 'KËRKESË E CAKTUAR · DRAFT PËRGJIGJEJE GATI'}
         ],
         'care_label': '02 / PËRTEJ INSTALIMIT FILLESTAR', 'care_title': ['Funksionon.', 'Dhe përmirësohet.'],
         'care_text': 'Automation as a Service do të thotë që e mbështes sistemin edhe pas nisjes. Ndërsa biznesi ndryshon, proceset zhvillohen me të.',
-        'care_items': [('Lidhja', 'Mjetet tuaja mbeten. Lidh postën, dokumentet dhe ekipin.'), ('Mirëmbajtja', 'Kontrolloj përgjigjet, identifikoj gabimet, ndjek kostot dhe ndërhyj kur duhet.'), ('Zhvillimi', 'Shtoj procese, përshtat rregullat dhe mësoj nga reagimet reale.')],
+        'care_items': [('Lidhja', 'Mjetet tuaja mbeten. Lidh postën, dokumentet, rezervimet dhe ekipin.'), ('Mirëmbajtja', 'Kontrolloj përgjigjet, identifikoj gabimet, ndjek kostot dhe ndërhyj kur duhet.'), ('Zhvillimi', 'Shtoj procese, përshtat rregullat dhe mësoj nga reagimet reale.')],
         'care_note': 'EKIPI JUAJ KA FJALËN E FUNDIT.', 'care_orbit': ['MJETET', 'AI', 'EKIPI', 'KUJDESI'],
         'roi_label': '03 / POTENCIALI JUAJ', 'roi_title': ['Koha ka vlerë.', 'Rikthejeni.'],
         'roi_text': 'Sa kohë mund të lirojë një proces i automatizuar? Ndryshoni vlerat për të zbuluar një rezultat të mundshëm.',
@@ -176,71 +176,142 @@ COPY = {
         'footer_tag': 'MENDONI SI NJERI. VEPRONI ME INTELIGJENCË.', 'top': 'Kthehu lart', 'detail_hero': ['PROCESE', 'INTELIGJENTE.', 'Më shumë liri.'],
         'story_label': 'NGA DETYRAT E SHPËRNDARA TE PUNA E LIDHUR',
         'story_titles': ['Shumë detyra të vogla.', 'Një sistem i lidhur.', 'Më shumë kohë për njerëzit.'],
-        'story_copies': ['Email, fatura, telefonata. Çdo detyrë e vogël largon vëmendjen nga ajo që ka rëndësi.', 'Informacioni gjen rrugën e vet. AI e strukturon, rregullat e kontrollojnë, ekipi vendos.', 'Më pak vajtje-ardhje. Më shumë hapësirë për klientë, ide dhe punë që ju çon përpara.'],
+        'story_copies': ['Email, fatura, telefonata. Çdo detyrë e vogël largon vëmendjen nga ajo që ka rëndësi.', 'Informacioni gjen rrugën e vet. AI e strukturon, rregullat e kontrollojnë, ekipi vendos.', 'Më pak vajtje-ardhje. Më shumë hapësirë për mysafirë, ide dhe punë që ju çon përpara.'],
         'story_tasks': ['EMAIL', 'FATURË', 'TELEFON', 'RAPORT', 'KËRKESË', 'TË DHËNA'], 'story_outcome': 'LIRI',
     },
 }
 
-# The homepage introduces the independent offers. Automation keeps its own page.
-OFFERS={
- 'de':[
-  ('01','KI-AUTOMATISIERUNG','KI Automatisierung für kleine Unternehmen.','Die erste Automatisierung zum Festpreis: E-Mail, Angebote oder Termine. Nichts geht ohne Ihre Freigabe hinaus.','ki-automatisierung-kleine-unternehmen.html','Angebot ansehen'),
-  ('02','WEBSITE & LANDINGPAGE','Landingpage erstellen lassen.','Website oder Landingpage zum Festpreis, inklusive Pflege und einem technischen Check.','landingpage-erstellen-lassen.html','Angebot ansehen'),
-  ('03','TEXTE & ÜBERSETZUNGEN','Deutsch, Englisch, Albanisch.','Texte und Übersetzungen in diesen drei Sprachen. Festpreise: 99, 199 und 299 €.','angebot/','Preise ansehen')],
- 'en':[
-  ('01','AI AUTOMATION','AI automation for small businesses.','A first automation at a fixed price: email, quotes or appointments. Nothing goes out without your approval.','ki-automatisierung-kleine-unternehmen.html','View the offer'),
-  ('02','WEBSITE & LANDING PAGE','A landing page, built for you.','A website or landing page at a fixed price, including care and a technical check.','landingpage-erstellen-lassen.html','View the offer'),
-  ('03','TEXTS & TRANSLATION','German, English, Albanian.','Texts and translations in these three languages. Fixed prices: €99, €199 and €299.','angebot/','View the prices')],
- 'sq':[
-  ('01','AUTOMATIZIM ME IA','Automatizim me IA për biznese të vogla.','Automatizimi i parë me çmim fiks: email, oferta ose takime. Asgjë nuk del pa miratimin tuaj.','ki-automatisierung-kleine-unternehmen.html','Shikoni ofertën'),
-  ('02','FAQE WEB & LANDINGPAGE','Një faqe që të çon te kontakti.','Faqe web ose landingpage me çmim fiks, me mirëmbajtje dhe një kontroll teknik.','landingpage-erstellen-lassen.html','Shikoni ofertën'),
-  ('03','TEKSTE & PËRKTHIME','Gjermanisht, anglisht, shqip.','Tekste dhe përkthime në këto tri gjuhë. Çmime fikse: 99, 199 dhe 299 €.','angebot/','Shikoni çmimet')]}
-POSITIONING={
-'de':dict(title='KI, Websites und Texte für kleine Unternehmen | Kastriot Tafolli',description='Drei Angebote von Kastriot Tafolli: KI Automatisierung für kleine Unternehmen, Landingpage erstellen lassen und Texte auf Deutsch, Englisch und Albanisch. Festpreis nach Umfang.',hero=['KI, WEBSITES','UND TEXTE.','Für kleine Unternehmen.'],hero_text='Drei Angebote: die erste KI-Automatisierung, eine Website oder Landingpage, und Texte auf Deutsch, Englisch und Albanisch.',hero_cta='Anfrage senden',offers_link='Angebote ansehen',manifesto=['Ein Ablauf.','Eine Seite.','Ein Text.'],manifesto_text='Ein Ablauf kann Arbeit vorbereiten. Eine Seite kann den Weg zur Anfrage kurz machen. Ein Text kann auf Deutsch, Englisch oder Albanisch ankommen.',manifesto_small='Die erste Automatisierung, eine Website oder Landingpage und Übersetzungen. Den Festpreis nenne ich nach dem Umfang.',services_label='DIE ANGEBOTE',services_title=['Drei Angebote.','Klar getrennt.'],portfolio_link='Weitere Leistungen ansehen',about_title=['Code, Web und Texte.','Aus einer Hand.'],about_text='Ich bin Kastriot Tafolli, Inhaber von TB Solutions in Ostseebad Binz. Ich richte eine erste Automatisierung ein, baue Websites und Landingpages und prüfe Texte auf Deutsch, Englisch und Albanisch selbst.',cta_text='KI-Automatisierung, eine Landingpage oder eine Übersetzung: Schreiben Sie mir, worum es geht.',ask='Anfragen',credentials=[('TB Solutions','Sitz in Ostseebad Binz'),('DE · EN · SQ','Texte und Übersetzungen'),('KI & Code','Automatisierung und Websites')]),
-'en':dict(title='AI, websites and texts for small businesses | Kastriot Tafolli',description='Three offers from Kastriot Tafolli: a first AI automation, a website or landing page, and texts in German, English and Albanian. The fixed price follows the scope.',hero=['AI, WEBSITES','AND TEXTS.','For small businesses.'],hero_text='Three offers: a first AI automation, a website or landing page, and texts in German, English and Albanian.',hero_cta='Send a request',offers_link='View the offers',manifesto=['One workflow.','One page.','One text.'],manifesto_text='A workflow can prepare the work. A page can make the enquiry short. A text can arrive in German, English or Albanian.',manifesto_small='The first automation, a website or landing page, and translations. I name the fixed price after the scope is clear.',services_label='THE OFFERS',services_title=['Three offers.','Clearly separated.'],portfolio_link='See further services',about_title=['Code, web and texts.','From one person.'],about_text='I’m Kastriot Tafolli, owner of TB Solutions in Ostseebad Binz. I set up a first automation, build websites and landing pages, and review texts in German, English and Albanian myself.',cta_text='AI automation, a landing page or a translation: tell me what you need.',ask='Get in touch',credentials=[('TB Solutions','Based in Ostseebad Binz'),('DE · EN · SQ','Texts and translations'),('AI & code','Automation and websites')]),
-'sq':dict(title='IA, faqe web dhe tekste për biznese të vogla | Kastriot Tafolli',description='Tri oferta nga Kastriot Tafolli: automatizimi i parë me IA, një faqe web ose landingpage, dhe tekste në gjermanisht, anglisht dhe shqip. Çmimi fiks pas qartësimit të vëllimit.',hero=['IA, FAQE WEB','DHE TEKSTE.','Për biznese të vogla.'],hero_text='Tri oferta: automatizimi i parë me IA, një faqe web ose landingpage, dhe tekste në gjermanisht, anglisht dhe shqip.',hero_cta='Dërgoni një kërkesë',offers_link='Shikoni ofertat',manifesto=['Një proces.','Një faqe.','Një tekst.'],manifesto_text='Një proces mund të përgatisë punën. Një faqe e bën kontaktin të shkurtër. Një tekst mund të vijë në gjermanisht, anglisht ose shqip.',manifesto_small='Automatizimi i parë, një faqe web ose landingpage dhe përkthime. Çmimin fiks e them pasi të qartësohet vëllimi.',services_label='OFERTAT',services_title=['Tri oferta.','Të ndara qartë.'],portfolio_link='Shikoni shërbimet e tjera',about_title=['Kod, web dhe tekste.','Nga një dorë.'],about_text='Jam Kastriot Tafolli, pronar i TB Solutions në Ostseebad Binz. Vendos automatizimin e parë, ndërtoj faqe web dhe landingpage dhe i kontrolloj vetë tekstet në gjermanisht, anglisht dhe shqip.',cta_text='Automatizim me IA, landingpage apo përkthim: më shkruani për çfarë keni nevojë.',ask='Na shkruani',credentials=[('TB Solutions','Selia në Ostseebad Binz'),('DE · EN · SQ','Tekste dhe përkthime'),('IA & kod','Automatizim dhe faqe web')])}
-for language,values in POSITIONING.items():
-    COPY[language]['automation_description']=COPY[language]['description']
-    COPY[language]['automation_hero_text']=COPY[language]['hero_text']
-    COPY[language]['automation_cta']=COPY[language]['hero_cta']
-    COPY[language].update(values)
-    COPY[language]['services']=OFFERS[language]
-
-EXTRA={
- 'de':dict(extra_label='WEITERE FESTPREISE',extra_title=['Weitere Festpreise.','Kurz gesagt.'],extra_text='Pflege, ein kleiner Shop, ein Werkzeug und Firmenprofile. Die Schätzung im Preisrechner ist unverbindlich.',extra_items=[
-  ('Website-Pflege','Updates, Backups, kleine Änderungen. Monatlich kündbar.','99 / 199 / 299 € im Monat','website-pflege.html'),
-  ('Onlineshop','Einrichtung und Einweisung. Stufen Start und Erweitert.','ab 990 €','onlineshop.html'),
-  ('Web-App oder Tool','Ein kleiner Ablauf. Größeres nach Angebot.','ab 390 €','web-apps.html'),
-  ('Firmenprofile im Netz','Google-Profil und Verzeichnisse, gleiche Angaben.','399–899 €','firmenprofile.html'),
-  ('Preisrechner','Unverbindliche Schätzung, kein Angebot.','kostenlos','preisrechner.html')]),
- 'en':dict(extra_label='MORE FIXED PRICES',extra_title=['More fixed prices.','In short.'],extra_text='Care, a small shop, a tool and business profiles. The estimate in the price calculator is non-binding. Detail pages are in German.',extra_items=[
-  ('Website care','Updates, backups, small edits. Cancel any month.','€99 / €199 / €299 per month','website-pflege.html'),
-  ('Online shop','Setup and a walkthrough. Stages Start and Extended.','from €990','onlineshop.html'),
-  ('Web app or tool','One small workflow. Larger work by quote.','from €390','web-apps.html'),
-  ('Business profiles','Google profile and directories, the same details.','€399–€899','firmenprofile.html'),
-  ('Price calculator','A non-binding estimate, not a quote.','free','preisrechner.html')]),
- 'sq':dict(extra_label='ÇMIME TË TJERA FIKSE',extra_title=['Çmime të tjera fikse.','Shkurt.'],extra_text='Mirëmbajtje, një dyqan i vogël, një mjet dhe profile biznesi. Vlerësimi në kalkulator është i paobliguar. Faqet e detajuara janë në gjermanisht.',extra_items=[
-  ('Mirëmbajtje e faqes','Përditësime, kopje rezervë, ndryshime të vogla. Anulohet çdo muaj.','99 / 199 / 299 € në muaj','website-pflege.html'),
-  ('Dyqan online','Ngritje dhe udhëzim. Hosting mbetet te ju ose te ofruesi.','nga 990 €','onlineshop.html'),
-  ('Aplikacion ose mjet','Një proces i vogël. Më i madh me ofertë.','nga 390 €','web-apps.html'),
-  ('Profile biznesi','Profili në Google dhe direktori, të njëjtat të dhëna.','399–899 €','firmenprofile.html'),
-  ('Kalkulator çmimesh','Vlerësim i paobliguar, jo ofertë.','falas','preisrechner.html')])}
-for code,values in EXTRA.items():
+# The company brand spans technology, marketing and consulting. Credentials refer
+# exclusively to the founder, not to the size or history of the new company.
+COMPANY = {
+    'de': dict(
+        title='Tafolli & Co. | KI, Software, Online-Marketing & Beratung',
+        description='Tafolli & Co. verbindet KI-Automatisierung, Software, Online-Marketing und Unternehmensberatung. Für Unternehmen in Deutschland, Österreich, Schweiz und Kosovo.',
+        nav=['Leistungen', 'Unternehmen', 'Wissen', 'Kontakt'],
+        status='OFFEN FÜR NEUE PROJEKTE', location='DEUTSCHLAND · ÖSTERREICH · SCHWEIZ · KOSOVO',
+        hero=['IDEEN.', 'SYSTEME.', 'Mehr Wirkung.'],
+        hero_text='Tafolli &amp; Co. verbindet KI, Software, Online-Marketing und Beratung. Für Unternehmen, die Abläufe vereinfachen, digital sichtbar werden und ihre nächsten Schritte klar angehen möchten.',
+        hero_cta='Leistungen entdecken', hero_link='Projekt besprechen',
+        intro='TECHNOLOGY · MARKETING · CONSULTING',
+        manifesto=['Verstehen.', 'Verbinden.', 'Umsetzen.'],
+        manifesto_text='Technologie, Marketing und betriebliche Abläufe greifen ineinander. Deshalb beginnt jedes Projekt mit einem Blick auf Ihr Geschäft: Was soll leichter werden, wer soll erreicht werden und welche Lösung passt in den Alltag?',
+        manifesto_small='Aus dieser Grundlage entstehen KI-Workflows, individuelle Software, Websites und Kampagnen. Operative Erfahrung in Hotellerie und Gastronomie ergänzt die digitale Umsetzung – von der Analyse bis zur laufenden Betreuung.',
+        service_text='Für Ihr Unternehmen entwickelt, in bestehende Systeme eingebunden und nach dem Start begleitet. Vom ersten klar umrissenen Workflow bis zur laufenden Weiterentwicklung.',
+        care_text='Automation as a Service umfasst die Begleitung nach dem Start. Wenn sich Ihr Betrieb verändert, werden Abläufe, Regeln und Anbindungen gemeinsam weiterentwickelt.',
+        care_items=[('Verbinden', 'Bestehende Tools sinnvoll verbinden: Posteingang, Dokumente, Reservierung und Ihr Team.'), ('Betreuen', 'Antworten prüfen, Fehler erkennen, Kosten beobachten und bei Bedarf eingreifen.'), ('Weiterentwickeln', 'Neue Abläufe ergänzen, Regeln anpassen und aus echten Rückmeldungen lernen.')],
+        services_label='VIER BEREICHE. EIN GEMEINSAMER ANSATZ.',
+        services_title=['Was Ihr Unternehmen', 'weiterbringt.'],
+        services=[
+            ('01', 'KI & AUTOMATISIERUNG', 'Mehr Freiraum im Alltag.', 'KI-Assistenten, verbundene Workflows und TeamO für wiederkehrende Aufgaben – mit klaren Regeln und menschlicher Kontrolle.', 'ki-automatisierung.html', 'KI entdecken'),
+            ('02', 'SOFTWARE & WEB', 'Technik, die zu Ihnen passt.', 'Individuelle Anwendungen, Websites und Schnittstellen. An Ihren Abläufen ausgerichtet und verständlich übergeben.', 'softwareentwicklung.html', 'Software & Web entdecken'),
+            ('03', 'ONLINE-MARKETING', 'Sichtbar für die Richtigen.', 'Suchmaschinenoptimierung, Social Media, Content und digitale Kampagnen mit einem klaren Weg zur Anfrage.', 'online-marketing.html', 'Marketing entdecken'),
+            ('04', 'BERATUNG & BETRIEB', 'Aus Erfahrung weiterdenken.', 'Prozesse, Einkauf und Wirtschaftlichkeit verbessern. Mit besonderer Praxiserfahrung in Hotellerie und Gastronomie.', 'fb-beratung.html', 'Beratung entdecken')],
+        portfolio_link='Alle 22 Leistungsbereiche entdecken',
+        about_label='DER GRÜNDER / ERFAHRUNG ALS GRUNDLAGE',
+        about_title=['Betrieb verstehen.', 'Technik gestalten.'],
+        about_text='Gründer Kastriot Tafolli verbindet operative Führung in der 5-Sterne-Hotellerie mit Softwareentwicklung und KI Engineering. Diese persönliche Erfahrung prägt den Ansatz von Tafolli &amp; Co.: zuerst die Aufgabe verstehen, dann die passende Lösung entwickeln.',
+        about_link='Unternehmen & Gründer kennenlernen', about_caption='KASTRIOT TAFOLLI / GRÜNDER',
+        credentials_label='PERSÖNLICHE BERUFSERFAHRUNG DES GRÜNDERS',
+        credentials=[('15+', 'Jahre 5-Sterne-Hotellerie'), ('200+', 'Mitarbeitende in früheren Führungsrollen gleichzeitig geführt'), ('50+', 'Nachwuchskräfte ausgebildet')],
+        experience_label='BERUFLICHE STATIONEN DES GRÜNDERS',
+        process=[('Verstehen.', 'Ziele, Ausgangslage und Prioritäten gemeinsam klären. Daraus entsteht ein sinnvoll abgegrenzter Auftrag.'), ('Umsetzen.', 'Lösung, Inhalte oder Kampagne entwickeln. Zwischenergebnisse werden mit Ihnen abgestimmt und geprüft.'), ('Begleiten.', 'Nach dem Start Ergebnisse besprechen, Verbesserungen priorisieren und die weitere Betreuung vereinbaren.')],
+        cta_title=['Ihre nächste Idee.', 'Gemeinsam', 'weitergedacht.'],
+        cta_text='Eine neue Website, bessere Sichtbarkeit, individuelle Software oder ein einfacherer Ablauf: Erzählen Sie uns, was Ihr Unternehmen voranbringen soll.',
+        footer_tag='TECHNOLOGY · MARKETING · CONSULTING',
+        automation_description='KI-Automatisierung von Tafolli & Co.: individuelle Workflows, Integration und laufende Betreuung für Hotels, Gastronomie und Unternehmen in DACH und Kosovo.',
+        automation_hero_text='KI-Workflows, die zu Ihrem Betrieb passen. Tafolli &amp; Co. verbindet bestehende Systeme, klare Regeln und menschliche Kontrolle – damit wiederkehrende Aufgaben weniger Aufmerksamkeit brauchen.',
+        automation_cta='Automation entdecken',
+        faq=[
+            ('Welche Leistungen können wir kombinieren?', 'KI-Automatisierung, Software und Web, Online-Marketing und Beratung lassen sich einzeln oder im abgestimmten Projekt verbinden. Ausgangspunkt sind Ihre Ziele und die vorhandenen Systeme.'),
+            ('Arbeiten Sie nur für Hotels und Restaurants?', 'Hotellerie und Gastronomie sind eine besondere Kompetenz. Digitale Lösungen und Online-Marketing richten sich auch an Unternehmen anderer Branchen. Im Erstgespräch wird geprüft, ob Aufgabe und Angebot zusammenpassen.'),
+            ('Wie beginnt die Zusammenarbeit?', 'Mit einem unverbindlichen Gespräch zu Bedarf, Ausgangslage und Budgetrahmen. Danach werden Umfang, Zuständigkeiten, Zeitplan und Angebot abgestimmt.'),
+            ('Ist eine laufende Betreuung möglich?', 'Ja. Für Websites, Marketing und KI-Workflows kann eine laufende Betreuung mit klar vereinbartem Umfang eingerichtet werden.'),
+            ('In welchen Ländern ist die Zusammenarbeit möglich?', 'Das Angebot richtet sich an Unternehmen in Deutschland, Österreich, der Schweiz und Kosovo. Digitale Abstimmung ist ortsunabhängig möglich; Termine vor Ort werden projektbezogen vereinbart.'),
+            ('Wer ist mein Ansprechpartner?', 'Kastriot Tafolli ist Ihr zentraler Ansprechpartner. Zuständigkeiten für die konkrete Umsetzung und beteiligte Partner werden im jeweiligen Angebot transparent benannt.')]),
+    'en': dict(
+        title='Tafolli & Co. | AI, Software, Online Marketing & Consulting',
+        description='Tafolli & Co. connects AI automation, software, online marketing and business consulting for companies in Germany, Austria, Switzerland and Kosovo.',
+        nav=['Services', 'Company', 'Insights', 'Contact'],
+        status='OPEN FOR NEW PROJECTS', location='GERMANY · AUSTRIA · SWITZERLAND · KOSOVO',
+        hero=['IDEAS.', 'SYSTEMS.', 'More impact.'],
+        hero_text='Tafolli &amp; Co. connects AI, software, online marketing and consulting. For businesses looking to simplify operations, build their digital presence and take their next steps with a clear direction.',
+        hero_cta='Explore services', hero_link='Discuss a project',
+        intro='TECHNOLOGY · MARKETING · CONSULTING',
+        manifesto=['Understand.', 'Connect.', 'Deliver.'],
+        manifesto_text='Technology, marketing and business operations work together. Each project starts with your business: what should become easier, who do you want to reach and what will work in everyday use?',
+        manifesto_small='That understanding shapes AI workflows, custom software, websites and campaigns. Hands-on hospitality experience supports the digital work, from analysis to ongoing care.',
+        service_text='Developed for your business, connected to your existing systems and supported after launch. From the first focused workflow to continued improvement.',
+        care_text='Automation as a Service includes support after launch. As your business changes, workflows, rules and connections are developed with it.',
+        care_items=[('Connect', 'Connect the tools you use: inbox, documents, reservations and your team.'), ('Manage', 'Review responses, detect errors, monitor costs and step in when needed.'), ('Evolve', 'Add workflows, adapt rules and learn from real feedback.')],
+        services_label='FOUR AREAS. ONE CONNECTED APPROACH.', services_title=['What moves', 'your business forward.'],
+        services=[
+            ('01', 'AI & AUTOMATION', 'More room for everyday work.', 'AI assistants, connected workflows and TeamO for recurring tasks, with clear rules and human oversight.', 'ki-automatisierung.html', 'Explore AI'),
+            ('02', 'SOFTWARE & WEB', 'Technology that fits.', 'Custom applications, websites and integrations, built around your operations and handed over clearly.', 'softwareentwicklung.html', 'Explore software & web'),
+            ('03', 'ONLINE MARKETING', 'Visible to the right people.', 'Search engine optimisation, social media, content and digital campaigns with a clear path to an enquiry.', 'online-marketing.html', 'Explore marketing'),
+            ('04', 'CONSULTING & OPERATIONS', 'Experience put to work.', 'Improve processes, purchasing and business performance, with particular hands-on expertise in hospitality.', 'fb-beratung.html', 'Explore consulting')],
+        portfolio_link='Explore all 22 service areas',
+        about_label='THE FOUNDER / EXPERIENCE AS A FOUNDATION', about_title=['Understand operations.', 'Build the technology.'],
+        about_text='Founder Kastriot Tafolli combines operational leadership in five-star hospitality with software development and AI engineering. His personal experience shapes the approach at Tafolli &amp; Co.: understand the task first, then develop the right solution.',
+        about_link='Meet the company & founder', about_caption='KASTRIOT TAFOLLI / FOUNDER',
+        credentials_label='THE FOUNDER’S PERSONAL CAREER EXPERIENCE',
+        credentials=[('15+', 'years in five-star hospitality'), ('200+', 'employees led simultaneously in previous management roles'), ('50+', 'young professionals trained')],
+        experience_label='THE FOUNDER’S CAREER STATIONS',
+        process=[('Understand.', 'Agree on goals, starting points and priorities to define a focused scope.'), ('Deliver.', 'Develop the solution, content or campaign, with agreed milestones and checks.'), ('Support.', 'Review outcomes after launch, prioritise improvements and agree on ongoing care.')],
+        cta_title=['Your next idea.', 'A clear', 'way forward.'],
+        cta_text='A new website, better visibility, custom software or an easier workflow: tell us what you want to move forward in your business.',
+        footer_tag='TECHNOLOGY · MARKETING · CONSULTING',
+        automation_description='AI automation by Tafolli & Co.: custom workflows, integration and ongoing care for hospitality and businesses in Germany, Austria, Switzerland and Kosovo.',
+        automation_hero_text='AI workflows that fit your business. Tafolli &amp; Co. connects existing systems, clear rules and human oversight, so recurring tasks need less of your attention.',
+        automation_cta='Explore automation',
+        faq=[
+            ('Which services can we combine?', 'AI automation, software and web, online marketing and consulting can be booked individually or as a coordinated project. Your goals and existing systems determine the scope.'),
+            ('Do you only work with hotels and restaurants?', 'Hospitality is a particular area of expertise. Digital solutions and online marketing are also available to businesses in other sectors. The first conversation establishes whether your needs match the offer.'),
+            ('How does a project begin?', 'With a conversation about your needs, starting point and budget. Scope, responsibilities, schedule and a proposal are then agreed.'),
+            ('Is ongoing support available?', 'Yes. Ongoing support for websites, marketing and AI workflows can be arranged with a clearly defined scope.'),
+            ('Which countries do you serve?', 'Services are available to companies in Germany, Austria, Switzerland and Kosovo. Digital collaboration can take place remotely; on-site meetings are agreed for each project.'),
+            ('Who will be my contact?', 'Kastriot Tafolli is your central contact. Delivery responsibilities and any partners involved are transparently identified in the project proposal.')]),
+    'sq': dict(
+        title='Tafolli & Co. | IA, Softuer, Marketing Online & Konsulencë',
+        description='Tafolli & Co. lidh automatizimin me IA, softuerin, marketingun online dhe konsulencën për biznese në Gjermani, Austri, Zvicër dhe Kosovë.',
+        nav=['Shërbimet', 'Kompania', 'Njohuri', 'Kontakt'],
+        status='TË HAPUR PËR PROJEKTE TË REJA', location='GJERMANI · AUSTRI · ZVICËR · KOSOVË',
+        hero=['IDE.', 'SISTEME.', 'Më shumë ndikim.'],
+        hero_text='Tafolli &amp; Co. lidh IA-në, softuerin, marketingun online dhe konsulencën. Për biznese që duan procese më të thjeshta, dukshmëri digjitale dhe hapa të qartë drejt zhvillimit.',
+        hero_cta='Zbuloni shërbimet', hero_link='Diskutoni projektin',
+        intro='TECHNOLOGY · MARKETING · CONSULTING',
+        manifesto=['Kuptojmë.', 'Lidhim.', 'Zbatojmë.'],
+        manifesto_text='Teknologjia, marketingu dhe proceset e biznesit janë të lidhura. Çdo projekt nis me biznesin tuaj: çfarë duhet të bëhet më e lehtë, kë dëshironi të arrini dhe çfarë zgjidhjeje funksionon në përditshmëri?',
+        manifesto_small='Nga kjo bazë lindin procese me IA, softuer i personalizuar, faqe web dhe fushata. Përvoja praktike në hoteleri dhe gastronomi plotëson punën digjitale – nga analiza te mbështetja e vazhdueshme.',
+        service_text='Zhvilluar për biznesin tuaj, lidhur me sistemet ekzistuese dhe mbështetur pas nisjes. Nga procesi i parë i përcaktuar qartë te përmirësimi i vazhdueshëm.',
+        care_text='Automation as a Service përfshin mbështetjen edhe pas nisjes. Me ndryshimet e biznesit, zhvillohen bashkërisht proceset, rregullat dhe lidhjet me sistemet.',
+        care_items=[('Lidhja', 'Lidhja e mjeteve ekzistuese: posta, dokumentet, rezervimet dhe ekipi juaj.'), ('Mirëmbajtja', 'Kontrolli i përgjigjeve, identifikimi i gabimeve, ndjekja e kostove dhe ndërhyrja sipas nevojës.'), ('Zhvillimi', 'Shtimi i proceseve, përshtatja e rregullave dhe mësimi nga reagimet reale.')],
+        services_label='KATËR FUSHA. NJË QASJE E PËRBASHKËT.', services_title=['Çfarë e çon', 'biznesin tuaj përpara.'],
+        services=[
+            ('01', 'IA & AUTOMATIZIM', 'Më shumë hapësirë në përditshmëri.', 'Asistentë me IA, procese të lidhura dhe TeamO për detyra të përsëritura, me rregulla të qarta dhe kontroll njerëzor.', 'ki-automatisierung.html', 'Zbuloni IA-në'),
+            ('02', 'SOFTUER & WEB', 'Teknologji që ju përshtatet.', 'Aplikacione, faqe web dhe integrime të personalizuara, të ndërtuara sipas proceseve tuaja dhe të dorëzuara qartë.', 'softwareentwicklung.html', 'Zbuloni softuerin & web'),
+            ('03', 'MARKETING ONLINE', 'Të dukshëm për njerëzit e duhur.', 'Optimizim për motorët e kërkimit, rrjete sociale, përmbajtje dhe fushata digjitale me rrugë të qartë drejt kërkesës.', 'online-marketing.html', 'Zbuloni marketingun'),
+            ('04', 'KONSULENCË & OPERACIONE', 'Përvojë që ndihmon zhvillimin.', 'Përmirësim i proceseve, blerjeve dhe rezultateve të biznesit, me përvojë të veçantë praktike në hoteleri dhe gastronomi.', 'fb-beratung.html', 'Zbuloni konsulencën')],
+        portfolio_link='Zbuloni të 22 fushat e shërbimit',
+        about_label='THEMELUESI / PËRVOJA SI BAZË', about_title=['Kuptimi i biznesit.', 'Zhvillimi i teknologjisë.'],
+        about_text='Themeluesi Kastriot Tafolli lidh drejtimin operacional në hotelerinë me pesë yje me zhvillimin e softuerit dhe inxhinierinë e IA-së. Përvoja e tij personale përcakton qasjen e Tafolli &amp; Co.: fillimisht kuptohet detyra, më pas zhvillohet zgjidhja e duhur.',
+        about_link='Njihuni me kompaninë & themeluesin', about_caption='KASTRIOT TAFOLLI / THEMELUES',
+        credentials_label='PËRVOJA PERSONALE PROFESIONALE E THEMELUESIT',
+        credentials=[('15+', 'vjet hoteleri me pesë yje'), ('200+', 'punonjës të drejtuar njëkohësisht në role të mëparshme'), ('50+', 'profesionistë të rinj të trajnuar')],
+        experience_label='ETAPAT PROFESIONALE TË THEMELUESIT',
+        process=[('Kuptojmë.', 'Sqarimi i synimeve, gjendjes fillestare dhe prioriteteve për një projekt të përcaktuar qartë.'), ('Zbatojmë.', 'Zhvillimi i zgjidhjes, përmbajtjes ose fushatës, me hapa dhe kontrolle të dakorduara.'), ('Mbështesim.', 'Vlerësimi i rezultateve pas nisjes, prioritizimi i përmirësimeve dhe dakordimi i mbështetjes së vazhdueshme.')],
+        cta_title=['Ideja juaj e radhës.', 'Një drejtim', 'i qartë.'],
+        cta_text='Një faqe e re web, më shumë dukshmëri, softuer i personalizuar ose një proces më i thjeshtë: na tregoni çfarë dëshironi të zhvilloni në biznesin tuaj.',
+        footer_tag='TECHNOLOGY · MARKETING · CONSULTING',
+        automation_description='Automatizim me IA nga Tafolli & Co.: procese të personalizuara, integrim dhe mbështetje për hotele e biznese në Gjermani, Austri, Zvicër dhe Kosovë.',
+        automation_hero_text='Procese me IA që i përshtaten biznesit tuaj. Tafolli &amp; Co. lidh sistemet ekzistuese, rregullat e qarta dhe kontrollin njerëzor, që detyrat e përsëritura të kërkojnë më pak vëmendje.',
+        automation_cta='Zbuloni automatizimin',
+        faq=[
+            ('Cilat shërbime mund të kombinohen?', 'Automatizimi me IA, softueri dhe web, marketingu online dhe konsulenca mund të porositen veçmas ose në një projekt të përbashkët. Synimet dhe sistemet ekzistuese përcaktojnë përmbajtjen.'),
+            ('Punoni vetëm me hotele dhe restorante?', 'Hoteleria dhe gastronomia janë një fushë e veçantë përvoje. Zgjidhjet digjitale dhe marketingu online ofrohen edhe për biznese të sektorëve të tjerë. Biseda e parë sqaron nëse nevoja dhe oferta përputhen.'),
+            ('Si nis bashkëpunimi?', 'Me një bisedë pa detyrim për nevojën, gjendjen fillestare dhe buxhetin. Më pas dakordohen përmbajtja, përgjegjësitë, afatet dhe oferta.'),
+            ('A ofrohet mbështetje e vazhdueshme?', 'Po. Për faqet web, marketingun dhe proceset me IA mund të dakordohet mbështetje e vazhdueshme me përmbajtje të qartë.'),
+            ('Në cilat vende ofrohet bashkëpunimi?', 'Shërbimet u drejtohen bizneseve në Gjermani, Austri, Zvicër dhe Kosovë. Bashkëpunimi digjital mund të bëhet në distancë; takimet në vend dakordohen për projektin konkret.'),
+            ('Kush është kontakti im?', 'Kastriot Tafolli është kontakti juaj kryesor. Përgjegjësitë e zbatimit dhe partnerët e përfshirë përcaktohen qartë në ofertën përkatëse.')]),
+}
+for code, values in COMPANY.items():
     COPY[code].update(values)
-
-AUTOMATION={
- 'de':dict(description='KI-Automatisierung als Service: Workflows, Systemanbindung und laufende Betreuung von Kastriot Tafolli. Für Unternehmen in Deutschland, Österreich, der Schweiz und Kosovo.',hero_text='Ich baue KI-Systeme, die Arbeit übernehmen. Damit Ihr Team wieder Zeit für das hat, was Menschen am besten können.',hero_cta='Automation entdecken'),
- 'en':dict(description='AI automation as a service: workflows, system integration and ongoing care by Kastriot Tafolli. For businesses in Germany, Austria, Switzerland and Kosovo.',hero_text='I build AI systems that take work off your hands. So your team can get back to what people do best.',hero_cta='Explore automation'),
- 'sq':dict(description='Automatizim me IA si shërbim: procese, integrim sistemesh dhe mirëmbajtje nga Kastriot Tafolli. Për biznese në Gjermani, Austri, Zvicër dhe Kosovë.',hero_text='Ndërtoj sisteme me IA që marrin përsipër punën. Që ekipi juaj të ketë kohë për atë që njerëzit bëjnë më mirë.',hero_cta='Zbuloni automatizimin')}
-for code,values in AUTOMATION.items():
-    COPY[code]['automation_description']=values['description']
-    COPY[code]['automation_hero_text']=values['hero_text']
-    COPY[code]['automation_cta']=values['hero_cta']
-
-# Service geography confirmed by the owner; the content stays language-specific.
-for code, values in {
- 'de': dict(location='DEUTSCHLAND · ÖSTERREICH · SCHWEIZ · KOSOVO'),
- 'en': dict(location='GERMANY · AUSTRIA · SWITZERLAND · KOSOVO'),
- 'sq': dict(location='GJERMANI · AUSTRI · ZVICËR · KOSOVË')
-}.items():
- COPY[code].update(values)

@@ -2,42 +2,60 @@
 from html import escape
 
 SERVICE_GROUPS = [
- ('Kernangebote', [
-  ('ki-automatisierung-kleine-unternehmen.html','KI Automatisierung für kleine Unternehmen'),
+ ('Marketing', [
+  ('online-marketing.html','Marketingstrategie, Marke & Kampagnen'),
+  ('webdesign.html','Website-Erstellung & Webdesign'),
+  ('suchmaschinenoptimierung.html#lokale-eintraege','Lokale Einträge & Unternehmensprofile'),
+  ('suchmaschinenoptimierung.html','SEO & lokale Sichtbarkeit'),
+  ('social-media.html','Social Media & Content'), ('foto-video.html','Foto & Video')]),
+ ('Technology', [
+  ('softwareentwicklung.html','Individuelle Softwareentwicklung'),
+  ('app-entwicklung.html','Apps für iOS, Android & Web'),
+  ('webdesign.html','Website-Erstellung & Webdesign'),
+  ('cybersecurity.html','Cybersecurity & IT-Sicherheit'),
+  ('domain-hosting-email.html','Domain, Hosting & E-Mail'),
+  ('digitalisierung.html','Digitalisierung & Systemintegration')]),
+ ('Consulting', [
+  ('fb-beratung.html','Unternehmens- & F&B-Beratung'),
+  ('lieferantenvereinbarungen.html','Lieferantenvereinbarungen & Einkauf'),
+  ('getraenkevertraege.html','Getränkeverträge'), ('rueckverguetungen.html','Rückvergütungen'),
+  ('wareneinsatz-kalkulation.html','Wareneinsatz & Kalkulation'),
+  ('inventur-warenwirtschaft.html','Inventur & Warenwirtschaft'),
+  ('interim-fb-management.html','Interim F&B-Management'),
+  ('revenue-controlling.html','Revenue & F&B-Controlling'),
+  ('personal-recruiting.html','Recruiting & Teamentwicklung')]),
+ ('Angebote & Pakete', [
+  ('ki-automatisierung-kleine-unternehmen.html','KI für kleine Unternehmen'),
   ('landingpage-erstellen-lassen.html','Landingpage erstellen lassen'),
-  ('angebot/','Texte und Übersetzungen Deutsch, Englisch, Albanisch')]),
- ('KI & Technologie', [
-  ('ki-automatisierung.html','AI Automation as a Service'), ('ki-entwicklung.html','KI-Entwicklung & Assistenten'),
-  ('teamo-ki.html','TeamO · digitaler KI-Mitarbeiter'), ('digitalisierung.html','Digitalisierung'),
-  ('softwareentwicklung.html','Softwareentwicklung'), ('app-entwicklung.html','App- & Web-App-Entwicklung'),
-  ('web-apps.html','Web-App oder Tool nach Maß'), ('cybersecurity.html','Cybersecurity & IT-Sicherheit')]),
- ('Web & Sichtbarkeit', [
-  ('online-marketing.html','Online-Marketing & Digitalstrategie'), ('webdesign.html','Webdesign & Webentwicklung'),
-  ('website-pflege.html','Website-Pflege im Monatsabo'), ('onlineshop.html','Onlineshop'),
-  ('firmenprofile.html','Firmenprofile im Netz'), ('social-media.html','Social Media & Content'),
-  ('suchmaschinenoptimierung.html','Suchmaschinenoptimierung'), ('domain-hosting-email.html','Domain, Hosting & E-Mail'),
-  ('foto-video.html','Foto & Video')]),
- ('Für wen', [
-  ('website-fuer-handwerker.html','Website für Handwerker'),
-  ('ki-automatisierung-arztpraxen.html','KI für Arztpraxen und Therapeuten'),
-  ('website-fuer-vereine.html','Website für Vereine'),
+  ('website-pflege.html','Website-Pflege'),('onlineshop.html','Onlineshop'),
+  ('web-apps.html','Web-Apps & Werkzeuge'),('firmenprofile.html','Firmenprofile & lokale Einträge'),
+  ('angebot/','Texte & Übersetzungen'),('preisrechner.html','Projekt & Budget planen')]),
+ ('Für Ihr Unternehmen', [
+  ('website-fuer-handwerker.html','Websites für Handwerksbetriebe'),
+  ('ki-automatisierung-arztpraxen.html','KI für Arztpraxen & Therapeuten'),
+  ('website-fuer-vereine.html','Websites für Vereine'),
   ('website-pflege-kleine-betriebe.html','Website-Pflege für kleine Betriebe'),
-  ('onlineshop-kleine-haendler.html','Onlineshop für kleine Händler'),
+  ('onlineshop-kleine-haendler.html','Onlineshops für kleine Händler'),
   ('sq/faqe-dhe-perkthime.html','Faqe web dhe përkthime'),
-  ('sq/automatizim-ia.html','Automatizim me IA')])]
+  ('sq/automatizim-ia.html','Automatizim me IA')]),
+ ('AI Automation', [
+  ('ki-automatisierung.html','KI-Automatisierung & Workflows'),
+  ('ki-entwicklung.html','KI-Entwicklung & Assistenten'),
+  ('teamo-ki.html','TeamO · KI-Assistent für Hospitality')])]
+
 SECTIONS = [
- ('leistungen','Leistungen','leistungen.html','Alle Leistungsbereiche',SERVICE_GROUPS),
- ('profil','Über mich','ueber-mich.html','Kastriot Tafolli kennenlernen',[
-  ('Mensch & Erfahrung',[('ueber-mich.html','Über mich'),('werdegang.html','Mein Werdegang'),('referenzen.html','Referenzen & Partner')]),
-  ('Netzwerk',[('referenzen.html#betriebe','Betriebe & Referenz-Websites'),('referenzen.html#technologie','Technologiepartner')]),
+ ('leistungen','Leistungen','leistungen.html','Leistungen & Pakete',SERVICE_GROUPS),
+ ('profil','Unternehmen','ueber-mich.html','Tafolli & Co. kennenlernen',[
+  ('Unternehmen & Gründer',[('ueber-mich.html','Unternehmen & Arbeitsweise'),('werdegang.html','Werdegang des Gründers'),('referenzen.html','Referenzen & Partner'),('referenzen.html#stationen','Berufliche Stationen')]),
+  ('Netzwerk',[('referenzen.html#betriebe','Betriebe & Referenz-Websites'),('referenzen.html#gastronomie','Gastronomiepartner'),('referenzen.html#technologie','Technologiepartner')]),
   ('Startseiten & Sprachen',[('index.html','Deutsch'),('en/','English'),('sq/','Shqip')])]),
- ('wissen','Wissen','wissen.html','Ratgeber & Werkzeuge',[
-  ('Wissen für Ihr Projekt',[('wissen.html','Wissen · Übersicht'),('ki-automatisierung-kleine-unternehmen.html','KI Automatisierung für kleine Unternehmen'),('landingpage-erstellen-lassen.html','Landingpage erstellen lassen'),('angebot/','Texte und Übersetzungen')]),
-  ('Potenzial berechnen',[('rechner.html','Alle Potenzialrechner'),('rechner.html#ki','KI: Zeit & Arbeitsaufwand'),('rechner.html#social','Social Media & Sichtbarkeit'),('preisrechner.html','Preisrechner')])]),
+ ('wissen','Wissen','wissen.html','Alle Ratgeber & Werkzeuge',[
+  ('Wissen für Ihren Betrieb',[('wissen.html','Wissen · Übersicht'),('wissen-ki-im-hotel.html','KI im Hotel: Möglichkeiten & Grenzen'),('wissen-getraenkevertrag.html','Getränkeverträge verstehen'),('wissen-direktbuchungen.html','Mehr Direktbuchungen gewinnen')]),
+  ('Potenzial berechnen',[('rechner.html','Alle Potenzialrechner'),('rechner.html#ki','KI: Zeit & Arbeitsaufwand'),('rechner.html#direkt','Direktbuchungen & Provisionen'),('rechner.html#einkauf','Getränkeeinkauf & Konditionen'),('rechner.html#social','Social Media & Sichtbarkeit')])]),
  ('kontakt','Kontakt','kontakt.html','Ein Projekt besprechen',[
   ('Zusammenarbeit',[('kontakt.html','Kontakt & Erstgespräch'),('kontakt.html#einsatzgebiet','Deutschland · Österreich · Schweiz · Kosovo'),('mailto:info@tafolli.net','E-Mail schreiben'),('tel:+4917664616146','+49 176 64616146')]),
   ('Rechtliches & Orientierung',[('impressum.html','Impressum'),('datenschutz.html','Datenschutz'),('404.html','Seite nicht gefunden · 404')])])]
-LABELS = {'de':['Leistungen','Über mich','Wissen','Kontakt'],'en':['Services','About me','Insights','Contact'],'sq':['Shërbimet','Rreth meje','Njohuri','Kontakt']}
+LABELS = {'de':['Leistungen','Unternehmen','Wissen','Kontakt'],'en':['Services','Company','Insights','Contact'],'sq':['Shërbimet','Kompania','Njohuri','Kontakt']}
 TITLES = {url: label for _,_,_,_,groups in SECTIONS for _,links in groups for url,label in links if '#' not in url and ':' not in url}
 TITLES.update({'leistungen.html':'Leistungen','index.html':'Startseite','en/':'English','sq/':'Shqip'})
 
@@ -49,10 +67,10 @@ def nav( current='index.html', base='', lang='de'):
   return f'<a href="{escape(href,quote=True)}" class="{cls}"{active}{language}>{escape(label)}<span aria-hidden="true">↗</span></a>'
  sections=[]
  for i,(key,label,url,overview,groups) in enumerate(SECTIONS):
-  active=any(h==current for _,links in groups for h,_ in links) or url==current
+  active=current not in ['index.html','en/','sq/'] and (any(h==current for _,links in groups for h,_ in links) or url==current)
   columns=''.join(f'<div class="site-nav-column"><p>{escape(group)}</p>{"".join(link(h,t) for h,t in links)}</div>' for group,links in groups)
   note={'de':'Unterseiten auf Deutsch · Startseiten in DE / EN / SQ','en':'Detail pages in German · Homepages in DE / EN / SQ','sq':'Nënfaqet në gjermanisht · Faqja kryesore DE / EN / SQ'}[lang]
-  sections.append(f'<details class="site-nav-section" data-section="{key}"><summary{" data-current" if active else ""}>{LABELS[lang][i]}<span aria-hidden="true">⌄</span></summary><div class="site-nav-panel" lang="de"><div class="site-nav-panel-top"><span>0{i+1} / {escape(label)}</span>{link(url,overview,"site-nav-overview")}</div><div class="site-nav-columns">{columns}</div><div class="site-nav-panel-bottom"><span>PRAXIS × TECHNOLOGIE</span><span lang="{lang}">{note}</span></div></div></details>')
+  sections.append(f'<details class="site-nav-section" data-section="{key}"><summary{" data-current" if active else ""}>{LABELS[lang][i]}<span aria-hidden="true">⌄</span></summary><div class="site-nav-panel" lang="de"><div class="site-nav-panel-top"><span>0{i+1} / {escape(label)}</span>{link(url,overview,"site-nav-overview")}</div><div class="site-nav-columns">{columns}</div><div class="site-nav-panel-bottom"><span>TAFOLLI &amp; CO.</span><span lang="{lang}">{note}</span></div></div></details>')
  return '<nav id="site-navigation" class="site-navigation" aria-label="'+{'de':'Hauptnavigation','en':'Main navigation','sq':'Navigimi kryesor'}[lang]+'">'+''.join(sections)+'</nav>'
 
 def toggle(lang='de'):
@@ -65,12 +83,11 @@ def parent(path):
    return (label,url) if path!=url and key!='kontakt' else None
  return None
 
-def breadcrumbs(path, base='', home_href=None, home_label='Startseite'):
+def breadcrumbs(path):
  if path in ['index.html','en/','sq/','404.html']:return ''
  title=TITLES.get(path,path)
  trail=parent(path)
- href=home_href if home_href is not None else base+'index.html'
- parts=f'<a href="{href}">{escape(home_label)}</a>'
- if trail:parts+=f'<span aria-hidden="true">/</span><a href="{base}{trail[1]}">{escape(trail[0])}</a>'
+ parts='<a href="index.html">Startseite</a>'
+ if trail:parts+=f'<span aria-hidden="true">/</span><a href="{trail[1]}">{escape(trail[0])}</a>'
  parts+=f'<span aria-hidden="true">/</span><span aria-current="page">{escape(title)}</span>'
  return '<div class="shell site-breadcrumb"><nav aria-label="Brotkrumennavigation">'+parts+'</nav></div>'

@@ -6,3 +6,5 @@ node_modules/
 .idea/
 __pycache__/
 *.pyc
+/_site/
+/_site-manifest.json

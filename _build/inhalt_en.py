@@ -10,7 +10,7 @@ EN = {
 "menu_auf": "Open menu",
 
 "hero_status": "Available for consulting",
-"hero_orte": ["Ostseebad Binz 54.4°N"],
+"hero_orte": ["Baltic Sea, Rügen 54.4°N", "Schluchsee 47.8°N"],
 "hero_h1": [["Five stars","in service."],["One line","in code."]],
 "hero_text": "I am Kastriot Tafolli. Fifteen years leading five-star hospitality and training as a software engineer specialising in artificial intelligence. I get properties into operational shape, then build the systems that take the work off their hands.",
 "hero_cta1": "Book a conversation", "hero_cta2": "Calculate savings",
@@ -28,8 +28,8 @@ EN = {
           ("4","+","hotels run simultaneously")],
 "sprachen_label": "Languages", "sprachen_wert": "DE · EN · SQ", "sprachen_stufe": "C2 / C1 / NATIVE",
 
-"haeuser": ["Grand Hotel Binz","Cerês am Meer","Rösing Touristik",
-            "Raulff-Hotels","Hotel Panorama Lohme",
+"haeuser": ["Grand Hotel Binz","Cerês am Meer","Vier Jahreszeiten Binz","Rösing Touristik",
+            "Raulff-Hotels","Vier Jahreszeiten am Schluchsee","Hotel Panorama Lohme",
             "Restaurant Wochenmarkt","Bukowina","Salsa Latino"],
 
 "pos_tag": "Two languages, one head",
@@ -154,43 +154,48 @@ EN = {
 
 "faq_tag": "Questions",
 "faq_h2": [["What usually gets"],["asked first."]],
-"faq": [
-  ("What does an automation cost?",
-   "That depends on how many systems need connecting and how much checking a process needs. A single, clearly scoped process sits well below an automation that runs across several departments. After the first conversation I name a range, not a made-up figure."),
-  ("How long before something is running?",
-   "The first usable version is live in weeks, not months. I deliberately build the smallest part that already takes work off your hands first, and extend from there — not six months of development with nothing to show."),
-  ("Does the data stay in-house?",
-   "Where possible, yes. What can be processed locally is processed locally. If a provider's language model is needed, I say upfront which data it sees, and processing is set up under GDPR."),
-  ("What happens when the AI gets something wrong?",
-   "It is built around that from the start, not patched afterwards. Every output that goes out or writes into a system gets a check beforehand. Whatever is uncertain lands with a person, not with the customer — that is the core of AI management."),
-  ("What happens after a system is running?",
-   "It gets watched. I check regularly whether the answers still hold, whether enquiries have shifted, and sharpen it before a small drift becomes a real problem."),
-  ("Do I need my own team for that?",
-   "No. That is exactly the point of AI management as a service: you get a running system without anyone in-house having to check on it every day."),
-  ("Do you also work on existing code?",
-   "Yes. Extending an existing application, building an AI feature into a running system, or making a prototype production-ready — that happens more often than a project from zero."),
-],
+"faq": [('What does automation cost?',
+  'The effort depends on the connected systems, scope and checks required. An initial assessment provides '
+  'the basis for a defined scope and a transparent proposal.'),
+ ('How long until the first usable version?',
+  'That depends on the workflow and available integrations. A focused initial process makes it easier to get '
+  'started. The schedule and milestones are agreed in the proposal.'),
+ ('Where is the data processed?',
+  'This is agreed before implementation. Local processing and external services are assessed against the '
+  'requirements; providers, data flows and access rights are discussed transparently.'),
+ ('What happens if the AI makes a mistake?',
+  'Checks and human approvals are part of planning. The specific workflow determines which outputs can be '
+  'processed automatically and which need review.'),
+ ('What happens after launch?',
+  'Ongoing care can include response reviews, cost and error monitoring and workflow improvements. The scope '
+  'and escalation routes are agreed in advance.'),
+ ('Do we need an in-house AI team?',
+  'An in-house AI team is not essential. You will still need contacts for business questions, approvals and '
+  'changes. Technical care can be provided as a service.'),
+ ('Can existing applications be extended?',
+  'Yes. A technical assessment establishes whether existing applications can be extended, integrations added '
+  'or AI features introduced. Feasibility depends on the system.')],
 
 "zitat": "Advice, not patronising. I am always open to a conversation with no obligation.",
-"zitat_quelle": "Kastriot Tafolli · TB Solutions",
+"zitat_quelle": "Kastriot Tafolli · Founder",
 
 "cta_tag": "// next step",
 "cta_h2": [["Let us talk about your property."]],
 "cta_text": "A first conversation takes half an hour and commits you to nothing. Afterwards you know whether and where I can help you.",
 "cta_1": "Arrange a conversation", "cta_2": "Open the calculators",
 
-"foot_text": "AI automation, software, web design and texts for businesses in Germany, Austria, Switzerland and Kosovo.",
-"foot_status": "TB SOLUTIONS · ONLINE",
+"foot_text": "Hospitality leadership, digitalisation, AI automation and AI systems for hotels and restaurants.",
+"foot_status": "TAFOLLI & CO. · ONLINE",
 "foot_sp1": "Pages",
-"foot_l1": [("../ueber-mich.html","About me"),("../werdegang.html","Career"),("../leistungen.html","Services"),
+"foot_l1": [("../ueber-mich.html","Company"),("../werdegang.html","Career"),("../leistungen.html","Services"),
             ("../teamo-ki.html","TeamO AI"),("../rechner.html","Calculators"),("../wissen.html","Insights"),
             ("../referenzen.html","References"),("../kontakt.html","Contact")],
 "foot_sp2": "Focus areas",
-"foot_l2": [("../ki-automatisierung.html","AI automation"),("../softwareentwicklung.html","Software development"),
-            ("../webdesign.html","Web design"),("../online-marketing.html","Online marketing"),("../angebot/","Texts and translations")],
+"foot_l2": [("../fb-beratung.html","F&B consulting"),("../online-marketing.html","Online marketing & web"),
+            ("#ki","AI automation"),("../teamo-ki.html","AI systems"),("../rechner.html","Calculators")],
 "foot_sp3": "Contact",
-"foot_adresse": ["Hauptstraße 1, 18609 Ostseebad Binz, Germany"],
-"foot_copy": "© 2026 Kastriot Tafolli · tafolli.net · Ostseebad Binz",
+"foot_adresse": ["Hauptstraße 1, 18609 Ostseebad Binz, Germany","Schluchsee, Black Forest"],
+"foot_copy": "© 2026 Kastriot Tafolli · tafolli.net · Rügen / Schluchsee",
 "foot_impressum": "Imprint", "foot_datenschutz": "Privacy",
 "foot_shell": "$ hospitality --digital --ai",
 }

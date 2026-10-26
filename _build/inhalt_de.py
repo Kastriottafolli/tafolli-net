@@ -6,13 +6,13 @@ DE = {
 "titel": "Kastriot Tafolli · Gastronomie, Digitalisierung und Künstliche Intelligenz",
 "beschreibung": "Fünfzehn Jahre Führung in der 5-Sterne-Hotellerie, verbunden mit einer Ausbildung zum Softwareingenieur. F&B-Beratung, Online-Marketing, KI-Automatisierung und KI-Lösungen für Hotels und Restaurants.",
 
-"nav": [("ueber-mich.html","Über mich"),("werdegang.html","Werdegang"),("leistungen.html","Leistungen"),("teamo-ki.html","TeamO KI"),("rechner.html","Rechner"),("wissen.html","Wissen"),("kontakt.html","Kontakt")],
+"nav": [("ueber-mich.html","Unternehmen"),("werdegang.html","Werdegang"),("leistungen.html","Leistungen"),("teamo-ki.html","TeamO KI"),("rechner.html","Rechner"),("wissen.html","Wissen"),("kontakt.html","Kontakt")],
 "cta_nav": "Gespräch",
 "skip": "Zum Inhalt springen",
 "menu_auf": "Menü öffnen",
 
 "hero_status": "Verfügbar für Beratung",
-"hero_orte": ["Ostseebad Binz 54.4°N"],
+"hero_orte": ["Ostseebad Rügen 54.4°N", "Schluchsee 47.8°N"],
 "hero_h1": [["Fünf Sterne","im Service."],["Eine Zeile","im Code."]],
 "hero_text": "Ich bin Kastriot Tafolli. Fünfzehn Jahre Führung in der 5-Sterne-Hotellerie und eine Ausbildung zum Softwareingenieur mit Schwerpunkt Künstliche Intelligenz. Ich bringe Häuser operativ in Form und baue die Systeme, die ihnen danach Arbeit abnehmen.",
 "hero_cta1": "Beratungsgespräch", "hero_cta2": "Ersparnis berechnen",
@@ -30,8 +30,8 @@ DE = {
           ("4","+","Hotels zeitgleich geleitet")],
 "sprachen_label": "Sprachen", "sprachen_wert": "DE · EN · SQ", "sprachen_stufe": "C2 / C1 / NATIV",
 
-"haeuser": ["Grand Hotel Binz","Cerês am Meer","Rösing Touristik",
-            "Raulff-Hotels","Hotel Panorama Lohme",
+"haeuser": ["Grand Hotel Binz","Cerês am Meer","Vier Jahreszeiten Binz","Rösing Touristik",
+            "Raulff-Hotels","Vier Jahreszeiten am Schluchsee","Hotel Panorama Lohme",
             "Restaurant Wochenmarkt","Bukowina","Salsa Latino"],
 
 "pos_tag": "Zwei Sprachen, ein Kopf",
@@ -156,43 +156,48 @@ DE = {
 
 "faq_tag": "Fragen",
 "faq_h2": [["Was meistens zuerst"],["gefragt wird."]],
-"faq": [
-  ("Was kostet eine Automatisierung?",
-   "Das hängt daran, wie viele Systeme angebunden werden müssen und wie viel Prüfung ein Vorgang braucht. Ein einzelner, klar umrissener Ablauf liegt deutlich unter einer durchgehenden Automatisierung über mehrere Abteilungen. Nach dem ersten Gespräch nenne ich eine Spanne, keinen Phantasiepreis."),
-  ("Wie lange dauert es, bis etwas läuft?",
-   "Der erste nutzbare Stand steht in Wochen, nicht in Monaten. Ich baue absichtlich zuerst den kleinsten Teil, der schon Arbeit abnimmt, und erweitere von dort — nicht ein halbes Jahr Entwicklung ohne Zwischenergebnis."),
-  ("Bleiben die Daten bei Ihnen?",
-   "Wo es geht, ja. Was lokal verarbeitet werden kann, wird lokal verarbeitet. Wenn ein Sprachmodell eines Anbieters nötig ist, sage ich vorher offen, welche Daten es sieht, und die Verarbeitung wird nach DSGVO geregelt."),
-  ("Was passiert, wenn die KI etwas falsch macht?",
-   "Darum wird es herum gebaut, nicht erst hinterher gekümmert. Jede Ausgabe, die nach außen geht oder in ein System schreibt, bekommt eine Prüfung davor. Was unsicher ist, landet bei einem Menschen statt beim Kunden — das ist der Kern von KI-Management."),
-  ("Was passiert, nachdem ein System läuft?",
-   "Es wird beobachtet. Ich prüfe regelmäßig, ob die Antworten noch stimmen, ob sich Anfragen verändert haben, und schärfe nach, bevor aus einer kleinen Abweichung ein echtes Problem wird."),
-  ("Brauche ich dafür ein eigenes Team?",
-   "Nein. Genau das ist der Sinn von KI-Management als Dienstleistung: Sie bekommen ein laufendes System, ohne dass jemand bei Ihnen im Betrieb täglich danach schauen muss."),
-  ("Arbeiten Sie auch an bestehendem Code?",
-   "Ja. Bestehende Anwendungen erweitern, eine KI-Funktion in ein laufendes System einbauen oder einen Prototyp betriebsfest machen — das ist häufiger als ein Projekt von Null."),
-],
+"faq": [('Was kostet eine Automatisierung?',
+  'Der Aufwand hängt von den angebundenen Systemen, dem Umfang und den nötigen Prüfungen ab. Nach einer '
+  'Bestandsaufnahme werden ein klarer Leistungsumfang und ein nachvollziehbares Angebot vereinbart.'),
+ ('Wie lange dauert es bis zum ersten nutzbaren Stand?',
+  'Das hängt vom Workflow und den vorhandenen Schnittstellen ab. Ein begrenzter erster Ablauf erleichtert '
+  'den Einstieg. Zeitplan und Zwischenergebnisse werden im Angebot abgestimmt.'),
+ ('Wo werden die Daten verarbeitet?',
+  'Das wird vor der Umsetzung festgelegt. Lokale Verarbeitung und externe Dienste werden je nach Anforderung '
+  'geprüft; verwendete Anbieter, Datenflüsse und Zugriffsrechte werden transparent besprochen.'),
+ ('Was passiert, wenn die KI etwas falsch macht?',
+  'Prüfregeln und menschliche Freigaben gehören zur Planung. Welche Ausgaben automatisiert weiterverarbeitet '
+  'werden und welche eine Prüfung brauchen, wird für den konkreten Ablauf festgelegt.'),
+ ('Was passiert nach dem Start?',
+  'Die laufende Betreuung kann die Prüfung von Antworten, die Beobachtung von Kosten und Fehlern sowie die '
+  'Weiterentwicklung des Workflows umfassen. Umfang und Reaktionswege werden vereinbart.'),
+ ('Brauchen wir dafür ein eigenes KI-Team?',
+  'Ein eigenes KI-Team ist nicht zwingend nötig. Im Betrieb bleiben Ansprechpartner für fachliche Fragen, '
+  'Freigaben und Änderungen wichtig. Technische Betreuung kann als Dienstleistung vereinbart werden.'),
+ ('Können bestehende Anwendungen erweitert werden?',
+  'Ja. Nach einer technischen Bestandsaufnahme lassen sich bestehende Anwendungen erweitern, Schnittstellen '
+  'ergänzen oder KI-Funktionen integrieren. Die Machbarkeit hängt vom jeweiligen System ab.')],
 
 "zitat": "Beratung, keine Bevormundung. Ich bin immer offen für ein unverbindliches Gespräch.",
-"zitat_quelle": "Kastriot Tafolli · TB Solutions",
+"zitat_quelle": "Kastriot Tafolli · Gründer",
 
 "cta_tag": "// nächster schritt",
 "cta_h2": [["Reden wir über Ihr Haus."]],
 "cta_text": "Ein Erstgespräch kostet eine halbe Stunde und ist unverbindlich. Danach wissen Sie, ob und wo ich Ihnen helfen kann.",
 "cta_1": "Beratungsgespräch vereinbaren", "cta_2": "Rechner öffnen",
 
-"foot_text": "KI-Automatisierung, Software, Webdesign und Texte für Unternehmen in Deutschland, Österreich, der Schweiz und Kosovo.",
-"foot_status": "TB SOLUTIONS · ONLINE",
+"foot_text": "Gastronomische Führung, Digitalisierung, KI-Automatisierung und KI-Lösungen für Hotellerie und Gastronomie.",
+"foot_status": "TAFOLLI & CO. · ONLINE",
 "foot_sp1": "Seiten",
-"foot_l1": [("ueber-mich.html","Über mich"),("werdegang.html","Werdegang"),("leistungen.html","Leistungen"),
+"foot_l1": [("ueber-mich.html","Unternehmen"),("werdegang.html","Werdegang"),("leistungen.html","Leistungen"),
             ("teamo-ki.html","TeamO KI"),("rechner.html","Rechner"),("wissen.html","Wissen"),
             ("referenzen.html","Referenzen"),("kontakt.html","Kontakt")],
 "foot_sp2": "Schwerpunkte",
-"foot_l2": [("ki-automatisierung.html","KI-Automatisierung"),("softwareentwicklung.html","Softwareentwicklung"),
-            ("webdesign.html","Webdesign"),("online-marketing.html","Online-Marketing"),("angebot/","Texte und Übersetzungen")],
+"foot_l2": [("fb-beratung.html","F&B-Beratung"),("online-marketing.html","Online-Marketing & Web"),
+            ("#ki","KI-Automatisierung"),("teamo-ki.html","KI-Lösungen"),("rechner.html","Rechner")],
 "foot_sp3": "Kontakt",
-"foot_adresse": ["Hauptstraße 1, 18609 Ostseebad Binz"],
-"foot_copy": "© 2026 Kastriot Tafolli · tafolli.net · Ostseebad Binz",
+"foot_adresse": ["Hauptstraße 1, 18609 Ostseebad Binz","Schluchsee, Hochschwarzwald"],
+"foot_copy": "© 2026 Kastriot Tafolli · tafolli.net · Ostseebad Rügen / Schluchsee",
 "foot_impressum": "Impressum", "foot_datenschutz": "Datenschutz",
 "foot_shell": "$ gastronomie --digital --ki",
 }

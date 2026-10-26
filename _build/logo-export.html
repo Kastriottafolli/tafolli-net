@@ -1,0 +1,21 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Tafolli &amp; Co. · Logoexport</title><link rel="stylesheet" href="../assets/schriften.css"><style>body{margin:0;background:#f3f1e9;display:grid;place-items:center;min-height:100vh}canvas{width:min(96vw,1200px);height:auto}</style></head><body><canvas id="logo" width="1800" height="450" aria-label="Tafolli &amp; Co. Logo"></canvas><script>
+window.logoReady=(async()=>{
+ await document.fonts.load('650 220px "Space Grotesk"');
+ await document.fonts.load('500 127px "Space Grotesk"');
+ const variants={current:'../assets/brand/logo-mark.webp',code:'../assets/brand/tafolli-co-neural-code.webp'};
+ const variant=new URLSearchParams(location.search).get('variant')||'code';
+ const image=new Image();image.src=variants[variant]||variants.code;await image.decode();
+ const canvas=document.querySelector('#logo'),ctx=canvas.getContext('2d');
+ window.drawLogo=(background)=>{
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  if(background){ctx.fillStyle=background;ctx.fillRect(0,0,canvas.width,canvas.height);}
+  ctx.drawImage(image,50,50,350,350);
+  ctx.textBaseline='alphabetic';ctx.fillStyle='#20231F';ctx.font='650 220px "Space Grotesk"';ctx.letterSpacing='-10px';
+  ctx.fillText('TAFOLLI',455,299);
+  const textWidth=ctx.measureText('TAFOLLI').width;
+  ctx.font='500 127px "Space Grotesk"';ctx.letterSpacing='-3px';ctx.fillText('& CO.',455+textWidth+28,299);
+  return canvas.toDataURL('image/png');
+ };
+ window.drawLogo('#f3f1e9');return true;
+})();
+</script></body></html>
