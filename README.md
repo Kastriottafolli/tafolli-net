@@ -106,3 +106,7 @@ Register verwenden `tablist`, `tab`, `tabpanel` und wechselseitige ARIA-Verweise
 Der Inhaber hat die Veröffentlichung der Vorschaufassung freigegeben. PR 8 wurde als `d87a2cb6575bfb6ac9c09612878ee45fa067c253` zusammengeführt; die automatische Prüfung und der Pages-Workflow sind erfolgreich. HTTPS wird für `tafolli.net` erzwungen. Die vorhandenen deutschen Anbieterangaben bleiben erhalten. Frühere Hinweise in dieser Dokumentation beschreiben den damaligen Entwurfsstand.
 
 Die Fehlerseite verwendet für den gemeinsamen Loader absolute Assetpfade. Damit werden Logo, Stylesheet und Skript auch bei verschachtelten unbekannten Seitenadressen von der Domainwurzel geladen.
+
+## Instagram
+
+Der gemeinsame Header verlinkt auf `https://www.instagram.com/tafollico/`. `brand.instagram_link()` liefert das lokale SVG-Symbol, die übersetzte Beschriftung und den sicheren Link in einem neuen Tab. Die Verknüpfung steht auch als `Organization.sameAs` in den strukturierten Unternehmensdaten. Es gibt keinen eingebetteten Feed und keine Instagram-Verbindung vor dem Klick.

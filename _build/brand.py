@@ -7,6 +7,15 @@ _ROOT = Path(__file__).resolve().parent.parent
 MARK = 'assets/brand/tafolli-co-neural-code.webp'
 FAVICON = 'assets/brand/tafolli-co-neural-code-icon.svg'
 TOUCH_ICON = 'assets/brand/tafolli-co-neural-code-touch.png'
+INSTAGRAM = 'https://www.instagram.com/tafollico/'
+
+def instagram_link(lang='de'):
+    label={
+      'de':'Tafolli & Co. auf Instagram (neuer Tab)',
+      'en':'Tafolli & Co. on Instagram (new tab)',
+      'sq':'Tafolli & Co. në Instagram (skedë e re)',
+    }[lang]
+    return f'<a class="site-instagram" href="{INSTAGRAM}" target="_blank" rel="noopener noreferrer" aria-label="{label.replace("&", "&amp;")}" title="@tafollico · Instagram"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" class="instagram-dot"/></svg></a>'
 
 def lockup(base=''):
     return f'<span class="tafolli-brand"><img class="tafolli-brand-mark" src="{base}{MARK}" width="42" height="42" alt="" decoding="async"><span class="tafolli-brand-name">TAFOLLI<span class="tafolli-brand-company"> &amp; CO.</span></span></span>'
