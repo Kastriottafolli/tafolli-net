@@ -29,7 +29,7 @@ class Page(HTMLParser):
         self.planners=[]; self.in_planner=False; self.planner_text=''
         self.forms=[]; self.active_form=None
         self.schemas=[]; self.schema_text=''; self.in_schema=False
-        self.breadcrumbs=0; self.intros=0
+        self.breadcrumbs=0; self.intros=0; self.loaders=[]
         self.visible_text=''; self.hidden_text=[]; self.icon_count=0
         self.feed(path.read_text())
     def handle_starttag(self, tag, attrs):
@@ -55,6 +55,7 @@ class Page(HTMLParser):
         if tag == 'link' and attrs.get('rel')=='canonical': self.canonical=attrs.get('href','')
         if tag=='link' and attrs.get('rel')=='alternate' and attrs.get('hreflang'):self.alternates.append((attrs['hreflang'],attrs.get('href','')))
         if 'brand-intro' in attrs.get('class','').split(): self.intros+=1
+        if 'page-loader' in attrs.get('class','').split(): self.loaders.append(attrs)
         if tag == 'script' and attrs.get('type')=='application/ld+json': self.in_schema=True;self.schema_text=''
         if 'id' in attrs: self.ids.append(attrs['id'])
         for key in ['src','href']:
@@ -96,6 +97,10 @@ def verify():
         expected_canonical='https://tafolli.net/'+('' if str(relative)=='index.html' else str(relative).replace('/index.html','/'))
         if page.canonical!=expected_canonical: errors.append(f'{relative}: incorrect canonical')
         if page.intros: errors.append(f'{relative}: decorative brand intro must be removed')
+        if len(page.loaders)!=1 or any(loader.get('aria-hidden')!='true' or 'hidden' not in loader for loader in page.loaders):
+            errors.append(f'{relative}: expected one decorative, hidden-by-default page loader')
+        if not all(any(urlsplit(link).path.endswith(asset) for link in page.links) for asset in ['assets/brand-loader.css','assets/brand.js']):
+            errors.append(f'{relative}: shared loading-screen assets missing')
         nav_targets=set()
         for href in page.nav_links:
             parsed=urlsplit(href)

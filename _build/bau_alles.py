@@ -55,4 +55,6 @@ if __name__ == '__main__':
     landings.build(WURZEL)
     from detail_design import build as build_detail_design
     build_detail_design(WURZEL)
+    from loading import build as build_loading
+    build_loading(WURZEL)
     write_sitemap(WURZEL)
