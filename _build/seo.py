@@ -2,7 +2,7 @@
 import json
 from html import escape
 from navigation import TITLES, parent
-from brand import NAME, MARK
+from brand import INSTAGRAM, NAME, MARK
 
 ORIGIN='https://tafolli.net/'
 COUNTRIES=[{'@type':'Country','name':name} for name in ['Germany','Austria','Switzerland','Kosovo']]
@@ -94,7 +94,7 @@ def write_sitemap(root):
 def structured(path,title,description,lang='de'):
  url=ORIGIN+('' if path=='index.html' else path)
  identity=[
-  {'@type':'Organization','@id':ORIGIN+'#business','name':NAME,'url':ORIGIN,'logo':ORIGIN+MARK,'email':'info@tafolli.net','telephone':'+4917664616146','areaServed':COUNTRIES,'contactPoint':{'@type':'ContactPoint','contactType':'project enquiries','email':'info@tafolli.net','telephone':'+4917664616146','availableLanguage':['de','en','sq']}},
+  {'@type':'Organization','@id':ORIGIN+'#business','name':NAME,'url':ORIGIN,'logo':ORIGIN+MARK,'sameAs':[INSTAGRAM],'email':'info@tafolli.net','telephone':'+4917664616146','areaServed':COUNTRIES,'contactPoint':{'@type':'ContactPoint','contactType':'project enquiries','email':'info@tafolli.net','telephone':'+4917664616146','availableLanguage':['de','en','sq']}},
   {'@type':'Person','@id':ORIGIN+'#kastriot','name':'Kastriot Tafolli','url':ORIGIN+'ueber-mich.html','image':ORIGIN+'assets/bilder/kastriot-tafolli-portraet.jpg','worksFor':{'@id':ORIGIN+'#business'}},
   {'@type':'WebSite','@id':ORIGIN+'#website','name':NAME,'url':ORIGIN,'publisher':{'@id':ORIGIN+'#business'},'inLanguage':['de','en','sq']}]
  page={'@type':'WebPage','@id':url+'#page','url':url,'name':title,'description':description,'inLanguage':lang,'isPartOf':{'@id':ORIGIN+'#website'}}

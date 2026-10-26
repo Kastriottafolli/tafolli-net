@@ -2,7 +2,7 @@
 import hashlib
 from html import escape
 from pathlib import Path
-from brand import lockup, MARK, FAVICON, TOUCH_ICON
+from brand import instagram_link, lockup, MARK, FAVICON, TOUCH_ICON
 from navigation import nav, toggle
 from seo import structured
 from company_content import HOME
@@ -60,7 +60,7 @@ def page(lang):
 <meta property="og:type" content="website"><meta property="og:site_name" content="Tafolli &amp; Co."><meta property="og:locale" content="{locale}"><meta property="og:title" content="{e(C['title'])}"><meta property="og:description" content="{e(C['description'])}"><meta property="og:url" content="{canonical}"><meta property="og:image" content="https://tafolli.net/assets/social-preview.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{e(C['title'])}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image:alt" content="{e(C['title'])}"><meta name="theme-color" content="#ffffff">
 <link rel="icon" type="image/svg+xml" href="{a(FAVICON)}"><link rel="apple-touch-icon" href="{a(TOUCH_ICON)}"><link rel="preload" as="image" href="{a(MARK)}" fetchpriority="high"><link rel="preload" as="image" href="{a('assets/work/tafolli-boost-desktop.webp')}" fetchpriority="high">{styles}{structured(current,C['title'],C['description'],lang)}</head>
 <body class="company-site"><a class="c-skip" href="#inhalt">{skip}</a>
-<header class="bar site-header"><div class="shell bar-in"><a class="tafolli-brand-link" href="{home}" aria-label="Tafolli &amp; Co.">{lockup(base)}</a>{nav(current,base,lang)}<div class="site-header-controls"><nav class="lang" aria-label="Sprache / Language / Gjuha">{languages}</nav><a class="btn btn-1 site-talk" href="{a('kontakt.html')}">{e(C['primary'])}</a>{toggle(lang)}</div></div></header>
+<header class="bar site-header"><div class="shell bar-in"><a class="tafolli-brand-link" href="{home}" aria-label="Tafolli &amp; Co.">{lockup(base)}</a>{nav(current,base,lang)}<div class="site-header-controls"><nav class="lang" aria-label="Sprache / Language / Gjuha">{languages}</nav>{instagram_link(lang)}<a class="btn btn-1 site-talk" href="{a('kontakt.html')}">{e(C['primary'])}</a>{toggle(lang)}</div></div></header>
 <main id="inhalt">
 <section class="c-hero" id="top"><div class="c-hero-copy"><div class="c-hero-brand" role="img" aria-label="Tafolli &amp; Co.">{lockup(base)}</div><h1>{hero_lines}</h1><p class="c-lead">{e(P['hero_text'])}</p><div class="c-actions"><a class="btn btn-1" href="{a('kontakt.html')}#projektanfrage">{ {'de':'Projekt besprechen','en':'Discuss your project','sq':'Diskutoni projektin'}[lang] }</a><a class="btn btn-2" href="#leistungen">{ {'de':'Leistungen entdecken','en':'Explore our services','sq':'Shihni shërbimet'}[lang] }</a></div></div>{work.scene(lang,base)}<nav class="c-quicklinks" aria-label="{e(P['services_label'])}">{quicklinks}</nav></section>
 {partner_strip(lang,base)}

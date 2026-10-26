@@ -2,7 +2,7 @@
 """Gemeinsame Bausteine fuer alle Unterseiten. Kopf- und Fusszeile sind
 identisch zur Startseite, damit die Seite wie aus einem Guss wirkt."""
 import hashlib, pathlib, html, json, re
-from brand import lockup, MARK, FAVICON, TOUCH_ICON
+from brand import instagram_link, lockup, MARK, FAVICON, TOUCH_ICON
 from navigation import nav as site_nav, toggle as nav_toggle, breadcrumbs, TITLES
 from seo import metadata, structured, region, SERVICE_META, language_alternates
 from explore import explore, HUBS
@@ -119,7 +119,7 @@ def seiten_kopf(titel, beschreibung, kanonisch_pfad, lang='de', faq=None, altern
 def kopfzeile(aktiv, base="", lang='de'):
     sprachwahl = '<a href="/" hreflang="de" lang="de" title="Deutsch">DE</a><a href="/en/" hreflang="en" lang="en" title="English">EN</a><a href="/sq/" hreflang="sq" lang="sq" title="Shqip">SQ</a>'
     talk={'de':'Gespräch','en':'Discuss','sq':'Bisedojmë'}[lang]
-    return f'''<header class="bar site-header"><div class="shell bar-in"><a class="tafolli-brand-link" href="{base}index.html" aria-label="Tafolli &amp; Co. · Startseite">{lockup(base)}</a>{site_nav(aktiv, base, lang)}<div class="site-header-controls"><nav class="lang" aria-label="Sprache / Language / Gjuha">{sprachwahl}</nav><a href="{base}kontakt.html" class="btn btn-1 site-talk">{talk} ↗</a>{nav_toggle(lang)}</div></div></header>'''
+    return f'''<header class="bar site-header"><div class="shell bar-in"><a class="tafolli-brand-link" href="{base}index.html" aria-label="Tafolli &amp; Co. · Startseite">{lockup(base)}</a>{site_nav(aktiv, base, lang)}<div class="site-header-controls"><nav class="lang" aria-label="Sprache / Language / Gjuha">{sprachwahl}</nav>{instagram_link(lang)}<a href="{base}kontakt.html" class="btn btn-1 site-talk">{talk} ↗</a>{nav_toggle(lang)}</div></div></header>'''
 
 
 def fusszeile():
