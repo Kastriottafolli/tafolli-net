@@ -6,7 +6,7 @@ test('the example separates setup and recurring costs and subtracts existing lea
  const plan=calculate();
  // 500/2 paid + 2500*1% social + 150 SEO + 500*10% local = 475 added visits.
  // (300+475)*3% - 300*2% = 17.25 added enquiries; 25% close = 4.3125.
- assert.equal(plan.once,2500);assert.equal(plan.monthly,2000);
+ assert.equal(plan.once,1200);assert.equal(plan.monthly,2000);
  assert.equal(plan.addedVisits,475);assert.equal(plan.impressions,15500);
  assert.equal(plan.addedLeads,17.25);assert.equal(plan.customers,4.3125);
 });
@@ -50,7 +50,7 @@ test('minimum budgets apply to all supported website types and recurring service
 });
 test('website type and setup cost never manufacture visits or customers',()=>{
  const a=calculate({websiteType:'mini'}),b=calculate({websiteType:'commerce',values:{website:100000}});
- assert.equal(a.once,2500);assert.equal(b.once,100000);
+ assert.equal(a.once,1800);assert.equal(b.once,100000);
  assert.equal(a.customers,b.customers);assert.equal(a.addedVisits,b.addedVisits);
  assert.deepEqual(scaling(a,[0,500,1000]),scaling(b,[0,500,1000]));
  assert.equal(calculate({websiteType:'unknown'}).websiteType.id,catalog.defaultWebsiteType);

@@ -61,8 +61,8 @@ def landingpage():
     inhalt = hero_klein(
         "02", "Website",
         [["Landingpage"], ["erstellen lassen."]],
-        "Eine Landingpage oder Mini-Website ab 1.500 €. Design, Inhalte und Funktionen bestimmen den Umfang. Vor dem Start erhalten Sie ein konkretes Angebot. Pflege vereinbaren wir bei Bedarf gesondert.",
-        ["ab 1.500 €", "Pflege nach Vereinbarung", "technischer Check"],
+        "Eine Landingpage für ca. 990 € oder eine Mini-Page für ca. 1.800 €. Design, Inhalte und Funktionen bestimmen den Umfang. Vor dem Start erhalten Sie ein konkretes Angebot. Pflege vereinbaren wir bei Bedarf gesondert.",
+        ["Landingpage ca. 990 €", "Mini-Page ca. 1.800 €", "Pflege nach Vereinbarung"],
     ) + f'''
 <section class="pad" id="umfang">
   <div class="shell">
@@ -86,7 +86,7 @@ def landingpage():
     </div>
   </div>
 </section>''' + faq_block("04", "Häufige Fragen", [["Vor dem"], ["Festpreis."]], (faq := [
-        ("Was kostet eine Landingpage?", "Landingpages und Mini-Websites beginnen bei 1.500 €. Eine Landingpage planen wir je nach Umfang mit 1.500–3.500 €. Vor der Umsetzung stimmen wir Design, Inhalte und Funktionen im konkreten Angebot ab."),
+        ("Was kostet eine Landingpage?", "Eine Landingpage planen wir mit ca. 990 €, eine Mini-Page mit ca. 1.800 €. Vor der Umsetzung stimmen wir Design, Inhalte und Funktionen im konkreten Angebot ab."),
         ("Ist die Pflege im ersten Preis enthalten?", "Nur, wenn wir sie in den Umfang schreiben. Sonst ist die Pflege ein eigener Auftrag. Das Monatsabo steht unter <a href=\"website-pflege.html\">Website-Pflege</a>: 99, 199 oder 299 €."),
         ("Prüfen Sie die Seite rechtlich?", "Nein. Barrierefreiheit und Datenschutz prüfen wir als Technik: Bedienung, Beschriftung, Kontrast und ob Daten auf der Website gespeichert werden. Eine rechtliche Bewertung ist nicht Teil dieser Leistung."),
         ("Kann eine vorhandene Seite überarbeitet werden?", "Ja, wenn die Zugänge da sind. Was bleibt und was neu wird, steht vor dem Start im Angebot."),

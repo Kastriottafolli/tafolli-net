@@ -1,8 +1,8 @@
 // A transparent scenario model, not a price list or a forecast of actual results.
-import {catalog} from './planner-catalog.mjs?v=f801d2575b';
+import {catalog} from './planner-catalog.mjs?v=21c16d19c9';
 export {catalog};
 export const defaults=Object.freeze({...catalog.budgets,baseVisitors:300,socialViews:2500,socialCtr:1,seoVisits:150,localViews:500,localCtr:10,cpc:2,adCtr:2,baseCvr:2,targetCvr:3,closeRate:25});
-const limits={website:[1500,250000],social:[0,20000],seo:[450,20000],local:[550,10000],ads:[0,50000],baseVisitors:[0,1000000],socialViews:[0,10000000],socialCtr:[0,100],seoVisits:[0,1000000],localViews:[0,1000000],localCtr:[0,100],cpc:[.1,100],adCtr:[.1,100],baseCvr:[0,100],targetCvr:[0,100],closeRate:[0,100]};
+const limits={website:[0,250000],social:[0,20000],seo:[0,20000],local:[0,10000],ads:[0,50000],baseVisitors:[0,1000000],socialViews:[0,10000000],socialCtr:[0,100],seoVisits:[0,1000000],localViews:[0,1000000],localCtr:[0,100],cpc:[.1,100],adCtr:[.1,100],baseCvr:[0,100],targetCvr:[0,100],closeRate:[0,100]};
 export function normalize(input={}){
  const selectedType=typeof input.websiteType==='object'?input.websiteType?.id:input.websiteType;
  const websiteType=catalog.websiteTypes.find(type=>type.id===selectedType)||catalog.websiteTypes.find(type=>type.id===catalog.defaultWebsiteType);

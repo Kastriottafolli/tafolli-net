@@ -66,7 +66,7 @@ def website_pflege():
 
 def onlineshop():
     fragen = [
-        ("Was kostet ein Onlineshop?", "Für einen individuell gestalteten Onlineshop liegt der unverbindliche Planungsrahmen bei 6.500 bis 15.000 €. Größere Shops mit mehreren Märkten und Schnittstellen planen wir ab 15.000 €, häufig bis 40.000 € oder darüber. Das konkrete Angebot richtet sich nach dem Umfang."),
+        ("Was kostet ein Onlineshop?", "Für einen Onlineshop planen wir mit einem unverbindlichen Richtpreis von ca. 6.500 €. Größere Shops mit mehreren Märkten und Schnittstellen beginnen bei 15.000 €. Das konkrete Angebot richtet sich nach dem Umfang."),
         ("Wo wird der Shop betrieben?", "Konten, Domain und Zugänge bleiben bei Ihnen. Shop-System, Hosting, Zahlungsanbieter und laufende Kosten stimmen wir vor dem Start ab."),
         ("Schreiben Sie die Rechtstexte?", "Die Rechtstexte liefern Sie oder Ihre dafür beauftragte Stelle. Wir binden die abgestimmten Texte ein."),
         ("Welche Anbindungen sind möglich?", "Zum Beispiel Zahlung, Versand, Warenwirtschaft und Produktdaten. Wir prüfen die Schnittstellen und legen den vereinbarten Umfang im Angebot fest."),
@@ -75,16 +75,16 @@ def onlineshop():
         "01", "E-Commerce",
         [["Ihr Sortiment."], ["Ein starker Onlineshop."]],
         "Vom überschaubaren Sortiment bis zum größeren Commerce-Projekt: Wir gestalten und entwickeln Shops mit klarer Produktführung, mobilem Checkout und den passenden Anbindungen.",
-        ["ab 6.500 €", "größere Shops ab 15.000 €", "nach Ihrem Bedarf"],
+        ["ca. 6.500 €", "größere Shops ab 15.000 €", "nach Ihrem Bedarf"],
     ) + f'''
 <section class="pad" id="umfang"><div class="shell">
     {kicker("02", "Passender Umfang")}
     <h2 class="d2 wipe recede-exit" style="margin:20px 0 40px">{wipe([["Ein Shop, der heute passt."], ["Und morgen mitwächst."]])}</h2>
     {karten_grid([
-        ("6.500–15.000 €", "Onlineshop", "Individuelle Gestaltung, Produktstruktur, Produktseiten, Warenkorb und Checkout. Zahlungs- und Versandwege stimmen wir auf Ihr Sortiment ab. Dazu gehören eine Einweisung und die geordnete Übergabe."),
-        ("ab 15.000 €", "Größerer Onlineshop", "Mehr Produkte, mehrere Märkte oder Sprachen und Anbindungen an Warenwirtschaft oder andere Systeme. Als ersten Planungsrahmen sehen wir 15.000 bis 40.000 € vor; komplexere Projekte kalkulieren wir individuell."),
+        ("ca. 6.500 €", "Onlineshop", "Individuelle Gestaltung, Produktstruktur, Produktseiten, Warenkorb und Checkout. Zahlungs- und Versandwege stimmen wir auf Ihr Sortiment ab. Dazu gehören eine Einweisung und die geordnete Übergabe."),
+        ("ab 15.000 €", "Größerer Onlineshop", "Mehr Produkte, mehrere Märkte oder Sprachen und Anbindungen an Warenwirtschaft oder andere Systeme. Die Umsetzung beginnt bei 15.000 €. Den konkreten Preis kalkulieren wir anhand der Funktionen und Anbindungen."),
     ])}
-    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:28px">Unverbindliche Planungsspannen. Den konkreten Leistungsumfang und Preis erhalten Sie im Angebot. Hosting, Softwarelizenzen, Zahlungsgebühren und laufende Betreuung werden gesondert abgestimmt.</p>
+    <p class="rise" style="color:var(--paper-mute);font-size:.95rem;max-width:68ch;margin-top:28px">Unverbindliche Richtpreise. Den konkreten Leistungsumfang und Preis erhalten Sie im Angebot. Hosting, Softwarelizenzen, Zahlungsgebühren und laufende Betreuung werden gesondert abgestimmt.</p>
 </div></section>''' + faq_block("03", "Häufige Fragen", [["Vor Ihrem"], ["Shop-Projekt."]], fragen) + dazu([
         ('webdesign.html', 'Webdesign'), ('website-pflege.html', 'Website-Pflege'),
         ('preisrechner.html#budgetplaner', 'Projekt kalkulieren'), ('kontakt.html', 'Kontakt'),
@@ -92,7 +92,7 @@ def onlineshop():
         "Erzählen Sie uns von Sortiment, Märkten und vorhandenen Systemen. Wir planen mit Ihnen den passenden Shop.",
         "Shop-Projekt besprechen", "kontakt.html?leistung=Onlineshop#projektanfrage", "Budget planen", "preisrechner.html#budgetplaner")
     return seite_rahmen("onlineshop.html", "Onlineshop erstellen lassen | Tafolli & Co.",
-        "Individuelle Onlineshops ab 6.500 €. Größere Commerce-Projekte mit Schnittstellen ab 15.000 €. Planung, Design, Entwicklung und Übergabe.",
+        "Individuelle Onlineshops für ca. 6.500 €. Größere Commerce-Projekte mit Schnittstellen ab 15.000 €. Planung, Design, Entwicklung und Übergabe.",
         "onlineshop.html", inhalt, faq=fragen)
 
 
@@ -175,5 +175,5 @@ def preisrechner():
     return seite_rahmen(
         "preisrechner.html",
         "Website- und Marketing-Budget planen | Tafolli & Co.",
-        "Website-Typen ab 1.500 €, Marketingbudgets und Kundenpotenzial interaktiv planen. Unverbindlich kalkulieren und direkt ein Beratungsgespräch anfragen.",
+        "Website-Typen ab 990 €, Marketingbudgets und Kundenpotenzial interaktiv planen. Unverbindlich kalkulieren und direkt ein Beratungsgespräch anfragen.",
         "preisrechner.html", inhalt)

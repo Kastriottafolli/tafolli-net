@@ -1,4 +1,4 @@
-import {calculate,scaling,defaults,catalog} from './planner-model.mjs?v=26b5a31926';
+import {calculate,scaling,defaults,catalog} from './planner-model.mjs?v=fd5c59e2a3';
 import {deliverInquiry} from './form-delivery.mjs?v=90b48f7a37';
 
 document.querySelectorAll('[data-planner]').forEach(section=>{
@@ -29,9 +29,10 @@ document.querySelectorAll('[data-planner]').forEach(section=>{
   return {websiteType:section.querySelector('[data-plan-type]:checked').value,active:Object.fromEntries(serviceKeys.map(key=>[key,section.querySelector('[data-plan-active="'+key+'"]').checked])),values:Object.fromEntries(Object.keys(defaults).map(key=>[key,section.querySelector('[data-plan-value="'+key+'"]').valueAsNumber]))};
  }
  const output=(key,value)=>{section.querySelectorAll('[data-plan-output="'+key+'"]').forEach(item=>item.textContent=value);};
+ const priceGuide=type=>(type.priceMode==='from'?L.from_label:L.guide_label)+' '+euro.format(type.min);
  function makeSummary(){
   const r=result,v=r.values;
-  const lines=['TAFOLLI & CO. — BUDGETPLANER','Unverbindliches Rechenszenario / illustrative scenario','',L.type_label+': '+(r.active.website?r.websiteType.labels[config.lang]:'—'),...(r.active.website?[L.range+': '+number.format(r.websiteType.min)+'–'+number.format(r.websiteType.max)+' €',L.scope_note]:[]),'',...serviceKeys.map((key,i)=>L.services[i]+': '+(r.active[key]?euro.format(v[key])+' / '+(key==='website'?L.once:L.monthly):'—')),'',L.once_label+': '+euro.format(r.once),L.monthly_label+': '+euro.format(r.monthly),'',L.metrics[0]+': '+number.format(r.impressions),L.metrics[1]+': '+number.format(r.addedVisits),L.metrics[2]+': '+decimal.format(r.addedLeads),L.metrics[3]+': '+number.format(r.low)+'–'+number.format(r.high),'',...assumptions.map((key,i)=>L.fields[i]+': '+decimal.format(v[key])),'',L.model_note,L.formula,L.organic,'','https://tafolli.net/#budgetplaner'];
+  const lines=['TAFOLLI & CO. — BUDGETPLANER','Unverbindliches Rechenszenario / illustrative scenario','',L.type_label+': '+(r.active.website?r.websiteType.labels[config.lang]:'—'),...(r.active.website?[L.range+': '+priceGuide(r.websiteType),L.scope_note]:[]),'',...serviceKeys.map((key,i)=>L.services[i]+': '+(r.active[key]?euro.format(v[key])+' / '+(key==='website'?L.once:L.monthly):'—')),'',L.once_label+': '+euro.format(r.once),L.monthly_label+': '+euro.format(r.monthly),'',L.metrics[0]+': '+number.format(r.impressions),L.metrics[1]+': '+number.format(r.addedVisits),L.metrics[2]+': '+decimal.format(r.addedLeads),L.metrics[3]+': '+number.format(r.low)+'–'+number.format(r.high),'',...assumptions.map((key,i)=>L.fields[i]+': '+decimal.format(v[key])),'',L.model_note,L.formula,L.organic,'','https://tafolli.net/#budgetplaner'];
   return lines.join('\n');
  }
  function updateMailto(){
@@ -55,10 +56,11 @@ document.querySelectorAll('[data-planner]').forEach(section=>{
   const title=section.querySelector('#planner-chart-title');title.textContent=L.chart+': '+points.map(p=>euro.format(p.budget)+' → '+decimal.format(p.customers)).join('; ');
  }
  function update(){
+  if(updateFrame)cancelAnimationFrame(updateFrame);
   updateFrame=0;const input=read();result=calculate(input);
   const type=result.websiteType;
   section.querySelector('[data-plan-value=website]').min=String(type.min);
-  section.querySelector('[data-plan-type-range]').textContent=number.format(type.min)+'–'+number.format(type.max)+' €';
+  section.querySelector('[data-plan-type-range]').textContent=priceGuide(type);
   section.querySelector('[data-plan-type-note]').textContent=type.notes[config.lang];
   section.querySelector('[data-plan-preview]').dataset.kind=type.id;
   section.querySelector('[data-plan-preview-title]').textContent=type.labels[config.lang];
@@ -94,7 +96,7 @@ document.querySelectorAll('[data-planner]').forEach(section=>{
   const type=catalog.websiteTypes.find(type=>type.id===input.value);
   section.querySelector('[data-plan-value=website]').value=String(type.min);
   section.querySelector('[data-plan-active=website]').checked=true;
-  schedule();
+  update();
  }));
  range.addEventListener('input',()=>{section.querySelector('[data-plan-value=ads]').value=range.value;schedule();});
  form.addEventListener('input',updateMailto);

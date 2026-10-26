@@ -12,15 +12,15 @@ PAGE_META = {'index.html': ('Webdesign, Websites und KI-Automatisierung | Tafoll
                                                 'Erste KI-Automatisierung für kleine Betriebe, etwa für '
                                                 'E-Mail, Angebot oder Termin. Nichts geht ohne Ihre '
                                                 'Freigabe. Festpreis auf Anfrage. Ohne Ergebniszusage.'),
- 'landingpage-erstellen-lassen.html': ('Landingpage ab 1.500 € erstellen lassen | Tafolli & Co.',
-                                       'Landingpages und Mini-Websites ab 1.500 €. Individuelles Design, '
+ 'landingpage-erstellen-lassen.html': ('Landingpage für ca. 990 € erstellen lassen | Tafolli & Co.',
+                                       'Landingpages ca. 990 €, Mini-Pages ca. 1.800 €. Individuelles Design, '
                                        'passende Inhalte und klare Anfragewege. Umfang und Funktionen '
                                        'bestimmen Ihr konkretes Angebot.'),
  'website-pflege.html': ('Website-Pflege ab 99 € im Monat | Tafolli & Co.',
                          'Website-Pflege in drei Stufen: Basis 99 €, Laufend 199 €, Intensiv 299 € im Monat. '
                          'Updates, Backup, kleine Änderungen. Monatlich kündbar. Ohne Ergebniszusage.'),
- 'onlineshop.html': ('Onlineshop ab 6.500 € erstellen lassen | Tafolli & Co.',
-                     'Individuelle Onlineshops ab 6.500 €. Größere Commerce-Projekte mit Schnittstellen ab '
+ 'onlineshop.html': ('Onlineshop für ca. 6.500 € erstellen lassen | Tafolli & Co.',
+                     'Individuelle Onlineshops für ca. 6.500 €. Größere Commerce-Projekte mit Schnittstellen ab '
                      '15.000 €. Planung, Design, Entwicklung und Übergabe.'),
  'web-apps.html': ('Web-App oder Tool ab 390 € in Binz | Tafolli & Co.',
                    'Kleine Web-App oder ein Tool ab 390 €: ein Ablauf im Browser. Größere Projekte zum '
@@ -48,7 +48,7 @@ PAGE_META = {'index.html': ('Webdesign, Websites und KI-Automatisierung | Tafoll
                                      'Bedienung und passende Zahlungswege. Größere Shops mit Schnittstellen '
                                      'nach individuellem Angebot.'),
  'preisrechner.html': ('Website- und Marketing-Budget planen | Tafolli & Co.',
-                       'Website-Typen ab 1.500 €, Marketingbudgets und Kundenpotenzial interaktiv planen. '
+                       'Website-Typen ab 990 €, Marketingbudgets und Kundenpotenzial interaktiv planen. '
                        'Unverbindlich kalkulieren und direkt ein Beratungsgespräch anfragen.'),
  'sq/faqe-dhe-perkthime.html': ('Faqe web dhe përkthime DE, EN, SQ | Tafolli & Co.',
                                 'Faqe web dhe përkthime për biznese që flasin shqip. Tekste në gjermanisht, '
@@ -68,15 +68,15 @@ SERVICE_META = {'ki-automatisierung-kleine-unternehmen': ('KI-Automatisierung f�
                                            'Erste KI-Automatisierung für kleine Betriebe, etwa für E-Mail, '
                                            'Angebot oder Termin. Nichts geht ohne Ihre Freigabe. Festpreis '
                                            'auf Anfrage. Ohne Ergebniszusage.'),
- 'landingpage-erstellen-lassen': ('Landingpage ab 1.500 € erstellen lassen | Tafolli & Co.',
-                                  'Landingpages und Mini-Websites ab 1.500 €. Individuelles Design, passende '
+ 'landingpage-erstellen-lassen': ('Landingpage für ca. 990 € erstellen lassen | Tafolli & Co.',
+                                  'Landingpages ca. 990 €, Mini-Pages ca. 1.800 €. Individuelles Design, passende '
                                   'Inhalte und klare Anfragewege. Umfang und Funktionen bestimmen Ihr '
                                   'konkretes Angebot.'),
  'website-pflege': ('Website-Pflege ab 99 € im Monat | Tafolli & Co.',
                     'Website-Pflege in drei Stufen: Basis 99 €, Laufend 199 €, Intensiv 299 € im Monat. '
                     'Updates, Backup, kleine Änderungen. Monatlich kündbar. Ohne Ergebniszusage.'),
- 'onlineshop': ('Onlineshop ab 6.500 € erstellen lassen | Tafolli & Co.',
-                'Individuelle Onlineshops ab 6.500 €. Größere Commerce-Projekte mit Schnittstellen ab 15.000 '
+ 'onlineshop': ('Onlineshop für ca. 6.500 € erstellen lassen | Tafolli & Co.',
+                'Individuelle Onlineshops für ca. 6.500 €. Größere Commerce-Projekte mit Schnittstellen ab 15.000 '
                 '€. Planung, Design, Entwicklung und Übergabe.'),
  'web-apps': ('Web-App oder Tool ab 390 € in Binz | Tafolli & Co.',
               'Kleine Web-App oder ein Tool ab 390 €: ein Ablauf im Browser. Größere Projekte zum Festpreis, '
